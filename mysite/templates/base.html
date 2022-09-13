@@ -4,10 +4,8 @@
             .sidenav{
                 height:100%;
                 width:160px;
-                position: sticky;
+                position: fixed;
                 z-index: 1;
-                top:0%;
-                left:0%;
                 background-color:azure;
                 overflow-x: hidden;
                 padding-top: 20px;
@@ -26,12 +24,11 @@
                 color:#ce4e6e90;
             } 
 
-            .content{
+            .content {
                 margin-left:160px;
                 text-align: center;
                 padding:10px 15px;
                 float:top;
-                margin-top: 10px;
             }
         </style>
         <title> Base Template </title>
@@ -45,7 +42,7 @@
             <a href="http://127.0.0.1:8000/home/setting"> System Management - redirects to settings</a>
             <a href="/Dashboard"> Appointment & Questionaire </a>
         </div>
-        <div class="content">
+        <div id="content" class="content">
             {% block content %}
             {% endblock %}
         </div>
