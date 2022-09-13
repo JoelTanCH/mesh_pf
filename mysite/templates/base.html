@@ -29,7 +29,29 @@
                 text-align: center;
                 padding:10px 15px;
                 float:top;
+                margin-top:90px;
             }
+
+            .topbar{
+                height:90px;
+                margin-left:160px;
+                text-align: center;
+                font-size: 15px;
+                background-color:azure;
+            }
+
+            .topbar a {
+                float: left;
+                color: #357692;
+                text-align: center;
+                padding: 14px 16px;
+                text-decoration: none;
+                font-size: 17px;
+                }
+
+            .topbar a:hover{
+                color:#ce4e6e90;
+            } 
         </style>
         <title> Base Template </title>
     </head>
@@ -41,6 +63,11 @@
             <a href="http://127.0.0.1:8000/home/summaryReport"> Summary Report - redirects to corporate health report</a>
             <a href="http://127.0.0.1:8000/home/setting"> System Management - redirects to settings</a>
             <a href="/Dashboard"> Appointment & Questionaire </a>
+        </div>
+        <div class="topbar">
+            <a href="/Create Patient">Create Patient</a>
+            <a href="/datetime">Date Time</a>
+            <a href="/profile" style="position:fixed; right:80px">Profile</a>
         </div>
         <div id="content" class="content">
             {% block content %}
