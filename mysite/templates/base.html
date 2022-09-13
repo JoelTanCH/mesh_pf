@@ -1,8 +1,53 @@
 <html>
     <head>
-        <title> The base template of all layouts </title>
+        <style type = "text/css">
+            .sidenav{
+                height:100%;
+                width:160px;
+                position: sticky;
+                z-index: 1;
+                top:0%;
+                left:0%;
+                background-color:azure;
+                overflow-x: hidden;
+                padding-top: 20px;
+            }
+
+            .sidenav a{
+                padding:10px 15px 10px 20px;
+                text-decoration: none;
+                color:#818181;
+                font-size: 20px;
+                display:block;
+                
+            }    
+
+            .sidenav a:hover{
+                color:#ce4e6e90;
+            } 
+
+            .content{
+                margin-left:160px;
+                text-align: center;
+                padding:10px 15px;
+                float:top;
+                margin-top: 10px;
+            }
+        </style>
+        <title> Base Template </title>
     </head>
     <body>
-        <p> Base Template </p>
+        <div class="sidenav">
+            <a href="http://127.0.0.1:8000/home/">Dashboard - redirects to home </a>
+            <a href="/Dashboard"> Summary Report </a>
+            <a href="/Dashboard"> All Referrals </a>
+            <a href="http://127.0.0.1:8000/home/summaryReport"> Summary Report - redirects to corporate health report</a>
+            <a href="http://127.0.0.1:8000/home/setting"> System Management - redirects to settings</a>
+            <a href="/Dashboard"> Appointment & Questionaire </a>
+        </div>
+        <div class="content">
+            {% block content %}
+            {% endblock %}
+        </div>
     </body>
 </html>
