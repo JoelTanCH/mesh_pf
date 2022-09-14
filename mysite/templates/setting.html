@@ -3,3 +3,25 @@
 {% block content %} 
 <h1> Settings page </h1>
 {% endblock %} 
+
+{% block footer %} 
+<style type = "text/css">
+    .footer {
+        font-family: 'Poppins';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 15px;
+        line-height: 15px;
+        display: flex;
+        align-items: center;
+        color: #314C74;
+    }
+    .footer a:hover{
+                color:#ce4e6e90;
+            } 
+</style>
+<div class = "footer"> 
+    <p> Please <u><b><a href="https://wa.me/6593360639">contact MeshBio</a></b></u> for more customization </p>
+    <button type="button" class="btn btn-primary" style="position:absolute; right: 100px;">Save & Update</button>
+</div>
+{% endblock %} 
