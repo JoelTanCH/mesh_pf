@@ -6,18 +6,23 @@
                 width:160px;
                 position: fixed;
                 z-index: 1;
-                background-color:azure;
+                background-color:#F0F2F5;
                 overflow-x: hidden;
-                padding-top: 20px;
+                padding-top: 100px;
             }
 
             .sidenav a{
-                padding:10px 15px 10px 20px;
+                margin-top: 25px;
+                padding:20px 15px;
                 text-decoration: none;
-                color:#818181;
-                font-size: 20px;
+                font-size: 18px;
                 display:block;
-                
+                text-align: center;
+                font-family: 'Poppins';
+                font-style: normal;
+                font-weight: 500;
+                line-height: 18px;
+                color: #5574A7;
             }    
 
             .sidenav a:hover{
@@ -27,31 +32,47 @@
             .content {
                 margin-left:160px;
                 text-align: center;
-                padding:10px 15px;
-                float:top;
-                margin-top:90px;
+                padding:300px ;
+                margin-top:50px;
+                border-radius: 20px;
+                background:#F8F9FC;
             }
 
             .topbar{
                 height:90px;
                 margin-left:160px;
                 text-align: center;
-                font-size: 15px;
-                background-color:azure;
+                background-color: #F8F9FC;
+                border-radius: 20px;
+                font-family: 'Avenir Next';
+                font-style: normal;
+                font-weight: 500;
+                font-size: 16px;
+                line-height: 16px;
+                display: flex;
+                align-items: center;
             }
 
             .topbar a {
                 float: left;
-                color: #357692;
+                color: #617593;
                 text-align: center;
-                padding: 14px 16px;
                 text-decoration: none;
-                font-size: 17px;
+                font-size: 20px;
+                padding:25px 20px 20px 25px;
                 }
 
             .topbar a:hover{
                 color:#ce4e6e90;
             } 
+
+            .footer {
+                margin-left:160px;
+                text-align: center;
+                height:90px;
+                font-size: 15px;
+            }
+
         </style>
         
         <title> Base Template </title>
@@ -59,23 +80,67 @@
         <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">  
         <script src="{% static 'js/bootstrap.min.js' %}"></script>
     </head>
-    <body>
+    <body style="background-color: #F0F2F5;">
         <div class="sidenav">
-            <a href="http://127.0.0.1:8000/home/">Dashboard - redirects to home </a>
-            <a href="/Dashboard"> Summary Report </a>
-            <a href="/Dashboard"> All Referrals </a>
-            <a href="http://127.0.0.1:8000/home/summaryReport"> Summary Report - redirects to corporate health report</a>
-            <a href="http://127.0.0.1:8000/home/setting"> System Management - redirects to settings</a>
-            <a href="/Dashboard"> Appointment & Questionaire </a>
+            <a href="http://127.0.0.1:8000/home/">Dashboard </a>
+            <a href="http://127.0.0.1:8000/home/"> All Patient Records (NA) </a>
+            <a href="http://127.0.0.1:8000/home/"> All Referrals (NA) </a>
+            <a href="http://127.0.0.1:8000/home/summaryReport"> Summary Report </a>
+            <a href="http://127.0.0.1:8000/home/setting"> System Management </a>
+            <a href="http://127.0.0.1:8000/home/"> Appointment & Questionaire (NA) </a>
+            <a href="http://127.0.0.1:8000/home/"> Help & Support (NA) </a>
         </div>
         <div class="topbar">
             <a href="/Create Patient">Create Patient</a>
-            <a href="/datetime">Date Time</a>
-            <a href="/profile" style="position:fixed; right:80px">Profile</a>
+            <a id="current_date"> date </a>
+            <script> 
+            /* Script to dynamically update datetime */
+                function toMonthName(monthNumber){
+                    const date = new Date();
+                    date.setMonth(monthNumber - 1);
+                    return date.toLocaleString('en-US',{
+                        month:'long',
+                    })
+                }
+                function getDate(){
+                    var currentTime = new Date()
+                    var hours = currentTime.getHours()
+                    var minutes = currentTime.getMinutes()
+                    var month = toMonthName(currentTime.getMonth())
+                    var date = currentTime.getDay()
+                    var year = currentTime.getFullYear()
+                    var meridian = null;
+
+                    if(hours > 11){
+                        meridian = "pm";
+
+                    }else{
+                        meridian = "am";
+                    }
+                    if(hours > 12){
+                        hours -= 12;
+                    }
+                    if(minutes<10){
+                        minutes = "0" + minutes;
+                    }
+                    var timeString = date + " " + month +   " " + year + "   "  + hours + ":" + minutes + meridian;
+                    document.getElementById("current_date").innerHTML = timeString;
+                    return timeString;
+                }
+                var interval = setInterval(function() {
+                    getDate();
+                },1000)
+                document.getElementById("current_date").innerHTML = getDate();                    
+            </script>
+            <a href="/profile" style="position:absolute; right: 100px;">Profile</a>
         </div>
         <div id="content" class="content">
             <button type="button" class="btn btn-primary">Corporate Report Pop Up</button>
             {% block content %}
+            {% endblock %}
+        </div>
+        <div class="footer"> 
+            {% block footer %}
             {% endblock %}
         </div>
     </body>

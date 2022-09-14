@@ -1,6 +1,60 @@
 {% extends 'base.html' %}
 
 {% block content %} 
-<h1> Table with patients!!! </h1>
+<style>
+    
+    .bodyHeader {
+        position: absolute;
+        width: 1203.19px;
+        height: 78.3px;
+        left: 237.17px;
+        top: 139.96px;
+    }
+    .bodyHeader p{
+        font-family: 'Poppins';
+        font-style: normal;
+        font-weight: 600;
+        font-size: 18px;
+        line-height: 14px;
+        position: absolute;
+        top: 35%;
+        color: #314C74;
+    }
+    .bodyHeader button{
+        box-sizing: border-box;
+        top: 26.84%;
+        right: -100px;
+        position: absolute;
+        background: #AAAAAA;
+        border: 2px solid rgba(17, 0, 0, 0.01);
+        border-radius: 6px;
+        color:#FFFFFF;
+    }
+
+    .bodyTitle {
+        position: absolute;
+        left: 240px;
+        bottom: 75%;
+        font-family: 'Poppins';
+        font-style: normal;
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 14px;
+        display: flex;
+        align-items: center;
+
+        color: #617594;
+    }
+</style>
+<div class = "main">
+    <div class = "bodyHeader"> 
+        <p id="titleOfPage"> Corporate Health Report </p>
+        <button><a href="http://127.0.0.1:8000/home/setting"> Settings </a></button>
+    </div>
+    <div class = "bodyTitle>"> 
+        <p> <u>List of Corporate Health Reports</u></p>
+    </div>
+</div>
+<p> Insert table with patients!!! </p>
 
 {% endblock %} 
