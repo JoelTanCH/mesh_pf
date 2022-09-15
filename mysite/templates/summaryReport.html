@@ -1,60 +1,193 @@
-{% extends 'base.html' %}
-
-{% block content %} 
+{% extends 'base.html' %} {% block content %}
 <style>
-    
-    .bodyHeader {
-        position: absolute;
-        width: 1203.19px;
-        height: 78.3px;
-        left: 237.17px;
-        top: 139.96px;
-    }
-    .bodyHeader p{
-        font-family: 'Poppins';
-        font-style: normal;
-        font-weight: 600;
-        font-size: 18px;
-        line-height: 14px;
-        position: absolute;
-        top: 35%;
-        color: #314C74;
-    }
-    .bodyHeader button{
-        box-sizing: border-box;
-        top: 26.84%;
-        right: -100px;
-        position: absolute;
-        background: #AAAAAA;
-        border: 2px solid rgba(17, 0, 0, 0.01);
-        border-radius: 6px;
-        color:#FFFFFF;
-    }
+  .bodyHeader {
+    position: absolute;
+    width: 1203.19px;
+    height: 78.3px;
+    left: 237.17px;
+    top: 139.96px;
+  }
+  .bodyHeader p {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 14px;
+    position: absolute;
+    top: 35%;
+    color: #314c74;
+  }
+  .bodyHeader button {
+    box-sizing: border-box;
+    top: 26.84%;
+    right: -100px;
+    position: absolute;
+    background: #aaaaaa;
+    border: 2px solid rgba(17, 0, 0, 0.01);
+    border-radius: 6px;
+    color: #ffffff;
+  }
 
-    .bodyTitle {
-        position: absolute;
-        left: 240px;
-        bottom: 75%;
-        font-family: 'Poppins';
-        font-style: normal;
-        font-weight: 600;
-        font-size: 16px;
-        line-height: 14px;
-        display: flex;
-        align-items: center;
+  .bodyTitle {
+    position: absolute;
+    left: 240px;
+    bottom: 75%;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 14px;
+    display: flex;
+    align-items: center;
 
-        color: #617594;
-    }
+    color: #617594;
+  }
+
+  .modal-body-ctn {
+    display: flex;
+    justify-content: center;
+    align-items: middle;
+
+  }
+
+  .search-field__input {
+    height: 30.38px;
+    width: 609.33px;
+    font-size: 14px;
+    background-image: url(https://cdn2.hubspot.net/hubfs/4004166/bioticresearch_website_assets/images/search_icon.png);
+    background-repeat: no-repeat;
+    background-position: right center;
+    background-color: #F2F2F266;
+    border: 1px solid #61616133;
+    box-shadow: none;
+    -webkit-appearance: none;
+    border-radius: 6px;
+  }
+
+  .modal-btm {
+    margin-left: 322.14px;
+    margin-bottom: 39.04px;
+  }
+
+  .form-label {
+    text-align:left; 
+    margin-left:4px; 
+    color:#717171; 
+    font-size: 12px; 
+    font-weight: 700; 
+    line-height: 13.55px; 
+    font: Poppins;
+  }
+  .btm-btn-text {
+    font: Poppins;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 10.99px;
+    align-items: center;
+  }
+  .form-label-ctn {
+    display: flex; 
+    align-items: center; 
+    margin-left: 20px; 
+    height: 32.09px;
+  }
 </style>
-<div class = "main">
-    <div class = "bodyHeader"> 
-        <p id="titleOfPage"> Corporate Health Report </p>
-        <button><a href="http://127.0.0.1:8000/home/setting"> Settings </a></button>
-    </div>
-    <div class = "bodyTitle>"> 
-        <p> <u>List of Corporate Health Reports</u></p>
-    </div>
+<div class="main">
+  <div class="bodyHeader">
+    <p id="titleOfPage">Corporate Health Report</p>
+    <button><a href="http://127.0.0.1:8000/home/setting">Settings</a></button>
+  </div>
+  <div class="bodyTitle>">
+    <p><u>List of Corporate Health Reports</u></p>
+  </div>
 </div>
-<p> Insert table with patients!!! </p>
-
-{% endblock %} 
+<p>Insert table with patients!!!</p>
+<button
+  type="button"
+  data-bs-target="#CorpRepPopUp"
+  data-bs-toggle="modal"
+  class="btn btn-primary"
+  style="background-color:purple"
+>
+  Corporate Report Pop Up
+</button>
+<div  class="modal" tabindex="-1" role="dialog" id="CorpRepPopUp">
+  <div class="modal-dialog">
+    <div class="modal-content" style="width: 681.99px; height: 500.32px; border-radius: 20px">
+      <div style="margin-right:10px; margin-top:10px;">
+      <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+          style="float:right; height: 13.12px;"
+        ></button>
+        </div>
+        <div class="modal-body">
+            <div class="form-label-ctn">
+                <p class="form-label">Corporate Name (ID)</p>
+                <p style="text-align:left; margin-left:4px; color: red;">*</p>
+              </div>
+            <div class="modal-body-ctn">
+                <div class="search-field__input"></div>
+            </div>
+            <br>
+            <div class="form-label-ctn">
+                <p class="form-label">Corporate Health Report Title</p>
+                <p style="text-align:left; margin-left:4px; color: red;">*</p>
+            </div>
+            <div class="modal-body-ctn">
+              <form action="/your-name/" method="post">
+                <input style="width: 609.33px; height:30.38px; border: 1px solid #61616133; border-radius: 6px; background-color: #F2F2F266;" id="reportTitle" type="text" name="reportTitle" value="{{ reportTitle }}">
+            </form>
+            </div>
+            <div class="form-label-ctn">
+              <p class="form-label">Report Type</p>
+              <p style="text-align:left; margin-left:4px; color: red;">*</p>
+            </div>
+            <div class="modal-body-ctn">
+              <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" 
+                style="width: 609.33px; height:30.38px; float:right; border-radius: 6px; background-color: #F2F2F266; border: 1px solid #61616133; color: black; margin-right: 2px;">
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <a class="dropdown-item" href="#">Action</a>
+                  <a class="dropdown-item" href="#">Another action</a>
+                  <a class="dropdown-item" href="#">Something else here</a>
+                </div>
+              </div>
+            </div>
+            <br>
+            <div class="form-label-ctn">
+              <p class="form-label">Batches to include in Corporate Report</p>
+              <p style="text-align:left; margin-left:4px; color: red;">*</p>
+            </div>
+            <div class="modal-body-ctn">
+              <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" 
+                style="width: 609.33px; height:30.38px; float:right; border-radius: 6px; background-color: #F2F2F266; border: 1px solid #61616133; color: black; margin-right: 2px;">
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <a class="dropdown-item" href="#">Action</a>
+                  <a class="dropdown-item" href="#">Another action</a>
+                  <a class="dropdown-item" href="#">Something else here</a>
+                </div>
+              </div>
+            </div>
+        </div>
+        <div class="modal-btm">
+          <button type="button" class="btn btn-light" data-bs-dismiss="modal" 
+          style="width:155.93px; height:30.38px; background-color:white; border-color:#8FA3C1; border-radius: 12px; color: #314C74; font: Poppins;font-weight: 600;font-size: 14px;line-height: 10.99px;align-items: center;">
+            Cancel
+          </button>
+          <button type="button" class="btn btn-light"
+          style="width:155.93px; height:30.38px; background-color:white; border-color:#8FA3C1; border-radius: 12px; color: #314C74; font: Poppins;font-weight: 600;font-size: 14px;line-height: 10.99px;align-items: center;">
+            Next
+          </button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</div>
+{% endblock %}
