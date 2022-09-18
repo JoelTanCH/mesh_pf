@@ -107,7 +107,8 @@
                     var hours = currentTime.getHours()
                     var minutes = currentTime.getMinutes()
                     var month = toMonthName(currentTime.getMonth())
-                    var date = currentTime.getDay()
+                    var date = currentTime.getDate()
+                    console.log(date);
                     var year = currentTime.getFullYear()
                     var meridian = null;
 
@@ -129,7 +130,7 @@
                 }
                 var interval = setInterval(function() {
                     getDate();
-                },1000)
+                },10000) //every 10 seconds 
                 document.getElementById("current_date").innerHTML = getDate();                    
             </script>
             <a href="/profile" style="position:absolute; right: 100px;">Profile</a>
