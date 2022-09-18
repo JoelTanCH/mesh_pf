@@ -1,87 +1,16 @@
+<!DOCTYPE html>
 <html>
     <head>
-        <style type = "text/css">
-            .sidenav{
-                height:100%;
-                width:160px;
-                position: fixed;
-                z-index: 1;
-                background-color:#F0F2F5;
-                overflow-x: hidden;
-                padding-top: 100px;
-            }
+  
 
-            .sidenav a{
-                margin-top: 25px;
-                padding:20px 15px;
-                text-decoration: none;
-                font-size: 18px;
-                display:block;
-                text-align: center;
-                font-family: 'Poppins';
-                font-style: normal;
-                font-weight: 500;
-                line-height: 18px;
-                color: #5574A7;
-            }    
-
-            .sidenav a:hover{
-                color:#ce4e6e90;
-            } 
-
-            .content {
-                margin-left:160px;
-                text-align: center;
-                padding:300px ;
-                margin-top:50px;
-                border-radius: 20px;
-                background:#F8F9FC;
-            }
-
-            .topbar{
-                height:90px;
-                margin-left:160px;
-                text-align: center;
-                background-color: #F8F9FC;
-                border-radius: 20px;
-                font-family: 'Avenir Next';
-                font-style: normal;
-                font-weight: 500;
-                font-size: 16px;
-                line-height: 16px;
-                display: flex;
-                align-items: center;
-            }
-
-            .topbar a {
-                float: left;
-                color: #617593;
-                text-align: center;
-                text-decoration: none;
-                font-size: 20px;
-                padding:25px 20px 20px 25px;
-                }
-
-            .topbar a:hover{
-                color:#ce4e6e90;
-            } 
-
-            .footer {
-                margin-left:160px;
-                text-align: center;
-                height:90px;
-                font-size: 15px;
-            }
-
-        </style>
-        
         <title> Base Template </title>
         {% load static %}  
+        <link rel="stylesheet" href="{% static 'css/base.css' %}">
         <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">  
         <script src="{% static 'js/bootstrap.min.js' %}"></script>
     </head>
     <body style="background-color: #F0F2F5;">
-        <div class="sidenav">
+        <div class="sidenav" id="sidenav">
             <a href="http://127.0.0.1:8000/home/">Dashboard </a>
             <a href="http://127.0.0.1:8000/home/"> All Patient Records (NA) </a>
             <a href="http://127.0.0.1:8000/home/"> All Referrals (NA) </a>
