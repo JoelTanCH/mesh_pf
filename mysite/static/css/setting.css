@@ -15,10 +15,10 @@
 
 .bodyHeader {
     position: absolute;
-    width: 1203.19px;
-    height: 78.3px;
-    left: 237.17px;
-    top: 139.96px;
+    width: 1200px;
+    height: 78px;
+    left: 230px;
+    top: 17%;
 }
 .bodyHeader p{
     font-family: 'Poppins';
@@ -27,7 +27,6 @@
     font-size: 18px;
     line-height: 14px;
     position: absolute;
-    top: 35%;
     color: #314C74;
 }
 
