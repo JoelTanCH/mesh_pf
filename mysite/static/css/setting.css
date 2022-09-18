@@ -10,5 +10,45 @@
 
 }
 .footer a:hover{
-            color:#ce4e6e90;
-        } 
+    color:#ce4e6e90;
+} 
+
+.bodyHeader {
+    position: absolute;
+    width: 1203.19px;
+    height: 78.3px;
+    left: 237.17px;
+    top: 139.96px;
+}
+.bodyHeader p{
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 14px;
+    position: absolute;
+    top: 35%;
+    color: #314C74;
+}
+
+.container {
+    position: absolute;
+    left: 237.17px;
+    top: 200px;
+}
+
+.container .nav .nav-item .nav-link.active {
+    color: #fff;
+    background-color: #7788A3;
+    border: 2px solid ;
+    border-radius: 6px 6px 0px 0px;
+    margin-right: 0.5rem;
+}
+
+.container .nav .nav-item .nav-link {
+    color: #7788A3;
+    background-color: #fff;
+    border: 2px solid ;
+    border-radius: 6px 6px 0px 0px;
+    margin-right: 0.5rem;
+}
