@@ -107,6 +107,17 @@
     text-align: left;
     margin-top: 10px;
   }
+
+  .table-heading {
+    font-family: Poppins;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 14px;
+  letter-spacing: 0em;
+  text-align: left;
+  color: #617594;
+
+  }
   .settings-btn {
     height: 30.381864547729492px;
     width: 130.93368530273438px;
@@ -114,7 +125,8 @@
     background-color: #aaaaaa;
     border: 2px solid #11000003;
     flex: right;
-    margin-right: 50px;
+    margin-right: -120px;
+    margin-top: -20px;
   }
   .column-header {
     height: 53.53135681152344px;
@@ -173,13 +185,23 @@
     width: 50%;
     justify-content: center;
     margin-top: 12px;
+    font-family: Poppins;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 14px;
+    letter-spacing: 0em;
+    text-align: left;
+
   }
 </style>
 <div class="main">
   <div class="bodyHeader">
     <p class="page-title">Corporate Health Report</p>
+    <div style="height: 31.45px;"></div>
+    <p class="table-heading">List of Corporate Health Reports</p>
+    <hr style="width:228.53px;">
     <button class="settings-btn">
-      <a href="http://127.0.0.1:8000/home/setting">Settings</a>
+      <a href="http://127.0.0.1:8000/home/setting" style="color:white">Settings</a>
     </button>
   </div>
   <div class="table">
@@ -214,7 +236,7 @@
       <ol style="padding-top: 0;">
         <li style="list-style: none; margin-left: -40px; display: inline-block;">
           <div class="table-row">
-            <div style="display: flex; width: 100%; color: #7d7e8c;">
+            <div style="display: flex; width: 100%; color: #7d7e8c; margin-left: 40px;">
               <div class="list-item">
                 {{info.0}}
               </div>
