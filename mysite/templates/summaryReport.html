@@ -74,7 +74,7 @@
 
   .form-label {
     text-align: left;
-    margin-left: 4px;
+    margin-left: -15px;
     color: #717171;
     font-size: 12px;
     font-weight: 700;
@@ -690,6 +690,15 @@ shown when checkbox is checked */
     text-align: center;
 
   }
+  .select-option-dropdown{
+    font-family: Poppins;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 14px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #B7B7B7;
+  }
 
 </style>
 
@@ -754,7 +763,8 @@ shown when checkbox is checked */
                 c_button.setAttribute("type","button");
           			c_button.setAttribute("class","btn btn-light");
                 c_button.setAttribute("style", "margin-right:10px;width: 155.93px; height: 30.38px; background-color: white;border-color: #8fa3c1;border-radius: 12px;color: #314c74; font: Poppins;font-weight: 600;font-size: 14px;line-height: 10.99px;align-items: center;");
-          			c_button.innerHTML = "Cancel";
+          			c_button.setAttribute("data-bs-dismiss" , "modal");
+                c_button.innerHTML = "Cancel";
 
     	var n_button = document.createElement("button");
                 n_button.setAttribute("type","button");
@@ -762,7 +772,12 @@ shown when checkbox is checked */
                 n_button.setAttribute("style", " width: 155.93px;height: 30.38px; background-color: white;border-color: #8fa3c1;border-radius: 12px; color: #314c74; font: Poppins; font-weight: 600;font-size: 14px; line-height: 10.99px;align-items: center;");
           			n_button.innerHTML = "Next";
 
-    	$(this).find('.modal-btm').append(c_button).append(n_button);
+      var cfm_button = document.createElement("button");
+                cfm_button.setAttribute("type","button");
+                cfm_button.setAttribute("class","btn btn-light");
+                cfm_button.setAttribute("style", " width: 155.93px;height: 30.38px; background-color: white;border-color: #8fa3c1;border-radius: 12px; color: #314c74; font: Poppins; font-weight: 600;font-size: 14px; line-height: 10.99px;align-items: center;");
+                cfm_button.innerHTML = "Confirm";
+    	$(this).find('.modal-btm').append(c_button).append(n_button).append(cfm_button);
 
 
     	var page_track = 0;
@@ -778,13 +793,8 @@ shown when checkbox is checked */
 
     		if(page_track == pages.length-2)
     		{
-    			$(n_button).text("Submit");
+    			$(n_button).hide();
     		}
-
-        if(page_track == pages.length-1)
-        {
-          $(element).find("form").submit();
-        }
 
     		if(page_track < pages.length-1)
     		{
@@ -793,22 +803,9 @@ shown when checkbox is checked */
     			pages.hide();
     			pages.eq(page_track).show();
     		}
-
-
-    	});
+    	}).then($(n_button).text("Next"));
 
     	$(c_button).click(function() {
-
-    		if(page_track == 1)
-    		{
-    			// $(c_button).hide();
-    		}
-
-    		if(page_track == pages.length-1)
-    		{
-    			$(n_button).text("Next");
-    		}
-
     		if(page_track > 0)
     		{
     			page_track--;
@@ -816,10 +813,19 @@ shown when checkbox is checked */
     			pages.hide();
     			pages.eq(page_track).show();
     		}
-
-
+        
     	});
-
+      $(cfm_button).click(function() {
+        if(page_track < pages.length-1)
+    		{
+    			$(cfm_button).hide();
+    		}
+        if(page_track == 2)
+    		{
+    			$(cfm_button).show();
+    		}
+        reportEditor(); 
+    	});
   }
 
   });
@@ -966,8 +972,7 @@ shown when checkbox is checked */
     </div>
   </div>
   <div class="modal fade" id="CorpRepPopUp" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog" role="document">
-      
+    <div class="modal-dialog" role="document">  
       <div class="modal-content" style="width: 681.99px; height: 500.32px; border-radius: 20px;">
         <div class="modal-body">
           <div style="margin-right: 10px; margin-top: 10px;">
@@ -1078,13 +1083,49 @@ shown when checkbox is checked */
       </div>
       
       <div class="modal-split">
-      2
+        <div class="modal-body">
+          <div class="form-label-ctn">
+            <p class="form-label">Report Template</p>
+            <p style="text-align: left; margin-left: 4px; color: red;">*</p>
+          </div>
+          <div class="modal-body-ctn">
+            <select class="btn btn-secondary dropdown-toggle" 
+            aria-label="Default select example"
+            style="width: 609.33px;
+                  height: 30.38px;
+                  float: right;
+                  border-radius: 6px;
+                  background-color: #f2f2f266;
+                  border: 1px solid #61616133;
+                  color: black;
+                  margin-right: 2px;">
+              <option selected style="text-align: left;"></option>
+              <option style="text-align: center;" value="1">Template 1</option>
+            </select>
+          </div>
+          <br>
+          <div class="form-label-ctn">
+            <p class="form-label">Reporting Units</p>
+            <p style="text-align: left; margin-left: 4px; color: red;">*</p>
+          </div>
+          <div class="modal-body-ctn">
+            <select class="btn btn-secondary dropdown-toggle" 
+            aria-label="Default select example"
+            style="width: 609.33px;
+                  height: 30.38px;
+                  float: right;
+                  border-radius: 6px;
+                  background-color: #f2f2f266;
+                  border: 1px solid #61616133;
+                  color: black;
+                  margin-right: 2px;">
+              <option class="select-option-dropdown"></option>
+              <option style="text-align: center;" value="1">SI Unit</option>
+              <option style="text-align: center;" value="2">Conventional Units</option>
+            </select>
+          </div>
+        </div>
       </div>
-      
-      <div class="modal-split">
-      3
-      </div>	
-  
         </div>
   
         <div class="modal-btm">

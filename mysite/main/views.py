@@ -50,6 +50,10 @@ def setting(response):
     props = {}
     return render(response, "setting.html", props)
 
-def modalPageTwo(response):
+def healthReportInfo(response):
     props = {}
-    return render(response, "modalPageTwo.html", props)
+    return render(response, "healthReportInfo.html", props)
+
+def reportEditor(response):
+    props = {}
+    return render(response, "reportEditor.html", props)
