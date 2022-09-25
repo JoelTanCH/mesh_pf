@@ -776,8 +776,9 @@ shown when checkbox is checked */
                 cfm_button.setAttribute("type","button");
                 cfm_button.setAttribute("class","btn btn-light");
                 cfm_button.setAttribute("style", " width: 155.93px;height: 30.38px; background-color: white;border-color: #8fa3c1;border-radius: 12px; color: #314c74; font: Poppins; font-weight: 600;font-size: 14px; line-height: 10.99px;align-items: center;");
-                cfm_button.innerHTML = "Confirm";
-    	$(this).find('.modal-btm').append(c_button).append(n_button).append(cfm_button);
+                cfm_button.innerHTML = "confirm";
+      
+    	$(this).find('.modal-btm').append(c_button).append(n_button);
 
 
     	var page_track = 0;
@@ -793,7 +794,8 @@ shown when checkbox is checked */
 
     		if(page_track == pages.length-2)
     		{
-    			$(n_button).hide();
+          n_button.innerHTML = "Confirm";
+          n_button.setAttribute('href', "{% url 'health-report-info'%}");
     		}
 
     		if(page_track < pages.length-1)
@@ -803,7 +805,7 @@ shown when checkbox is checked */
     			pages.hide();
     			pages.eq(page_track).show();
     		}
-    	}).then($(n_button).text("Next"));
+    	});
 
     	$(c_button).click(function() {
     		if(page_track > 0)
@@ -814,17 +816,6 @@ shown when checkbox is checked */
     			pages.eq(page_track).show();
     		}
         
-    	});
-      $(cfm_button).click(function() {
-        if(page_track < pages.length-1)
-    		{
-    			$(cfm_button).hide();
-    		}
-        if(page_track == 2)
-    		{
-    			$(cfm_button).show();
-    		}
-        reportEditor(); 
     	});
   }
 
@@ -1097,9 +1088,15 @@ shown when checkbox is checked */
                   border-radius: 6px;
                   background-color: #f2f2f266;
                   border: 1px solid #61616133;
-                  color: black;
-                  margin-right: 2px;">
-              <option selected style="text-align: left;"></option>
+                  color: #B7B7B7;
+                  font-family: Poppins;
+                  font-size: 12px;
+                  font-weight: 500;
+                  line-height: 14px;
+                  letter-spacing: 0em;
+                  text-align: left;"
+                  >
+              <option style="text-align: left;">Select Option</option>
               <option style="text-align: center;" value="1">Template 1</option>
             </select>
           </div>
@@ -1118,10 +1115,18 @@ shown when checkbox is checked */
                   background-color: #f2f2f266;
                   border: 1px solid #61616133;
                   color: black;
-                  margin-right: 2px;">
-              <option class="select-option-dropdown"></option>
-              <option style="text-align: center;" value="1">SI Unit</option>
-              <option style="text-align: center;" value="2">Conventional Units</option>
+                  margin-right: 2px;
+                  color: #B7B7B7;
+                  font-family: Poppins;
+                  font-size: 12px;
+                  font-weight: 500;
+                  line-height: 14px;
+                  letter-spacing: 0em;
+                  text-align: left;"
+                  >
+              <option style="text-align: left;">Select Option</option>
+              <option style="text-align: left;" value="1">SI Unit</option>
+              <option style="text-align: left;" value="2">Conventional Units</option>
             </select>
           </div>
         </div>
@@ -1133,159 +1138,5 @@ shown when checkbox is checked */
       </div>
     </div>
   </div>
-  <!-- original-->
-  <!-- <div class="modal" tabindex="-1" role="dialog" id="CorpRepPopUp">
-    <div class="modal-dialog">
-      <div
-        class="modal-content"
-        style="width: 681.99px; height: 500.32px; border-radius: 20px;">
-        <div style="margin-right: 10px; margin-top: 10px;">
-          <button
-            type="button"
-            class="btn-close"
-            data-bs-dismiss="modal"
-            aria-label="Close"
-            style="float: right; height: 13.12px;"
-          ></button>
-        </div>
-        <div class="modal-body">
-          <div class="form-label-ctn">
-            <p class="form-label">Corporate Name (ID)</p>
-            <p style="text-align: left; margin-left: 4px; color: red;">*</p>
-          </div>
-          <div class="modal-body-ctn">
-            <input class="search-field__input"></input>
-              <div class="relativeposition">
-                <i class="material-icons-outlined searchbaricon">
-                  <svg xmlns="http://www.w3.org/2000/svg" style="margin-right:10px; margin-bottom:12px;" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
-                    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
-                  </svg>
-                </i>
-              </div>
-            </div>
-          <br />
-          <div class="form-label-ctn">
-            <p class="form-label">Corporate Health Report Title</p>
-            <p style="text-align: left; margin-left: 4px; color: red;">*</p>
-          </div>
-          <div class="modal-body-ctn">
-            <form action="/your-name/" method="post">
-              <input
-                style="
-                  width: 609.33px;
-                  height: 30.38px;
-                  border: 1px solid #61616133;
-                  border-radius: 6px;
-                  background-color: #f2f2f266;"
-                id="reportTitle"
-                type="text"
-                name="reportTitle"
-                value="{{ reportTitle }}"
-              />
-            </form>
-          </div>
-          <br>
-          <div class="form-label-ctn">
-            <p class="form-label">Report Type</p>
-            <p style="text-align: left; margin-left: 4px; color: red;">*</p>
-          </div>
-          <div class="modal-body-ctn">
-            <select class="btn btn-secondary dropdown-toggle" 
-            aria-label="Default select example"
-            style="width: 609.33px;
-                  height: 30.38px;
-                  float: right;
-                  border-radius: 6px;
-                  background-color: #f2f2f266;
-                  border: 1px solid #61616133;
-                  color: black;
-                  margin-right: 2px;">
-              <option selected style="text-align: center;"></option>
-              <option style="text-align: center;" value="1">One</option>
-              <option style="text-align: center;" value="2">Two</option>
-              <option style="text-align: center;" value="3">Three</option>
-            </select>
-          </div>
-          <br>
-          <div class="form-label-ctn">
-            <p class="form-label">Batches to include in Corporate Report</p>
-            <p style="text-align: left; margin-left: 4px; color: red;">*</p>
-          </div>
-          <div id="batch-ctn" >
-            {% with ''|center:nBatches as range %}
-            {% for _ in range %}
-                <div class="modal-body-ctn">
-                  <select class="btn btn-secondary dropdown-toggle" 
-                  aria-label="Default select example"
-                  style="width: 609.33px;
-                        height: 30.38px;
-                        float: right;
-                        border-radius: 6px;
-                        background-color: #f2f2f266;
-                        border: 1px solid #61616133;
-                        color: black;
-                        margin-right: 2px;">
-                    <option selected style="text-align: center;"></option>
-                    <option style="text-align: center;" value="1">One</option>
-                    <option style="text-align: center;" value="2">Two</option>
-                    <option style="text-align: center;" value="3">Three</option>
-                  </select>
-                </div>
-                <div style="height:8.42px"></div>
-                <button class="add-batch-btn" onClick="addNewBatch()">
-                  <svg xmlns="http://www.w3.org/2000/svg" style="margin-bottom:3px" width="12px" height="12px" fill="white" class="bi bi-plus-circle" viewBox="0 0 16 16">
-                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-                    <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
-                  </svg>
-                  Add new batch
-                </button>
-            {% endfor %}
-            {% endwith %}
-          </div>
-        </div>
-        <div class="modal-btm">
-          <button
-            type="button"
-            class="btn btn-light"
-            data-bs-dismiss="modal"
-            style="
-              width: 155.93px;
-              height: 30.38px;
-              background-color: white;
-              border-color: #8fa3c1;
-              border-radius: 12px;
-              color: #314c74;
-              font: Poppins;
-              font-weight: 600;
-              font-size: 14px;
-              line-height: 10.99px;
-              align-items: center;
-            "
-          >
-            Cancel
-          </button>
-          <button
-            type="button"
-            class="btn btn-light"
-            style="
-              width: 155.93px;
-              height: 30.38px;
-              background-color: white;
-              border-color: #8fa3c1;
-              border-radius: 12px;
-              color: #314c74;
-              font: Poppins;
-              font-weight: 600;
-              font-size: 14px;
-              line-height: 10.99px;
-              align-items: center;
-            "
-          >
-            Next
-          </button>
-        </div>
-      </div>
-    </div>
-  </div> -->
 </div>
 {% endblock %}
