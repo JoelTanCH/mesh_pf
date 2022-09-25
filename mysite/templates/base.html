@@ -91,6 +91,9 @@
         <link rel="stylesheet" href="{% static 'css/setting.css' %}">    
         <link rel="stylesheet" href="{% static 'css/base.css' %}">
         <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">  
+        <link href="https://pagecdn.io/lib/easyfonts/fonts.css" rel="stylesheet" />
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <script src="{% static 'js/bootstrap.min.js' %}"></script>
     </head>
     <body style="background-color: #F0F2F5;">
@@ -154,9 +157,10 @@
                 },10000) //every 10 seconds 
                 document.getElementById("current_date").innerHTML = getDate();                    
             </script>
-            <a href="/profile" style="position:absolute; right: 100px;">Profile</a>
+            <a href="/profile">Profile</a>
         </div>
         <div id="content" class="content">
+          
             {% block content %}
             {% endblock %}
         </div>

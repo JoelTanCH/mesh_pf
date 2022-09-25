@@ -1,41 +1,187 @@
 {% extends 'base.html' %}
 
+
 {% block content %} 
-<div class = "bodyHeader"> 
-    <p>
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-folder-plus" viewBox="0 0 20 20" style="bottom:10px;">
-            <path d="m.5 3 .04.87a1.99 1.99 0 0 0-.342 1.311l.637 7A2 2 0 0 0 2.826 14H9v-1H2.826a1 1 0 0 1-.995-.91l-.637-7A1 1 0 0 1 2.19 4h11.62a1 1 0 0 1 .996 1.09L14.54 8h1.005l.256-2.819A2 2 0 0 0 13.81 3H9.828a2 2 0 0 1-1.414-.586l-.828-.828A2 2 0 0 0 6.172 1H2.5a2 2 0 0 0-2 2zm5.672-1a1 1 0 0 1 .707.293L7.586 3H2.19c-.24 0-.47.042-.683.12L1.5 2.98a1 1 0 0 1 1-.98h3.672z"/>
-            <path d="M13.5 10a.5.5 0 0 1 .5.5V12h1.5a.5.5 0 1 1 0 1H14v1.5a.5.5 0 1 1-1 0V13h-1.5a.5.5 0 0 1 0-1H13v-1.5a.5.5 0 0 1 .5-.5z"/>
+<style>
+    #dropzone {
+        background: rgba(242, 242, 242, 0.4);
+        border: 1px dashed rgba(97, 97, 97, 0.2);
+        border-radius: 6px;
+        position: absolute;
+        height:150px; 
+        width: 470px;
+        align-items: left; 
+    }
+    #chooseFileFrontpage{
+        display: block;
+        visibility: hidden;
+        width: 0;
+        height: 0;
+    }
+
+    #chooseFileHeader{
+        display: block;
+        visibility: hidden;
+        width: 0;
+        height: 0;
+    }
+
+    #browse:hover {
+        cursor: pointer;
+    }
+    
+    #container{
+        height: 500px;
+        width:80%;
+    }
+
+    #leftcol {
+        justify-content: left;
+        width:47%;
+        margin-top:20px;
+        margin-left: 3%;
+    }
+
+    #rightcol{
+        justify-content: left;
+        width:47%;
+        margin-top:20px;
+        margin-right: 3%;
+    }
+
+    #bodyHeader{
+        font-family: 'Poppins';
+        font-style: normal;
+        font-weight: 600;
+        font-size: 18px;
+        line-height: 14px;
+        color: #314C74;
+        white-space: nowrap;
+        display:inline-block
+    }
+
+    .container {
+        font-family: 'Poppins';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 15px;
+        line-height: 15px;
+        position: absolute;
+        left: 237.17px;
+        top: 200px;
+    }
+
+    .container .nav .nav-item .nav-link {
+    color:#7788A3;
+    background-color: #fff;
+    border: 2px solid ;
+    border-radius: 6px 6px 0px 0px;
+    margin-right: 0.5rem;
+    }
+
+    #header-progress-bar{
+        width: 80%;
+        height: 1.5rem;
+        margin-top: 30px;
+
+    }
+    #progress-bar{
+        width: 80%;
+        height: 1.5rem;
+        margin-top: 30px;
+    }
+
+</style>
+<div id="bodyHeader">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-folder-plus" viewBox="0 0 20 20"  style="position: absolute;
+        left: 15.67%;
+        right: 78.33%;
+        top: 17.53%;
+        bottom: 82.13%;">
+                <path d="m.5 3 .04.87a1.99 1.99 0 0 0-.342 1.311l.637 7A2 2 0 0 0 2.826 14H9v-1H2.826a1 1 0 0 1-.995-.91l-.637-7A1 1 0 0 1 2.19 4h11.62a1 1 0 0 1 .996 1.09L14.54 8h1.005l.256-2.819A2 2 0 0 0 13.81 3H9.828a2 2 0 0 1-1.414-.586l-.828-.828A2 2 0 0 0 6.172 1H2.5a2 2 0 0 0-2 2zm5.672-1a1 1 0 0 1 .707.293L7.586 3H2.19c-.24 0-.47.042-.683.12L1.5 2.98a1 1 0 0 1 1-.98h3.672z"/>
+                <path d="M13.5 10a.5.5 0 0 1 .5.5V12h1.5a.5.5 0 1 1 0 1H14v1.5a.5.5 0 1 1-1 0V13h-1.5a.5.5 0 0 1 0-1H13v-1.5a.5.5 0 0 1 .5-.5z"/>
+            </svg>
+        <p style="position: absolute;
+        left: 17.67%;
+        right: 78.33%;
+        top: 17.53%;
+        bottom: 82.13%;"> Corporate Health Report </p> 
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 20 20" style="position:absolute;
+        left: 30.67%;
+        right: 78.33%;
+        top: 17.53%;
+        bottom: 82.13%;">
+            <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
         </svg>
-    </p>
-    <p id="titleOfPage" style="left:3%;"> Corporate Health Report </p> 
-    <p style="left:20%"> > </p> 
-    <p style="left:25%" >Setting</p>
+        <p style="position: absolute;
+        left: 32.2%;
+        right: 78.33%;
+        top: 17.53%;
+        bottom: 82.13%;">Setting</p>
 </div>
 
-<div class = "container mt-2">
-    <ul class = "nav nav-tabs" >
+<div id="overall-container" class = "container mt-2">
+    <ul class = "nav nav-tabs" style="width:500px;">
         <li class="nav-item"><a class = "nav-link active" data-bs-toggle="tab" href="#branding"> Branding </a></li>
         <li class="nav-item"><a class = "nav-link " data-bs-toggle="tab" href="#recTemplate"> Rec Template </a></li>
     </ul>
     <div class="tab-content">
-
         <div class = "tab-pane active" id="branding">
-            <div class="row border g-0 rounded shadow-sm">
-                <h5> Hello </h5>
+            <div id = "container" class="outer-row border g-0 rounded shadow-sm">
+                <div class="row">
+                    <div id="leftcol"> 
+                        <h6 style="text-align: left; color: #717171;"> Organisation Name </h6>
+                        <p style="text-align:left; color: #717171;"> Healthway Medical </p>
+                        <div>  
+                            <h6 style="margin-top:73px; text-align: left;color: #717171;"> Upload Frontpage Logo </h6>
+                            <form id="dropzone" ondrop="dropHandler(event,'progress-bar','frontpage-name');" ondragover="dragOverHandler(event);">
+                                <div style="margin-top: 37.5px;color:#B7B7B7">
+                                    <p>Drag and drop or <input id="chooseFileFrontpage" type="file" onchange="handleUpload('progress-bar','chooseFileFrontpage','frontpage-name')"/>
+                                        <u id="browse" style="color:#8397B6" onclick="clickBrowseFrontpage()">browse</u></p>
+                                    <p>File should be in png or svg format</p>
+                                </div>
+                            </form>
+                            <div id="dropzone" style="margin-top:170px">
+                                <p id="frontpage-name"><p></p>
+                                <label for="progress-bar">0%</label>
+                                <progress id="progress-bar" value="0" max="100"></progress>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="rightcol"> 
+                        <h6 style="text-align: left;color: #717171;"> Corporate Report Font </h6> 
+                        <select id="fontSelector" class="form-select" aria-label="Default select example" onclick="displayFonts()"  onmousedown="if(this.options.length>8){this.size=8}"
+                            onchange='this.blur()' onblur="this.removeAttribute('size')">
+                        </select>
+                        <div>
+                            <h6 style="margin-top:50px; text-align: left;color: #717171;"> Upload Header Logo </h6>
+                            <form id="dropzone" ondrop="dropHandler(event,'header-progress-bar','header-name');" ondragover="dragOverHandler(event);">
+                                <div style="margin-top: 37.5px;color:#B7B7B7">
+                                    <p>Drag and drop or <input id="chooseFileHeader" type="file" onchange="handleUpload('header-progress-bar', 'chooseFileHeader','header-name')"/>
+                                        <u id="browse" style="color:#8397B6" onclick="clickBrowseHeader()">browse</u></p>
+                                    <p>File should be in png or svg format</p>
+                                </div>
+                            </form>
+                            <div id="dropzone" style="margin-top:170px;">
+                                <p id="header-name"><p>
+                                <label for="header-progress-bar">0%</label>
+                                <progress id="header-progress-bar" value="0" max="100"></progress>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-
-        <div class = "tab-pane" id="recTemplate">
+        <div class = "tab-pane" id="recTemplate" style="width:80%">
             <div class="outer-row border g-0 rounded shadow-sm">
                 <div class="row">
-                    <div class="col" style="width:20%"> 
+                    <div id="leftcol"> 
                         <h6 style="border-bottom: 1px solid #7788A3;"> Panel </h6>
                         <p> hello </p>
                         <p> hello </p>
                         <p> hello </p>
                     </div>
-                    <div class="col-auto" style="width:80%"> 
+                    <div id="rightcol"> 
                         <h6 style="border-bottom: 1px solid #7788A3;"> Key Recommendations    Edit all</h6> 
                         <p> hello </p>
                         <p> hello </p>
@@ -48,11 +194,154 @@
     </div>
 
 </div>
+<script>
+    /*
+    const changeSelected = (e) => {
+        const $select = document.querySelector('fontSelector');
+        console.log($select)
+        const $options = Array.from($select.options);
+        const optionToSelect = $options.find(item => item.text ===text);
+        optionToSelect.selected = true;
+        console.log('hello')
+    }
+    document.querySelector('#fontSelector').addEventListener('click', changeSelected);*/
+
+    function clickBrowseFrontpage(){
+        $('#chooseFileFrontpage').click();
+    }
+
+    function clickBrowseHeader(){
+        $('#chooseFileHeader').click();
+    }
+
+    function handleUpload(progressBar, chooseFile, ele_ID_name){
+        const bar = document.getElementById(progressBar);
+        const fileInput = document.getElementById(chooseFile);
+        const selectedFile = fileInput.files[0];
+        const ele_name = document.getElementById(ele_ID_name);
+        console.log(selectedFile);
+        if(selectedFile.type.match('^image/')){
+            const filename = selectedFile.name
+            const filesize = selectedFile.size
+            if(filesize <= 200000){//less than 200kb
+                console.log(filename);
+                var formdata = new FormData();
+                //const file = document.getElementById('chooseFile');
+                const img = fileInput.files[0];
+                formdata.append("image", img);
+                
+                const config = {
+                        onUploadProgress: function(progressEvent) {
+                            const percentCompleted = Math.round((progressEvent.loaded / progressEvent.total)*100);
+                            bar.setAttribute('value', percentCompleted);
+                            bar.previousElementSibling.textContent = `${percentCompleted}%`
+                            if (percentCompleted === 100) {
+                                bar.previousElementSibling.textContent = `Upload complete!`
+                                ele_name.textContent=filename
+                            }
+                        }
+                    }
+                axios.post('https://httpbin.org/post', formdata, config)
+                    .then(res => console.log(res))
+                    .catch(err => console.log(err))
+
+            }else{
+                alert("File size = " + filesize + ", please upload an image less than 200kb");
+            }
+        }else{
+            alert("Please upload an image");
+        }
+    }
+
+    function displayFonts(){
+        //my google key which needs to be replaced
+        axios.get("https://www.googleapis.com/webfonts/v1/webfonts?key=AIzaSyDgrWWpEL45XX_gqeVu0lw5P_X_JS63JR8").then((response) => {
+            const items = response.data.items;
+            var dropdown = document.getElementById("fontSelector");
+            for(index in items){
+                let option = document.createElement("option");
+                option.text = items[index]['family'];
+                option.value = items[index]['family'];
+                dropdown.appendChild(option);
+            }
+        })
+            .catch((error) =>console.error(error));
+        };
+
+        function dropHandler(ev,progressBar, ele_ID_name) {
+            console.log('File(s) dropped');
+
+            // Prevent default behavior (Prevent file from being opened)
+            ev.preventDefault();
+            console.log('dragstart: target.id = ${ev.target.id}');
+            if (ev.dataTransfer.items) {
+                // Use DataTransferItemList interface to access the file(s)
+                [...ev.dataTransfer.items].forEach((item, i) => {
+                // If dropped items aren't files, reject them
+                if (item.kind === 'file') {
+                    // Match only images eg png 
+                    if(item.type.match('^image/')){
+                        //get the file 
+                        const file = item.getAsFile();
+                        const filesize = file.size;
+                        if(filesize <= 200000){
+                            // log name 
+                            console.log(`… file[${i}].name = ${file.name}`);
+                            var formdata = new FormData();
+                            formdata.append("image", file);
+                        
+                            const bar = document.getElementById(progressBar);
+                            const ele_name = document.getElementById(ele_ID_name);
+                            
+                            const config = {
+                                    onUploadProgress: function(progressEvent) {
+                                        const percentCompleted = Math.round((progressEvent.loaded / progressEvent.total)*100);
+                                        bar.setAttribute('value', percentCompleted);
+                                        bar.previousElementSibling.textContent = `${percentCompleted}%`
+                                        if (percentCompleted === 100) {
+                                            bar.previousElementSibling.textContent = `Upload complete!`
+                                            ele_name.textContent=file.name
+                                        }
+                                    }
+                                }
+                                axios.post('https://httpbin.org/post', formdata, config)
+                                    .then(res => console.log(res))
+                                    .catch(err => console.log(err))
+                        }else{
+                            alert("File size = " + filesize + ", please upload an image less than 200kb");
+                        }
+                    }
+                    else{
+                        alert("Please upload an image");
+                    }
+                }else{
+                    alert("Please upload files only");
+                }
+                });
+            } else {
+                // Use DataTransfer interface to access the file(s)
+                [...ev.dataTransfer.files].forEach((file, i) => {
+                console.log(`… file[${i}].name = ${file.name}`);
+                });
+            }
+        }
+
+        function dragOverHandler(ev) {
+            console.log('File(s) in drop zone');
+
+            // Prevent default behavior (Prevent file from being opened)
+            ev.preventDefault();
+            }
+            
+</script>
 {% endblock %} 
 
 {% block footer %} 
+<style>
+
+</style>
 <div class = "footer"> 
     <p> Please <u><b><a href="https://wa.me/6593360639">contact MeshBio</a></b></u> for more customization </p>
-    <button type="button" class="btn btn-primary" style="position:absolute; right: 100px;">Save & Update</button>
+    <button type="button" class="btn btn-primary" >Save & Update</button>
 </div>
 {% endblock %} 
