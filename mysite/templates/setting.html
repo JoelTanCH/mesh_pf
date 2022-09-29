@@ -110,6 +110,8 @@
         border: 1px solid rgba(97, 97, 97, 0.1);
         box-shadow: 0px 3px 2px rgba(97, 97, 97, 0.1);
         border-radius: 6px;
+        margin-top:170px;
+        display: none;
     }
 
     .titles{
@@ -218,15 +220,15 @@
                             <h6 class="titles" style="margin-top:75px;"> Upload Frontpage Logo </h6>
                             <form id="dropzone" ondrop="dropHandler(event,'progress-bar','frontpage-name');" ondragover="dragOverHandler(event);">
                                 <div style="margin-top: 37.5px;color:#B7B7B7">
-                                    <p>Drag and drop or <input id="chooseFileFrontpage" type="file" onchange="handleUpload('progress-bar','chooseFileFrontpage','frontpage-name','header-image-frontpage','currByteFrontpage','totalByteFrontpage')"/>
+                                    <p>Drag and drop or <input id="chooseFileFrontpage" type="file" onchange="handleUpload('progress-bar','chooseFileFrontpage','frontpage-name','header-image-frontpage','currByteFrontpage','totalByteFrontpage','frontpage-logo-box')"/>
                                         <u id="browse" style="color:#8397B6" onclick="clickBrowseFrontpage()">browse</u></p>
                                     <p>File should be in png or svg format</p>
                                 </div>
                             </form>
-                            <div class="progress-bar-overall" style="margin-top:170px">
+                            <div class="progress-bar-overall" id="frontpage-logo-box">
                                 <img class="uploaded-image" id="header-image-frontpage" height="90" width="90">
                                 <p class="file-name" id="frontpage-name"><p></p>
-                                <button type="button" class="btn-close" disabled aria-label="Close"></button>
+                                <button type="button" class="btn-close" aria-label="Close" onclick="toggleLogoBox('frontpage-logo-box')"></button>
                                 <label for="progress-bar" class="percentage-loaded">0%</label>
                                 <progress id="progress-bar" value="0" max="100" class="progress-bar-settings"></progress>
                                 <div class="byte-status">
@@ -246,15 +248,15 @@
                             <h6 class="titles" style="margin-top:107px;"> Upload Header Logo </h6>
                             <form id="dropzone" ondrop="dropHandler(event,'header-progress-bar','header-name');" ondragover="dragOverHandler(event);">
                                 <div style="margin-top: 37.5px;color:#B7B7B7">
-                                    <p>Drag and drop or <input id="chooseFileHeader" type="file" onchange="handleUpload('header-progress-bar', 'chooseFileHeader','header-name','header-image-logo','currByteLogo','totalByteLogo')"/>
+                                    <p>Drag and drop or <input id="chooseFileHeader" type="file" onchange="handleUpload('header-progress-bar', 'chooseFileHeader','header-name','header-image-logo','currByteLogo','totalByteLogo','header-logo-box')"/>
                                         <u id="browse" style="color:#8397B6" onclick="clickBrowseHeader()">browse</u></p>
                                     <p>File should be in png or svg format</p>
                                 </div>
                             </form>
-                            <div class="progress-bar-overall" style="margin-top:170px;">
+                            <div class="progress-bar-overall" id="header-logo-box">
                                 <img class="uploaded-image" id="header-image-logo" height="90" width="90">
                                 <p class="file-name" id="header-name"><p>
-                                <button type="button" class="btn-close" disabled aria-label="Close"></button>
+                                <button type="button" class="btn-close" aria-label="Close" onclick="toggleLogoBox('header-logo-box')"></button>
                                 <label for="header-progress-bar" class="percentage-loaded">0%</label>
                                 <progress id="header-progress-bar" value="0" max="100" class="progress-bar-settings"></progress>
                                 <div class="byte-status">
@@ -300,16 +302,24 @@
         console.log('hello')
     }
     document.querySelector('#fontSelector').addEventListener('click', changeSelected);*/
-
+    function toggleLogoBox(logoBox){
+        const ele = document.getElementById(logoBox);
+        ele.style.display = 'none';
+    }
     function clickBrowseFrontpage(){
         $('#chooseFileFrontpage').click();
+
     }
 
     function clickBrowseHeader(){
         $('#chooseFileHeader').click();
     }
 
-    function handleUpload(progressBar, chooseFile, imgNameUploadLocation, image_ID_name, currByteID, totalByteID){
+    function handleUpload(progressBar, chooseFile, imgNameUploadLocation, image_ID_name, currByteID, totalByteID, displayBlock){
+        //render block 
+        const ele = document.getElementById(displayBlock);
+        ele.style.display = 'block';
+
         const bar = document.getElementById(progressBar);
         const fileInput = document.getElementById(chooseFile);
         const img = fileInput.files[0];
