@@ -111,7 +111,7 @@
         box-shadow: 0px 3px 2px rgba(97, 97, 97, 0.1);
         border-radius: 6px;
         margin-top:170px;
-        display: none;
+        visibility: hidden;
     }
 
     .titles{
@@ -228,7 +228,7 @@
                             <div class="progress-bar-overall" id="frontpage-logo-box">
                                 <img class="uploaded-image" id="header-image-frontpage" height="90" width="90">
                                 <p class="file-name" id="frontpage-name"><p></p>
-                                <button type="button" class="btn-close" aria-label="Close" onclick="toggleLogoBox('frontpage-logo-box')"></button>
+                                <button type="button" class="btn-close" aria-label="Close" onclick="toggleLogoBox('frontpage-logo-box','header-image-frontpage','progress-bar','currByteFrontpage','totalByteFrontpage','frontpage-name')"></button>
                                 <label for="progress-bar" class="percentage-loaded">0%</label>
                                 <progress id="progress-bar" value="0" max="100" class="progress-bar-settings"></progress>
                                 <div class="byte-status">
@@ -256,13 +256,19 @@
                             <div class="progress-bar-overall" id="header-logo-box">
                                 <img class="uploaded-image" id="header-image-logo" height="90" width="90">
                                 <p class="file-name" id="header-name"><p>
-                                <button type="button" class="btn-close" aria-label="Close" onclick="toggleLogoBox('header-logo-box')"></button>
+                                <button type="button" class="btn-close" aria-label="Close" onclick="toggleLogoBox('header-logo-box','header-image-logo','header-progress-bar','currByteLogo','totalByteLogo','header-name')"></button>
                                 <label for="header-progress-bar" class="percentage-loaded">0%</label>
                                 <progress id="header-progress-bar" value="0" max="100" class="progress-bar-settings"></progress>
                                 <div class="byte-status">
                                     <span id="currByteLogo"></span>
                                     <span>of</span>
                                     <span id="totalByteLogo"></span>
+                                </div>
+                                <div class="after-load-complete">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                                        <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                                        <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+                                      </svg>
                                 </div>
                             </div>
                         </div>
@@ -292,34 +298,52 @@
 
 </div>
 <script>
-    /*
-    const changeSelected = (e) => {
-        const $select = document.querySelector('fontSelector');
-        console.log($select)
-        const $options = Array.from($select.options);
-        const optionToSelect = $options.find(item => item.text ===text);
-        optionToSelect.selected = true;
-        console.log('hello')
-    }
-    document.querySelector('#fontSelector').addEventListener('click', changeSelected);*/
-    function toggleLogoBox(logoBox){
+   
+    function toggleLogoBox(logoBox,imageID,progressBarID,totalByteID,currByteID,filenameID){
+        resetLogoBox(imageID,progressBarID,totalByteID,currByteID,filenameID);
         const ele = document.getElementById(logoBox);
-        ele.style.display = 'none';
+        ele.style.visibility = 'hidden';
     }
+    //reset values in logoBox after user clicks 'x'
+    function resetLogoBox(imageID,progressBarID,totalByteID,currByteID,filenameID){
+        console.log("Reset logo box")
+        //reset image 
+        const img = document.getElementById(imageID);
+        img.src=null;
+        //reset progress bar
+        const progressBar = document.getElementById(progressBarID);
+        progressBar.setAttribute('value', 0);
+        progressBar.previousElementSibling.textContent = '0%';
+        //reset bytes (total and curr)
+        const totalByte = document.getElementById(totalByteID);
+        totalByte.textContent='0 kb';
+        const currByte = document.getElementById(currByteID);
+        currByte.textContent='0 kb';
+        //reset filename
+        const filename = document.getElementById(filenameID);
+        filename.textContent='';
+    }
+
     function clickBrowseFrontpage(){
+        //const choosefile = new Event('change');
+        //const element = document.getElementById('chooseFileHeader');
+        //const element = document.getElementById('chooseFileFrontpage');
         $('#chooseFileFrontpage').click();
-
+        //element.dispatchEvent(choosefile);
     }
-
+    
     function clickBrowseHeader(){
+        //const choosefile = new Event('change');
+        //const element = document.getElementById('chooseFileHeader');
         $('#chooseFileHeader').click();
+        //element.dispatchEvent(choosefile);
     }
 
     function handleUpload(progressBar, chooseFile, imgNameUploadLocation, image_ID_name, currByteID, totalByteID, displayBlock){
-        //render block 
+        //make block visible 
         const ele = document.getElementById(displayBlock);
-        ele.style.display = 'block';
-
+        ele.style.visibility = 'visible';
+       // document.getElementById('header-logo-box').style.visibility = 'visible';
         const bar = document.getElementById(progressBar);
         const fileInput = document.getElementById(chooseFile);
         const img = fileInput.files[0];
@@ -341,7 +365,6 @@
                 //get byte references
                 currByte = document.getElementById(currByteID);
                 totalByte = document.getElementById(totalByteID);
-
                 const config = {
                         onUploadProgress: function(progressEvent) {
                             
@@ -358,8 +381,7 @@
                     }
                 axios.post('https://httpbin.org/post', formdata, config)
                     .then(res => console.log(res))
-                    .catch(err => console.log(err))
-
+                    .catch(err => console.log(err));
             }else{
                 alert("File size = " + filesize + ", please upload an image less than 200kb");
             }
