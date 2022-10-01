@@ -899,14 +899,14 @@ shown when checkbox is checked */
                     <td>{{info.2}}</td>
                     <td>
                       <div>
-                        {% if info.3 is 'Error found' %}
+                        {% if info.3 == 'Error found' %}
                         <button class="error-status-btn">
                           {{info.3}}
-                        </button class="error-status-btn">
+                        </button>
                         {% else %}
                         <button class="ready-status-btn">
                           {{info.3}}
-                        </button class="ready-status-btn">
+                        </button>
                         {% endif %}
                       </div>
                     <td>
@@ -962,19 +962,19 @@ shown when checkbox is checked */
       </div>
     </div>
   </div>
-  <div class="modal fade" id="CorpRepPopUp" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog" role="document">  
+  <div class="modal fade" id="CorpRepPopUp" tabindex="-1" aria-hidden = "true" aria-labelledby="myModalLabel">
+    <div class="modal-dialog">  
       <div class="modal-content" style="width: 681.99px; height: 500.32px; border-radius: 20px;">
+        <div style="margin-right: 10px; margin-top: 10px;">
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+            style="float: right; height: 13.12px; margin-top:10px;margin-right:25px"
+          ></button>
+        </div>
         <div class="modal-body">
-          <div style="margin-right: 10px; margin-top: 10px;">
-            <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="modal"
-              aria-label="Close"
-              style="float: right; height: 13.12px;"
-            ></button>
-          </div>
           <div class="modal-split">
             <div class="modal-body">
               <div class="form-label-ctn">

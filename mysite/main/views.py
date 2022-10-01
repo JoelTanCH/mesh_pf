@@ -54,6 +54,6 @@ def healthReportInfo(response):
     props = {}
     return render(response, "healthReportInfo.html", props)
 
-def reportEditor(response):
+def draftGeneratedPage(response):
     props = {}
-    return render(response, "reportEditor.html", props)
+    return render(response, "draftGeneratedPage.html", props)
