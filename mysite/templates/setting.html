@@ -49,15 +49,15 @@
         margin-right: 3%;
     }
 
-    #bodyHeader{
+    .bodyHeader{
         font-family: 'Poppins';
         font-style: normal;
         font-weight: 600;
         font-size: 18px;
         line-height: 14px;
         color: #314C74;
-        white-space: nowrap;
-        display:inline-block
+        left:0px;
+        top:0px;
     }
 
     .container .nav .nav-item .nav-link {
@@ -175,37 +175,23 @@
         bottom:28%;
         left:28%;
     }
+    .bi{
+        color:#A1A1A1;
+    }
 
 </style>
-<div id="bodyHeader">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-folder-plus" viewBox="0 0 20 20"  style="position: absolute;
-        left: 15.67%;
-        right: 78.33%;
-        top: 17.53%;
-        bottom: 82.13%;">
-                <path d="m.5 3 .04.87a1.99 1.99 0 0 0-.342 1.311l.637 7A2 2 0 0 0 2.826 14H9v-1H2.826a1 1 0 0 1-.995-.91l-.637-7A1 1 0 0 1 2.19 4h11.62a1 1 0 0 1 .996 1.09L14.54 8h1.005l.256-2.819A2 2 0 0 0 13.81 3H9.828a2 2 0 0 1-1.414-.586l-.828-.828A2 2 0 0 0 6.172 1H2.5a2 2 0 0 0-2 2zm5.672-1a1 1 0 0 1 .707.293L7.586 3H2.19c-.24 0-.47.042-.683.12L1.5 2.98a1 1 0 0 1 1-.98h3.672z"/>
-                <path d="M13.5 10a.5.5 0 0 1 .5.5V12h1.5a.5.5 0 1 1 0 1H14v1.5a.5.5 0 1 1-1 0V13h-1.5a.5.5 0 0 1 0-1H13v-1.5a.5.5 0 0 1 .5-.5z"/>
-            </svg>
-        <p style="position: absolute;
-        left: 17.67%;
-        right: 78.33%;
-        top: 17.53%;
-        bottom: 82.13%;"> Corporate Health Report </p> 
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 20 20" style="position:absolute;
-        left: 30.67%;
-        right: 78.33%;
-        top: 17.53%;
-        bottom: 82.13%;">
-            <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
+<div class = "container mt-2">
+    <div class="bodyHeader">
+        <svg  xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-folder-plus" viewBox="0 0 20 20">
+            <path d="m.5 3 .04.87a1.99 1.99 0 0 0-.342 1.311l.637 7A2 2 0 0 0 2.826 14H9v-1H2.826a1 1 0 0 1-.995-.91l-.637-7A1 1 0 0 1 2.19 4h11.62a1 1 0 0 1 .996 1.09L14.54 8h1.005l.256-2.819A2 2 0 0 0 13.81 3H9.828a2 2 0 0 1-1.414-.586l-.828-.828A2 2 0 0 0 6.172 1H2.5a2 2 0 0 0-2 2zm5.672-1a1 1 0 0 1 .707.293L7.586 3H2.19c-.24 0-.47.042-.683.12L1.5 2.98a1 1 0 0 1 1-.98h3.672z"/>
+            <path d="M13.5 10a.5.5 0 0 1 .5.5V12h1.5a.5.5 0 1 1 0 1H14v1.5a.5.5 0 1 1-1 0V13h-1.5a.5.5 0 0 1 0-1H13v-1.5a.5.5 0 0 1 .5-.5z"/>
         </svg>
-        <p style="position: absolute;
-        left: 32.2%;
-        right: 78.33%;
-        top: 17.53%;
-        bottom: 82.13%;">Setting</p>
-</div>
-
-<div id="overall-container" class = "container mt-2">
+        <p > Corporate Health Report </p> 
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 20 20" >
+        <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
+        </svg>
+        <p >Setting</p>
+    </div>
     <ul class = "nav nav-tabs" style="border-bottom: none;">
         <li class="nav-item"><a class = "nav-link active" data-bs-toggle="tab" href="#branding"> Branding </a></li>
         <li class="nav-item"><a class = "nav-link " data-bs-toggle="tab" href="#recTemplate"> Rec Template </a></li>
@@ -218,7 +204,7 @@
                         <p class="titles"> Healthway Medical </p>
                         <div>  
                             <h6 class="titles" style="margin-top:75px;"> Upload Frontpage Logo </h6>
-                            <form id="dropzone" ondrop="dropHandler(event,'progress-bar','frontpage-name');" ondragover="dragOverHandler(event);">
+                            <form id="dropzone" ondrop="dropHandler(event,'progress-bar','frontpage-name','header-image-frontpage','currByteFrontpage','totalByteFrontpage','frontpage-logo-box');" ondragover="dragOverHandler(event);">
                                 <div style="margin-top: 37.5px;color:#B7B7B7">
                                     <p>Drag and drop or <input id="chooseFileFrontpage" type="file" onchange="handleUpload('progress-bar','chooseFileFrontpage','frontpage-name','header-image-frontpage','currByteFrontpage','totalByteFrontpage','frontpage-logo-box')"/>
                                         <u id="browse" style="color:#8397B6" onclick="clickBrowseFrontpage()">browse</u></p>
@@ -227,7 +213,7 @@
                             </form>
                             <div class="progress-bar-overall" id="frontpage-logo-box">
                                 <img class="uploaded-image" id="header-image-frontpage" height="90" width="90">
-                                <p class="file-name" id="frontpage-name"><p></p>
+                                <p class="file-name" id="frontpage-name"></p>
                                 <button type="button" class="btn-close" aria-label="Close" onclick="toggleLogoBox('frontpage-logo-box','header-image-frontpage','progress-bar','currByteFrontpage','totalByteFrontpage','frontpage-name')"></button>
                                 <label for="progress-bar" class="percentage-loaded">0%</label>
                                 <progress id="progress-bar" value="0" max="100" class="progress-bar-settings"></progress>
@@ -244,9 +230,9 @@
                         <select id="fontSelector" class="form-select" aria-label="Default select example" onclick="displayFonts()"  onmousedown="if(this.options.length>8){this.size=8}"
                             onchange='this.blur()' onblur="this.removeAttribute('size')">
                         </select>
-                        <div>
+                        <div> 
                             <h6 class="titles" style="margin-top:107px;"> Upload Header Logo </h6>
-                            <form id="dropzone" ondrop="dropHandler(event,'header-progress-bar','header-name');" ondragover="dragOverHandler(event);">
+                            <form id="dropzone" ondrop="dropHandler(event,'header-progress-bar','header-name','header-image-logo','currByteLogo','totalByteLogo','header-logo-box');" ondragover="dragOverHandler(event);">
                                 <div style="margin-top: 37.5px;color:#B7B7B7">
                                     <p>Drag and drop or <input id="chooseFileHeader" type="file" onchange="handleUpload('header-progress-bar', 'chooseFileHeader','header-name','header-image-logo','currByteLogo','totalByteLogo','header-logo-box')"/>
                                         <u id="browse" style="color:#8397B6" onclick="clickBrowseHeader()">browse</u></p>
@@ -264,7 +250,7 @@
                                     <span>of</span>
                                     <span id="totalByteLogo"></span>
                                 </div>
-                                <div class="after-load-complete">
+                                <div class="after-load-complete" >
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
                                         <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
                                         <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
@@ -339,13 +325,28 @@
         //element.dispatchEvent(choosefile);
     }
 
-    function handleUpload(progressBar, chooseFile, imgNameUploadLocation, image_ID_name, currByteID, totalByteID, displayBlock){
+    //Function which gets the required elements for populating the progress bar on file upload 
+    function getElementsForUpload(progressBarId, chooseFileId,imgNameUploadLocationId,imageNameId, currByteID, totalByteID, displayBlockId){
+        
+        const progressBar = document.getElementById(progressBarId);
+        const fileInput = document.getElementById(chooseFileId);
+        const nameLocation = document.getElementById(imgNameUploadLocationId);
+        const imagePreview = document.getElementById(imageNameId);
+        const currByte = document.getElementById(currByteID);
+        const totalByte = document.getElementById(totalByteID);
+        const elementToDisplay = document.getElementById(displayBlockId);
+        
+        return {progressBar,fileInput,nameLocation,currByte,totalByte,elementToDisplay}
+    }
+
+    function handleUpload(progressBarId, chooseFileId, imgNameUploadLocationId, imageNameId, currByteId, totalByteId, displayBlockId){
+    
         //make block visible 
-        const ele = document.getElementById(displayBlock);
-        ele.style.visibility = 'visible';
+        const elementToDisplay = document.getElementById(displayBlockId);
+        elementToDisplay.style.visibility = 'visible';
        // document.getElementById('header-logo-box').style.visibility = 'visible';
-        const bar = document.getElementById(progressBar);
-        const fileInput = document.getElementById(chooseFile);
+        const progressBar = document.getElementById(progressBarId);
+        const fileInput = document.getElementById(chooseFileId);
         const img = fileInput.files[0];
 
         if(img.type.match('^image/')){
@@ -357,14 +358,14 @@
                 var formdata = new FormData();
                 formdata.append("image", img);
                 //set image 
-                const imagePreview = document.getElementById(image_ID_name);
+                const imagePreview = document.getElementById(imageNameId);
                 imagePreview.src = URL.createObjectURL(img);
                 //set name of image uploaded
-                const nameLocation = document.getElementById(imgNameUploadLocation);
+                const nameLocation = document.getElementById(imgNameUploadLocationId);
                 nameLocation.textContent=filename;
                 //get byte references
-                currByte = document.getElementById(currByteID);
-                totalByte = document.getElementById(totalByteID);
+                currByte = document.getElementById(currByteId);
+                totalByte = document.getElementById(totalByteId);
                 const config = {
                         onUploadProgress: function(progressEvent) {
                             
@@ -372,10 +373,10 @@
                             currByte.textContent=progressEvent.loaded/1000 + ' kb';
 
                             const percentCompleted = Math.round((progressEvent.loaded / progressEvent.total)*100);
-                            bar.setAttribute('value', percentCompleted);
-                            bar.previousElementSibling.textContent = `${percentCompleted}%`
+                            progressBar.setAttribute('value', percentCompleted);
+                            progressBar.previousElementSibling.textContent = `${percentCompleted}%`
                             if (percentCompleted === 100) {
-                                bar.previousElementSibling.textContent = `Upload complete!`
+                                progressBar.previousElementSibling.textContent = `Upload complete!`
                             }
                         }
                     }
@@ -405,67 +406,83 @@
             .catch((error) =>console.error(error));
         };
 
-        function dropHandler(ev,progressBar, ele_ID_name) {
-            console.log('File(s) dropped');
-
-            // Prevent default behavior (Prevent file from being opened)
-            ev.preventDefault();
-            console.log('dragstart: target.id = ${ev.target.id}');
-            if (ev.dataTransfer.items) {
-                // Use DataTransferItemList interface to access the file(s)
-                [...ev.dataTransfer.items].forEach((item, i) => {
-                // If dropped items aren't files, reject them
-                if (item.kind === 'file') {
-                    // Match only images eg png 
-                    if(item.type.match('^image/')){
-                        //get the file 
-                        const file = item.getAsFile();
-                        const filesize = file.size;
-                        if(filesize <= 200000){
-                            // log name 
-                            console.log(`… file[${i}].name = ${file.name}`);
-                            var formdata = new FormData();
-                            formdata.append("image", file);
+    function dropHandler(ev, progressBarId, imgNameUploadLocationId, imageNameId, currByteId, totalByteId, displayBlockId){
+        console.log('File(s) dropped');
+        //make block visible 
+        const elementToDisplay = document.getElementById(displayBlockId);
+        elementToDisplay.style.visibility = 'visible';
+        console.log(elementToDisplay);
+        // Prevent default behavior (Prevent file from being opened)
+        ev.preventDefault();
+        console.log('dragstart: target.id = ${ev.target.id}');
+        if (ev.dataTransfer.items) {
+            // Use DataTransferItemList interface to access the file(s)
+            [...ev.dataTransfer.items].forEach((item, i) => {
+            // If dropped items aren't files, reject them
+            if (item.kind === 'file') {
+                // Match only images eg png 
+                if(item.type.match('^image/')){
+                    //get the file 
+                    const file = item.getAsFile();
+                    const filesize = file.size;
+                    const filename = file.name;
+                    if(filesize <= 200000){
+                        // log name 
+                        console.log(`… file[${i}].name = ${file.name}`);
+                        //create formdata
+                        var formdata = new FormData();
+                        formdata.append("image", file);
                         
-                            const bar = document.getElementById(progressBar);
-                            const ele_name = document.getElementById(ele_ID_name);
-                            ele_name.textContent=file.name
-                            
-                            const config = {
-                                    onUploadProgress: function(progressEvent) {
-                                        const percentCompleted = Math.round((progressEvent.loaded / progressEvent.total)*100);
-                                        bar.setAttribute('value', percentCompleted);
-                                        bar.previousElementSibling.textContent = `${percentCompleted}%`
-                                        if (percentCompleted === 100) {
-                                            bar.previousElementSibling.textContent = `Upload complete!`
-                                        }
+                        //get progress bar reference
+                        const progressBar = document.getElementById(progressBarId);
+                        //get file name reference
+                        const nameLocation = document.getElementById(imgNameUploadLocationId);
+                        nameLocation.textContent=filename;
+
+                        //set image 
+                        const imagePreview = document.getElementById(imageNameId);
+                        imagePreview.src = URL.createObjectURL(file);
+                        
+                        //get byte references
+                        currByte = document.getElementById(currByteId);
+                        totalByte = document.getElementById(totalByteId);
+
+                        const config = {
+                                onUploadProgress: function(progressEvent) {
+                                    totalByte.textContent= progressEvent.total/1000 + ' kb';
+                                    currByte.textContent=progressEvent.loaded/1000 + ' kb';
+                                    const percentCompleted = Math.round((progressEvent.loaded / progressEvent.total)*100);
+                                    progressBar.setAttribute('value', percentCompleted);
+                                    progressBar.previousElementSibling.textContent = `${percentCompleted}%`
+                                    if (percentCompleted === 100) {
+                                        progressBar.previousElementSibling.textContent = `Upload complete!`
                                     }
                                 }
-                                axios.post('https://httpbin.org/post', formdata, config)
-                                    .then(res => console.log(res))
-                                    .catch(err => console.log(err))
-                        }else{
-                            alert("File size = " + filesize + ", please upload an image less than 200kb");
-                        }
+                            }
+                            axios.post('https://httpbin.org/post', formdata, config)
+                                .then(res => console.log(res))
+                                .catch(err => console.log(err))
+                    }else{
+                        alert("File size = " + filesize + ", please upload an image less than 200kb");
                     }
-                    else{
-                        alert("Please upload an image");
-                    }
-                }else{
-                    alert("Please upload files only");
                 }
-                });
-            } else {
-                // Use DataTransfer interface to access the file(s)
-                [...ev.dataTransfer.files].forEach((file, i) => {
-                console.log(`… file[${i}].name = ${file.name}`);
-                });
+                else{
+                    alert("Please upload an image");
+                }
+            }else{
+                alert("Please upload files only");
             }
+            });
+        } else {
+            // Use DataTransfer interface to access the file(s)
+            [...ev.dataTransfer.files].forEach((file, i) => {
+            console.log(`… file[${i}].name = ${file.name}`);
+            });
         }
+    }
 
         function dragOverHandler(ev) {
             console.log('File(s) in drop zone');
-
             // Prevent default behavior (Prevent file from being opened)
             ev.preventDefault();
             }
