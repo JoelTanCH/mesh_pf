@@ -57,3 +57,7 @@ def healthReportInfo(response):
 def draftGeneratedPage(response):
     props = {}
     return render(response, "draftGeneratedPage.html", props)
+
+def draftGenerationFailed(response):
+    props = {}
+    return render(response, "draftGenerationFailed.html", props)
