@@ -136,19 +136,18 @@
     margin-top: 10px;
   }
   .err-msg {
-    display: flex;
-    flex-direction: row;
-    text-align: center;
-    justify-content: center;
-    width: 236.91505432128906px;
-    font-family: Poppins;
-    font-size: 10px;
-    font-weight: 500;
-    line-height: 12px;
-    letter-spacing: 0em;
-    text-align: right;
+    height: 52px;
+    width: 259.344970703125px;
+    border-radius: 15px;
+    border: 3px solid #e2c6c6;
+    background-color: #efe2e2;
     color: #d63636;
-    margin-left: 55px;
+    font-family: Poppins;
+    font-size: 8px;
+    font-weight: 600;
+    line-height: 11px;
+    letter-spacing: 0em;
+    padding: 10px;
   }
 </style>
 <div style="display: flex; flex-direction: column;">
@@ -363,14 +362,12 @@
   </div>
   <div class="report-view">
     <div class="err-blk">
-      <div class="err-msg">
-        Draft generation failed. Contact
-        <p style="text-decoration: underline; margin-left: 2px;">MeshBio</p>
-      </div>
       <div
         style="
           height: 20.21514892578125px;
           width: 271.31256103515625px;
+          left: 1055.45703125px;
+          top: 601.640625px;
           font-family: Poppins;
           font-size: 10px;
           font-weight: 400;
@@ -382,11 +379,26 @@
         "
       >
         Invalid input(s) found.
-        <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" fill="red" class="bi bi-exclamation-circle" viewBox="0 0 16 16"
-        style="margin: 0 0 3px 3px;">
-          <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-          <path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995z"/>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="11"
+          height="11"
+          fill="red"
+          class="bi bi-exclamation-circle"
+          viewBox="0 0 16 16"
+          style="margin: 0 0 3px 3px;"
+        >
+          <path
+            d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"
+          />
+          <path
+            d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995z"
+          />
         </svg>
+      </div>
+      <div class="err-msg">
+        This draft report is generated with invalid input(s). Please refer to
+        the CSV and correct data in the system
       </div>
     </div>
   </div>

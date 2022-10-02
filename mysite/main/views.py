@@ -61,3 +61,7 @@ def draftGeneratedPage(response):
 def draftGenerationFailed(response):
     props = {}
     return render(response, "draftGenerationFailed.html", props)
+
+def invalidGeneration(response):
+    props = {}
+    return render(response, "invalidGeneration.html", props)
