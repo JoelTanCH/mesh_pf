@@ -208,9 +208,9 @@
         text-align: left;  
         color: #314C74; 
     }
-    .btn{
+    .btn {
         position:relative;
-        top:-22px;
+        top:310px;
         left:65%;
         background-color: #8092AD;
         color:white;
@@ -218,10 +218,84 @@
     }         
     .contact-mesh{
         position:relative;
-        top: 11%;
+        top: 360px;
         right:14%;
     }
-
+    .RecTemplateHeading{
+        margin-top: 3%;
+        margin-bottom: 1%;
+        display: inline-block;
+        vertical-align: middle;
+        font-family: 'Poppins';
+        font-style: normal;
+        font-weight: 600;
+        font-size: 18px;
+        line-height: 14px;
+        color:#7788A3;
+        margin-right: 1%;
+    }
+    .hover{
+        font-size:15px;
+    }
+    .pencil:hover {
+        cursor: pointer;
+    }
+    .panel-label{
+        position:relative;
+        text-align:left;
+        padding-left:5%;
+        color:#717171;
+        font-family: 'Poppins';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 18px;
+    }
+    .panel-details{
+        text-align: left;
+        font-family: 'Poppins';
+        font-size: 18px;
+        font-weight: 500;
+        line-height: 18px;
+        letter-spacing: 0em;
+        text-align: left;
+        color:#717171;
+    }
+    .edit-each-row{
+        height:1px;
+        padding-bottom:2.4em;
+        text-align: left;
+        padding-left:15px;
+        color:#B1B1B1;
+        font-family: 'Poppins';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 15px;
+    }
+    .save-cancel-edits{
+        display: inline-block;
+        color:#718FBF;
+        font-family: 'Poppins';
+        font-style: normal;
+        font-weight: 600;
+        font-size: 12px;
+        line-height: 15px;
+        visibility: hidden;
+        position:relative;
+        left:-190px;
+    }
+    .hover:hover{
+        cursor: pointer;
+    }
+    #save-cancel-edits-all{
+        visibility: hidden;
+    }
+    .units{
+        position:relative;
+        left:-1575px;
+        bottom:-220px;
+    }
 </style>
 <div class="container mt-2">
     <div class="bodyHeader">
@@ -239,11 +313,11 @@
         <span>Setting<span>
     </div>
     <ul class = "nav nav-tabs" style="border-bottom: none;">
-        <li class="nav-item"><a class = "nav-link active" data-bs-toggle="tab" href="#branding"> Branding </a></li>
-        <li class="nav-item"><a class = "nav-link " data-bs-toggle="tab" href="#recTemplate"> Rec Template </a></li>
+        <li class="nav-item"><a class = "nav-link" data-bs-toggle="tab" href="#branding" onclick="minimizeTabContent('tab-content')"> Branding </a></li>
+        <li class="nav-item"><a class = "nav-link active " data-bs-toggle="tab" href="#recTemplate" onclick="expandTabContent('tab-content')"> Rec Template </a></li>
     </ul>
     <div class="tab-content">
-        <div class = "tab-pane active" id="branding">
+        <div class = "tab-pane" id="branding">
                 <div class="row">
                     <div id="leftcol"> 
                         <h6 class="titles"> Organisation Name </h6>
@@ -305,37 +379,210 @@
                             </div>
                         </div>
                     </div>
-            </div>
-        </div>
-        <div class = "tab-pane" id="recTemplate" style="width:80%">
-            <div class="outer-row border g-0 rounded shadow-sm">
-                <div class="row">
-                    <div id="leftcol"> 
-                        <h6 style="border-bottom: 1px solid #7788A3;"> Panel </h6>
-                        <p> hello </p>
-                        <p> hello </p>
-                        <p> hello </p>
+                </div>
+                <div class="footer"> 
+                    <div class="contact-mesh">
+                        <p> Please <u><b><a href="https://wa.me/6593360639" style="color:#314C74">contact MeshBio</a></b></u> for more customization </p>
                     </div>
-                    <div id="rightcol"> 
-                        <h6 style="border-bottom: 1px solid #7788A3;"> Key Recommendations    Edit all</h6> 
-                        <p> hello </p>
-                        <p> hello </p>
-                        <p> hello </p>
-                        <p> hello </p>
-                    </div>
+                    <button type="button" class="btn btn-primary" >Save & Update</button>
                 </div>
             </div>
+        <div class="tab-pane active" id="recTemplate">
+            <div class="outer-row border g-0 rounded shadow-sm">
+                <div style="border-bottom: 1px solid #7788A3;">
+                    <span class="RecTemplateHeading" style="position:relative;left:-240px;"> Panel </span>
+            
+                    <div class="RecTemplateHeading" style="position:relative;left:-115px;">
+                        <span>Key Recommendations</span>
+                        <svg id="pencilAll" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                            <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"/>
+                        </svg>
+                        <span id="edit-all" class="hover" onclick="editAll('edit-all','pencilAll')"><u>Edit all</u></span> 
+                    </div>
+                    <div id="save-cancel-edits-all" class="RecTemplateHeading" style="position:relative;left:200px;">
+                        <span class="hover" onclick="cancelAll('edit-all','pencilAll')"><u>Cancel</u></span>
+                        &emsp;
+                        <span class="hover" onclick="saveAll('edit-all','pencilAll')"><u>Save</u></span>
+                    </div>
+                </div>
+                <table>
+                    {% for row in template_info %}
+                    <col width="25%"><col width="75%">  
+                    <tr style="position:relative; padding-bottom:50px">
+                        <td id='panel-key-{{forloop.counter}}' class="panel-label"> {{row.0}}</td>
+                        <td colspan="80" class="panel-details" id="panel-detail-{{forloop.counter}}">{{row.1}}</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            {% if row.0 == 'Diabetes' or row.0 == 'Lipids' %}
+                            <div style="position:relative; bottom:5px;left:7px">
+                                <span style="position:relative;top:-20px; left:15px;">Units:</span>
+                                <select class="btn btn-secondary dropdown-toggle"
+                                    aria-label="Default select example"
+                                    style="
+                                        top: 0px;
+                                        left: -70px;
+                                        width: 140px;
+                                        height: 35px;
+                                        float: right;
+                                        border-radius: 6px;
+                                        background-color: #f2f2f266;
+                                        border: 1px solid #61616133;
+                                        color: black;">
+                                    <option selected style="text-align: center;"></option>
+                                    <option style="text-align: left;" value="Conventional">Conventional</option>
+                                    <option style="text-align: left;" value="SI Units">SI Units</option>
+                                </select>
+                            </div>
+                            {% endif %}
+                        </td>
+                        <td colspan="80" class="edit-each-row">
+                            <svg id="pencil-{{forloop.counter}}" onclick="toggleInputIndividual('panel-detail-{{forloop.counter}}','panel-date-{{forloop.counter}}','save-cancel-{{forloop.counter}}','pencil-{{forloop.counter}}')" xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" class="pencil" viewBox="0 0 16 16">
+                            <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"/>
+                            </svg>
+                            &emsp;
+                            <div id="panel-date-{{forloop.counter}}" style="display:inline-block">
+                                <span>Updated on:</span>
+                                <span>12 Jan 2022</span>
+                            </div>
+                            <div class="save-cancel-edits" id="save-cancel-{{forloop.counter}}">
+                                <span class="hover" onclick="cancel('save-cancel-{{forloop.counter}}','panel-date-{{forloop.counter}}','panel-detail-{{forloop.counter}}','pencil-{{forloop.counter}}')"><u>Cancel</u></span>
+                                &nbsp;
+                                <span class="hover" onclick="save('panel-key-{{forloop.counter}}','panel-detail-{{forloop.counter}}','save-cancel-{{forloop.counter}}','panel-date-{{forloop.counter}}','pencil-{{forloop.counter}}')"><u>Save</u></span>
+                            </div>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
         </div>
     </div>
-    <div class="footer"> 
-        <div class="contact-mesh">
-            <p> Please <u><b><a href="https://wa.me/6593360639" style="color:#314C74">contact MeshBio</a></b></u> for more customization </p>
-        </div>
-        <button type="button" class="btn btn-primary" >Save & Update</button>
-    </div>
-
 </div>
 <script>
+    function saveAll(editAllId,pencilAllId){
+        //obtain length of template info defined in views.py
+        var templateInfoLength = "{{template_info|length}}";
+        //save each row
+        for(var index = 1; index <= templateInfoLength; index++){
+            const rowKeyId = 'panel-key-' +index;
+            const rowDetailId = 'panel-detail-'+index;
+            const saveCancelId = 'save-cancel-' + index;
+            const dateId = 'panel-date-' + index;
+            const pencilId = 'pencil-' + index;
+            save(rowKeyId,rowDetailId,saveCancelId,dateId,pencilId);
+        }
+        cancelAll(editAllId,pencilAllId);
+        alert("saved all changes");
+    }
+
+    function cancelAll(editAllId,pencilAllId){
+        //hide save cancel all 
+        var saveCancelAll = document.getElementById('save-cancel-edits-all');
+        saveCancelAll.style.visibility='hidden';
+        //obtain length of template info defined in views.py
+        var templateInfoLength = "{{template_info|length}}";
+        //cancel each row 
+        for(var index = 1; index <= templateInfoLength; index++){
+            var rowId = 'panel-detail-' + index;
+            var dateId = 'panel-date-' + index;
+            var saveCancelId = 'save-cancel-' + index;
+            var pencilId = 'pencil-' + index;
+            cancel(saveCancelId,dateId,rowId,pencilId);
+        }
+        //dislpay edit all and pencil icon 
+        document.getElementById(editAllId).style.visibility='visible';
+        document.getElementById(pencilAllId).style.visibility='visible';
+    }
+
+    function editAll(editAllId, pencilAllId){
+        //display save cancel all 
+        var saveCancelAll = document.getElementById('save-cancel-edits-all');
+        saveCancelAll.style.visibility='visible';
+        //obtain length of template info defined in views.py
+        var templateInfoLength = "{{template_info|length}}";
+        //make each row editable
+        for(var index = 1; index <= templateInfoLength; index++){
+            var rowId = 'panel-detail-' + index;
+            var dateId = 'panel-date-' + index;
+            //cancel  
+            toggleInput(rowId,dateId)
+            //hide pencil
+            var pencilId = 'pencil-' + index;
+            var pencil = document.getElementById(pencilId);
+            pencil.style.visibility='hidden';
+        }
+        //hide edit all and pencil icon 
+        document.getElementById(editAllId).style.visibility='hidden';
+        document.getElementById(pencilAllId).style.visibility='hidden';
+    }
+
+    function save(rowKeyId,rowDetailId,saveCancelId,dateId,pencilId){
+        //obtain key value 
+        var rowKey = document.getElementById(rowKeyId);
+        const key = rowKey.textContent;
+        //obtain text inside the textbox 
+        var rowElement = document.getElementById(rowDetailId);
+        const content = rowElement.textContent;
+        console.log(key,content);
+        //revert back
+        cancel(saveCancelId,dateId,rowDetailId,pencilId);
+        //notify 
+        alert("saved: " + key);
+    }
+
+    function cancel(saveCancelId,dateId,rowId,pencilId){
+        //hide the save cancel button 
+        var saveCancel = document.getElementById(saveCancelId);
+        saveCancel.style.visibility='hidden'
+        //show date component 
+        var date = document.getElementById(dateId);
+        date.style.visibility='visible';
+        //make row uneditable and remove styling 
+        var row = document.getElementById(rowId);
+        row.contentEditable='false';
+        row.removeAttribute('style');
+        //show pencil 
+        var pencil = document.getElementById(pencilId);
+        pencil.style.visibility='visible';
+    }
+    function toggleInput(rowId,dateId){
+        //make row editable 
+        var row = document.getElementById(rowId);
+        row.contentEditable='true';
+        row.style.background='rgba(242, 242, 242, 0.4)';
+        row.style.border= '2px solid rgba(97, 97, 97, 0.2)';
+        row.style.borderRadius ='10px';
+        //hide date component
+        var date = document.getElementById(dateId);
+        date.style.visibility='hidden';
+    }
+    function toggleInputIndividual(rowId,dateId,saveCancelId,pencilId){
+        //toggle input 
+        toggleInput(rowId,dateId);
+        //display save and cancel 
+        var saveCancel = document.getElementById(saveCancelId);
+        saveCancel.style.visibility='visible'
+        //hide pencil
+        var pencil = document.getElementById(pencilId);
+        pencil.style.visibility='hidden';
+    }
+
+    function expandTabContent(tabContent){
+        //expand the overall container 
+        var content = document.getElementsByClassName("content")[0];
+        //expand the inner tab content inner container 
+        const element = document.getElementsByClassName(tabContent)[0];
+        element.style.height = '120%';
+        content.style.height='1200px';
+    }
+    function minimizeTabContent(tabContent){
+        //expand the overall container 
+        var content = document.getElementsByClassName("content")[0];
+        //expand the inner tab content inner container 
+        const innerContainer = document.getElementsByClassName(tabContent)[0];
+        innerContainer.style.height = '60%';
+        content.style.height='884.5703735351562px;'; //based on figma specifications
+    }
    
     function toggleLogoBox(logoBox,imageID,progressBarID,totalByteID,currByteID,filenameID,closeIconId){
         resetLogoBox(imageID,progressBarID,totalByteID,currByteID,filenameID);
