@@ -244,96 +244,102 @@
     </div>
   </div>
   <div style="height: 59.98px;"></div>
-  <div class="report-editor-tools">
-    <div style="display: flex; flex-direction: row; justify-content: center; margin-top: 5px;">
-      <div style="width: 60%; padding: 30px;">
-        <p
-          style="
-            font-family: Poppins;
-            font-size: 20px;
-            font-weight: 600;
-            line-height: 14px;
-            letter-spacing: 0em;
-            text-align: left;
-            color: #314c74;
-          "
-        >
-          Corporate Report Editor
-        </p>
-      </div>
-      <div
-        style="
-          width: 40%;
-          display: flex;
-          flex-direction: row;
-          margin-top: 20px;
-        "
-      >
-        <div>
-          <select
-            class="btn btn-secondary dropdown-toggle"
-            aria-label="Default select example"
+        <div class="report-editor-tools">
+          <div
             style="
-              height: 30.381864547729492px;
-              width: 130.94744873046875px;
-              left: 942.1669921875px;
-              top: 521.82421875px;
-              border-radius: 6px;
-              border: 2px solid #6f83a5;
-              background: linear-gradient(0deg, #e8ebef, #e8ebef);
-              color: #60769c;
-              font-family: Poppins;
-              font-size: 12px;
-              font-weight: 600;
-              line-height: 14px;
-              letter-spacing: 0em;
-              text-align: left;
+              display: flex;
+              flex-direction: row;
+              justify-content: center;
+              margin-top: 5px;
             "
           >
-          <option style="text-align: center;" value="1">Template I</option>
-          <option style="text-align: center;" value="2">Template II</option>
-          <option style="text-align: center;" value="3">Template III</option>
-          <option style="text-align: center;" value="3">Template IV</option>
-          </select>
+            <div style="width: 55%; padding: 30px;">
+              <p
+                style="
+                  font-family: Poppins;
+                  font-size: 20px;
+                  font-weight: 600;
+                  line-height: 14px;
+                  letter-spacing: 0em;
+                  text-align: left;
+                  color: #314c74;
+                "
+              >
+                Corporate Report Editor
+              </p>
+            </div>
+            <div
+              style="
+                width: 45%;
+                display: flex;
+                flex-direction: row;
+                margin-top: 20px;
+              "
+            >
+              <div>
+                <select
+                  class="btn btn-secondary dropdown-toggle"
+                  aria-label="Default select example"
+                  style="
+                    height: 30.381864547729492px;
+                    width: 130.94744873046875px;
+                    left: 942.1669921875px;
+                    top: 521.82421875px;
+                    border-radius: 6px;
+                    border: 2px solid #6f83a5;
+                    background: linear-gradient(0deg, #e8ebef, #e8ebef);
+                    color: #60769c;
+                    font-family: Poppins;
+                    font-size: 12px;
+                    font-weight: 600;
+                    line-height: 14px;
+                    letter-spacing: 0em;
+                    text-align: left;
+                  "
+                >
+                  <option style="text-align: center;" value="1">Template I</option>
+                  <option style="text-align: center;" value="2">Template II</option>
+                  <option style="text-align: center;" value="3">Template III</option>
+                  <option style="text-align: center;" value="3">Template IV</option>
+                </select>
+              </div>
+              <div style="margin-left: 5.51px;">
+                <button class="gen-draft" style="background: linear-gradient(0deg, rgba(17, 0, 0, 0.01), rgba(17, 0, 0, 0.01)), linear-gradient(0deg, #6F83A5, #6F83A5);">
+                  Email Report
+                </button>
+              </div>
+              <div style="margin-left: 5.51px;">
+                <button class="gen-draft">
+                  Generate PDF
+                </button>
+              </div>
+              <div style="margin-left: 20.51px; margin-top: 3px;">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  class="bi bi-chevron-down"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"
+                  />
+                </svg>
+              </div>
+            </div>
+          </div>
         </div>
-        <div>
-          <select
-            class="btn btn-secondary dropdown-toggle"
-            aria-label="Default select example"
-            style="
-              height: 30.381864547729492px;
-              width: 130.94744873046875px;
-              left: 942.1669921875px;
-              top: 521.82421875px;
-              border-radius: 6px;
-              border: 2px solid #6f83a5;
-              background: linear-gradient(0deg, #e8ebef, #e8ebef);
-              margin-left: 5.51px;
-              color: #60769c;
-              font-family: Poppins;
-              font-size: 12px;
-              font-weight: 600;
-              line-height: 14px;
-              letter-spacing: 0em;
-              text-align: left;
-            "
-          >
-            <option style="text-align: center;" value="1">SI Units</option>
-            <option style="text-align: center;" value="2">
-              Conventional Units
-            </option>
-          </select>
-        </div>
-        <div style="margin-left: 5.51px;">
-          <button class="gen-draft">
-            Generate Draft
-          </button>
-        </div>
-      </div>
-    </div>
+  <div class="report-view">
+    <iframe src="https://arxiv.org/pdf/2204.05101.pdf#page=200" name="iFrame" 
+    style= "height: 577.308837890625px;
+    width: 1015.1979370117188px;
+    left: 329.859375px;
+    top: 638.140625px;
+    border-radius: 0px;
+    margin-top:60px;
+    overflow-x: scroll;overflow-y: hidden;"></iframe>
   </div>
-<div class="report-view">
-</div>
- 
 </div>
 {% endblock %}

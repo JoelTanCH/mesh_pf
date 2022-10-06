@@ -700,9 +700,11 @@ shown when checkbox is checked */
     color: #B7B7B7;
   }
 
+  .modal {
+    margin-top: 200px;
+  }
 </style>
 
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script>
   function displayActionDropdown() {
     let actionDropdown = document.getElementById("actionDropdown")
@@ -714,114 +716,90 @@ shown when checkbox is checked */
   };
 
   $(document).ready(function() {
-    getNumBatches();
     prep_modal();
-    });
-
-  function getNumBatches() {
-      $.ajax({
-              type: 'GET',
-              url: "{% url 'get-nbatches' %}",
-              data: {},
-              success: function (response) {
-                console.log(data)
-                  console.log('number of batches successfully fetched')
-              },
-              error: function (response) {
-                  console.log("unable to fetch the number of batches")
-              }
-          })
-  }
+  })
 
   function addNewBatch() {
-      $.ajax({
-          url: "update_nbatches",
-          type: "POST",
-          data :{},
-          success:function(result){
-              console.log('added one more batch')
-          },
-          error:function(error){
-              console.log('batch unable to be added')
-          }
-      });
+    number_batches = {{nBatches}}
+    number_batches += 1;
+
+    console.log(number_batches)
   }
 
   function prep_modal()
-{
-  $(".modal").each(function() {
+    {
+      $(".modal").each(function() {
 
-  var element = this;
-	var pages = $(this).find('.modal-split');
+      var element = this;
+      var pages = $(this).find('.modal-split');
 
-  if (pages.length != 0)
-  {
-    	pages.hide();
-    	pages.eq(0).show();
+      if (pages.length != 0)
+      {
+          pages.hide();
+          pages.eq(0).show();
 
-    	var c_button = document.createElement("button");
-                c_button.setAttribute("type","button");
-          			c_button.setAttribute("class","btn btn-light");
-                c_button.setAttribute("style", "margin-right:10px;width: 155.93px; height: 30.38px; background-color: white;border-color: #8fa3c1;border-radius: 12px;color: #314c74; font: Poppins;font-weight: 600;font-size: 14px;line-height: 10.99px;align-items: center;");
-          			c_button.setAttribute("data-bs-dismiss" , "modal");
-                c_button.innerHTML = "Cancel";
+          var c_button = document.createElement("button");
+                    c_button.setAttribute("type","button");
+                    c_button.setAttribute("class","btn btn-light");
+                    c_button.setAttribute("style", "margin-right:10px;width: 155.93px; height: 30.38px; background-color: white;border-color: #8fa3c1;border-radius: 12px;color: #314c74; font: Poppins;font-weight: 600;font-size: 14px;line-height: 10.99px;align-items: center;");
+                    c_button.setAttribute("data-bs-dismiss" , "modal");
+                    c_button.innerHTML = "Cancel";
 
-    	var n_button = document.createElement("button");
-                n_button.setAttribute("type","button");
-          			n_button.setAttribute("class","btn btn-light");
-                n_button.setAttribute("style", " width: 155.93px;height: 30.38px; background-color: white;border-color: #8fa3c1;border-radius: 12px; color: #314c74; font: Poppins; font-weight: 600;font-size: 14px; line-height: 10.99px;align-items: center;");
-          			n_button.innerHTML = "Next";
+          var n_button = document.createElement("button");
+                    n_button.setAttribute("type","button");
+                    n_button.setAttribute("class","btn btn-light");
+                    n_button.setAttribute("style", " width: 155.93px;height: 30.38px; background-color: white;border-color: #8fa3c1;border-radius: 12px; color: #314c74; font: Poppins; font-weight: 600;font-size: 14px; line-height: 10.99px;align-items: center;");
+                    n_button.innerHTML = "Next";
 
-      var cfm_button = document.createElement("button");
-                cfm_button.setAttribute("type","button");
-                cfm_button.setAttribute("class","btn btn-light");
-                cfm_button.setAttribute("style", " width: 155.93px;height: 30.38px; background-color: white;border-color: #8fa3c1;border-radius: 12px; color: #314c74; font: Poppins; font-weight: 600;font-size: 14px; line-height: 10.99px;align-items: center;");
-                cfm_button.innerHTML = "confirm";
-      
-    	$(this).find('.modal-btm').append(c_button).append(n_button);
+          var cfm_button = document.createElement("button");
+                    cfm_button.setAttribute("type","button");
+                    cfm_button.setAttribute("class","btn btn-light");
+                    cfm_button.setAttribute("style", " width: 155.93px;height: 30.38px; background-color: white;border-color: #8fa3c1;border-radius: 12px; color: #314c74; font: Poppins; font-weight: 600;font-size: 14px; line-height: 10.99px;align-items: center;");
+                    cfm_button.innerHTML = "confirm";
+          
+          $(this).find('.modal-btm').append(c_button).append(n_button);
 
 
-    	var page_track = 0;
+          var page_track = 0;
 
-    	$(n_button).click(function() {
-        
-        this.blur();
+          $(n_button).click(function() {
+            
+            this.blur();
 
-    		if(page_track == 0)
-    		{
-    			$(c_button).show();
-    		}
+            if(page_track == 0)
+            {
+              $(c_button).show();
+            }
 
-    		if(page_track == pages.length-2)
-    		{
-          n_button.innerHTML = "Confirm";
-          n_button.setAttribute('href', "{% url 'health-report-info'%}");
-    		}
+            if(page_track == pages.length-2)
+            {
+              n_button.innerHTML = "Confirm";
+              n_button.setAttribute('href', "{% url 'health-report-info'%}");
+            }
 
-    		if(page_track < pages.length-1)
-    		{
-    			page_track++;
+            if(page_track < pages.length-1)
+            {
+              page_track++;
 
-    			pages.hide();
-    			pages.eq(page_track).show();
-    		}
-    	});
+              pages.hide();
+              pages.eq(page_track).show();
+            }
+          });
 
-    	$(c_button).click(function() {
-    		if(page_track > 0)
-    		{
-    			page_track--;
+          $(c_button).click(function() {
+            if(page_track > 0)
+            {
+              page_track--;
 
-    			pages.hide();
-    			pages.eq(page_track).show();
-    		}
-        
-    	});
-  }
+              pages.hide();
+              pages.eq(page_track).show();
+            }
+            
+          });
+      }
 
-  });
-}
-
+      });
+    }
 </script>
 
 <div class="main">
@@ -880,7 +858,7 @@ shown when checkbox is checked */
           </td>
           <td colspan="7">
             <button class="underline-indicators" data-bs-toggle="modal"
-            data-bs-target="#CorpRepPopUp" onclick="getNumBatches()">
+            data-bs-target="#CorpRepPopUp">
               New Corporate Health Report
             </button>
           </td>
@@ -962,7 +940,7 @@ shown when checkbox is checked */
       </div>
     </div>
   </div>
-  <div class="modal fade" id="CorpRepPopUp" tabindex="-1" aria-hidden = "true" aria-labelledby="myModalLabel">
+  <div class="modal fade" id="CorpRepPopUp" tabindex="-1" aria-hidden = "true" aria-labelledby="myModalLabel" style="overflow:scroll">
     <div class="modal-dialog">  
       <div class="modal-content" style="width: 681.99px; height: 500.32px; border-radius: 20px;">
         <div style="margin-right: 10px; margin-top: 10px;">
@@ -1039,7 +1017,7 @@ shown when checkbox is checked */
                 <p class="form-label">Batches to include in Corporate Report</p>
                 <p style="text-align: left; margin-left: 4px; color: red;">*</p>
               </div>
-              <div id="batch-ctn" >
+              <div id="batch-ctn" text>
                 {% with ''|center:nBatches as range %}
                 {% for _ in range %}
                     <div class="modal-body-ctn">
@@ -1071,8 +1049,8 @@ shown when checkbox is checked */
                 {% endwith %}
               </div>
             </div>
+            <div style="height: 20px;"></div>
       </div>
-      
       <div class="modal-split">
         <div class="modal-body">
           <div class="form-label-ctn">
@@ -1100,39 +1078,10 @@ shown when checkbox is checked */
               <option style="text-align: center;" value="1">Template 1</option>
             </select>
           </div>
-          <br>
-          <div class="form-label-ctn">
-            <p class="form-label">Reporting Units</p>
-            <p style="text-align: left; margin-left: 4px; color: red;">*</p>
-          </div>
-          <div class="modal-body-ctn">
-            <select class="btn btn-secondary dropdown-toggle" 
-            aria-label="Default select example"
-            style="width: 609.33px;
-                  height: 30.38px;
-                  float: right;
-                  border-radius: 6px;
-                  background-color: #f2f2f266;
-                  border: 1px solid #61616133;
-                  color: black;
-                  margin-right: 2px;
-                  color: #B7B7B7;
-                  font-family: Poppins;
-                  font-size: 12px;
-                  font-weight: 500;
-                  line-height: 14px;
-                  letter-spacing: 0em;
-                  text-align: left;"
-                  >
-              <option style="text-align: left;">Select Option</option>
-              <option style="text-align: left;" value="1">SI Unit</option>
-              <option style="text-align: left;" value="2">Conventional Units</option>
-            </select>
-          </div>
         </div>
       </div>
         </div>
-  
+        <div style="height: 20px;"></div>
         <div class="modal-btm">
         </div>
       </div>
