@@ -207,11 +207,15 @@
         line-height: 15px;
         text-align: left;  
         color: #314C74; 
-    }
-    .btn {
         position:relative;
-        top:310px;
-        left:65%;
+        bottom:-370px;
+        left:-140px;
+    }
+    .inline-block-child{
+        display: inline-block;
+    }
+
+    .btn {
         background-color: #8092AD;
         color:white;
         border-color: #8092AD;
@@ -263,7 +267,7 @@
     }
     .edit-each-row{
         height:1px;
-        padding-bottom:2.4em;
+        padding-bottom:4em;
         text-align: left;
         padding-left:15px;
         color:#B1B1B1;
@@ -296,6 +300,10 @@
         left:-1575px;
         bottom:-220px;
     }
+    .outer-row{
+        height:938px;
+    }
+
 </style>
 <div class="container mt-2">
     <div class="bodyHeader">
@@ -313,11 +321,11 @@
         <span>Setting<span>
     </div>
     <ul class = "nav nav-tabs" style="border-bottom: none;">
-        <li class="nav-item"><a class = "nav-link" data-bs-toggle="tab" href="#branding" onclick="minimizeTabContent('tab-content')"> Branding </a></li>
-        <li class="nav-item"><a class = "nav-link active " data-bs-toggle="tab" href="#recTemplate" onclick="expandTabContent('tab-content')"> Rec Template </a></li>
+        <li class="nav-item"><a class = "nav-link active" data-bs-toggle="tab" href="#branding" onclick="minimizeTabContent('tab-content')"> Branding </a></li>
+        <li class="nav-item"><a class = "nav-link " data-bs-toggle="tab" href="#recTemplate" onclick="expandTabContent('tab-content')"> Rec Template </a></li>
     </ul>
     <div class="tab-content">
-        <div class = "tab-pane" id="branding">
+        <div class = "tab-pane active" id="branding">
                 <div class="row">
                     <div id="leftcol"> 
                         <h6 class="titles"> Organisation Name </h6>
@@ -381,13 +389,15 @@
                     </div>
                 </div>
                 <div class="footer"> 
-                    <div class="contact-mesh">
+                    <div class="inline-block-child">
                         <p> Please <u><b><a href="https://wa.me/6593360639" style="color:#314C74">contact MeshBio</a></b></u> for more customization </p>
                     </div>
-                    <button type="button" class="btn btn-primary" >Save & Update</button>
+                    <div class="inline-block-child"> 
+                        <button type="button" class="btn btn-primary" style="position:relative;left:460px;">Save & Update</button>
+                    </div>
                 </div>
             </div>
-        <div class="tab-pane active" id="recTemplate">
+        <div class="tab-pane" id="recTemplate">
             <div class="outer-row border g-0 rounded shadow-sm">
                 <div style="border-bottom: 1px solid #7788A3;">
                     <span class="RecTemplateHeading" style="position:relative;left:-240px;"> Panel </span>
@@ -408,21 +418,22 @@
                 <table>
                     {% for row in template_info %}
                     <col width="25%"><col width="75%">  
-                    <tr style="position:relative; padding-bottom:50px">
-                        <td id='panel-key-{{forloop.counter}}' class="panel-label"> {{row.0}}</td>
+                    <tr>
+                        <td valign="top" id='panel-key-{{forloop.counter}}' class="panel-label"> {{row.0}}</td>
                         <td colspan="80" class="panel-details" id="panel-detail-{{forloop.counter}}">{{row.1}}</td>
                     </tr>
                     <tr>
                         <td>
                             {% if row.0 == 'Diabetes' or row.0 == 'Lipids' %}
                             <div style="position:relative; bottom:5px;left:7px">
-                                <span style="position:relative;top:-20px; left:15px;">Units:</span>
+                                <span style="position:relative;top:-52px; left:20px;">Units:</span>
                                 <select class="btn btn-secondary dropdown-toggle"
                                     aria-label="Default select example"
                                     style="
-                                        top: 0px;
-                                        left: -70px;
-                                        width: 140px;
+                                        position:relative;
+                                        top:-23px;
+                                        left:-43px;
+                                        width: 160px;
                                         height: 35px;
                                         float: right;
                                         border-radius: 6px;
@@ -572,8 +583,8 @@
         var content = document.getElementsByClassName("content")[0];
         //expand the inner tab content inner container 
         const element = document.getElementsByClassName(tabContent)[0];
-        element.style.height = '120%';
-        content.style.height='1200px';
+        element.style.height = '107%';
+        content.style.height='1300px';
     }
     function minimizeTabContent(tabContent){
         //expand the overall container 
@@ -803,7 +814,8 @@
                             }
                             axios.post('https://httpbin.org/post', formdata, config)
                                 .then(res => console.log(res))
-                                .catch(err => console.log(err))
+                                .catch(err => console.log(err)) 
+                            //need to add the hiding and showing of elements 
                     }else{
                         alert("File size = " + filesize + ", please upload an image less than 200kb");
                     }
