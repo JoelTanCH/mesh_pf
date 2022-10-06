@@ -332,7 +332,7 @@
                         <p class="titles"> Healthway Medical </p>
                         <div>  
                             <h6 class="titles" style="margin-top:75px;"> Upload Frontpage Logo </h6>
-                            <form id="dropzone" ondrop="dropHandler(event,'progress-bar','frontpage-name','header-image-frontpage','currByteFrontpage','totalByteFrontpage','frontpage-logo-box');" ondragover="dragOverHandler(event);">
+                            <form id="dropzone" ondrop="dropHandler(event,'progress-bar','frontpage-name','header-image-frontpage','currByteFrontpage','totalByteFrontpage','frontpage-logo-box','button-close-frontpage','trash-icon-frontpage');" ondragover="dragOverHandler(event);">
                                 <div style="margin-top: 37.5px;color:#B7B7B7">
                                     <p>Drag and drop or <input id="chooseFileFrontpage" type="file" onchange="handleUpload('progress-bar','chooseFileFrontpage','frontpage-name','header-image-frontpage','currByteFrontpage','totalByteFrontpage','frontpage-logo-box','button-close-frontpage','trash-icon-frontpage')"/>
                                         <u id="browse" style="color:#8397B6" onclick="clickBrowseFrontpage()">browse</u></p>
@@ -363,7 +363,7 @@
                         </select>
                         <div> 
                             <h6 class="titles" style="margin-top:107px;"> Upload Header Logo </h6>
-                            <form id="dropzone" ondrop="dropHandler(event,'header-progress-bar','header-name','header-image-logo','currByteLogo','totalByteLogo','header-logo-box');" ondragover="dragOverHandler(event);">
+                            <form id="dropzone" ondrop="dropHandler(event,'header-progress-bar','header-name','header-image-logo','currByteLogo','totalByteLogo','header-logo-box','button-close-header','trash-icon-header');" ondragover="dragOverHandler(event);">
                                 <div style="margin-top: 37.5px;color:#B7B7B7">
                                     <p>Drag and drop or <input id="chooseFileHeader" type="file" onchange="handleUpload('header-progress-bar', 'chooseFileHeader','header-name','header-image-logo','currByteLogo','totalByteLogo','header-logo-box','button-close-header','trash-icon-header')"/>
                                         <u id="browse" style="color:#8397B6" onclick="clickBrowseHeader()">browse</u></p>
@@ -663,6 +663,8 @@
         const buttonClose = document.getElementById(buttonCloseId);
         //get image name location reference 
         const nameLocation = document.getElementById(imgNameUploadLocationId);
+        //get trash icon 
+        const trash = document.getElementById(trashIconId);
 
         //ensure all elements visible 
         elementToDisplay.style.visibility = 'visible';
@@ -672,7 +674,6 @@
         buttonClose.style.visibility='visible';
 
         //ensure trash icon hidden
-        const trash = document.getElementById(trashIconId);
         trash.style.visibility='hidden';
 
         //adjust styling back to normal to account for reuploads
@@ -759,12 +760,38 @@
             .catch((error) =>console.error(error));
         };
 
-    function dropHandler(ev, progressBarId, imgNameUploadLocationId, imageNameId, currByteId, totalByteId, displayBlockId){
+    //inprogress
+    function dropHandler(ev, progressBarId, imgNameUploadLocationId, imageNameId, currByteId, totalByteId, displayBlockId,buttonCloseId,trashIconId){
         console.log('File(s) dropped');
-        //make block visible 
+        //get block to show
         const elementToDisplay = document.getElementById(displayBlockId);
+        //get progress bar
+        const progressBar = document.getElementById(progressBarId);
+        //get byte references
+        const currByte = document.getElementById(currByteId);
+        const totalByte = document.getElementById(totalByteId);
+        //get button close reference
+        const buttonClose = document.getElementById(buttonCloseId); //need to add
+        //get image name location reference 
+        const nameLocation = document.getElementById(imgNameUploadLocationId);
+        //get trash reference
+        const trash = document.getElementById(trashIconId);//need to add
+
+        //ensure all elements visible 
         elementToDisplay.style.visibility = 'visible';
-        console.log(elementToDisplay);
+        progressBar.style.visibility ='visible';
+        progressBar.previousElementSibling.style.visibility='visible';
+        totalByte.style.visibility='visible';
+        buttonClose.style.visibility='visible';
+
+        //ensure trash icon hidden
+        trash.style.visibility='hidden';
+
+        //adjust styling back to normal to account for reuploads
+        currByte.removeAttribute('style');
+        nameLocation.style.size="13px";
+        nameLocation.style.top="28%";
+
         // Prevent default behavior (Prevent file from being opened)
         ev.preventDefault();
         console.log('dragstart: target.id = ${ev.target.id}');
@@ -786,19 +813,12 @@
                         var formdata = new FormData();
                         formdata.append("image", file);
                         
-                        //get progress bar reference
-                        const progressBar = document.getElementById(progressBarId);
-                        //get file name reference
-                        const nameLocation = document.getElementById(imgNameUploadLocationId);
+                        //set file name reference
                         nameLocation.textContent=filename;
 
                         //set image 
                         const imagePreview = document.getElementById(imageNameId);
                         imagePreview.src = URL.createObjectURL(file);
-                        
-                        //get byte references
-                        currByte = document.getElementById(currByteId);
-                        totalByte = document.getElementById(totalByteId);
 
                         const config = {
                                 onUploadProgress: function(progressEvent) {
@@ -814,8 +834,9 @@
                             }
                             axios.post('https://httpbin.org/post', formdata, config)
                                 .then(res => console.log(res))
+                                .then(()=> hideAfterUpload(progressBar,totalByte,buttonClose))
+                                .then(()=> showAfterUpload(currByte,nameLocation,trash))
                                 .catch(err => console.log(err)) 
-                            //need to add the hiding and showing of elements 
                     }else{
                         alert("File size = " + filesize + ", please upload an image less than 200kb");
                     }
