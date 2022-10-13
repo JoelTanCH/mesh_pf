@@ -115,18 +115,43 @@
     line-height: 14px;
     letter-spacing: 0em;
     text-align: center;
-    background-color: #6F83A5;
-    color:white;
+    background-color: #6f83a5;
+    color: white;
   }
-  .report-view{
+  .report-view {
     height: 643.8424682617188px;
     width: 1077px;
     left: 299.771484375px;
     top: 578.02978515625px;
-    background: #E9EBEF;
-    opacity: 0.6;
+    background: #e9ebef;
     border-radius: 0px 0px 12px 12px;
     margin-left: -250px;
+  }
+  .audit-log-link {
+    text-align: left;
+    margin-left: 35px;
+    margin-top: 30px;
+  }
+  .modal {
+    margin-top: 200px;
+  }
+  .modal-title {
+    height: 32.094635009765625px;
+    width: 394.2548828125px;
+    margin-top: 23.52px;
+    margin-left: 35.84;
+    border-radius: nullpx;
+    font-family: Poppins;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 14px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #314c74;
+  }
+  .modal-header {
+    display: flex;
+    flex-direction: column;
   }
 </style>
 <div style="display: flex; flex-direction: column;">
@@ -244,102 +269,192 @@
     </div>
   </div>
   <div style="height: 59.98px;"></div>
-        <div class="report-editor-tools">
-          <div
+  <div class="report-editor-tools">
+    <div
+      style="
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        margin-top: 5px;
+      "
+    >
+      <div style="width: 55%; padding: 30px;">
+        <p
+          style="
+            font-family: Poppins;
+            font-size: 20px;
+            font-weight: 600;
+            line-height: 14px;
+            letter-spacing: 0em;
+            text-align: left;
+            color: #314c74;
+          "
+        >
+          Corporate Report Editor
+        </p>
+      </div>
+      <div
+        style="
+          width: 45%;
+          display: flex;
+          flex-direction: row;
+          margin-top: 20px;
+        "
+      >
+        <div>
+          <select
+            class="btn btn-secondary dropdown-toggle"
+            aria-label="Default select example"
             style="
-              display: flex;
-              flex-direction: row;
-              justify-content: center;
-              margin-top: 5px;
+              height: 30.381864547729492px;
+              width: 130.94744873046875px;
+              left: 942.1669921875px;
+              top: 521.82421875px;
+              border-radius: 6px;
+              border: 2px solid #6f83a5;
+              background: linear-gradient(0deg, #e8ebef, #e8ebef);
+              color: #60769c;
+              font-family: Poppins;
+              font-size: 12px;
+              font-weight: 600;
+              line-height: 14px;
+              letter-spacing: 0em;
+              text-align: left;
             "
           >
-            <div style="width: 55%; padding: 30px;">
-              <p
-                style="
-                  font-family: Poppins;
-                  font-size: 20px;
-                  font-weight: 600;
-                  line-height: 14px;
-                  letter-spacing: 0em;
-                  text-align: left;
-                  color: #314c74;
-                "
-              >
-                Corporate Report Editor
-              </p>
-            </div>
-            <div
-              style="
-                width: 45%;
-                display: flex;
-                flex-direction: row;
-                margin-top: 20px;
-              "
-            >
-              <div>
-                <select
-                  class="btn btn-secondary dropdown-toggle"
-                  aria-label="Default select example"
+            <option style="text-align: center;" value="1">Template I</option>
+            <option style="text-align: center;" value="2">Template II</option>
+            <option style="text-align: center;" value="3">Template III</option>
+            <option style="text-align: center;" value="3">Template IV</option>
+          </select>
+        </div>
+        <div style="margin-left: 5.51px;">
+          <button
+            class="gen-draft"
+            style="
+              background: linear-gradient(
+                  0deg,
+                  rgba(17, 0, 0, 0.01),
+                  rgba(17, 0, 0, 0.01)
+                ),
+                linear-gradient(0deg, #6f83a5, #6f83a5);
+            "
+          >
+            Email Report
+          </button>
+        </div>
+        <div style="margin-left: 5.51px;">
+          <button class="gen-draft">
+            Generate PDF
+          </button>
+        </div>
+        <div style="margin-left: 20.51px; margin-top: 3px;">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            fill="currentColor"
+            class="bi bi-chevron-down"
+            viewBox="0 0 16 16"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"
+            />
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="report-view">
+    <div class="audit-log-link">
+      <a
+        data-bs-target="#auditLog"
+        data-bs-toggle="modal"
+        href="#auditLog"
+        style="
+          font-family: Poppins;
+          font-size: 10px;
+          font-weight: 600;
+          line-height: 12px;
+          letter-spacing: 0em;
+          text-align: left;
+          color: #7788a3;
+        "
+      >
+        Last PDF generated: Linda Tan 2021.09.02
+      </a>
+      <div
+        class="modal fade"
+        id="auditLog"
+        tabindex="-1"
+        aria-labelledby="auditLogLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <div style="display: flex; flex-direction: row;">
+                <p class="modal-title" id="auditLogLabel">
+                  Report PDF
+                </p>
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
                   style="
-                    height: 30.381864547729492px;
-                    width: 130.94744873046875px;
-                    left: 942.1669921875px;
-                    top: 521.82421875px;
-                    border-radius: 6px;
-                    border: 2px solid #6f83a5;
-                    background: linear-gradient(0deg, #e8ebef, #e8ebef);
-                    color: #60769c;
+                    margin-right: 10px;
+                    margin-top: 12px;
+                    height: 13.12px;
+                    opacity: 0.3;
+                    font-weight: 3.02px solid;
+                  "
+                ></button>
+              </div>
+              <div style="text-align: left; float: left;">
+                <p
+                  style="
                     font-family: Poppins;
                     font-size: 12px;
-                    font-weight: 600;
+                    font-weight: 700;
                     line-height: 14px;
                     letter-spacing: 0em;
                     text-align: left;
+                    color: #717171;
+                    height: 32.094635009765625px;
+                    width: 289.3226623535156px;
+                    top: 69.244140625px;
+                    border-radius: nullpx;
+                    margin-left: -145px;
+                    margin-top: 15px;
                   "
                 >
-                  <option style="text-align: center;" value="1">Template I</option>
-                  <option style="text-align: center;" value="2">Template II</option>
-                  <option style="text-align: center;" value="3">Template III</option>
-                  <option style="text-align: center;" value="3">Template IV</option>
-                </select>
+                  Audit Trail
+                </p>
               </div>
-              <div style="margin-left: 5.51px;">
-                <button class="gen-draft" style="background: linear-gradient(0deg, rgba(17, 0, 0, 0.01), rgba(17, 0, 0, 0.01)), linear-gradient(0deg, #6F83A5, #6F83A5);">
-                  Email Report
-                </button>
-              </div>
-              <div style="margin-left: 5.51px;">
-                <button class="gen-draft">
-                  Generate PDF
-                </button>
-              </div>
-              <div style="margin-left: 20.51px; margin-top: 3px;">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="16"
-                  fill="currentColor"
-                  class="bi bi-chevron-down"
-                  viewBox="0 0 16 16"
-                >
-                  <path
-                    fill-rule="evenodd"
-                    d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"
-                  />
-                </svg>
-              </div>
+            </div>
+            <div class="modal-body">
+              
             </div>
           </div>
         </div>
-  <div class="report-view">
-    <iframe src="https://arxiv.org/pdf/2204.05101.pdf#page=200" name="iFrame" 
-    style= "height: 577.308837890625px;
-    width: 1015.1979370117188px;
-    left: 329.859375px;
-    top: 638.140625px;
-    border-radius: 0px;
-    margin-top:60px;
-    overflow-x: scroll;overflow-y: hidden;"></iframe>
+      </div>
+    </div>
+    <iframe
+      src="https://apps.who.int/iris/bitstream/handle/10665/349091/WHO-EURO-2021-2661-42417-58838-eng.pdf"
+      name="iFrame"
+      style="
+        height: 577.308837890625px;
+        width: 1015.1979370117188px;
+        left: 329.859375px;
+        top: 638.140625px;
+        border-radius: 0px;
+        margin-top: 30px;
+        overflow-x: scroll;
+        overflow-y: hidden;
+      "
+    ></iframe>
   </div>
 </div>
 {% endblock %}
