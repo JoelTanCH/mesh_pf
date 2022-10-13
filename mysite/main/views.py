@@ -51,8 +51,17 @@ def setting(response):
     return render(response, "setting.html", props)
 
 def healthReportInfo(response):
-    props = {}
-    return render(response, "healthReportInfo.html", props)
+    log_info = [
+        ['2021.10.01 13:23', 'Email Sent', 'Chua Li Li'],
+        ['2021.10.01 13:23', 'PDF generation', 'Chua Li Li'],
+        ['2021.06.18 08:46', 'Email Sent', 'Linda Tan'],
+        ['2021.06.18 08:46', 'PDF generation', 'Linda Tan'],
+        ['2021.06.18 08:46', 'PDF generation', 'Linda Tan'],
+    ]
+    return render(response, "healthReportInfo.html", 
+    {
+        "log_info" : log_info
+    })
 
 def draftGeneratedPage(response):
     props = {}

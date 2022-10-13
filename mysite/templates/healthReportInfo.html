@@ -134,6 +134,9 @@
   }
   .modal {
     margin-top: 200px;
+    height: 500.32px;
+    width: 681.99px;
+    margin-left:300px;
   }
   .modal-title {
     height: 32.094635009765625px;
@@ -152,6 +155,60 @@
   .modal-header {
     display: flex;
     flex-direction: column;
+  }
+  .modal-body {
+    margin-top: -20px;
+    height: 250px;
+  }
+  .log-rec {
+    display: flex;
+    flex-direction: row;
+    flex: 100%;
+    margin-left:15px;
+    
+  }
+  .log-col-header{
+    width: 33%;
+    font-family: Poppins;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 14px;
+    letter-spacing: 0em;
+    text-align: left;
+    color:#717171;
+  }
+  .log-col {
+    font-family: Poppins;
+    font-size: 12px;
+    font-weight: 500;
+    opacity: 70%;
+    line-height: 15px;
+    letter-spacing: 0em;
+    text-align: left;
+    color:#7D7E8C;
+    width: 33%;
+    left: 35.84765625px;
+    top: 148.4990234375px;
+  }
+  .modal-btm {
+      float:right;
+  }
+  .close-btn {
+    height: 30.382007598876953px;
+    width: 155.93359375px;
+    left: 489.51171875px;
+    top: 430.89404296875px;
+    border-radius: 12px;
+    color: #314C74;
+    background-color: #ffffff;
+    border: 2px solid #8FA3C1;
+    font-family: Poppins;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 11px;
+    letter-spacing: 0em;
+    text-align: center;
+
   }
 </style>
 <div style="display: flex; flex-direction: column;">
@@ -393,7 +450,7 @@
       >
         <div class="modal-dialog">
           <div class="modal-content">
-            <div class="modal-header">
+            <div class="modal-header border-0">
               <div style="display: flex; flex-direction: row;">
                 <p class="modal-title" id="auditLogLabel">
                   Report PDF
@@ -428,14 +485,53 @@
                     border-radius: nullpx;
                     margin-left: -145px;
                     margin-top: 15px;
+                    padding: 0px;
                   "
                 >
                   Audit Trail
                 </p>
               </div>
+              <hr style="
+              background: linear-gradient(0deg, rgba(97, 97, 97, 0.3), rgba(97, 97, 97, 0.3)), linear-gradient(0deg, rgba(196, 196, 196, 0), rgba(196, 196, 196, 0));
+              border: 1px solid #6161614D;
+              width: 460.62109375px;
+              left: 35.84765625px;
+              top: 109.96875px;
+              border-radius: 0px;
+              margin-top: -15px;
+              "></hr>
             </div>
             <div class="modal-body">
-              
+              <div class="log-rec">
+                <div class="log-col-header">
+                  Date & Time:
+                </div>
+                <div class="log-col-header">
+                  Action:
+                </div>
+                <div class="log-col-header">
+                  User:
+                </div>
+              </div>
+              <div>
+                <div style="height: 10px;"></div>
+                {% for info in log_info %}
+                  <div class="log-rec">
+                    <div class="log-col">
+                        {{info.0}}
+                    </div>
+                    <div class="log-col">
+                        {{info.1}}
+                    </div>
+                    <div class="log-col">
+                        {{info.2}}
+                    </div>
+                  </div>
+                {% endfor %}
+              </div>
+            </div>
+            <div class="modal-btm">
+                <button class="close-btn">Close</button>
             </div>
           </div>
         </div>
