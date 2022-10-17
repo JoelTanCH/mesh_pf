@@ -30,9 +30,9 @@
         cursor: pointer;
     }
     
-    #container{
-        height: 500px;
-        width:80%;
+    .container{
+        height:100%;
+        width:90%;
     }
 
     #leftcol {
@@ -48,209 +48,701 @@
         margin-top:20px;
         margin-right: 3%;
     }
+    .bodyHeader{
+        font-family: 'Poppins';
+        font-style: normal;
+        font-weight: 650;
+        font-size: 21px;
+        line-height: 14px;
+        color: #314C74;
+        position: relative;
+        left:-370px;
+        top:-25px;
+    }
+    .container .nav .nav-item .nav-link {
+        color:#7788A3;
+        background-color: #FFFFFF;
+        border: 2px solid ;
+        border-radius: 6px 6px 0px 0px;
+        margin-right: 0.3rem;
+    }
+    .tab-content{
+        background-color:#FFFFFF;
+        mix-blend-mode: normal;
+        border-radius: 0px 0px 15px 15px;
+        max-width:80%;
+        height:60%;
+        position:relative;
+        top:-50px;
+    }
+    .nav{
+        position:relative;
+        top:-50px;
+    }
 
-    #bodyHeader{
+    .progress-bar-styling{
+        width: 70%;
+        height: 1.5rem;
+        margin-top: 30px;
+        position:absolute;
+        right:2%;
+        top:13%;
+        accent-color: rgb(131, 151, 182);
+        opacity: 0.5;
+    }
+
+    .progress-bar-settings{
+        width: 70%;
+        height: 1.5rem;
+        margin-top: 30px;
+        position:absolute;
+        right:2%;
+        top:13%;
+        accent-color: rgb(131, 151, 182);
+        opacity: 0.5;
+    }
+
+    .progress-bar-overall {
+        border: 1px dashed rgba(97, 97, 97, 0.2);
+        border-radius: 6px;
+        position: absolute;
+        height:120px; 
+        width: 470px;
+        align-items: left; 
+        box-sizing: border-box;
+        background: #FFFFFF;
+        border: 1px solid rgba(97, 97, 97, 0.1);
+        box-shadow: 0px 3px 2px rgba(97, 97, 97, 0.1);
+        border-radius: 6px;
+        margin-top:170px;
+        visibility: hidden;
+    }
+
+    .titles{
+        text-align: left;
+        color: #717171;
+    }
+
+    .form-select{
+        position:absolute;
+        width:35.5%;
+        font-family: 'Poppins';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 12px;
+        line-height: 14px;
+    }
+
+    .btn-close{
+        font-size:10px;
+        color: #B8B8B8;
+        position:absolute;
+        top:5%;
+        right:2%;
+    }
+
+    .percentage-loaded{
+        position:absolute;
+        bottom:28%;
+        right:4%;
+        font-family: 'Poppins';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 12px;
+        color: #717171;
+        opacity: 0.5;
+    }
+
+    .file-name{
+        color: #717171;
+        font-family: 'Poppins';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 13px;
+        position:absolute; 
+        left:29%;
+        top:28%;
+    }
+    .uploaded-image{
+        position:absolute; 
+        left:5%;
+        top:13%;
+    }
+    .byte-status{
+        font-family: 'Poppins';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 12px;
+        color: #717171;
+        opacity: 0.5;
+        position:absolute;
+        bottom:28%;
+        left:29%;
+    }
+    .byte-status-after-upload{
+        font-family: 'Poppins';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 12px;
+        opacity: 0.5;
+        position:absolute;
+        bottom:50%;
+        left:28%;
+    }
+    .bi{
+        color:#A1A1A1;
+        position:absolute;
+        right:7%;
+        top:40%;
+        visibility: hidden;
+    }
+    .bi:hover {
+        cursor: pointer;
+    }
+    .footer{
+        font-family: 'Poppins';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 15px;
+        line-height: 15px;
+        text-align: left;  
+        color: #314C74; 
+        position:relative;
+        bottom:-370px;
+        left:-140px;
+    }
+    .inline-block-child{
+        display: inline-block;
+    }
+
+    .btn {
+        background-color: #8092AD;
+        color:white;
+        border-color: #8092AD;
+    }         
+    .contact-mesh{
+        position:relative;
+        top: 360px;
+        right:14%;
+    }
+    .RecTemplateHeading{
+        margin-top: 3%;
+        margin-bottom: 1%;
+        display: inline-block;
+        vertical-align: middle;
         font-family: 'Poppins';
         font-style: normal;
         font-weight: 600;
         font-size: 18px;
         line-height: 14px;
-        color: #314C74;
-        white-space: nowrap;
-        display:inline-block
+        color:#7788A3;
+        margin-right: 1%;
     }
-
-    .container {
+    .hover{
+        font-size:15px;
+    }
+    .pencil:hover {
+        cursor: pointer;
+    }
+    .panel-label{
+        position:relative;
+        text-align:left;
+        padding-left:5%;
+        color:#717171;
         font-family: 'Poppins';
         font-style: normal;
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 18px;
+    }
+    .panel-details{
+        text-align: left;
+        font-family: 'Poppins';
+        font-size: 18px;
         font-weight: 500;
-        font-size: 15px;
+        line-height: 18px;
+        letter-spacing: 0em;
+        text-align: left;
+        color:#717171;
+    }
+    .edit-each-row{
+        height:1px;
+        padding-bottom:4em;
+        text-align: left;
+        padding-left:15px;
+        color:#B1B1B1;
+        font-family: 'Poppins';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 14px;
         line-height: 15px;
-        position: absolute;
-        left: 237.17px;
-        top: 200px;
     }
-
-    .container .nav .nav-item .nav-link {
-    color:#7788A3;
-    background-color: #fff;
-    border: 2px solid ;
-    border-radius: 6px 6px 0px 0px;
-    margin-right: 0.5rem;
+    .save-cancel-edits{
+        display: inline-block;
+        color:#718FBF;
+        font-family: 'Poppins';
+        font-style: normal;
+        font-weight: 600;
+        font-size: 12px;
+        line-height: 15px;
+        visibility: hidden;
+        position:relative;
+        left:-190px;
     }
-
-    #header-progress-bar{
-        width: 80%;
-        height: 1.5rem;
-        margin-top: 30px;
-
+    .hover:hover{
+        cursor: pointer;
     }
-    #progress-bar{
-        width: 80%;
-        height: 1.5rem;
-        margin-top: 30px;
+    #save-cancel-edits-all{
+        visibility: hidden;
+    }
+    .units{
+        position:relative;
+        left:-1575px;
+        bottom:-220px;
+    }
+    .outer-row{
+        height:938px;
     }
 
 </style>
-<div id="bodyHeader">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-folder-plus" viewBox="0 0 20 20"  style="position: absolute;
-        left: 15.67%;
-        right: 78.33%;
-        top: 17.53%;
-        bottom: 82.13%;">
-                <path d="m.5 3 .04.87a1.99 1.99 0 0 0-.342 1.311l.637 7A2 2 0 0 0 2.826 14H9v-1H2.826a1 1 0 0 1-.995-.91l-.637-7A1 1 0 0 1 2.19 4h11.62a1 1 0 0 1 .996 1.09L14.54 8h1.005l.256-2.819A2 2 0 0 0 13.81 3H9.828a2 2 0 0 1-1.414-.586l-.828-.828A2 2 0 0 0 6.172 1H2.5a2 2 0 0 0-2 2zm5.672-1a1 1 0 0 1 .707.293L7.586 3H2.19c-.24 0-.47.042-.683.12L1.5 2.98a1 1 0 0 1 1-.98h3.672z"/>
-                <path d="M13.5 10a.5.5 0 0 1 .5.5V12h1.5a.5.5 0 1 1 0 1H14v1.5a.5.5 0 1 1-1 0V13h-1.5a.5.5 0 0 1 0-1H13v-1.5a.5.5 0 0 1 .5-.5z"/>
-            </svg>
-        <p style="position: absolute;
-        left: 17.67%;
-        right: 78.33%;
-        top: 17.53%;
-        bottom: 82.13%;"> Corporate Health Report </p> 
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 20 20" style="position:absolute;
-        left: 30.67%;
-        right: 78.33%;
-        top: 17.53%;
-        bottom: 82.13%;">
-            <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
+<div class="container mt-2">
+    <div class="bodyHeader">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="b bi-folder-plus" viewBox="0 0 20 20">
+            <path d="m.5 3 .04.87a1.99 1.99 0 0 0-.342 1.311l.637 7A2 2 0 0 0 2.826 14H9v-1H2.826a1 1 0 0 1-.995-.91l-.637-7A1 1 0 0 1 2.19 4h11.62a1 1 0 0 1 .996 1.09L14.54 8h1.005l.256-2.819A2 2 0 0 0 13.81 3H9.828a2 2 0 0 1-1.414-.586l-.828-.828A2 2 0 0 0 6.172 1H2.5a2 2 0 0 0-2 2zm5.672-1a1 1 0 0 1 .707.293L7.586 3H2.19c-.24 0-.47.042-.683.12L1.5 2.98a1 1 0 0 1 1-.98h3.672z"/>
+            <path d="M13.5 10a.5.5 0 0 1 .5.5V12h1.5a.5.5 0 1 1 0 1H14v1.5a.5.5 0 1 1-1 0V13h-1.5a.5.5 0 0 1 0-1H13v-1.5a.5.5 0 0 1 .5-.5z"/>
         </svg>
-        <p style="position: absolute;
-        left: 32.2%;
-        right: 78.33%;
-        top: 17.53%;
-        bottom: 82.13%;">Setting</p>
-</div>
-
-<div id="overall-container" class = "container mt-2">
-    <ul class = "nav nav-tabs" style="width:500px;">
-        <li class="nav-item"><a class = "nav-link active" data-bs-toggle="tab" href="#branding"> Branding </a></li>
-        <li class="nav-item"><a class = "nav-link " data-bs-toggle="tab" href="#recTemplate"> Rec Template </a></li>
+        &nbsp;
+        <span><u> Corporate Healthscreening Report </u></span> 
+        &nbsp;
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="b bi-chevron-right" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
+        </svg>        
+        &nbsp;
+        <span>Setting<span>
+    </div>
+    <ul class = "nav nav-tabs" style="border-bottom: none;">
+        <li class="nav-item"><a class = "nav-link active" data-bs-toggle="tab" href="#branding" onclick="minimizeTabContent('tab-content')"> Branding </a></li>
+        <li class="nav-item"><a class = "nav-link " data-bs-toggle="tab" href="#recTemplate" onclick="expandTabContent('tab-content')"> Rec Template </a></li>
     </ul>
     <div class="tab-content">
         <div class = "tab-pane active" id="branding">
-            <div id = "container" class="outer-row border g-0 rounded shadow-sm">
                 <div class="row">
                     <div id="leftcol"> 
-                        <h6 style="text-align: left; color: #717171;"> Organisation Name </h6>
-                        <p style="text-align:left; color: #717171;"> Healthway Medical </p>
+                        <h6 class="titles"> Organisation Name </h6>
+                        <p class="titles"> Healthway Medical </p>
                         <div>  
-                            <h6 style="margin-top:73px; text-align: left;color: #717171;"> Upload Frontpage Logo </h6>
-                            <form id="dropzone" ondrop="dropHandler(event,'progress-bar','frontpage-name');" ondragover="dragOverHandler(event);">
+                            <h6 class="titles" style="margin-top:75px;"> Upload Frontpage Logo </h6>
+                            <form id="dropzone" ondrop="dropHandler(event,'progress-bar','frontpage-name','header-image-frontpage','currByteFrontpage','totalByteFrontpage','frontpage-logo-box','button-close-frontpage','trash-icon-frontpage');" ondragover="dragOverHandler(event);">
                                 <div style="margin-top: 37.5px;color:#B7B7B7">
-                                    <p>Drag and drop or <input id="chooseFileFrontpage" type="file" onchange="handleUpload('progress-bar','chooseFileFrontpage','frontpage-name')"/>
+                                    <p>Drag and drop or <input id="chooseFileFrontpage" type="file" onchange="handleUpload('progress-bar','chooseFileFrontpage','frontpage-name','header-image-frontpage','currByteFrontpage','totalByteFrontpage','frontpage-logo-box','button-close-frontpage','trash-icon-frontpage')"/>
                                         <u id="browse" style="color:#8397B6" onclick="clickBrowseFrontpage()">browse</u></p>
                                     <p>File should be in png or svg format</p>
                                 </div>
                             </form>
-                            <div id="dropzone" style="margin-top:170px">
-                                <p id="frontpage-name"><p></p>
-                                <label for="progress-bar">0%</label>
-                                <progress id="progress-bar" value="0" max="100"></progress>
+                            <div class="progress-bar-overall" id="frontpage-logo-box">
+                                <img class="uploaded-image" id="header-image-frontpage" height="90" width="90">
+                                <p class="file-name" id="frontpage-name"></p>
+                                <button type="button" id="button-close-frontpage" class="btn-close" aria-label="Close" onclick="toggleLogoBox('frontpage-logo-box','header-image-frontpage','progress-bar','currByteFrontpage','totalByteFrontpage','frontpage-name','button-close-frontpage','button-close-frontpage')"></button>
+                                <label for="progress-bar" class="percentage-loaded">0%</label>
+                                <progress id="progress-bar" value="0" max="100" class="progress-bar-settings"></progress>
+                                <div class="byte-status">
+                                    <span id="currByteFrontpage"></span>
+                                    <span id="totalByteFrontpage"></span>
+                                </div>
+                                <svg id="trash-icon-frontpage" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16" onclick="toggleLogoBox('frontpage-logo-box','header-image-frontpage','progress-bar','currByteFrontpage','totalByteFrontpage','frontpage-name','trash-icon-frontpage')">
+                                    <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                                    <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+                                </svg>
                             </div>
                         </div>
                     </div>
                     <div id="rightcol"> 
-                        <h6 style="text-align: left;color: #717171;"> Corporate Report Font </h6> 
+                        <h6 class="titles"> Corporate Report Font </h6> 
                         <select id="fontSelector" class="form-select" aria-label="Default select example" onclick="displayFonts()"  onmousedown="if(this.options.length>8){this.size=8}"
                             onchange='this.blur()' onblur="this.removeAttribute('size')">
                         </select>
-                        <div>
-                            <h6 style="margin-top:50px; text-align: left;color: #717171;"> Upload Header Logo </h6>
-                            <form id="dropzone" ondrop="dropHandler(event,'header-progress-bar','header-name');" ondragover="dragOverHandler(event);">
+                        <div> 
+                            <h6 class="titles" style="margin-top:107px;"> Upload Header Logo </h6>
+                            <form id="dropzone" ondrop="dropHandler(event,'header-progress-bar','header-name','header-image-logo','currByteLogo','totalByteLogo','header-logo-box','button-close-header','trash-icon-header');" ondragover="dragOverHandler(event);">
                                 <div style="margin-top: 37.5px;color:#B7B7B7">
-                                    <p>Drag and drop or <input id="chooseFileHeader" type="file" onchange="handleUpload('header-progress-bar', 'chooseFileHeader','header-name')"/>
+                                    <p>Drag and drop or <input id="chooseFileHeader" type="file" onchange="handleUpload('header-progress-bar', 'chooseFileHeader','header-name','header-image-logo','currByteLogo','totalByteLogo','header-logo-box','button-close-header','trash-icon-header')"/>
                                         <u id="browse" style="color:#8397B6" onclick="clickBrowseHeader()">browse</u></p>
                                     <p>File should be in png or svg format</p>
                                 </div>
                             </form>
-                            <div id="dropzone" style="margin-top:170px;">
-                                <p id="header-name"><p>
-                                <label for="header-progress-bar">0%</label>
-                                <progress id="header-progress-bar" value="0" max="100"></progress>
+                            <div class="progress-bar-overall" id="header-logo-box">
+                                <img class="uploaded-image" id="header-image-logo" height="90" width="90">
+                                <p class="file-name" id="header-name"><p>
+                                <button type="button" id="button-close-header" class="btn-close" aria-label="Close" onclick="toggleLogoBox('header-logo-box','header-image-logo','header-progress-bar','currByteLogo','totalByteLogo','header-name','button-close-header')"></button>
+                                <label for="header-progress-bar" class="percentage-loaded">0%</label>
+                                <progress id="header-progress-bar" value="0" max="100" class="progress-bar-settings"></progress>
+                                <div class="byte-status">
+                                    <span id="currByteLogo"></span>
+                                    <span id="totalByteLogo"></span>
+                                </div>
+                                <svg id="trash-icon-header" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16" onclick="toggleLogoBox('header-logo-box','header-image-logo','header-progress-bar','currByteLogo','totalByteLogo','header-name','trash-icon-header')">
+                                    <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                                    <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+                                </svg>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-        <div class = "tab-pane" id="recTemplate" style="width:80%">
-            <div class="outer-row border g-0 rounded shadow-sm">
-                <div class="row">
-                    <div id="leftcol"> 
-                        <h6 style="border-bottom: 1px solid #7788A3;"> Panel </h6>
-                        <p> hello </p>
-                        <p> hello </p>
-                        <p> hello </p>
+                <div class="footer"> 
+                    <div class="inline-block-child">
+                        <p> Please <u><b><a href="https://wa.me/6593360639" style="color:#314C74">contact MeshBio</a></b></u> for more customization </p>
                     </div>
-                    <div id="rightcol"> 
-                        <h6 style="border-bottom: 1px solid #7788A3;"> Key Recommendations    Edit all</h6> 
-                        <p> hello </p>
-                        <p> hello </p>
-                        <p> hello </p>
-                        <p> hello </p>
+                    <div class="inline-block-child"> 
+                        <button type="button" class="btn btn-primary" style="position:relative;left:460px;" onclick="alert('saved!')">Save & Update</button>
                     </div>
                 </div>
             </div>
+        <div class="tab-pane" id="recTemplate">
+            <div class="outer-row border g-0 rounded shadow-sm">
+                <div style="border-bottom: 1px solid #7788A3;">
+                    <span class="RecTemplateHeading" style="position:relative;left:-240px;"> Panel </span>
+            
+                    <div class="RecTemplateHeading" style="position:relative;left:-115px;">
+                        <span>Key Recommendations</span>
+                        <svg id="pencilAll" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                            <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"/>
+                        </svg>
+                        <span id="edit-all" class="hover" onclick="editAll('edit-all','pencilAll')"><u>Edit all</u></span> 
+                    </div>
+                    <div id="save-cancel-edits-all" class="RecTemplateHeading" style="position:relative;left:200px;">
+                        <span class="hover" onclick="cancelAll('edit-all','pencilAll')"><u>Cancel</u></span>
+                        &emsp;
+                        <span class="hover" onclick="saveAll('edit-all','pencilAll')"><u>Save</u></span>
+                    </div>
+                </div>
+                <table>
+                    {% for row in template_info %}
+                    <col width="25%"><col width="75%">  
+                    <tr>
+                        <td valign="top" id='panel-key-{{forloop.counter}}' class="panel-label"> {{row.0}}</td>
+                        <td colspan="80" class="panel-details" id="panel-detail-{{forloop.counter}}">{{row.1}}</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            {% if row.0 == 'Diabetes' or row.0 == 'Lipids' %}
+                            <div style="position:relative; bottom:5px;left:7px">
+                                <span style="position:relative;top:-52px; left:20px;">Units:</span>
+                                <select class="btn btn-secondary dropdown-toggle"
+                                    aria-label="Default select example"
+                                    style="
+                                        position:relative;
+                                        top:-23px;
+                                        left:-43px;
+                                        width: 160px;
+                                        height: 35px;
+                                        float: right;
+                                        border-radius: 6px;
+                                        background-color: #f2f2f266;
+                                        border: 1px solid #61616133;
+                                        color: black;">
+                                    <option selected style="text-align: center;"></option>
+                                    <option style="text-align: left;" value="Conventional">Conventional</option>
+                                    <option style="text-align: left;" value="SI Units">SI Units</option>
+                                </select>
+                            </div>
+                            {% endif %}
+                        </td>
+                        <td colspan="80" class="edit-each-row">
+                            <svg id="pencil-{{forloop.counter}}" onclick="toggleInputIndividual('panel-detail-{{forloop.counter}}','panel-date-{{forloop.counter}}','save-cancel-{{forloop.counter}}','pencil-{{forloop.counter}}')" xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" class="pencil" viewBox="0 0 16 16">
+                            <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"/>
+                            </svg>
+                            &emsp;
+                            <div id="panel-date-{{forloop.counter}}" style="display:inline-block">
+                                <span>Updated on:</span>
+                                <span>12 Jan 2022</span>
+                            </div>
+                            <div class="save-cancel-edits" id="save-cancel-{{forloop.counter}}">
+                                <span class="hover" onclick="cancel('save-cancel-{{forloop.counter}}','panel-date-{{forloop.counter}}','panel-detail-{{forloop.counter}}','pencil-{{forloop.counter}}')"><u>Cancel</u></span>
+                                &nbsp;
+                                <span class="hover" onclick="save('panel-key-{{forloop.counter}}','panel-detail-{{forloop.counter}}','save-cancel-{{forloop.counter}}','panel-date-{{forloop.counter}}','pencil-{{forloop.counter}}')"><u>Save</u></span>
+                            </div>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
         </div>
     </div>
-
 </div>
 <script>
-    /*
-    const changeSelected = (e) => {
-        const $select = document.querySelector('fontSelector');
-        console.log($select)
-        const $options = Array.from($select.options);
-        const optionToSelect = $options.find(item => item.text ===text);
-        optionToSelect.selected = true;
-        console.log('hello')
+    function saveAll(editAllId,pencilAllId){
+        //obtain length of template info defined in views.py
+        var templateInfoLength = "{{template_info|length}}";
+        //save each row
+        for(var index = 1; index <= templateInfoLength; index++){
+            const rowKeyId = 'panel-key-' +index;
+            const rowDetailId = 'panel-detail-'+index;
+            const saveCancelId = 'save-cancel-' + index;
+            const dateId = 'panel-date-' + index;
+            const pencilId = 'pencil-' + index;
+            save(rowKeyId,rowDetailId,saveCancelId,dateId,pencilId);
+        }
+        cancelAll(editAllId,pencilAllId);
+        alert("saved all changes");
     }
-    document.querySelector('#fontSelector').addEventListener('click', changeSelected);*/
+
+    function cancelAll(editAllId,pencilAllId){
+        //hide save cancel all 
+        var saveCancelAll = document.getElementById('save-cancel-edits-all');
+        saveCancelAll.style.visibility='hidden';
+        //obtain length of template info defined in views.py
+        var templateInfoLength = "{{template_info|length}}";
+        //cancel each row 
+        for(var index = 1; index <= templateInfoLength; index++){
+            var rowId = 'panel-detail-' + index;
+            var dateId = 'panel-date-' + index;
+            var saveCancelId = 'save-cancel-' + index;
+            var pencilId = 'pencil-' + index;
+            cancel(saveCancelId,dateId,rowId,pencilId);
+        }
+        //dislpay edit all and pencil icon 
+        document.getElementById(editAllId).style.visibility='visible';
+        document.getElementById(pencilAllId).style.visibility='visible';
+    }
+
+    function editAll(editAllId, pencilAllId){
+        //display save cancel all 
+        var saveCancelAll = document.getElementById('save-cancel-edits-all');
+        saveCancelAll.style.visibility='visible';
+        //obtain length of template info defined in views.py
+        var templateInfoLength = "{{template_info|length}}";
+        //make each row editable
+        for(var index = 1; index <= templateInfoLength; index++){
+            var rowId = 'panel-detail-' + index;
+            var dateId = 'panel-date-' + index;
+            //cancel  
+            toggleInput(rowId,dateId)
+            //hide pencil
+            var pencilId = 'pencil-' + index;
+            var pencil = document.getElementById(pencilId);
+            pencil.style.visibility='hidden';
+        }
+        //hide edit all and pencil icon 
+        document.getElementById(editAllId).style.visibility='hidden';
+        document.getElementById(pencilAllId).style.visibility='hidden';
+    }
+
+    function save(rowKeyId,rowDetailId,saveCancelId,dateId,pencilId){
+        //obtain key value 
+        var rowKey = document.getElementById(rowKeyId);
+        const key = rowKey.textContent;
+        //obtain text inside the textbox 
+        var rowElement = document.getElementById(rowDetailId);
+        const content = rowElement.textContent;
+        console.log(key,content);
+        //revert back
+        cancel(saveCancelId,dateId,rowDetailId,pencilId);
+        //notify 
+        alert("saved: " + key);
+    }
+
+    function cancel(saveCancelId,dateId,rowId,pencilId){
+        //hide the save cancel button 
+        var saveCancel = document.getElementById(saveCancelId);
+        saveCancel.style.visibility='hidden'
+        //show date component 
+        var date = document.getElementById(dateId);
+        date.style.visibility='visible';
+        //make row uneditable and remove styling 
+        var row = document.getElementById(rowId);
+        row.contentEditable='false';
+        row.removeAttribute('style');
+        //show pencil 
+        var pencil = document.getElementById(pencilId);
+        pencil.style.visibility='visible';
+    }
+    function toggleInput(rowId,dateId){
+        //make row editable 
+        var row = document.getElementById(rowId);
+        row.contentEditable='true';
+        row.style.background='rgba(242, 242, 242, 0.4)';
+        row.style.border= '2px solid rgba(97, 97, 97, 0.2)';
+        row.style.borderRadius ='10px';
+        //hide date component
+        var date = document.getElementById(dateId);
+        date.style.visibility='hidden';
+    }
+    function toggleInputIndividual(rowId,dateId,saveCancelId,pencilId){
+        //toggle input 
+        toggleInput(rowId,dateId);
+        //display save and cancel 
+        var saveCancel = document.getElementById(saveCancelId);
+        saveCancel.style.visibility='visible'
+        //hide pencil
+        var pencil = document.getElementById(pencilId);
+        pencil.style.visibility='hidden';
+    }
+
+    function expandTabContent(tabContent){
+        //expand the overall container 
+        var content = document.getElementsByClassName("content")[0];
+        //expand the inner tab content inner container 
+        const element = document.getElementsByClassName(tabContent)[0];
+        element.style.height = '107%';
+        content.style.height='1300px';
+    }
+    function minimizeTabContent(tabContent){
+        //expand the overall container 
+        var content = document.getElementsByClassName("content")[0];
+        //expand the inner tab content inner container 
+        const innerContainer = document.getElementsByClassName(tabContent)[0];
+        innerContainer.style.height = '60%';
+        content.style.height='884.5703735351562px;'; //based on figma specifications
+    }
+   
+    function toggleLogoBox(logoBox,imageID,progressBarID,totalByteID,currByteID,filenameID,closeIconId){
+        resetLogoBox(imageID,progressBarID,totalByteID,currByteID,filenameID);
+        const ele = document.getElementById(logoBox);
+        ele.style.visibility = 'hidden';
+        const closeIcon = document.getElementById(closeIconId);
+        closeIcon.style.visibility='hidden';
+    }
+    //reset values in logoBox after user clicks 'x'
+    function resetLogoBox(imageID,progressBarID,totalByteID,currByteID,filenameID){
+        console.log("Reset logo box")
+        //reset image 
+        const img = document.getElementById(imageID);
+        img.src=null;
+        //reset progress bar
+        const progressBar = document.getElementById(progressBarID);
+        progressBar.setAttribute('value', 0);
+        progressBar.previousElementSibling.textContent = '0%';
+        //reset bytes (total and curr)
+        const totalByte = document.getElementById(totalByteID);
+        totalByte.textContent='0 kb';
+        const currByte = document.getElementById(currByteID);
+        currByte.textContent='0 kb';
+        //reset filename
+        const filename = document.getElementById(filenameID);
+        filename.textContent='';
+    }
 
     function clickBrowseFrontpage(){
+        //const choosefile = new Event('change');
+        //const element = document.getElementById('chooseFileHeader');
+        //const element = document.getElementById('chooseFileFrontpage');
         $('#chooseFileFrontpage').click();
+        //element.dispatchEvent(choosefile);
     }
-
+    
     function clickBrowseHeader(){
+        //const choosefile = new Event('change');
+        //const element = document.getElementById('chooseFileHeader');
         $('#chooseFileHeader').click();
+        //element.dispatchEvent(choosefile);
     }
 
-    function handleUpload(progressBar, chooseFile, ele_ID_name){
-        const bar = document.getElementById(progressBar);
-        const fileInput = document.getElementById(chooseFile);
-        const selectedFile = fileInput.files[0];
-        const ele_name = document.getElementById(ele_ID_name);
-        console.log(selectedFile);
-        if(selectedFile.type.match('^image/')){
-            const filename = selectedFile.name
-            const filesize = selectedFile.size
+    //Function which gets the required elements for populating the progress bar on file upload 
+    function getElementsForUpload(progressBarId, chooseFileId,imgNameUploadLocationId,imageNameId, currByteID, totalByteID, displayBlockId){
+        
+        const progressBar = document.getElementById(progressBarId);
+        const fileInput = document.getElementById(chooseFileId);
+        const nameLocation = document.getElementById(imgNameUploadLocationId);
+        const imagePreview = document.getElementById(imageNameId);
+        const currByte = document.getElementById(currByteID);
+        const totalByte = document.getElementById(totalByteID);
+        const elementToDisplay = document.getElementById(displayBlockId);
+        
+        return {progressBar,fileInput,nameLocation,currByte,totalByte,elementToDisplay}
+    }
+
+    function handleUpload(progressBarId,chooseFileId,imgNameUploadLocationId,imageNameId,currByteId,totalByteId,displayBlockId,buttonCloseId,trashIconId){
+        //get block to show
+        const elementToDisplay = document.getElementById(displayBlockId);
+        //get progress bar
+        const progressBar = document.getElementById(progressBarId);
+        //get byte references
+        const currByte = document.getElementById(currByteId);
+        const totalByte = document.getElementById(totalByteId);
+        //get button close reference
+        const buttonClose = document.getElementById(buttonCloseId);
+        //get image name location reference 
+        const nameLocation = document.getElementById(imgNameUploadLocationId);
+        //get trash icon 
+        const trash = document.getElementById(trashIconId);
+
+        //ensure all elements visible 
+        elementToDisplay.style.visibility = 'visible';
+        progressBar.style.visibility ='visible';
+        progressBar.previousElementSibling.style.visibility='visible';
+        totalByte.style.visibility='visible';
+        buttonClose.style.visibility='visible';
+
+        //ensure trash icon hidden
+        trash.style.visibility='hidden';
+
+        //adjust styling back to normal to account for reuploads
+        currByte.removeAttribute('style');
+        nameLocation.style.size="13px";
+        nameLocation.style.top="28%";
+
+        //get image
+        const fileInput = document.getElementById(chooseFileId);
+        const img = fileInput.files[0];
+
+        if(img.type.match('^image/')){
+            const filename = img.name
+            const filesize = img.size
             if(filesize <= 200000){//less than 200kb
                 console.log(filename);
+                //create form data
                 var formdata = new FormData();
-                //const file = document.getElementById('chooseFile');
-                const img = fileInput.files[0];
                 formdata.append("image", img);
-                
+                //set image 
+                const imagePreview = document.getElementById(imageNameId);
+                imagePreview.src = URL.createObjectURL(img);
+                //set name of image uploaded
+                nameLocation.textContent=filename;
+
                 const config = {
                         onUploadProgress: function(progressEvent) {
+                            totalByte.textContent='of '+progressEvent.total/1000 + ' kb';
+                            currByte.textContent=progressEvent.loaded/1000 + ' kb';
                             const percentCompleted = Math.round((progressEvent.loaded / progressEvent.total)*100);
-                            bar.setAttribute('value', percentCompleted);
-                            bar.previousElementSibling.textContent = `${percentCompleted}%`
+                            progressBar.setAttribute('value', percentCompleted);
+                            progressBar.previousElementSibling.textContent = `${percentCompleted}%`
                             if (percentCompleted === 100) {
-                                bar.previousElementSibling.textContent = `Upload complete!`
-                                ele_name.textContent=filename
+                                progressBar.previousElementSibling.textContent = `Upload complete!`
                             }
                         }
                     }
                 axios.post('https://httpbin.org/post', formdata, config)
                     .then(res => console.log(res))
-                    .catch(err => console.log(err))
-
+                    .then(()=> hideAfterUpload(progressBar,totalByte,buttonClose))
+                    .then(()=> showAfterUpload(currByte,nameLocation,trash))
+                    .catch(err => console.log(err));
             }else{
                 alert("File size = " + filesize + ", please upload an image less than 200kb");
             }
         }else{
             alert("Please upload an image");
         }
+    }
+    function hideAfterUpload(progressBar,totalByte,buttonClose){
+        //hide progress bar
+        progressBar.style.visibility='hidden';
+        //hide progress bar text
+        progressBar.previousElementSibling.style.visibility='hidden';
+        //hide total byte 
+        totalByte.style.visibility='hidden';
+        //hide button close 
+        buttonClose.style.visibility='hidden'
+    }
+
+    function showAfterUpload(currByte,nameLocation,trash){
+        //adjust currByte position 
+        currByte.style.position="absolute";
+        currByte.style.bottom='50%';
+        //adjust file name position
+        nameLocation.style.fontSize='15px';
+        nameLocation.style.top='34%';
+        //show trash icon 
+        trash.style.visibility='visible';
     }
 
     function displayFonts(){
@@ -268,67 +760,104 @@
             .catch((error) =>console.error(error));
         };
 
-        function dropHandler(ev,progressBar, ele_ID_name) {
-            console.log('File(s) dropped');
+    //inprogress
+    function dropHandler(ev, progressBarId, imgNameUploadLocationId, imageNameId, currByteId, totalByteId, displayBlockId,buttonCloseId,trashIconId){
+        console.log('File(s) dropped');
+        //get block to show
+        const elementToDisplay = document.getElementById(displayBlockId);
+        //get progress bar
+        const progressBar = document.getElementById(progressBarId);
+        //get byte references
+        const currByte = document.getElementById(currByteId);
+        const totalByte = document.getElementById(totalByteId);
+        //get button close reference
+        const buttonClose = document.getElementById(buttonCloseId); //need to add
+        //get image name location reference 
+        const nameLocation = document.getElementById(imgNameUploadLocationId);
+        //get trash reference
+        const trash = document.getElementById(trashIconId);//need to add
 
-            // Prevent default behavior (Prevent file from being opened)
-            ev.preventDefault();
-            console.log('dragstart: target.id = ${ev.target.id}');
-            if (ev.dataTransfer.items) {
-                // Use DataTransferItemList interface to access the file(s)
-                [...ev.dataTransfer.items].forEach((item, i) => {
-                // If dropped items aren't files, reject them
-                if (item.kind === 'file') {
-                    // Match only images eg png 
-                    if(item.type.match('^image/')){
-                        //get the file 
-                        const file = item.getAsFile();
-                        const filesize = file.size;
-                        if(filesize <= 200000){
-                            // log name 
-                            console.log(`… file[${i}].name = ${file.name}`);
-                            var formdata = new FormData();
-                            formdata.append("image", file);
+        //ensure all elements visible 
+        elementToDisplay.style.visibility = 'visible';
+        progressBar.style.visibility ='visible';
+        progressBar.previousElementSibling.style.visibility='visible';
+        totalByte.style.visibility='visible';
+        buttonClose.style.visibility='visible';
+
+        //ensure trash icon hidden
+        trash.style.visibility='hidden';
+
+        //adjust styling back to normal to account for reuploads
+        currByte.removeAttribute('style');
+        nameLocation.style.size="13px";
+        nameLocation.style.top="28%";
+
+        // Prevent default behavior (Prevent file from being opened)
+        ev.preventDefault();
+        console.log('dragstart: target.id = ${ev.target.id}');
+        if (ev.dataTransfer.items) {
+            // Use DataTransferItemList interface to access the file(s)
+            [...ev.dataTransfer.items].forEach((item, i) => {
+            // If dropped items aren't files, reject them
+            if (item.kind === 'file') {
+                // Match only images eg png 
+                if(item.type.match('^image/')){
+                    //get the file 
+                    const file = item.getAsFile();
+                    const filesize = file.size;
+                    const filename = file.name;
+                    if(filesize <= 200000){
+                        // log name 
+                        console.log(`… file[${i}].name = ${file.name}`);
+                        //create formdata
+                        var formdata = new FormData();
+                        formdata.append("image", file);
                         
-                            const bar = document.getElementById(progressBar);
-                            const ele_name = document.getElementById(ele_ID_name);
-                            
-                            const config = {
-                                    onUploadProgress: function(progressEvent) {
-                                        const percentCompleted = Math.round((progressEvent.loaded / progressEvent.total)*100);
-                                        bar.setAttribute('value', percentCompleted);
-                                        bar.previousElementSibling.textContent = `${percentCompleted}%`
-                                        if (percentCompleted === 100) {
-                                            bar.previousElementSibling.textContent = `Upload complete!`
-                                            ele_name.textContent=file.name
-                                        }
+                        //set file name reference
+                        nameLocation.textContent=filename;
+
+                        //set image 
+                        const imagePreview = document.getElementById(imageNameId);
+                        imagePreview.src = URL.createObjectURL(file);
+
+                        const config = {
+                                onUploadProgress: function(progressEvent) {
+                                    totalByte.textContent='of '+progressEvent.total/1000 + ' kb';
+                                    currByte.textContent=progressEvent.loaded/1000 + ' kb';
+                                    const percentCompleted = Math.round((progressEvent.loaded / progressEvent.total)*100);
+                                    progressBar.setAttribute('value', percentCompleted);
+                                    progressBar.previousElementSibling.textContent = `${percentCompleted}%`
+                                    if (percentCompleted === 100) {
+                                        progressBar.previousElementSibling.textContent = `Upload complete!`
                                     }
                                 }
-                                axios.post('https://httpbin.org/post', formdata, config)
-                                    .then(res => console.log(res))
-                                    .catch(err => console.log(err))
-                        }else{
-                            alert("File size = " + filesize + ", please upload an image less than 200kb");
-                        }
+                            }
+                            axios.post('https://httpbin.org/post', formdata, config)
+                                .then(res => console.log(res))
+                                .then(()=> hideAfterUpload(progressBar,totalByte,buttonClose))
+                                .then(()=> showAfterUpload(currByte,nameLocation,trash))
+                                .catch(err => console.log(err)) 
+                    }else{
+                        alert("File size = " + filesize + ", please upload an image less than 200kb");
                     }
-                    else{
-                        alert("Please upload an image");
-                    }
-                }else{
-                    alert("Please upload files only");
                 }
-                });
-            } else {
-                // Use DataTransfer interface to access the file(s)
-                [...ev.dataTransfer.files].forEach((file, i) => {
-                console.log(`… file[${i}].name = ${file.name}`);
-                });
+                else{
+                    alert("Please upload an image");
+                }
+            }else{
+                alert("Please upload files only");
             }
+            });
+        } else {
+            // Use DataTransfer interface to access the file(s)
+            [...ev.dataTransfer.files].forEach((file, i) => {
+            console.log(`… file[${i}].name = ${file.name}`);
+            });
         }
+    }
 
         function dragOverHandler(ev) {
             console.log('File(s) in drop zone');
-
             // Prevent default behavior (Prevent file from being opened)
             ev.preventDefault();
             }
@@ -337,11 +866,5 @@
 {% endblock %} 
 
 {% block footer %} 
-<style>
 
-</style>
-<div class = "footer"> 
-    <p> Please <u><b><a href="https://wa.me/6593360639">contact MeshBio</a></b></u> for more customization </p>
-    <button type="button" class="btn btn-primary" >Save & Update</button>
-</div>
 {% endblock %} 
