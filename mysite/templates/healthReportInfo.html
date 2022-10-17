@@ -212,6 +212,44 @@
     text-align: center;
     padding: 10px;
   }
+  .pdf-toggle{
+    margin-top: -35px;
+    display: flex;
+    flex-direction: row;
+    margin-left: 250px;
+  }
+  .page-box {
+    height: 33px;
+    width: 34.73114013671875px;
+    border-radius: 6px;
+    border: 1px solid #61616133;
+    background-color: white;
+    margin-top: -7px;
+    margin-left: 6px;
+    padding: 8px;
+    font-family: Poppins;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 14px;
+    letter-spacing: 0em;
+    text-align: center;
+    color:#717171;
+  }
+  .page-wordings {
+    height: 31px;
+    width: 34.73114013671875px;
+    left: 691.7294921875px;
+    top: 521.46875px;
+    border-radius: nullpx;
+    font-family: Poppins;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 14px;
+    letter-spacing: 0em;
+    text-align: center;
+    color:#717171;
+    margin-top: 2px;
+  }
 </style>
 <div style="display: flex; flex-direction: column;">
   <div class="top-ctn">
@@ -349,8 +387,21 @@
             color: #314c74;
           "
         >
-          Corporate Report Editor
+          Report PDF
         </p>
+        <div class="pdf-toggle">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#A1A1A1" class="bi bi-caret-left-fill" viewBox="0 0 16 16">
+            <path d="m3.86 8.753 5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1 1 0 0 0-1.659-.753l-5.48 4.796a1 1 0 0 0 0 1.506z"/>
+          </svg>
+          <div class="page-box">
+            10
+          </div>
+          <p class="page-wordings">of</p>
+          <p class="page-wordings">12</p>
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#A1A1A1" class="bi bi-caret-right-fill" viewBox="0 0 16 16">
+            <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/>
+          </svg>
+        </div>
       </div>
       <div
         style="

@@ -56,7 +56,7 @@
     align-items: middle;
   }
 
-  .search-field__input {
+  .search-field_input {
     height: 30.38px;
     width: 609.33px;
     font-size: 14px;
@@ -703,6 +703,102 @@ shown when checkbox is checked */
   .modal {
     margin-top: 200px;
   }
+
+  /*Dropdown button for corporate ID*/
+  .dropbtn {
+    height: 30.38px;
+    width: 609.33px;
+    font-size: 14px;
+    background-color: #f2f2f266;
+    border: 1px solid #61616133;
+    box-shadow: none;
+    -webkit-appearance: none;
+    border-radius: 6px;
+}
+
+/* The search field */
+#myInput {
+  box-sizing: border-box;
+  height: 30.38px;
+  width: 609.33px;
+  background-repeat: no-repeat;
+  font-size: 14px;
+  padding: 14px 20px 12px 45px;
+  border: none;
+  border-bottom: 1px solid #ddd;
+  text-align: left;
+}
+
+::-webkit-input-placeholder {
+  text-align: left;
+}
+
+:-moz-placeholder {
+  text-align: left;
+}
+
+/* The search field when it gets focus/clicked on */
+#myInput:focus {outline: 3px solid #ddd;}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f6f6f6;
+  min-width: 230px;
+  border: 1px solid #ddd;
+  z-index: 1;
+  text-align: left;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+.show {display:block;}
+
+.corp-id-display {
+  font-family: Poppins;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 14px;
+  letter-spacing: 0em;
+  text-align: left;
+  color: #717171;
+}
+#corpIdDropdown {
+  height: 200px;
+  overflow:scroll;
+}
+
+#selected-id-display {
+  font-family: Poppins;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 14px;
+  letter-spacing: 0em;
+  text-align: left;
+  color: #717171;
+  width: 271.7347717285156px;
+  left: -10477.9287109375px;
+  top: 6959.478515625px;
+  border-radius: nullpx;
+  padding:5px;
+}
 </style>
 
 <script>
@@ -720,9 +816,10 @@ shown when checkbox is checked */
   })
 
   function addNewBatch() {
-    number_batches = {{nBatches}}
+    number_batches = '{{nBatches}}'
+    console.log(number_batches)
+    number_batches = parseInt(number_batches)
     number_batches += 1;
-
     console.log(number_batches)
   }
 
@@ -800,6 +897,40 @@ shown when checkbox is checked */
 
       });
     }
+
+  function showIdDropdown() {
+    document.getElementById("corpIdDropdown").classList.toggle("show");
+  }
+
+  function filterFunction() {
+    var input, filter, ul, li, a, i;
+    input = document.getElementById("myInput");
+    filter = input.value.toUpperCase();
+    div = document.getElementById("corpIdDropdown");
+    a = div.getElementsByTagName("a");
+    for (i = 0; i < a.length; i++) {
+      txtValue = a[i].textContent || a[i].innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        a[i].style.display = "";
+      } else {
+        a[i].style.display = "none";
+      }
+    }
+  }
+
+  function selectID(idx) {
+    document.getElementById("corpIdDropdown").classList.toggle("show");
+    var corp_ids = '{{corporate_ids}}'
+    corp_ids = corp_ids.replace(new RegExp("&"+"#"+"x27;", "g"), "")
+    corp_ids = corp_ids.replace("[", "")
+    corp_ids = corp_ids.replace("]", "")
+    corp_ids = corp_ids.replace(" ", "")
+    var corp_ids_arr = corp_ids.split(',');
+    var id_selected = corp_ids_arr[idx-1]
+    console.log(id_selected)
+    document.getElementById("selected-id-display").innerHTML = id_selected;
+    // document.getElementById("selected-id-display").setAttribute("visibility", "visible") 
+  }
 </script>
 
 <div class="main">
@@ -960,15 +1091,36 @@ shown when checkbox is checked */
                 <p style="text-align: left; margin-left: 4px; color: red;">*</p>
               </div>
               <div class="modal-body-ctn">
-                <input class="search-field__input"></input>
+                <div class="dropdown">
+                  <button onclick="showIdDropdown()" class="dropbtn">
+                   <p id="selected-id-display"></p>
+                    <i class="material-icons-outlined searchbaricon">
+                      <svg xmlns="http://www.w3.org/2000/svg" style="margin-right:10px; margin-bottom:12px;" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                        <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                      </svg>
+                    </i>
+                  </button>
+                  <div id="corpIdDropdown" class="dropdown-content">
+                    <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
+                    <div style="height:10px"></div>
+                    {% for corporate_id in corporate_ids %}
+                    <ol>
+                      <li style="list-style:none">
+                        <a class="corp-id-display" onclick="selectID('{{forloop.counter}}')" >{{corporate_id}}</a>
+                      </li>
+                    </ol>
+                    {% endfor %} 
+                  </div>
+                </div>
+                <!-- <input class="search-field_input"></input>
                   <div class="relativeposition">
                     <i class="material-icons-outlined searchbaricon">
                       <svg xmlns="http://www.w3.org/2000/svg" style="margin-right:10px; margin-bottom:12px;" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
                         <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
                       </svg>
                     </i>
-                  </div>
-                </div>
+                  </div> !-->
+              </div>
               <br />
               <div class="form-label-ctn">
                 <p class="form-label">Corporate Health Report Title</p>

@@ -16,9 +16,30 @@ def summaryReport(response):
         ['ACME Corporate Health Report II', 'Batch D (2020, Oct), Batch E (2020,Dec)', '2020.12.24 15:32', 'Ready' ],
         ['ACME Corporate Health Report I', 'Batch A (2020, Jan), Batch B (2020, Mar), Batch C (2020, Jul)', '2020.08.24 12.29', 'Ready']
         ]
+
+    corporate_ids = [
+        'Singapore Airlines Ltd (SIA)',
+        'ACME',
+        'Company X',
+        'Company Y',
+        'Company B',
+        'NTUC',
+        'Govtech',
+        'MeshBio'
+    ]
+
+    # index of element in corporate_batches corresponds to index of company in corporate_ids
+    corporate_batches = [
+        ['Batch A (2021, Jan)', 'Batch B (2021, Mar)'],
+        ['Batch D (2020, Oct)', 'Batch E (2020,Dec)', 'Batch A (2020, Jan)', 'Batch B (2020, Mar)', 'Batch C (2020, Jul)'],
+        ['Batch D (2020, Oct)', 'Batch E (2020,Dec)', 'Batch A (2020, Jan)', 'Batch B (2020, Mar)', 'Batch C (2020, Jul)'],
+        ['Batch E (2020,Dec)', 'Batch A (2020, Jan)', 'Batch D (2020, Oct)', 'Batch B (2020, Mar)', 'Batch C (2020, Jul)']
+    ]
     return render(response, "summaryReport.html", 
     {
         "report_info": report_info,
+        "corporate_ids": corporate_ids,
+        "corporate_batches": corporate_batches,
         "nBatches": num_batches
       
     })
