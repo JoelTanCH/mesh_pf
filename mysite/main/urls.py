@@ -6,5 +6,6 @@ urlpatterns = [
     #path('base/', views.base, name='base page'), 
     path('', views.home, name='home page'), 
     path('setting/', views.recTemplateInfo, name='settings page'),
-    path('summaryReport/', views.summaryReport, name='summary report page')
+    path('summaryReport/', views.summaryReport, name='summary report page'),
+    path('ok/', views.ok, name='ok')
 ]

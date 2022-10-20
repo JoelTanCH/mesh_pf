@@ -31,3 +31,6 @@ def recTemplateInfo(response):
     return render(response,"setting.html",{
         "template_info":template_info
     })
+
+def ok(response):
+    return render(response,"")

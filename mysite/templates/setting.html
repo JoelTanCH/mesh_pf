@@ -125,7 +125,7 @@
 
     .form-select{
         position:absolute;
-        width:35.5%;
+        width:45.5%;
         font-family: 'Poppins';
         font-style: normal;
         font-weight: 500;
@@ -342,14 +342,14 @@
                             <div class="progress-bar-overall" id="frontpage-logo-box">
                                 <img class="uploaded-image" id="header-image-frontpage" height="90" width="90">
                                 <p class="file-name" id="frontpage-name"></p>
-                                <button type="button" id="button-close-frontpage" class="btn-close" aria-label="Close" onclick="toggleLogoBox('frontpage-logo-box','header-image-frontpage','progress-bar','currByteFrontpage','totalByteFrontpage','frontpage-name','button-close-frontpage','button-close-frontpage')"></button>
-                                <label for="progress-bar" class="percentage-loaded">0%</label>
+                                <button type="button" id="button-close-frontpage" class="btn-close" aria-label="Close" onclick="toggleLogoBox('frontpage-logo-box','header-image-frontpage','progress-bar','currByteFrontpage','totalByteFrontpage','frontpage-name','button-close-frontpage','progress-bar-perc','trash-icon-frontpage')"></button>
+                                <label for="progress-bar" class="percentage-loaded" id="progress-bar-perc">0%</label>
                                 <progress id="progress-bar" value="0" max="100" class="progress-bar-settings"></progress>
                                 <div class="byte-status">
                                     <span id="currByteFrontpage"></span>
                                     <span id="totalByteFrontpage"></span>
                                 </div>
-                                <svg id="trash-icon-frontpage" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16" onclick="toggleLogoBox('frontpage-logo-box','header-image-frontpage','progress-bar','currByteFrontpage','totalByteFrontpage','frontpage-name','trash-icon-frontpage')">
+                                <svg id="trash-icon-frontpage" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16" onclick="toggleLogoBox('frontpage-logo-box','header-image-frontpage','progress-bar','currByteFrontpage','totalByteFrontpage','frontpage-name','trash-icon-frontpage','progress-bar-perc','trash-icon-frontpage')">
                                     <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
                                     <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
                                 </svg>
@@ -373,14 +373,14 @@
                             <div class="progress-bar-overall" id="header-logo-box">
                                 <img class="uploaded-image" id="header-image-logo" height="90" width="90">
                                 <p class="file-name" id="header-name"><p>
-                                <button type="button" id="button-close-header" class="btn-close" aria-label="Close" onclick="toggleLogoBox('header-logo-box','header-image-logo','header-progress-bar','currByteLogo','totalByteLogo','header-name','button-close-header')"></button>
-                                <label for="header-progress-bar" class="percentage-loaded">0%</label>
+                                <button type="button" id="button-close-header" class="btn-close" aria-label="Close" onclick="toggleLogoBox('header-logo-box','header-image-logo','header-progress-bar','currByteLogo','totalByteLogo','header-name','button-close-header','header-progress-bar-perc','trash-icon-header')"></button>
+                                <label for="header-progress-bar" class="percentage-loaded" id="header-progress-bar-perc">0%</label>
                                 <progress id="header-progress-bar" value="0" max="100" class="progress-bar-settings"></progress>
                                 <div class="byte-status">
                                     <span id="currByteLogo"></span>
                                     <span id="totalByteLogo"></span>
                                 </div>
-                                <svg id="trash-icon-header" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16" onclick="toggleLogoBox('header-logo-box','header-image-logo','header-progress-bar','currByteLogo','totalByteLogo','header-name','trash-icon-header')">
+                                <svg id="trash-icon-header" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16" onclick="toggleLogoBox('header-logo-box','header-image-logo','header-progress-bar','currByteLogo','totalByteLogo','header-name','trash-icon-header','header-progress-bar-perc','trash-icon-header')">
                                     <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
                                     <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
                                 </svg>
@@ -393,12 +393,11 @@
                         <p> Please <u><b><a href="https://wa.me/6593360639" style="color:#314C74">contact MeshBio</a></b></u> for more customization </p>
                     </div>
                     <div class="inline-block-child"> 
-                        <button type="button" class="btn btn-primary" style="position:relative;left:460px;" onclick="alert('saved!')">Save & Update</button>
+                        <button type="button" class="btn btn-primary" style="position:relative;left:460px;" onclick="upload('fontSelector','header-image-frontpage','header-image-logo')">Save & Update</button>
                     </div>
                 </div>
             </div>
         <div class="tab-pane" id="recTemplate">
-            <div class="outer-row border g-0 rounded shadow-sm">
                 <div style="border-bottom: 1px solid #7788A3;">
                     <span class="RecTemplateHeading" style="position:relative;left:-240px;"> Panel </span>
             
@@ -417,7 +416,8 @@
                 </div>
                 <table>
                     {% for row in template_info %}
-                    <col width="25%"><col width="75%">  
+                    <col width="25%"><col width="75%"> 
+                    <div style="padding-top:5px;"></div>
                     <tr>
                         <td valign="top" id='panel-key-{{forloop.counter}}' class="panel-label"> {{row.0}}</td>
                         <td colspan="80" class="panel-details" id="panel-detail-{{forloop.counter}}">{{row.1}}</td>
@@ -466,10 +466,52 @@
                     {% endfor %}
                 </table>
             </div>
-        </div>
     </div>
 </div>
 <script>
+    //obtain frontpage, logo image, and selection of font 
+    //check if all 3 are present 
+    // if yes upload to backend end point
+    let dropdownListFontSelector = document.getElementById('fontSelector');
+    console.log(typeof(dropdownListFontSelector.value));
+    console.log(dropdownListFontSelector.value.length)
+
+    dropdownListFontSelector.onchange = (ev) =>{
+      console.log("Selected font value is: " + dropdownListFontSelector.value);
+    }
+
+    function upload(fontSelectorId,frontpageLogoId,headerLogoId){
+        let fontSelectorElement = document.getElementById(fontSelectorId);
+        let headerLogoElement = document.getElementById(headerLogoId);
+        let frontpageLogoElement = document.getElementById(frontpageLogoId);
+
+        if(checkIfCanUpload(fontSelectorElement,frontpageLogoElement,headerLogoElement)){
+            console.log('hi');
+        }
+    }
+    
+    function checkIfCanUpload(fontSelectorElement,frontpageLogoElement,headerLogoElement){
+        
+        let headerLogoSrc = headerLogoElement.src;
+        let frontpageLogoSrc = headerLogoElement.src;
+        console.log(headerLogoSrc);
+        console.log(typeof(headerLogoSrc));
+        
+        if(fontSelectorElement.value.length == 0){
+            alert("Please choose a Font Style!");
+            return false;   
+        }else if(headerLogoSrc.length == 0){
+            alert("Please upload a Header Logo!");
+            return false; 
+        } else if(frontpageLogoSrc.length == 0){
+            alert("Please upload a Frontpage Logo!");
+            return false; 
+        }else{
+            return true;
+        }
+    }
+
+
     function saveAll(editAllId,pencilAllId){
         //obtain length of template info defined in views.py
         var templateInfoLength = "{{template_info|length}}";
@@ -595,13 +637,37 @@
         content.style.height='884.5703735351562px;'; //based on figma specifications
     }
    
-    function toggleLogoBox(logoBox,imageID,progressBarID,totalByteID,currByteID,filenameID,closeIconId){
+    //hide the generic logo box elements
+    function toggleLogoBox(logoBox,imageID,progressBarID,totalByteID,currByteID,filenameID,closeIconId,progressBarPerc,trashIconId){
         resetLogoBox(imageID,progressBarID,totalByteID,currByteID,filenameID);
         const ele = document.getElementById(logoBox);
         ele.style.visibility = 'hidden';
         const closeIcon = document.getElementById(closeIconId);
         closeIcon.style.visibility='hidden';
+        const progressBar = document.getElementById(progressBarID);
+        progressBar.style.visibility='hidden';
+        const totalByte = document.getElementById(totalByteID);
+        totalByte.style.visibility='hidden';
+        const currByte= document.getElementById(currByteID);
+        currByte.style.visibility='hidden'; 
+        const progressBarPercentage = document.getElementById(progressBarPerc);
+        progressBarPercentage.style.visibility='hidden';
+        const trashIcon = document.getElementById(trashIconId);
+        trashicon.style.visibility='hidden';
     }
+    //hide the left logo box trash icon which pops up after cancelling early 
+    function toggleLogoBoxWrapper(logoBox,imageID,progressBarID,totalByteID,currByteID,filenameID,closeIconId,progressBarPerc,trashIconId){
+        toggleLogoBox(logoBox,imageID,progressBarID,totalByteID,currByteID,filenameID,closeIconId,progressBarPerc)
+        const trashIcon = document.getElementById(trashIconId);
+        trashicon.style.visibility='hidden';
+    }
+    //hide the right logo box trash icon which pops up after cancelling early 
+    function toggleLogoBoxRight(logoBox,imageID,progressBarID,totalByteID,currByteID,filenameID,closeIconId,progressBarPerc,trashIconId){
+        toggleLogoBox(logoBox,imageID,progressBarID,totalByteID,currByteID,filenameID,closeIconId,progressBarPerc)
+        const trashIcon = document.getElementById(trashIconId);
+        trashicon.style.visibility='hidden';
+    }
+
     //reset values in logoBox after user clicks 'x'
     function resetLogoBox(imageID,progressBarID,totalByteID,currByteID,filenameID){
         console.log("Reset logo box")
@@ -664,7 +730,7 @@
         //get image name location reference 
         const nameLocation = document.getElementById(imgNameUploadLocationId);
         //get trash icon 
-        const trash = document.getElementById(trashIconId);
+        const trashIcon = document.getElementById(trashIconId);
 
         //ensure all elements visible 
         elementToDisplay.style.visibility = 'visible';
@@ -674,7 +740,7 @@
         buttonClose.style.visibility='visible';
 
         //ensure trash icon hidden
-        trash.style.visibility='hidden';
+        trashIcon.style.visibility='hidden';
 
         //adjust styling back to normal to account for reuploads
         currByte.removeAttribute('style');
@@ -688,6 +754,7 @@
         if(img.type.match('^image/')){
             const filename = img.name
             const filesize = img.size
+            console.log(filesize);
             if(filesize <= 200000){//less than 200kb
                 console.log(filename);
                 //create form data
@@ -698,6 +765,8 @@
                 imagePreview.src = URL.createObjectURL(img);
                 //set name of image uploaded
                 nameLocation.textContent=filename;
+
+                const controller = new AbortController();
 
                 const config = {
                         onUploadProgress: function(progressEvent) {
@@ -714,7 +783,7 @@
                 axios.post('https://httpbin.org/post', formdata, config)
                     .then(res => console.log(res))
                     .then(()=> hideAfterUpload(progressBar,totalByte,buttonClose))
-                    .then(()=> showAfterUpload(currByte,nameLocation,trash))
+                    .then(()=> showAfterUpload(currByte,nameLocation,trashIcon))
                     .catch(err => console.log(err));
             }else{
                 alert("File size = " + filesize + ", please upload an image less than 200kb");
@@ -740,7 +809,7 @@
         currByte.style.bottom='50%';
         //adjust file name position
         nameLocation.style.fontSize='15px';
-        nameLocation.style.top='34%';
+        nameLocation.style.top='34%';   
         //show trash icon 
         trash.style.visibility='visible';
     }
