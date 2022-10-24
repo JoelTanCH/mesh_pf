@@ -801,6 +801,7 @@ shown when checkbox is checked */
 }
 </style>
 
+
 <script>
   function displayActionDropdown() {
     let actionDropdown = document.getElementById("actionDropdown")
@@ -816,11 +817,30 @@ shown when checkbox is checked */
   })
 
   function addNewBatch() {
+    console.log('addNewBatch() called')
     number_batches = '{{nBatches}}'
     console.log(number_batches)
     number_batches = parseInt(number_batches)
     number_batches += 1;
     console.log(number_batches)
+    var formData  = new FormData()
+    formData.append('number_batches', number_batches)
+    // axios.post('update_nbatches', formData, {headers: {'X-CSRFToken': 'csrftoken'}})
+    // .then(res => console.log(res))
+    let req = axios({
+		method: 'post',
+		url: 'update_nbatches',
+		xstfCookieName: 'csrftoken',
+		xsrfHeaderName: 'X-CSRFToken',
+		data: formData,
+		headers: {
+			'X-CSRFToken': 'csrftoken'
+		}
+    }).then((response) => {
+      this.msg = response.data;
+      console.log('response');
+    });
+    return;
   }
 
   function prep_modal()

@@ -1,8 +1,10 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.template import loader
+from django.views.decorators.csrf import csrf_exempt
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
 
-num_batches = 1
 
 # Create your views here.
 def home(response):
@@ -11,6 +13,49 @@ def home(response):
     return render(response, "home.html", props)
 
 def summaryReport(response):
+    n_batches = 1
+    report_info = [
+        ['SIA Corporate Health Report I',  'Batch A (2021, Jan), Batch B (2021, Mar)','2021.08.20 08:30', 'Error found'],
+        ['ACME Corporate Health Report II', 'Batch D (2020, Oct), Batch E (2020,Dec)', '2020.12.24 15:32', 'Ready' ],
+        ['ACME Corporate Health Report I', 'Batch A (2020, Jan), Batch B (2020, Mar), Batch C (2020, Jul)', '2020.08.24 12.29', 'Ready']
+        ]
+
+    corporate_ids = [
+        'Singapore Airlines Ltd (SIA)',
+        'ACME',
+        'Company X',
+        'Company Y',
+        'Company B',
+        'NTUC',
+        'Govtech',
+        'MeshBio'
+    ]
+
+    # index of element in corporate_batches corresponds to index of company in corporate_ids
+    corporate_batches = [
+        ['Batch A (2021, Jan)', 'Batch B (2021, Mar)'],
+        ['Batch D (2020, Oct)', 'Batch E (2020,Dec)', 'Batch A (2020, Jan)', 'Batch B (2020, Mar)', 'Batch C (2020, Jul)'],
+        ['Batch D (2020, Oct)', 'Batch E (2020,Dec)', 'Batch A (2020, Jan)', 'Batch B (2020, Mar)', 'Batch C (2020, Jul)'],
+        ['Batch E (2020,Dec)', 'Batch A (2020, Jan)', 'Batch D (2020, Oct)', 'Batch B (2020, Mar)', 'Batch C (2020, Jul)']
+    ]
+    print('rendering summaryReport page')
+    return render(response, "summaryReport.html", 
+    {
+        "report_info": report_info,
+        "corporate_ids": corporate_ids,
+        "corporate_batches": corporate_batches,
+        "nBatches": n_batches
+      
+    })
+
+@api_view(["POST"])
+@csrf_exempt
+def update_nbatches(response):
+    # if response == 'post':
+    print('response data is')
+    new_nbatch = response.data.get('number_batches', None)
+    print(new_nbatch)
+    print('updated n_batches:', new_nbatch)
     report_info = [
         ['SIA Corporate Health Report I',  'Batch A (2021, Jan), Batch B (2021, Mar)','2021.08.20 08:30', 'Error found'],
         ['ACME Corporate Health Report II', 'Batch D (2020, Oct), Batch E (2020,Dec)', '2020.12.24 15:32', 'Ready' ],
@@ -40,30 +85,14 @@ def summaryReport(response):
         "report_info": report_info,
         "corporate_ids": corporate_ids,
         "corporate_batches": corporate_batches,
-        "nBatches": num_batches
+        "nBatches": new_nbatch
       
     })
-
-def update_nbatches(response):
-    # report_info = [
-    #     ['SIA Corporate Health Report I', '2021.08.20 08:30', 'Batch A (2021, Jan), Batch B (2021, Mar)'],
-    #     ['ACME Corporate Health Report II', '2020.12.24 15:32', 'Batch D (2020, Oct), Batch E (2020,Dec)'],
-    #     ['ACME Corporate Health Report I', '2020.08.24 12.29', 'Batch A (2020, Jan), Batch B (2020, Mar), Batch C (2020, Jul)']
-    #     ]
-    if response == 'POST':
-        num_batches += 1
-        print('added')
-        return render(response, "summaryReport.html", 
-        {
-            # "report_info": report_info,
-            "nBatches": num_batches
-        
-        })
 
 def get_nbatches(response):
     if response == 'GET':
         return render(response, 'summaryReport.html', {
-            "nBatches" : num_batches
+            "nBatches" : n_batches
         })
     
 
