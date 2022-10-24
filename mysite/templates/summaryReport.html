@@ -72,6 +72,15 @@
     margin-bottom: 39.04px;
   }
 
+  ul, li {
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 0;
+    /* margin: 2px;
+    border-radius: 5px;
+    padding: 5px; */
+}
+
   .form-label {
     text-align: left;
     margin-left: -15px;
@@ -704,6 +713,10 @@ shown when checkbox is checked */
     margin-top: 200px;
   }
 
+  #CorpRepPopUp {
+    height: 1000px;
+  }
+
   /*Dropdown button for corporate ID*/
   .dropbtn {
     height: 30.38px;
@@ -799,6 +812,7 @@ shown when checkbox is checked */
   border-radius: nullpx;
   padding:5px;
 }
+
 </style>
 
 
@@ -816,31 +830,74 @@ shown when checkbox is checked */
     prep_modal();
   })
 
+
   function addNewBatch() {
-    console.log('addNewBatch() called')
-    number_batches = '{{nBatches}}'
-    console.log(number_batches)
-    number_batches = parseInt(number_batches)
-    number_batches += 1;
-    console.log(number_batches)
-    var formData  = new FormData()
-    formData.append('number_batches', number_batches)
-    // axios.post('update_nbatches', formData, {headers: {'X-CSRFToken': 'csrftoken'}})
-    // .then(res => console.log(res))
-    let req = axios({
-		method: 'post',
-		url: 'update_nbatches',
-		xstfCookieName: 'csrftoken',
-		xsrfHeaderName: 'X-CSRFToken',
-		data: formData,
-		headers: {
-			'X-CSRFToken': 'csrftoken'
-		}
-    }).then((response) => {
-      this.msg = response.data;
-      console.log('response');
-    });
-    return;
+    // console.log('addNewBatch() called')
+    // number_batches = '{{nBatches}}'
+    // console.log(number_batches)
+    // number_batches = parseInt(number_batches)
+    // number_batches += 1;
+    // console.log(number_batches)
+    // var formData  = new FormData()
+    // formData.append('number_batches', number_batches)
+    // // axios.post('update_nbatches', formData, {headers: {'X-CSRFToken': 'csrftoken'}})
+    // // .then(res => console.log(res))
+    // let req = axios({
+		// method: 'post',
+		// url: 'update_nbatches',
+		// xstfCookieName: 'csrftoken',
+		// xsrfHeaderName: 'X-CSRFToken',
+		// data: formData,
+		// headers: {
+		// 	'X-CSRFToken': 'csrftoken'
+		// }
+    // }).then((response) => {
+    //   this.msg = response.data;
+    //   console.log('response');
+    // });
+    // return;
+    // $(document).ready(function () {
+    //   $("#addBatch").submit(function (event) {
+    //     event.preventDefault();
+    //     $.ajax({
+    //       type: "POST",
+    //       url: "update_nbatches",
+    //       data: {
+    //         'nBatches': parseInt('{{nBatches}}') + 1 // from form
+    //       },
+    //     });
+    //     return false;
+    //   });
+    // });
+    // number_batches = '{{nBatches}}'
+    // console.log(number_batches)
+    // number_batches = parseInt(number_batches)
+    // number_batches += 1;
+    // console.log(number_batches)
+    let newSelector = document.getElementById("batch-selector").cloneNode(true)
+    newSelector.className = 'new-batch-selector-added'
+    let btn = document.createElement("button");
+    btn.innerHTML = "Delete";
+    btn.type = "button"
+    btn.onclick = function() {
+      return del_batch_selector(this)
+
+      //this.parentElement.parentElement.parentElement.removeChild(this.parentElement.parentElement)
+    }
+    newSelector.childNodes[1].appendChild(btn)
+    let element = document.getElementById("batch-ctn")
+    let height = document.querySelector("#batch-selector").offsetHeight
+    let modalHeight = document.querySelector('.modal-content').offsetHeight
+    document.getElementsByClassName("modal-content")[0].style.height = modalHeight + height + 10 + 'px'
+    element.appendChild(newSelector)
+  }  
+  function del_batch_selector(ele) {
+    ele.parentElement.parentElement.innerHTML=""
+    const height_of_selector = document.getElementById('batch-selector').offsetHeight
+    const modalHeight = document.querySelector('.modal-content').offsetHeight
+    document.getElementsByClassName("modal-content")[0].style.height = (modalHeight - height_of_selector) + 'px'
+    event.stopPropagation()
+    return false;
   }
 
   function prep_modal()
@@ -949,8 +1006,41 @@ shown when checkbox is checked */
     var id_selected = corp_ids_arr[idx-1]
     console.log(id_selected)
     document.getElementById("selected-id-display").innerHTML = id_selected;
+
+    //TODO: on select, reset all batches dropdown (remove any added dropdowns, reset selection)
+    var corp_batches = {{corporate_batches|safe}}
+    corp_batches_arr = corp_batches[idx-1]
+    var select = document.getElementById("add-batches-dropdown");
+    const batch_selectors_added = document.getElementsByClassName("new-batch-selector-added");
+    if (batch_selectors_added.length > 0) {
+      const num_batch_selectors_added = batch_selectors_added.length
+      const height_of_selector = document.getElementById('batch-selector').offsetHeight
+      const height_to_remove = height_of_selector * num_batch_selectors_added
+      const modalHeight = document.querySelector('.modal-content').offsetHeight
+      document.getElementsByClassName("modal-content")[0].style.height = (modalHeight - height_to_remove) + 'px'
+      removeElementsByClass(batch_selectors_added)
+    }
+    removeOptions(select)
+    for (i = 0; i < corp_batches_arr.length; i++) {
+      var option = document.createElement("option");
+      option.text = corp_batches_arr[i];
+      option.value = corp_batches_arr[i];
+      select.appendChild(option);
+    }
+
     // document.getElementById("selected-id-display").setAttribute("visibility", "visible") 
   }
+
+  function removeElementsByClass(elements){
+    while(elements.length > 0){
+        elements[0].parentNode.removeChild(elements[0]);
+    }
+}
+
+  function removeOptions(select) {
+    for (a in select.options) { select.options.remove(0); }
+  }
+
 </script>
 
 <div class="main">
@@ -1086,7 +1176,10 @@ shown when checkbox is checked */
             value="1"
             disabled
           />
-          <button class="pagination-button" href="http://127.0.0.1:8000/summaryReport/modalPageTwo">Next</button>
+          <form method="post", id="addBatch">
+            {% csrf_token %}
+            <button class="pagination-button" href="http://127.0.0.1:8000/summaryReport/modalPageTwo">Next</button>
+          </form>
         </div>
       </div>
     </div>
@@ -1189,37 +1282,35 @@ shown when checkbox is checked */
                 <p class="form-label">Batches to include in Corporate Report</p>
                 <p style="text-align: left; margin-left: 4px; color: red;">*</p>
               </div>
-              <div id="batch-ctn" text>
-                {% with ''|center:nBatches as range %}
-                {% for _ in range %}
-                    <div class="modal-body-ctn">
-                      <select class="btn btn-secondary dropdown-toggle" 
-                      aria-label="Default select example"
-                      style="width: 609.33px;
-                            height: 30.38px;
-                            float: right;
-                            border-radius: 6px;
-                            background-color: #f2f2f266;
-                            border: 1px solid #61616133;
-                            color: black;
-                            margin-right: 2px;">
-                        <option selected style="text-align: center;"></option>
-                        <option style="text-align: center;" value="1">One</option>
-                        <option style="text-align: center;" value="2">Two</option>
-                        <option style="text-align: center;" value="3">Three</option>
-                      </select>
-                    </div>
-                    <div style="height:8.42px"></div>
-                    <button class="add-batch-btn" onClick="addNewBatch()">
-                      <svg xmlns="http://www.w3.org/2000/svg" style="margin-bottom:3px" width="12px" height="12px" fill="white" class="bi bi-plus-circle" viewBox="0 0 16 16">
-                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-                        <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
-                      </svg>
-                      Add new batch
-                    </button>
-                {% endfor %}
-                {% endwith %}
-              </div>
+                <div id="batch-ctn" text>
+                  <ul>
+                    <li id="batch-selector">
+                      <div class="modal-body-ctn">
+                        <select class="btn btn-secondary dropdown-toggle" 
+                        aria-label="Default select example"
+                        style="width: 609.33px;
+                              height: 30.38px;
+                              float: right;
+                              border-radius: 6px;
+                              background-color: #f2f2f266;
+                              border: 1px solid #61616133;
+                              color: black;
+                              margin-right: 2px;"
+                          id="add-batches-dropdown">
+                          <option selected style="text-align: center;"></option>
+                        </select>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+                <div style="height:8.42px"></div>
+                <button class="add-batch-btn" onClick="addNewBatch()">
+                  <svg xmlns="http://www.w3.org/2000/svg" style="margin-bottom:3px" width="12px" height="12px" fill="white" class="bi bi-plus-circle" viewBox="0 0 16 16">
+                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                    <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+                  </svg>
+                  Add new batch
+                </button>
             </div>
             <div style="height: 20px;"></div>
       </div>
