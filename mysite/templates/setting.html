@@ -298,7 +298,7 @@
     .units{
         position:relative;
         left:-1575px;
-        bottom:-220px;
+        bottom:-200px;
     }
     .outer-row{
         height:938px;
@@ -393,7 +393,7 @@
                         <p> Please <u><b><a href="https://wa.me/6593360639" style="color:#314C74">contact MeshBio</a></b></u> for more customization </p>
                     </div>
                     <div class="inline-block-child"> 
-                        <button type="button" class="btn btn-primary" style="position:relative;left:460px;" onclick="upload('fontSelector','header-image-frontpage','header-image-logo')">Save & Update</button>
+                        <button type="button" class="btn btn-primary" style="position:relative;left:460px;" onclick="upload('fontSelector','chooseFileFrontpage','chooseFileHeader')">Save & Update</button>
                     </div>
                 </div>
             </div>
@@ -426,12 +426,12 @@
                         <td>
                             {% if row.0 == 'Diabetes' or row.0 == 'Lipids' %}
                             <div style="position:relative; bottom:5px;left:7px">
-                                <span style="position:relative;top:-52px; left:20px;">Units:</span>
+                                <span style="position:relative;top:-32px; left:20px;">Units:</span>
                                 <select class="btn btn-secondary dropdown-toggle"
                                     aria-label="Default select example"
                                     style="
                                         position:relative;
-                                        top:-23px;
+                                        top:-8px;
                                         left:-43px;
                                         width: 160px;
                                         height: 35px;
@@ -486,25 +486,54 @@
         let frontpageLogoElement = document.getElementById(frontpageLogoId);
 
         if(checkIfCanUpload(fontSelectorElement,frontpageLogoElement,headerLogoElement)){
-            console.log('hi');
+            
+            let fontSelection = fontSelectorElement.value;
+            let headerLogo = headerLogoElement.files[0];
+            console.log("header logo type: " + typeof(headerLogo));
+
+            let frontpageLogo = frontpageLogoElement.files[0];
+
+            //console.log(headerLogo);
+            //console.log(frontpageLogo);
+
+            let formData = new FormData();
+            formData.append("font",  fontSelection);
+            const dick ={
+                "font": fontSelection,
+                "header": headerLogo,
+                "frontpage": frontpageLogo
+            }
+
+            //const diction = {"font": fontSelection};
+            formData.append("header",headerLogo);
+            formData.append("frontpage", frontpageLogo);
+            console.log("===========");
+            for(var pair of formData.entries()){
+                console.log(pair[0] + ', ' + pair[1]);
+            }
+
+            return axios.post('http://127.0.0.1:8000/home/upload/', dick,{
+                headers:{
+                    "X-CSRFToken": "{{ csrf_token }}",
+                    'Content-Type': 'multipart/form-data' 
+                }
+                }).then(res => console.log(res.data))
+                .catch(err => console.log(err));
+
+
         }
     }
     
     function checkIfCanUpload(fontSelectorElement,frontpageLogoElement,headerLogoElement){
         
-        let headerLogoSrc = headerLogoElement.src;
-        let frontpageLogoSrc = headerLogoElement.src;
-        console.log(headerLogoSrc);
-        console.log(typeof(headerLogoSrc));
-        
         if(fontSelectorElement.value.length == 0){
             alert("Please choose a Font Style!");
             return false;   
-        }else if(headerLogoSrc.length == 0){
-            alert("Please upload a Header Logo!");
-            return false; 
-        } else if(frontpageLogoSrc.length == 0){
+        }else if(!frontpageLogoElement.files[0]){
             alert("Please upload a Frontpage Logo!");
+            return false; 
+        } else if(!headerLogoElement.files[0]){
+            alert("Please upload a Header Logo!");
             return false; 
         }else{
             return true;
@@ -581,6 +610,19 @@
         cancel(saveCancelId,dateId,rowDetailId,pencilId);
         //notify 
         alert("saved: " + key);
+        //content to save = content , key  = key 
+        //const jsonDataToUpdate = {key : content}
+        //console.log(jsonDataToUpdate)
+        let formData = new FormData();
+        formData.append('alcohol', content)
+
+        axios.post('http://127.0.0.1:8000/home/updateRecommendations/', formData,{
+                headers:{
+                    "X-CSRFToken": "{{ csrf_token }}",
+                    'Content-Type': 'multipart/form-data' 
+                }
+                }).then(res => console.log(res.data))
+                .catch(err => console.log(err));
     }
 
     function cancel(saveCancelId,dateId,rowId,pencilId){
@@ -778,9 +820,12 @@
                             if (percentCompleted === 100) {
                                 progressBar.previousElementSibling.textContent = `Upload complete!`
                             }
+                        },headers:{
+                            "X-CSRFToken": "{{ csrf_token }}",  
                         }
                     }
-                axios.post('https://httpbin.org/post', formdata, config)
+
+                axios.post('http://127.0.0.1:8000/home/dump/', formdata,config)
                     .then(res => console.log(res))
                     .then(()=> hideAfterUpload(progressBar,totalByte,buttonClose))
                     .then(()=> showAfterUpload(currByte,nameLocation,trashIcon))

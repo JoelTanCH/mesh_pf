@@ -1,9 +1,63 @@
+import re
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from django.template import loader
+from PIL import Image
+import json
+
+from .forms import RecommendationsForm, UploadFileForm
 
 
 # Create your views here.
+
+def updateRecommendations(request):
+    print("REQUEST = ", request)
+
+    if request.FILES:
+        form = RecommendationsForm(request.POST, request.FILES)
+        Alcohol = form['Alcohol'].value()
+        Weight =form['Weight'].value()
+        Blood_Pressure = form['Blood_Pressure'].value()
+        Smoking = form['Smoking'].value()
+        Lipids = form['Lipids'].value()
+        Diabetes = form['Diabetes'].value()
+
+        print("alc: ", Alcohol)
+
+        return JsonResponse({"success":True})
+    return JsonResponse({"success": False})
+
+
+
+def dump(request):
+    print("REQUEST = ", request)
+    if request.FILES:
+        return JsonResponse({"success":True})
+    return JsonResponse({"success": False})
+
+
+def upload(request):
+    print("REQUEST = ", request)
+    if request.FILES:
+        form = UploadFileForm(request.POST, request.FILES)
+        print("form: ", form)
+        fontType = form['font'].value()
+        print("FONTTYPE = ", fontType)
+        #for f in request.FILES:
+        #    print(f)    header, frontpage 
+        print("REQUEST = ", request)
+        print("FILES: ", request.FILES)
+        print(request.FILES['header']) # gives name 
+        #print(request.FILES[''])
+        print(type(request.FILES['header'])) #gives django core files uploaded file obkect
+        #print(request.FILES['header'].file) #gives io.bytesIO
+        imgHeader = Image.open(request.FILES['header'])
+        imgHeader.save(f"./uploads/header_{request.FILES['header']}.jpeg",format='JPEG')
+        imgFrontpage = Image.open(request.FILES['frontpage'])
+        imgFrontpage.save(f"./uploads/frontpage_{request.FILES['frontpage']}.jpeg",format='JPEG')
+        return JsonResponse({"success":True})
+    return JsonResponse({"success": False})
+
 def home(response):
     #return HttpResponse("<h1> HOME PAGE</>")
     props = {}
@@ -19,18 +73,25 @@ def summaryReport(response):
 
 
 def recTemplateInfo(response):
-    template_info = [
-        ["Alcohol","Health professionals recognise that it may not be possible to practise total abstinence for individuals who already consume alcohol regularly. However it is advisable to adhere to established recommendations on consumption limits ie: 1 unit of alcohol per day for females, 2 units of alcohol per day for males."],
-        ["Smoking","Complete cessation is always recommended by health professionals. The trajectory to this end-goal should be gradual and progressive. Individuals may consult their health professional or seek a counsellour's advice at QuitLine 1800 438 2000."],
-        ["Weight","Health professionals recommend regular exercise of at least 3 times weekly for 30 mins per session (moderate-intensity aerobic physical activity). Reduce consumption of foodstuffs high in carbohydrate content, saturated and trans-fats"],
-        ["Blood Pressure","Health professionals recommend regular exercise of at least 3 times weekly for 30 mins per session (moderate-intensity aerobic physical activity). Reduce consumption of diet high in salt content. A review of the individual's blood pressure is advised in any case of concern."],
-        ["Diabetes","Health professionals recommend regular exercise of at least 3 times weekly for 30 mins per session  (moderate-intensity aerobic physical activity). Reduce consumption of carbohydrates (e.g. rice, noodles, bread), sugary and fatty foods. Increase consumption of low- GI/high-fibre foods like vegetables and brown rice at most meals if possible. A baseline review of the individual's test results is advised."],
-        ["Lipids","Health professionals recommend regular exercise of at least 3 times weekly for 30 mins per session  (moderate-intensity aerobic physical activity). Reduce consumption of foodstuffs high in saturated and trans-fats. A baseline review of the individual's test results is advised."]
-    ]
-    
+
+    file_path = "C:/Users/joelt/OneDrive/Documents/GitHub/mesh_pf/mysite/main/executiveSummaryReference.json"
+
+    with open(file_path, "r") as fp:
+        data = json.load(fp)
+
+    key_mapping = {
+        "Alcohol": "habits-alcoholIntake",
+        "Smoking": "habits-smoking",
+        "Weight": "bodyMassIndex",
+        "Blood Pressure": "systolicBloodPressure",
+        "Diabetes": "glucose",
+        "Lipids": "totalCholesterol"
+    }
+
+    template_info = [[k, " ".join(data[v]["recommendations"])] for k, v in key_mapping.items()]
     return render(response,"setting.html",{
         "template_info":template_info
     })
 
 def ok(response):
-    return render(response,"")
+    return render(response,"")    

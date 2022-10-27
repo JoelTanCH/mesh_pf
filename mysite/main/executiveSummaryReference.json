@@ -1,0 +1,231 @@
+{
+    "weight": {
+        "condition": "are \\textbf{overweight or obese} (BMI $\\geq$ 23.0 kg/m2)",
+        "recommendations": [
+            "Regular exercise - 150 minutes of moderate-intensity aerobic physical activity a week",
+            "Consider DA's 10-week Corporate Weight Loss Program"
+        ],
+        "categories": [
+            "3.Overweight (23.0-27.4)",
+            "4.Obese (>27.5)"
+        ],
+        "outcomes": []
+    },
+    "habits-smokingCategory": {
+        "condition": "are \\textbf{smokers}",
+        "recommendations": [
+            "Consider DA Corporate Smoking Cessation Program"
+        ],
+        "categories": [
+            "3.Occasional Smoker",
+            "4.Daily Smoker"
+        ],
+        "outcomes": []
+    },
+    "highDensityLipidCholesterol": {
+        "condition": "have low level of \\textbf{high-density lipid cholesterol} ($\\leq$ 39 mg/dL)\\newline \\newline",
+        "recommendations": [
+            "Promote nutritional and fitness health talks to make healthier",
+            "lifestyle choices. Highlight health risks and increase awareness",
+            "for better control of cholesterol levels."
+        ],
+        "categories": [
+            "1.Low (<1.0)"
+        ],
+        "outcomes": [],
+        "section_name": "Lipids"
+    },
+    "lowDensityLipidCholesterol": {
+        "condition": "have elevated level of \\textbf{low-density lipid cholesterol} ($\\geq$ 160 mg/dL)\\newline \\newline",
+        "recommendations": [
+            "Promote nutritional and fitness health talks to make healthier",
+            "lifestyle choices. Highlight health risks and increase awareness",
+            "for better control of cholesterol levels."
+        ],
+        "categories": [
+            "4.High (4.1-4.8)",
+            "5.Very High (>=4.8)"
+        ],
+        "outcomes": [],
+        "section_name": "Lipids"
+    },
+    "systolicBloodPressure": {
+        "condition": "have elevated \\textbf{systolic blood pressure} at or above 140 mmHg (pre-hypertensive and hypertensive levels)\\newline \\newline",
+        "recommendations": [
+            "Promote nutritional and fitness health talks to make wiser food",
+            "choices and increase awareness for better control of hypertension."
+        ],
+        "categories": [
+            "10.140.0",
+            "11.150.0",
+            "12.160.0",
+            "13.170.0",
+            "14.180.0",
+            "15.190.0"
+        ],
+        "outcomes": [],
+        "population_median": 112.5,
+        "section_name": "Hypertension"
+    },
+    "diastolicBloodPressure": {
+        "condition": "have elevated \\textbf{diastolic blood pressure} at or above 90 mmHg",
+        "recommendations": [
+            "Promote nutritional and fitness health talks to make wiser food",
+            "choices and increase awareness for better control of hypertension."
+        ],
+        "categories": [
+            "07.90.0",
+            "08.100.0",
+            "09.110.0"
+        ],
+        "outcomes": [],
+        "population_median": 71,
+        "section_name": "Hypertension"
+    },
+    "hba1c": {
+        "condition": "have elevated \\textbf{HbA1c (glycated haemoglobin)} levels ($\\geq$ 5.6 \\%)",
+        "recommendations": [
+            "Consume less carbohydrates (e.g. rice, noodles, sweets)",
+            "Consider DA Corporate Diabetes Management Program"
+        ],
+        "categories": [
+            "2.Pre-Diabetes (5.6-6.3)",
+            "3.Diabetic (>6.3)"
+        ],
+        "outcomes": []
+    },
+    "habits-smoking": {
+        "condition": "are \\textbf{smokers}",
+        "recommendations": [
+            "Designate smoke-free periods and/or fixed intervals for smoking",
+            "during office hours. Encourage self-imposed daily smoking limits.",
+            "Promote enrolment into Smoking Cessation programmes."
+        ],
+        "categories": [
+            "1.Yes"
+        ],
+        "outcomes": [],
+        "section_name": "Smoking"
+    },
+    "totalCholesterol": {
+        "condition": "have high \\textbf{total cholesterol} ($\\geq$ 240 mg/dL)\\newline \\newline",
+        "recommendations": [
+            "Promote nutritional and fitness health talks to make healthier",
+            "lifestyle choices. Highlight health risks and increase awareness",
+            "for better control of cholesterol levels."
+        ],
+        "categories": [
+            "3.High (>=6.1)"
+        ],
+        "outcomes": [],
+        "section_name": "Lipids"
+    },
+    "bodyMassIndex": {
+        "condition": "are \\textbf{overweight} (BMI $\\geq$ 23.0 kg/m2)\\newline \\newline",
+        "recommendations": [
+            "Promote physical activity programmes at your workplace, e.g.,",
+            "dance-based workouts or high-intensity interval trainings during",
+            "lunch hours and/or after hours."
+        ],
+        "categories": [
+            "3.Overweight (23.0-27.4)",
+            "4.Obese (>27.5)"
+        ],
+        "outcomes": [],
+        "section_name": "Obesity"
+    },
+    "bodyMassIndexObese": {
+        "condition": "are \\textbf{obese} (BMI $\\geq$ 27.5 kg/m2)",
+        "recommendations": [
+            "Promote physical activity programmes at your workplace, e.g.,",
+            "dance-based workouts or high-intensity interval trainings during",
+            "lunch hours and/or after hours."
+        ],
+        "categories": [
+            "4.Obese (>27.5)"
+        ],
+        "outcomes": [],
+        "section_name": "Obesity"
+    },
+    "glucose": {
+        "condition": "have elevated levels of \\textbf{blood glucose} (> 108 mg/dL)",
+        "recommendations": [
+            "Promote nutritional and fitness health talks to make wiser food",
+            "choices and increase awareness to prevent and manage diabetes."
+        ],
+        "categories": [
+            "2.Impaired Fasting Glucose (5.6-7.0)",
+            "3.Diabetic (>7.0)"
+        ],
+        "outcomes": [],
+        "section_name": "Diabetes"
+    },
+    "triglycerides": {
+        "condition": "have elevated level of \\textbf{triglycerides} ($\\geq$ 200 mg/dL)",
+        "recommendations": [
+            "Promote nutritional and fitness health talks to make healthier",
+            "lifestyle choices. Highlight health risks and increase awareness",
+            "for better control of cholesterol levels."
+        ],
+        "categories": [
+            "3.High (2.3-4.4)",
+            "4.Very High (>=4.4)"
+        ],
+        "outcomes": [],
+        "section_name": "Lipids"
+    },
+    "egfr": {
+        "condition": "have \\textbf{eGFR levels} indicating at least moderate loss of kidney function (< 45 mL/min/1.73m2)",
+        "recommendations": [
+            "Stop smoking",
+            "Drink in moderation",
+            "Eat healthy",
+            "Regular exercise - 150 minutes of moderate-intensity aerobic physical activity a week",
+            "Manage high blood pressure and diabetes if present"
+        ],
+        "categories": [
+            "4.Moderately to Severely Decreased (30-44)",
+            "5.Severely Decreased (15-29)",
+            "6.Kidney Failure (<15)"
+        ],
+        "outcomes": []
+    },
+    "albuminuria": {
+        "condition": "have elevated \\textbf{albuminuria levels} ($\\geq$ 3.4 mg/mmol)",
+        "recommendations": [
+            "Stop smoking",
+            "Drink in moderation",
+            "Eat healthy",
+            "Regular exercise - 150 minutes of moderate-intensity aerobic physical activity a week",
+            "Manage high blood pressure and diabetes if present"
+        ],
+        "categories": [
+            "2.Moderately Increased (3.4-33.8)",
+            "3.Severely Increased (>33.8)"
+        ],
+        "outcomes": []
+    },
+    "hasDrank": {
+        "condition": "\\textbf{consume alcohol}",
+        "recommendations": [
+            "Reduce alcohol consumption"
+        ],
+        "categories": [
+            "1.Yes"
+        ],
+        "outcomes": []
+    },
+    "habits-alcoholIntake": {
+        "condition": "drink \\textbf{$\\geq$ 15} units of alcohol per week",
+        "recommendations": [
+            "Promote alcohol-free beverages and fitness health talks to make",
+            "wiser beverages choices and increase awareness of the health",
+            "implications from high level of alcohol consumptions."
+        ],
+        "categories": [
+            "Heavy Drinker \n(more than 14 units / week)"
+        ],
+        "outcomes": [],
+        "section_name": "Alcohol"
+    }
+}
