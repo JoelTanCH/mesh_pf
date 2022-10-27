@@ -56,6 +56,26 @@
     align-items: middle;
   }
 
+  .btn-btn-secondary-dropdown-toggle {
+    width: 609.33px;
+    height: 30.38px;
+    float: right;
+    border-radius: 6px;
+    background-color: #f2f2f266;
+    border: 1px solid #61616133;
+    color: black;
+    margin-right: 2px;
+    font-family: Poppins;
+    font-weight: 500;
+    line-height: 14px;
+    letter-spacing: 0em;
+    font-size: 15px;
+    text-align: left;
+  }
+
+  .dropdown-options {
+    text-align: left ;
+  }
   .search-field_input {
     height: 30.38px;
     width: 609.33px;
@@ -71,6 +91,11 @@
     margin-left: 300.14px;
     margin-bottom: 39.04px;
   }
+
+  .modal-body {
+    height: 100%;
+  }
+
 
   ul, li {
     list-style: none;
@@ -710,7 +735,14 @@ shown when checkbox is checked */
   }
 
   .modal {
-    margin-top: 200px;
+    margin-top: 2%;
+    height: 100%;
+    overflow-y: auto;
+  }
+
+  .modal-content {
+    height: 100%;
+    overflow: auto;
   }
 
   #CorpRepPopUp {
@@ -721,7 +753,7 @@ shown when checkbox is checked */
   .dropbtn {
     height: 30.38px;
     width: 609.33px;
-    font-size: 14px;
+    font-size: 12px;
     background-color: #f2f2f266;
     border: 1px solid #61616133;
     box-shadow: none;
@@ -735,11 +767,16 @@ shown when checkbox is checked */
   height: 30.38px;
   width: 609.33px;
   background-repeat: no-repeat;
-  font-size: 14px;
   padding: 14px 20px 12px 45px;
   border: none;
   border-bottom: 1px solid #ddd;
   text-align: left;
+  font-family: Poppins;
+  font-weight: 500;
+  line-height: 14px;
+  letter-spacing: 0em;
+  font-size: 12px;
+
 }
 
 ::-webkit-input-placeholder {
@@ -800,7 +837,6 @@ shown when checkbox is checked */
 
 #selected-id-display {
   font-family: Poppins;
-  font-size: 12px;
   font-weight: 500;
   line-height: 14px;
   letter-spacing: 0em;
@@ -811,6 +847,7 @@ shown when checkbox is checked */
   top: 6959.478515625px;
   border-radius: nullpx;
   padding:5px;
+  font-size: 12px;
 }
 
 </style>
@@ -888,11 +925,11 @@ shown when checkbox is checked */
     let element = document.getElementById("batch-ctn")
     let height = document.querySelector("#batch-selector").offsetHeight
     let modalHeight = document.querySelector('.modal-content').offsetHeight
-    document.getElementsByClassName("modal-content")[0].style.height = modalHeight + height + 10 + 'px'
+    document.getElementsByClassName("modal-content")[0].style.height = modalHeight + height + 'px'
     element.appendChild(newSelector)
   }  
   function del_batch_selector(ele) {
-    ele.parentElement.parentElement.innerHTML=""
+    ele.parentElement.parentElement.parentElement.removeChild(ele.parentElement.parentElement)
     const height_of_selector = document.getElementById('batch-selector').offsetHeight
     const modalHeight = document.querySelector('.modal-content').offsetHeight
     document.getElementsByClassName("modal-content")[0].style.height = (modalHeight - height_of_selector) + 'px'
@@ -1018,7 +1055,7 @@ shown when checkbox is checked */
       const height_to_remove = height_of_selector * num_batch_selectors_added
       const modalHeight = document.querySelector('.modal-content').offsetHeight
       document.getElementsByClassName("modal-content")[0].style.height = (modalHeight - height_to_remove) + 'px'
-      removeElementsByClass(batch_selectors_added)
+      removeElementsByClass(batch_selectors_added) 
     }
     removeOptions(select)
     for (i = 0; i < corp_batches_arr.length; i++) {
@@ -1261,20 +1298,13 @@ shown when checkbox is checked */
                 <p style="text-align: left; margin-left: 4px; color: red;">*</p>
               </div>
               <div class="modal-body-ctn">
-                <select class="btn btn-secondary dropdown-toggle" 
+                <select class="btn-btn-secondary-dropdown-toggle" 
                 aria-label="Default select example"
-                style="width: 609.33px;
-                      height: 30.38px;
-                      float: right;
-                      border-radius: 6px;
-                      background-color: #f2f2f266;
-                      border: 1px solid #61616133;
-                      color: black;
-                      margin-right: 2px;">
-                  <option selected style="text-align: center;"></option>
-                  <option style="text-align: center;" value="1">One</option>
-                  <option style="text-align: center;" value="2">Two</option>
-                  <option style="text-align: center;" value="3">Three</option>
+               >
+                  <option selected style="text-align: center";></option>
+                  <option class="dropdown-options"; value="1">One</option>
+                  <option class="dropdown-options"; value="2">Two</option>
+                  <option class="dropdown-options"; value="3">Three</option>
                 </select>
               </div>
               <br>
@@ -1286,7 +1316,7 @@ shown when checkbox is checked */
                   <ul>
                     <li id="batch-selector">
                       <div class="modal-body-ctn">
-                        <select class="btn btn-secondary dropdown-toggle" 
+                        <select class="btn-btn-secondary-dropdown-toggle" 
                         aria-label="Default select example"
                         style="width: 609.33px;
                               height: 30.38px;
@@ -1321,7 +1351,7 @@ shown when checkbox is checked */
             <p style="text-align: left; margin-left: 4px; color: red;">*</p>
           </div>
           <div class="modal-body-ctn">
-            <select class="btn btn-secondary dropdown-toggle" 
+            <select class="btn-btn-secondary-dropdown-toggle" 
             aria-label="Default select example"
             style="width: 609.33px;
                   height: 30.38px;
@@ -1338,7 +1368,7 @@ shown when checkbox is checked */
                   text-align: left;"
                   >
               <option style="text-align: left;">Select Option</option>
-              <option style="text-align: center;" value="1">Template 1</option>
+              <option class="dropdown-options"; value="1">Template 1</option>
             </select>
           </div>
         </div>
