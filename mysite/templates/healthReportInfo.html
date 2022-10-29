@@ -251,6 +251,18 @@
     margin-top: 2px;
   }
 </style>
+
+<script>
+  $(document).ready(function() {
+    prepPdfViewer();
+  })
+  function prepPdfViewer() {
+    document.getElementById('pdfViewer').href = '{{pdf_path}}'
+  }
+
+
+</script>
+
 <div style="display: flex; flex-direction: column;">
   <div class="top-ctn">
     <div>
@@ -591,7 +603,7 @@
       </div>
     </div>
     <iframe
-      src="https://apps.who.int/iris/bitstream/handle/10665/349091/WHO-EURO-2021-2661-42417-58838-eng.pdf"
+      id = 'pdfViewer'
       name="iFrame"
       style="
         height: 577.308837890625px;
