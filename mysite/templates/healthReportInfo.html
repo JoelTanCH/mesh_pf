@@ -251,6 +251,27 @@
     margin-top: 2px;
   }
 </style>
+
+<script>
+  $(document).ready(function() {
+    prepPdfViewer();
+    popFields();
+  })
+  function prepPdfViewer() {
+    document.getElementById('pdfViewer').href = '{{pdf_path}}'
+  }
+
+  function popFields() {
+    document.getElementById('corp-name').innerHTML = '{{corp_name}}'.replace('&amp;', '&')
+    document.getElementById('corp-report-title').innerHTML = '{{corp_report_title}}'
+    document.getElementById('corp-report-type').innerHTML = '{{corp_report_type}}'
+    document.getElementById('corp-report-batches').innerHTML = '{{corp_report_batches}}'
+  }
+
+
+
+</script>
+
 <div style="display: flex; flex-direction: column;">
   <div class="top-ctn">
     <div>
@@ -318,11 +339,11 @@
       >
         <div style="height: 50%; display: flex; flex-direction: column;">
           <p class="report-prop">Corporate Name (ID)</p>
-          <p class="input-report-prop">Singapore Airlines Ltd (SIA)</p>
+          <p class="input-report-prop" id="corp-name"></p>
         </div>
         <div style="height: 50%; display: flex; flex-direction: column;">
           <p class="report-prop">Corporate Health Report Title</p>
-          <p class="input-report-prop">SIA Corporate Health Report Title</p>
+          <p class="input-report-prop" id="corp-report-title"></p>
         </div>
       </div>
       <div
@@ -336,12 +357,11 @@
       >
         <div style="height: 50%; display: flex; flex-direction: column;">
           <p class="report-prop">Report Type</p>
-          <p class="input-report-prop">Corporate Basic</p>
+          <p class="input-report-prop" id="corp-report-type"></p>
         </div>
         <div style="height: 50%; display: flex; flex-direction: column;">
           <p class="report-prop">Batches included in Corporate Report</p>
-          <p class="input-report-prop" style="text-decoration: underline;">
-            Batch C (2021,June), Batch D (2021,August)
+          <p class="input-report-prop" style="text-decoration: underline;" id="corp-report-batches">
           </p>
         </div>
       </div>
@@ -591,7 +611,7 @@
       </div>
     </div>
     <iframe
-      src="https://apps.who.int/iris/bitstream/handle/10665/349091/WHO-EURO-2021-2661-42417-58838-eng.pdf"
+      id = 'pdfViewer'
       name="iFrame"
       style="
         height: 577.308837890625px;
