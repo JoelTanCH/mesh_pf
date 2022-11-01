@@ -393,7 +393,7 @@
                         <p> Please <u><b><a href="https://wa.me/6593360639" style="color:#314C74">contact MeshBio</a></b></u> for more customization </p>
                     </div>
                     <div class="inline-block-child"> 
-                        <button type="button" class="btn btn-primary" style="position:relative;left:460px;" onclick="upload('fontSelector','chooseFileFrontpage','chooseFileHeader')">Save & Update</button>
+                        <button type="button" class="btn btn-primary" style="position:relative;left:460px;" onclick="upload('fontSelector','chooseFileFrontpage','chooseFileHeader','header-image-frontpage','header-image-logo')">Save & Update</button>
                     </div>
                 </div>
             </div>
@@ -480,59 +480,114 @@
       console.log("Selected font value is: " + dropdownListFontSelector.value);
     }
 
-    function upload(fontSelectorId,frontpageLogoId,headerLogoId){
+    function upload(fontSelectorId,frontpageLogoId,headerLogoId,frontpageLogoDropzoneId, headerLogoDropzoneId){
         let fontSelectorElement = document.getElementById(fontSelectorId);
         let headerLogoElement = document.getElementById(headerLogoId);
         let frontpageLogoElement = document.getElementById(frontpageLogoId);
+        let headerLogoDropzoneElement = document.getElementById(headerLogoDropzoneId);
+        let frontpageLogoDropzoneElement = document.getElementById(frontpageLogoDropzoneId);
 
-        if(checkIfCanUpload(fontSelectorElement,frontpageLogoElement,headerLogoElement)){
+        //'header-image-frontpage','header-image-logo'
+
+        if(checkIfCanUpload(fontSelectorElement,frontpageLogoElement,headerLogoElement,frontpageLogoDropzoneElement,headerLogoDropzoneElement)){
+            let dictOfImages = getImagesToUpload(frontpageLogoElement,headerLogoElement,frontpageLogoDropzoneElement,headerLogoDropzoneElement);
+            let frontpageImage = dictOfImages['frontpage'];
+            let headerImage = dictOfImages['logo'];
             
             let fontSelection = fontSelectorElement.value;
-            let headerLogo = headerLogoElement.files[0];
-            console.log("header logo type: " + typeof(headerLogo));
 
-            let frontpageLogo = frontpageLogoElement.files[0];
+            //headerLogo = headerLogoElement.files[0];
+            //console.log("header logo type: " + typeof(headerLogo));
+
+            //frontpageLogo = frontpageLogoElement.files[0];
 
             //console.log(headerLogo);
             //console.log(frontpageLogo);
 
-            let formData = new FormData();
-            formData.append("font",  fontSelection);
-            const dick ={
+            //let formData = new FormData();
+            //formData.append("font",  fontSelection);
+            /*
+            const imageDic ={
                 "font": fontSelection,
-                "header": headerLogo,
-                "frontpage": frontpageLogo
+                "header": headerImage,
+                "frontpage":frontpageImage
+                //"frontpage": frontpageLogo
+            }*/
+            const imageDic ={
+                "font": fontSelection,
+                "header": headerImage,
+                "frontpage":frontpageImage
+                //"frontpage": frontpageLogo
             }
 
             //const diction = {"font": fontSelection};
-            formData.append("header",headerLogo);
-            formData.append("frontpage", frontpageLogo);
+            //formData.append("header",headerLogo);
+            //formData.append("frontpage", frontpageLogo);
+            /*
             console.log("===========");
             for(var pair of formData.entries()){
                 console.log(pair[0] + ', ' + pair[1]);
-            }
+            }*/
 
-            return axios.post('http://127.0.0.1:8000/home/upload/', dick,{
+            return axios.post('http://127.0.0.1:8000/home/upload/', imageDic,{
                 headers:{
                     "X-CSRFToken": "{{ csrf_token }}",
                     'Content-Type': 'multipart/form-data' 
                 }
                 }).then(res => console.log(res.data))
                 .catch(err => console.log(err));
-
-
         }
     }
+
+    function getImagesToUpload(frontpageLogoElement,headerLogoElement,frontpageLogoDropzoneElement,headerLogoDropzoneElement){
+        let frontpageImage = null;
+        let logoImage = null;
+        if(!frontpageLogoElement.files[0]){
+            //frontpageImage =  frontpageLogoDropzoneElement.src;
+            frontpageImage = new File([frontpageLogoDropzoneElement.src], 'temporaryname2.jpeg', {type: "image/jpeg"});
+            //console.log('PREV BLOB FRONTPAGE IMAGE: ' +frontpageImage);
+           // console.log('PREV BLOB FRONTPAGE IMAGE: ' +typeof(frontpageImage));
+            //frontpageImage.readAsArrayBuffer(frontpageLogoDropzoneElement.src);
+            
+        }else{
+            frontpageImage = frontpageLogoElement.files[0];
+        }if(!headerLogoElement.files[0]){
+            //logoImage = headerLogoDropzoneElement.src;
+            //console.log("start test v1");
+            //console.log(headerLogoDropzoneElement.src);
+            //console.log(headerLogoDropzoneElement.name);
+            //console.log("end test v1")
+            
+            logoImage = new File([headerLogoDropzoneElement.src], 'temporaryname.jpg',{type: "image/jpeg"});
+        }else{
+            logoImage = headerLogoElement.files[0]
+        }
+        console.log("frontpage image type = " + typeof(frontpageImage));
+        console.log("frontpage image  = " + frontpageImage);
+        console.log("logo image type = " + typeof(logoImage));
+        console.log("logo image  = " + logoImage);
+
+        return {"frontpage" : frontpageImage, "logo": logoImage}
+    }
     
-    function checkIfCanUpload(fontSelectorElement,frontpageLogoElement,headerLogoElement){
+    function checkIfCanUpload(fontSelectorElement,frontpageLogoElement,headerLogoElement,frontpageLogoDropzoneElement,headerLogoDropzoneElement){
         
+        console.log('LOOK HERE');
+        console.log('frontpagelogoelement' + frontpageLogoElement.files[0]);
+
+        console.log('frontpagelogoelementDROPZONE' + frontpageLogoDropzoneElement.src);
+
+        console.log('headerLogoElement' + headerLogoElement.files[0]);
+
+        console.log('headerLogoElementDROPZONE' + headerLogoDropzoneElement.src);
+
         if(fontSelectorElement.value.length == 0){
             alert("Please choose a Font Style!");
             return false;   
-        }else if(!frontpageLogoElement.files[0]){
+        }else if(!frontpageLogoElement.files[0] && !frontpageLogoDropzoneElement.src){
             alert("Please upload a Frontpage Logo!");
             return false; 
-        } else if(!headerLogoElement.files[0]){
+        } else if(!headerLogoElement.files[0] && !headerLogoDropzoneElement.src){
             alert("Please upload a Header Logo!");
             return false; 
         }else{
@@ -791,13 +846,19 @@
 
         //get image
         const fileInput = document.getElementById(chooseFileId);
+        console.log(fileInput);
+        
         const img = fileInput.files[0];
+        console.log("LOOK HERE FOR IMAGE UPLOADED BY CLICK: " + typeof(img));
+        console.log("LOOK HERE FOR IMAGE UPLOADED BY CLICK: " + img);
+
+
 
         if(img.type.match('^image/')){
             const filename = img.name
             const filesize = img.size
             console.log(filesize);
-            if(filesize <= 200000){//less than 200kb
+            if(filesize <= 500000){//less than 500kb
                 console.log(filename);
                 //create form data
                 var formdata = new FormData();
@@ -805,6 +866,10 @@
                 //set image 
                 const imagePreview = document.getElementById(imageNameId);
                 imagePreview.src = URL.createObjectURL(img);
+                console.log("look here for src");
+                console.log(imagePreview);
+                console.log(imagePreview.src);
+                console.log("end src");
                 //set name of image uploaded
                 nameLocation.textContent=filename;
 
@@ -822,6 +887,7 @@
                             }
                         },headers:{
                             "X-CSRFToken": "{{ csrf_token }}",  
+                            'Content-Type': 'multipart/form-data'
                         }
                     }
 
@@ -874,7 +940,6 @@
             .catch((error) =>console.error(error));
         };
 
-    //inprogress
     function dropHandler(ev, progressBarId, imgNameUploadLocationId, imageNameId, currByteId, totalByteId, displayBlockId,buttonCloseId,trashIconId){
         console.log('File(s) dropped');
         //get block to show
@@ -920,7 +985,7 @@
                     const file = item.getAsFile();
                     const filesize = file.size;
                     const filename = file.name;
-                    if(filesize <= 200000){
+                    if(filesize <= 500000){
                         // log name 
                         console.log(`… file[${i}].name = ${file.name}`);
                         //create formdata
@@ -932,7 +997,21 @@
 
                         //set image 
                         const imagePreview = document.getElementById(imageNameId);
+                        console.log("test v2: ");
+                        console.log("file = " + file);
+                        console.log("file = " + typeof(file));
+                        console.log("end test v2");
+                        
+                        const testing = URL.createObjectURL(file);
+                        console.log('SEE THE TYPE OF IMAGE = ' + typeof(testing))
+                        console.log(testing);
+                    
+                        imagePreview.data = 
                         imagePreview.src = URL.createObjectURL(file);
+                        console.log("look here for src");
+                        console.log(imagePreview);
+                        console.log(imagePreview.src);
+                        console.log("end src");
 
                         const config = {
                                 onUploadProgress: function(progressEvent) {
@@ -944,13 +1023,17 @@
                                     if (percentCompleted === 100) {
                                         progressBar.previousElementSibling.textContent = `Upload complete!`
                                     }
+                                }, headers:{
+                                    "X-CSRFToken": "{{ csrf_token }}",  
+                                    'Content-Type': 'multipart/form-data'
                                 }
                             }
-                            axios.post('https://httpbin.org/post', formdata, config)
+
+                            axios.post('http://127.0.0.1:8000/home/dump/', formdata,config)
                                 .then(res => console.log(res))
                                 .then(()=> hideAfterUpload(progressBar,totalByte,buttonClose))
                                 .then(()=> showAfterUpload(currByte,nameLocation,trash))
-                                .catch(err => console.log(err)) 
+                                .catch(err => console.log(err));
                     }else{
                         alert("File size = " + filesize + ", please upload an image less than 200kb");
                     }

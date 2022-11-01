@@ -38,6 +38,7 @@ def dump(request):
 
 def upload(request):
     print("REQUEST = ", request)
+    print(request.FILES)
     if request.FILES:
         form = UploadFileForm(request.POST, request.FILES)
         print("form: ", form)
@@ -56,6 +57,7 @@ def upload(request):
         imgFrontpage = Image.open(request.FILES['frontpage'])
         imgFrontpage.save(f"./uploads/frontpage_{request.FILES['frontpage']}.jpeg",format='JPEG')
         return JsonResponse({"success":True})
+    
     return JsonResponse({"success": False})
 
 def home(response):
