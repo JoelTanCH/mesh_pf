@@ -258,7 +258,7 @@
     popFields();
   })
   function prepPdfViewer() {
-    document.getElementById('pdfViewer').href = '{{pdf_path}}'
+    document.getElementById('pdfViewer').src = '{{pdf_path}}'
   }
 
   function popFields() {
@@ -623,6 +623,7 @@
         overflow-x: scroll;
         overflow-y: hidden;
       "
+      src='{{pdf_path}}'
     ></iframe>
   </div>
 </div>
