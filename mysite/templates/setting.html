@@ -332,7 +332,8 @@
                         <p class="titles"> Healthway Medical </p>
                         <div>  
                             <h6 class="titles" style="margin-top:75px;"> Upload Frontpage Logo </h6>
-                            <form id="dropzone" ondrop="dropHandler(event,'progress-bar','frontpage-name','header-image-frontpage','currByteFrontpage','totalByteFrontpage','frontpage-logo-box','button-close-frontpage','trash-icon-frontpage');" ondragover="dragOverHandler(event);">
+                            <form id="dropzone" ondrop="dropHandler(event,'progress-bar','frontpage-name','header-image-frontpage','currByteFrontpage','totalByteFrontpage','frontpage-logo-box','button-close-frontpage','trash-icon-frontpage', 'frontpage-file-input');" ondragover="dragOverHandler(event);">
+                                <input id="frontpage-file-input" type="file" style="display: none"/>
                                 <div style="margin-top: 37.5px;color:#B7B7B7">
                                     <p>Drag and drop or <input id="chooseFileFrontpage" type="file" onchange="handleUpload('progress-bar','chooseFileFrontpage','frontpage-name','header-image-frontpage','currByteFrontpage','totalByteFrontpage','frontpage-logo-box','button-close-frontpage','trash-icon-frontpage')"/>
                                         <u id="browse" style="color:#8397B6" onclick="clickBrowseFrontpage()">browse</u></p>
@@ -363,7 +364,8 @@
                         </select>
                         <div> 
                             <h6 class="titles" style="margin-top:107px;"> Upload Header Logo </h6>
-                            <form id="dropzone" ondrop="dropHandler(event,'header-progress-bar','header-name','header-image-logo','currByteLogo','totalByteLogo','header-logo-box','button-close-header','trash-icon-header');" ondragover="dragOverHandler(event);">
+                            <form id="dropzone" ondrop="dropHandler(event,'header-progress-bar','header-name','header-image-logo','currByteLogo','totalByteLogo','header-logo-box','button-close-header','trash-icon-header', 'header-file-input');" ondragover="dragOverHandler(event);">
+                                <input id="header-file-input" type="file" style="display: none"/>
                                 <div style="margin-top: 37.5px;color:#B7B7B7">
                                     <p>Drag and drop or <input id="chooseFileHeader" type="file" onchange="handleUpload('header-progress-bar', 'chooseFileHeader','header-name','header-image-logo','currByteLogo','totalByteLogo','header-logo-box','button-close-header','trash-icon-header')"/>
                                         <u id="browse" style="color:#8397B6" onclick="clickBrowseHeader()">browse</u></p>
@@ -393,7 +395,7 @@
                         <p> Please <u><b><a href="https://wa.me/6593360639" style="color:#314C74">contact MeshBio</a></b></u> for more customization </p>
                     </div>
                     <div class="inline-block-child"> 
-                        <button type="button" class="btn btn-primary" style="position:relative;left:460px;" onclick="upload('fontSelector','chooseFileFrontpage','chooseFileHeader','header-image-frontpage','header-image-logo')">Save & Update</button>
+                        <button type="button" class="btn btn-primary" style="position:relative;left:460px;" onclick="upload('fontSelector','chooseFileFrontpage','chooseFileHeader','header-image-frontpage','header-image-logo', 'frontpage-file-input', 'header-file-input')">Save & Update</button>
                     </div>
                 </div>
             </div>
@@ -480,17 +482,19 @@
       console.log("Selected font value is: " + dropdownListFontSelector.value);
     }
 
-    function upload(fontSelectorId,frontpageLogoId,headerLogoId,frontpageLogoDropzoneId, headerLogoDropzoneId){
+    function upload(fontSelectorId,frontpageLogoId,headerLogoId,frontpageLogoDropzoneId, headerLogoDropzoneId, frontpageFileInputId, headerFileInputId){
         let fontSelectorElement = document.getElementById(fontSelectorId);
         let headerLogoElement = document.getElementById(headerLogoId);
         let frontpageLogoElement = document.getElementById(frontpageLogoId);
         let headerLogoDropzoneElement = document.getElementById(headerLogoDropzoneId);
         let frontpageLogoDropzoneElement = document.getElementById(frontpageLogoDropzoneId);
+        let frontpageFileInputElement = document.getElementById(frontpageFileInputId);
+        let headerFileInputElement = document.getElementById(headerFileInputId);
 
         //'header-image-frontpage','header-image-logo'
 
         if(checkIfCanUpload(fontSelectorElement,frontpageLogoElement,headerLogoElement,frontpageLogoDropzoneElement,headerLogoDropzoneElement)){
-            let dictOfImages = getImagesToUpload(frontpageLogoElement,headerLogoElement,frontpageLogoDropzoneElement,headerLogoDropzoneElement);
+            let dictOfImages = getImagesToUpload(frontpageLogoElement,headerLogoElement,frontpageLogoDropzoneElement,headerLogoDropzoneElement, frontpageFileInputElement, headerFileInputElement);
             let frontpageImage = dictOfImages['frontpage'];
             let headerImage = dictOfImages['logo'];
             
@@ -539,12 +543,12 @@
         }
     }
 
-    function getImagesToUpload(frontpageLogoElement,headerLogoElement,frontpageLogoDropzoneElement,headerLogoDropzoneElement){
+    function getImagesToUpload(frontpageLogoElement,headerLogoElement,frontpageLogoDropzoneElement,headerLogoDropzoneElement, frontpageFileInput, headerFileInput){
         let frontpageImage = null;
         let logoImage = null;
         if(!frontpageLogoElement.files[0]){
             //frontpageImage =  frontpageLogoDropzoneElement.src;
-            frontpageImage = new File([frontpageLogoDropzoneElement.src], 'temporaryname2.jpeg', {type: "image/jpeg"});
+            frontpageImage = frontpageFileInput.files[0]
             //console.log('PREV BLOB FRONTPAGE IMAGE: ' +frontpageImage);
            // console.log('PREV BLOB FRONTPAGE IMAGE: ' +typeof(frontpageImage));
             //frontpageImage.readAsArrayBuffer(frontpageLogoDropzoneElement.src);
@@ -558,7 +562,7 @@
             //console.log(headerLogoDropzoneElement.name);
             //console.log("end test v1")
             
-            logoImage = new File([headerLogoDropzoneElement.src], 'temporaryname.jpg',{type: "image/jpeg"});
+            logoImage = headerFileInput.files[0]
         }else{
             logoImage = headerLogoElement.files[0]
         }
@@ -750,19 +754,19 @@
         const progressBarPercentage = document.getElementById(progressBarPerc);
         progressBarPercentage.style.visibility='hidden';
         const trashIcon = document.getElementById(trashIconId);
-        trashicon.style.visibility='hidden';
+        trashIcon.style.visibility='hidden';
     }
     //hide the left logo box trash icon which pops up after cancelling early 
     function toggleLogoBoxWrapper(logoBox,imageID,progressBarID,totalByteID,currByteID,filenameID,closeIconId,progressBarPerc,trashIconId){
         toggleLogoBox(logoBox,imageID,progressBarID,totalByteID,currByteID,filenameID,closeIconId,progressBarPerc)
         const trashIcon = document.getElementById(trashIconId);
-        trashicon.style.visibility='hidden';
+        trashIcon.style.visibility='hidden';
     }
     //hide the right logo box trash icon which pops up after cancelling early 
     function toggleLogoBoxRight(logoBox,imageID,progressBarID,totalByteID,currByteID,filenameID,closeIconId,progressBarPerc,trashIconId){
         toggleLogoBox(logoBox,imageID,progressBarID,totalByteID,currByteID,filenameID,closeIconId,progressBarPerc)
         const trashIcon = document.getElementById(trashIconId);
-        trashicon.style.visibility='hidden';
+        trashIcon.style.visibility='hidden';
     }
 
     //reset values in logoBox after user clicks 'x'
@@ -940,7 +944,7 @@
             .catch((error) =>console.error(error));
         };
 
-    function dropHandler(ev, progressBarId, imgNameUploadLocationId, imageNameId, currByteId, totalByteId, displayBlockId,buttonCloseId,trashIconId){
+    function dropHandler(ev, progressBarId, imgNameUploadLocationId, imageNameId, currByteId, totalByteId, displayBlockId,buttonCloseId,trashIconId, fileInputHandler){
         console.log('File(s) dropped');
         //get block to show
         const elementToDisplay = document.getElementById(displayBlockId);
@@ -955,6 +959,8 @@
         const nameLocation = document.getElementById(imgNameUploadLocationId);
         //get trash reference
         const trash = document.getElementById(trashIconId);//need to add
+        //get input tag to be updated with dropped file 
+        var inputElement = document.getElementById(fileInputHandler);
 
         //ensure all elements visible 
         elementToDisplay.style.visibility = 'visible';
@@ -974,6 +980,9 @@
         // Prevent default behavior (Prevent file from being opened)
         ev.preventDefault();
         console.log('dragstart: target.id = ${ev.target.id}');
+
+        inputElement.files = ev.dataTransfer.files
+
         if (ev.dataTransfer.items) {
             // Use DataTransferItemList interface to access the file(s)
             [...ev.dataTransfer.items].forEach((item, i) => {

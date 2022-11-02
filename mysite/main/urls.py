@@ -13,4 +13,4 @@ urlpatterns = [
     path('setting/', views.recTemplateInfo, name='settings page'),
     path('summaryReport/', views.summaryReport, name='summary report page'),
     path('ok/', views.ok, name='ok')
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+] 

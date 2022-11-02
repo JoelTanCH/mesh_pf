@@ -48,14 +48,17 @@ def upload(request):
         #    print(f)    header, frontpage 
         print("REQUEST = ", request)
         print("FILES: ", request.FILES)
-        print(request.FILES['header']) # gives name 
+        header_name = request.FILES['header'] # gives name 
+        header_type = request.FILES['header'].content_type.split('/')[1]
+        frontpage_name = request.FILES['frontpage']
+        frontpage_type = request.FILES['frontpage'].content_type.split('/')[1]
         #print(request.FILES[''])
         print(type(request.FILES['header'])) #gives django core files uploaded file obkect
         #print(request.FILES['header'].file) #gives io.bytesIO
-        imgHeader = Image.open(request.FILES['header'])
-        imgHeader.save(f"./uploads/header_{request.FILES['header']}.jpeg",format='JPEG')
-        imgFrontpage = Image.open(request.FILES['frontpage'])
-        imgFrontpage.save(f"./uploads/frontpage_{request.FILES['frontpage']}.jpeg",format='JPEG')
+        imgHeader = Image.open(header_name)
+        imgHeader.save(f"./uploads/header_{header_name}",format=header_type)
+        imgFrontpage = Image.open(frontpage_name)
+        imgFrontpage.save(f"./uploads/frontpage_{frontpage_name}",format=frontpage_type)
         return JsonResponse({"success":True})
     
     return JsonResponse({"success": False})
@@ -76,7 +79,7 @@ def summaryReport(response):
 
 def recTemplateInfo(response):
 
-    file_path = "C:/Users/joelt/OneDrive/Documents/GitHub/mesh_pf/mysite/main/executiveSummaryReference.json"
+    file_path = "C:/Users/Daniel/Desktop/mesh_pf/mysite/main/executiveSummaryReference.json"
 
     with open(file_path, "r") as fp:
         data = json.load(fp)
