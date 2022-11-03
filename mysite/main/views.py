@@ -4,6 +4,8 @@ from django.http import HttpResponse, JsonResponse
 from django.template import loader
 from PIL import Image
 import json
+from datetime import datetime
+import os
 
 from .forms import RecommendationsForm, UploadFileForm
 
@@ -52,13 +54,15 @@ def upload(request):
         header_type = request.FILES['header'].content_type.split('/')[1]
         frontpage_name = request.FILES['frontpage']
         frontpage_type = request.FILES['frontpage'].content_type.split('/')[1]
-        #print(request.FILES[''])
+        upload_time = datetime.now().strftime("%Y_%m_%d-%I_%M_%S_%p")
+        newpath = f'./uploads/{upload_time})'
+        os.makedirs(newpath)
         print(type(request.FILES['header'])) #gives django core files uploaded file obkect
         #print(request.FILES['header'].file) #gives io.bytesIO
         imgHeader = Image.open(header_name)
-        imgHeader.save(f"./uploads/header_{header_name}",format=header_type)
+        imgHeader.save(f"{newpath}/header_{header_name}",format=header_type)
         imgFrontpage = Image.open(frontpage_name)
-        imgFrontpage.save(f"./uploads/frontpage_{frontpage_name}",format=frontpage_type)
+        imgFrontpage.save(f"{newpath}/frontpage_{frontpage_name}",format=frontpage_type)
         return JsonResponse({"success":True})
     
     return JsonResponse({"success": False})
