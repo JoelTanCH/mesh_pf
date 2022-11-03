@@ -261,6 +261,13 @@
     overflow-x: scroll;
     overflow-y: hidden;
   }
+
+  .page-button {
+    margin-bottom: 120px;
+    padding-top: 0;
+    border: 0px;
+    background-color: #dfe3ea;
+  }
 </style>
 
 <script>
@@ -272,12 +279,6 @@
   })
 
   function prepPdfViewer() {
-    const pdfjsLib = require('pdfjs-dist');
-    pdfjsLib.getDocument('{{pdf_pathb}}').then(function (doc) {
-        var numPages = doc.numPages;
-        console.log('# Document Loaded');
-        console.log('Number of Pages: ' + numPages);
-    })
     document.getElementById('pdfViewerObj').data = '{{pdf_path}}#page=' + pageCount.toString()
     document.getElementById('pdfViewer').src = 'https://docs.google.com/viewer?url={{pdf_path}}&embedded=true'
   }
@@ -287,9 +288,13 @@
     document.getElementById('corp-report-title').innerHTML = '{{corp_report_title}}'
     document.getElementById('corp-report-type').innerHTML = '{{corp_report_type}}'
     document.getElementById('corp-report-batches').innerHTML = '{{corp_report_batches}}'
+    document.getElementById('page-count-display').innerHTML = '{{num_pages}}'
   }
 
   function increasePgCount() {
+      if (pageCount >= parseInt('{{num_pages}}')) {
+        return
+      }
       pageCount += 1
       document.getElementById('currPageNumber').innerHTML = pageCount
       prepPdfViewer()
@@ -302,10 +307,6 @@
       prepPdfViewer()
       }
   }
-
-
-
-
 </script>
 
 <div style="display: flex; flex-direction: column;">
@@ -446,17 +447,17 @@
           Report PDF
         </p>
         <div class="pdf-toggle">
-          <button onclick="decreasePgCount()" style="margin-bottom:10px;">
+          <button class="page-button" onclick="decreasePgCount()">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#A1A1A1" class="bi bi-caret-left-fill" viewBox="0 0 16 16">
               <path d="m3.86 8.753 5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1 1 0 0 0-1.659-.753l-5.48 4.796a1 1 0 0 0 0 1.506z"/>
             </svg>
           </button>
-          <div id = 'currPageNumber' class="page-box">
+          <div id='currPageNumber' class="page-box">
             1
           </div>
           <p class="page-wordings">of</p>
-          <p class="page-wordings">12</p>
-          <button onclick="increasePgCount()" >
+          <p id="page-count-display" class="page-wordings"></p>
+          <button class="page-button" onclick="increasePgCount()" >
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#A1A1A1" class="bi bi-caret-right-fill" viewBox="0 0 16 16">
               <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/>
             </svg>
@@ -541,7 +542,6 @@
       <a
         data-bs-target="#auditLog"
         data-bs-toggle="modal"
-        href="#auditLog"
         style="
           font-family: Poppins;
           font-size: 10px;
@@ -552,7 +552,7 @@
           color: #7788a3;
         "
       >
-        Last PDF generated: Linda Tan 2021.09.02
+        Last PDF generated: {{generated_by}} {{last_generated}}
       </a>
       <div
         class="modal fade"
@@ -665,7 +665,7 @@
           overflow-y: hidden;
         "
       ></iframe>
-  </object>
+    </object>
   </div>
 </div>
 {% endblock %}
