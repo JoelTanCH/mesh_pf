@@ -9,22 +9,46 @@ import os
 
 from .forms import RecommendationsForm, UploadFileForm
 
+summary_ref_filepath = "C:/Users/Daniel/Desktop/mesh_pf/mysite/main/executiveSummaryReference.json"
 
 # Create your views here.
 
+def updateSummaryReference(new_data_dict):
+    key_mapping = {
+    "Alcohol": ["habits-alcoholIntake"],
+    "Weight": ["bodyMassIndex", "bodyMassIndexObese"],
+    "Blood Pressure": ["systolicBloodPressure", "diastolicBloodPressure"],
+    "Smoking": ["habits-smoking"],
+    "Lipids": ["totalCholesterol", "lowDensityLipidCholesterol", "highDensityLipidCholesterol", "triglycerides"],
+    "Diabetes": ["glucose"]
+}
+    with open(summary_ref_filepath, "r") as fp:
+        data = json.load(fp)
+
+    for k, v in new_data_dict.items():
+        update_list = key_mapping[k]
+        for item in update_list:
+            data[item]["recommendations"] = v[0].rstrip()
+
+    with open(summary_ref_filepath, "w", encoding='utf-8') as ufp:
+        json.dump(data, ufp, ensure_ascii=False, indent=4)
+
+
+
 def updateRecommendations(request):
-    print("REQUEST = ", request)
+    print("REQUEST = ", request.POST)
 
-    if request.FILES:
-        form = RecommendationsForm(request.POST, request.FILES)
-        Alcohol = form['Alcohol'].value()
-        Weight =form['Weight'].value()
-        Blood_Pressure = form['Blood_Pressure'].value()
-        Smoking = form['Smoking'].value()
-        Lipids = form['Lipids'].value()
-        Diabetes = form['Diabetes'].value()
+    if request.POST:
+        #form = RecommendationsForm(request.POST, request.FILES)
+        updateSummaryReference(dict(request.POST))
+        # Alcohol = form['Alcohol'].value()
+        # Weight =form['Weight'].value()
+        # Blood_Pressure = form['Blood_Pressure'].value()
+        # Smoking = form['Smoking'].value()
+        # Lipids = form['Lipids'].value()
+        # Diabetes = form['Diabetes'].value()
 
-        print("alc: ", Alcohol)
+        # print("alc: ", Alcohol)
 
         return JsonResponse({"success":True})
     return JsonResponse({"success": False})
@@ -83,9 +107,7 @@ def summaryReport(response):
 
 def recTemplateInfo(response):
 
-    file_path = "C:/Users/Daniel/Desktop/mesh_pf/mysite/main/executiveSummaryReference.json"
-
-    with open(file_path, "r") as fp:
+    with open(summary_ref_filepath, "r") as fp:
         data = json.load(fp)
 
     key_mapping = {
