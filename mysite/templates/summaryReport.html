@@ -952,14 +952,51 @@ shown when checkbox is checked */
     available_dropdowns_to_add += 1
     return false;
   }
-    
 
-  function modalNext() {
-    report_title = document.getElementById('reportTitle').value
-    console.log(report_title)
+  function check_modal_page_two_input() {
+    corp_template = document.getElementById('reportTemplateSelection')
+    flag = true
+    console.log(corp_template.value)
+    if (corp_template.value == "") {
+      document.getElementById('corp-template-check').style.display= 'block'
+      flag = false
+    }
+    else {
+      document.getElementById('corp-template-check').style.display= 'none'
+    }
+    return flag
+  }
+
+  function check_modal_page_one_input() {
+    corp_name_selected = document.getElementById('selected-id-display')
+    corp_title = document.getElementById('reportTitle')
+    corp_type = document.getElementById('reportTypeSelection')
+    console.log(corp_type.value)
+    flag = true
+    if (corp_name_selected.innerHTML == "") {
+      document.getElementById('corp-name-check').style.display= 'block'
+      flag = false
+    }
+    else {
+      document.getElementById('corp-name-check').style.display= 'none'
+    }
+    if (corp_title.value == "") {
+      document.getElementById('corp-title-check').style.display= 'block'
+      flag = false
+    }
+    else {
+      document.getElementById('corp-title-check').style.display= 'none'
+    }
+    if (corp_type.value == "") {
+      document.getElementById('corp-type-check').style.display= 'block'
+      flag = false
+    }
+    else {
+      document.getElementById('corp-type-check').style.display= 'none'
+    }
+    return flag
   }
   
-
   function prep_modal()
     {
       $(".modal").each(function() {
@@ -1013,8 +1050,7 @@ shown when checkbox is checked */
 
             if(page_track == pages.length-2)
             {
-              modalNext();
-              n_button.innerHTML = "Confirm"
+              can_progress = check_modal_page_one_input()
               // n_button.style.display= "none"
               // cfm_button.style.display = "block"
               // c_button.style.marginTop='300px' 
@@ -1022,40 +1058,46 @@ shown when checkbox is checked */
               // n_button.setAttribute('href', "{% url 'healthReportInfo'%}");
             }
             if (page_track == pages.length-1){
-                var collated_batches = collate_batches_selected()
-                var batches_to_include = collated_batches[0]
-                var batches_to_include_idx = collated_batches[1]
-                var corporate_batches_objIds = {{corporate_batches_ids|safe}}
-                batch_object_ids = get_selected_batch_objIds(batches_to_include_idx, corporate_batches_objIds, corp_index_selected)
-                var formData  = new FormData()
-                formData.append('corp_name', corp_name)
-                formData.append('report_title', report_title)
-                formData.append('report_type', report_type)
-                formData.append('report_template', report_template)
-                formData.append('batches_to_include', batches_to_include)
-                formData.append('clinic_personnel', "Linda Tan")
-                formData.append('idx_selected', corp_index_selected)
-                formData.append('batches_to_include_obj_ids', batch_object_ids)
-                let req = axios({
-                method: 'post',
-                url: 'sendReportSelection',
-                xstfCookieName: 'csrftoken',
-                xsrfHeaderName: 'X-CSRFToken',
-                data: formData,
-                headers: {
-                  'X-CSRFToken': 'csrftoken'
+                can_progress = check_modal_page_two_input()
+                if (can_progress) {
+                  var collated_batches = collate_batches_selected()
+                  var batches_to_include = collated_batches[0]
+                  var batches_to_include_idx = collated_batches[1]
+                  var corporate_batches_objIds = {{corporate_batches_ids|safe}}
+                  batch_object_ids = get_selected_batch_objIds(batches_to_include_idx, corporate_batches_objIds, corp_index_selected)
+                  var formData  = new FormData()
+                  formData.append('corp_name', corp_name)
+                  formData.append('report_title', report_title)
+                  formData.append('report_type', report_type)
+                  formData.append('report_template', report_template)
+                  formData.append('batches_to_include', batches_to_include)
+                  formData.append('clinic_personnel', "Linda Tan")
+                  formData.append('idx_selected', corp_index_selected)
+                  formData.append('batches_to_include_obj_ids', batch_object_ids)
+                  let req = axios({
+                  method: 'post',
+                  url: 'sendReportSelection',
+                  xstfCookieName: 'csrftoken',
+                  xsrfHeaderName: 'X-CSRFToken',
+                  data: formData,
+                  headers: {
+                    'X-CSRFToken': 'csrftoken'
+                  }
+                  }).then((response) => {
+                    window.location.href="healthReportInfo"
+                  });
                 }
-                }).then((response) => {
-                  window.location.href='healthReportInfo'
-                });
-                return;
             }
-            if(page_track <= pages.length-1)
+            if(page_track <= pages.length-2)
             {
-              page_track++;
+              if (can_progress) {
+                report_title = document.getElementById('reportTitle').value
+                n_button.innerHTML = "Confirm"
+                page_track++;
 
-              pages.hide();
-              pages.eq(page_track).show();
+                pages.hide();
+                pages.eq(page_track).show();
+              }
             }
           });
 
@@ -1233,7 +1275,6 @@ shown when checkbox is checked */
     var selectBox = document.getElementById("reportTypeSelection");
     var selectedValue = selectBox.options[selectBox.selectedIndex].value;
     report_type = selectedValue
-    console.log(report_type)
   };
 
   function selectTemplate() {
@@ -1392,7 +1433,7 @@ shown when checkbox is checked */
           />
           <form method="post", id="addBatch">
             {% csrf_token %}
-            <button class="pagination-button" href="http://127.0.0.1:8000/summaryReport/modalPageTwo">Next</button>
+            <button class="pagination-button">Next</button>
           </form>
         </div>
       </div>
@@ -1417,6 +1458,7 @@ shown when checkbox is checked */
               <div class="form-label-ctn">
                 <p class="form-label">Corporate Name (ID)</p>
                 <p style="text-align: left; margin-left: 4px; color: red;">*</p>
+                <p id="corp-name-check" style="text-align: left; margin-left: 4px; color: red; font-size: 8px; display: none">select a corporate</p>
               </div>
               <div class="modal-body-ctn">
                 <div class="dropdown">
@@ -1454,6 +1496,7 @@ shown when checkbox is checked */
               <div class="form-label-ctn">
                 <p class="form-label">Corporate Health Report Title</p>
                 <p style="text-align: left; margin-left: 4px; color: red;">*</p>
+                <p id="corp-title-check" style="text-align: left; margin-left: 4px; color: red; display: none; font-size: 8px">specify a title</p>     
               </div>
               <div class="modal-body-ctn">
                 <form action="/your-name/" method="post", autocomplete="off">
@@ -1461,7 +1504,6 @@ shown when checkbox is checked */
                     id="reportTitle"
                     type="text"
                     name="reportTitle"
-                    value="{{ reportTitle }}"
                   />
                 </form>
               </div>
@@ -1469,13 +1511,14 @@ shown when checkbox is checked */
               <div class="form-label-ctn">
                 <p class="form-label">Report Type</p>
                 <p style="text-align: left; margin-left: 4px; color: red;">*</p>
+                <p id="corp-type-check" style="text-align: left; margin-left: 4px; color: red; display: none; font-size: 8px">specify a type</p>     
               </div>
               <div class="modal-body-ctn">
                 <select class="btn-btn-secondary-dropdown-toggle" 
                 id = 'reportTypeSelection'
                 onchange = 'selectReportType()'
                 aria-label="Default select example">
-                  <option selected style="text-align: center;"></option>
+                  <option id='reportType' selected style="text-align: center;"></option>
                   <option class="dropdown-options" value="Report Type 1">Template 1</option>
                   <option class="dropdown-options" value="Report Type 2">Template 2</option>
                   <option class="dropdown-options" value="Report Type 3">Template 3</option>
@@ -1516,6 +1559,7 @@ shown when checkbox is checked */
           <div class="form-label-ctn">
             <p class="form-label">Report Template</p>
             <p style="text-align: left; margin-left: 4px; color: red;">*</p>
+            <p id="corp-template-check" style="text-align: left; margin-left: 4px; color: red; display: none; font-size: 8px">specify a template</p>     
           </div>
           <div class="modal-body-ctn">
             <select class="btn-btn-secondary-dropdown-toggle" 
@@ -1523,7 +1567,7 @@ shown when checkbox is checked */
             onchange="selectTemplate()"
             aria-label="Default select example"
                   >
-              <option style="text-align: left;">Select Option</option>
+              <option style="text-align: left;"></option>
               <option class="dropdown-options"; value="Template 1">Template 1</option>
             </select>
           </div>
