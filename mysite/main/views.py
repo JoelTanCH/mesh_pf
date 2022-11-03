@@ -6,8 +6,9 @@ from django.views.decorators.csrf import csrf_exempt
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from .helper import *
-import PyPDF2
 from datetime import datetime
+import requests, PyPDF2
+from io import BytesIO
 
 
 # Create your views here.
@@ -98,33 +99,46 @@ def update_nbatches(response):
 def send_selection(response):
     print('response data for send_selection')
     corp_name = response.data.get('corp_name', None)
-    print(corp_name)
     response.session["corp_name"] = corp_name
     report_title = response.data.get('report_title', None)
-    print(report_title)
     response.session["corp_report_title"] = report_title
     report_type = response.data.get('report_type', None)
-    print(report_type)
     response.session["corp_report_type"] = report_type
     report_template = response.data.get('report_template', None)
-    print(report_template)
     batches_to_include = response.data.get('batches_to_include', None)
-    print(batches_to_include)
     response.session["corp_report_batches"] = batches_to_include
     clinic_personnel = response.data.get('clinic_personnel', None)
-    print(clinic_personnel)
     idx_selected = response.data.get('idx_selected', None)
-    print(idx_selected)
     batches_to_include_obj_ids = response.data.get('batches_to_include_obj_ids', None)
+    arr_batchid = list(batches_to_include_obj_ids.split(','))
+    arr_objectbatchid = []
+    for batchid in arr_batchid:
+        objectid = ObjectId(batchid)
+        # objectid = 'Object(' + batchid +')'
+        arr_objectbatchid.append(objectid)
+    print('type of objectbatchid')
+    print(type(arr_objectbatchid))
     print(batches_to_include_obj_ids) #remeember to convert back to ObjectId (now is string)
     corporate_info = get_corporate_list('Parkway Health')
     corporates = [[corp_dic['name'], corp_dic['_id']] for corp_dic in corporate_info]
     corp_id = corporates[int(idx_selected)][1]
-    print(corp_id)
     timestamp_gen = datetime.now()
-    print(timestamp_gen)
+    dict_report = {
+        'organization': 'Parkway health',
+        'corporateid': corp_id, 
+        'name': corp_name, 
+        'batches': arr_objectbatchid, 
+        'report_template': report_template, 
+        'report_type': report_type, 
+        'created_by': {'name': clinic_personnel, 'created_time': timestamp_gen} 
+    }
+    print(dict_report)
+    generate_corp_report(dict_report)
+    pdf_path = 'https://apps.who.int/iris/bitstream/handle/10665/349091/WHO-EURO-2021-2661-42417-58838-eng.pdf'
     #return HttpResponseRedirect(reverse('healthReportInfo'))
-    return render(response, 'healthReportInfo.html')
+    return render(response, 'healthReportInfo.html',{
+        'pdf_path': pdf_path
+    } )
     
     
 
@@ -148,15 +162,17 @@ def healthReportInfo(response):
         ['2021.06.18 08:46', 'PDF generation', 'Linda Tan'],
         ['2021.06.18 08:46', 'PDF generation', 'Linda Tan'],
     ]
-    pdf_path = 'C:/Users/Daniel/Desktop/mesh_pf/mysite/temp_pdf/WHO-EURO-2021-2661-42417-58838-eng.pdf'
-    file = open(pdf_path, 'rb')
-    readpdf = PyPDF2.PdfFileReader(file)
-    total_pages = readpdf.numPages
+    url = "https://apps.who.int/iris/bitstream/handle/10665/349091/WHO-EURO-2021-2661-42417-58838-eng.pdf"
+    response = requests.get(url)
+    my_raw_data = response.content
+    with BytesIO(my_raw_data) as data:
+        read_pdf = PyPDF2.PdfFileReader(data)
+    num_pages = read_pdf.getNumPages()
+    print('num pages:',num_pages)
     return render(response, "healthReportInfo.html", 
     {
         "log_info" : log_info,
         'pdf_path': pdf_path,
-        'total_pages': total_pages,
         'corp_name' : response.session["corp_name"],
         'corp_report_title' : response.session["corp_report_title"],
         'corp_report_type' : response.session["corp_report_type"],

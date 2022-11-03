@@ -66,4 +66,32 @@ def generate_corp_report(report_data):
 
     inserted_doc = collection.insert_one(report_data)
 
+    audit_dic = {}
+
+    audit_dic['datetime'] = datetime.now()
+    audit_dic['action'] = 'Report Generated'
+    audit_dic['user'] = report_data["created_by"]["name"]
+    audit_dic['reportid'] = inserted_doc.inserted_id
+
+    update_audit_trail(audit_dic)
+
     return report_data["created_by"]["name"], report_data["last_generated_time"]
+
+# audit_dic - keys (datetime, action, user, report_id)
+def update_audit_trail(audit_dic):
+    temp_url = "mongodb://localhost:27017"
+    client = MongoClient(temp_url)
+    db = client["meshbio"]
+    collection = db["audittrail"]
+
+    inserted_doc  = collection.insert_one(audit_dic)
+
+def retrieve_audit_trail(report_id):
+    temp_url = "mongodb://localhost:27017"
+    client = MongoClient(temp_url)
+    db = client["meshbio"]
+
+    query = { 'reportid': report_id }
+    audit_trails = retrieve_document(db, 'audittrail', query)
+    return audit_trails
+    

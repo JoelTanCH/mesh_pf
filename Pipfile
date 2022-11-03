@@ -8,6 +8,7 @@ django = "*"
 djangorestframework = "*"
 pymongo = "*"
 pypdf2 = "*"
+requests = "*"
 
 [dev-packages]
 

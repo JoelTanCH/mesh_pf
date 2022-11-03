@@ -250,15 +250,36 @@
     color:#717171;
     margin-top: 2px;
   }
+
+  .pdfViewerObj {
+    height: 577.308837890625px;
+    width: 1015.1979370117188px;
+    left: 329.859375px;
+    top: 638.140625px;
+    border-radius: 0px;
+    margin-top: 30px;
+    overflow-x: scroll;
+    overflow-y: hidden;
+  }
 </style>
 
 <script>
+
+  var pageCount = 1
   $(document).ready(function() {
     prepPdfViewer();
     popFields();
   })
+
   function prepPdfViewer() {
-    document.getElementById('pdfViewer').href = '{{pdf_path}}'
+    const pdfjsLib = require('pdfjs-dist');
+    pdfjsLib.getDocument('{{pdf_pathb}}').then(function (doc) {
+        var numPages = doc.numPages;
+        console.log('# Document Loaded');
+        console.log('Number of Pages: ' + numPages);
+    })
+    document.getElementById('pdfViewerObj').data = '{{pdf_path}}#page=' + pageCount.toString()
+    document.getElementById('pdfViewer').src = 'https://docs.google.com/viewer?url={{pdf_path}}&embedded=true'
   }
 
   function popFields() {
@@ -267,6 +288,21 @@
     document.getElementById('corp-report-type').innerHTML = '{{corp_report_type}}'
     document.getElementById('corp-report-batches').innerHTML = '{{corp_report_batches}}'
   }
+
+  function increasePgCount() {
+      pageCount += 1
+      document.getElementById('currPageNumber').innerHTML = pageCount
+      prepPdfViewer()
+  }
+
+  function decreasePgCount() {
+      if (pageCount > 1) {
+        pageCount -= 1
+      document.getElementById('currPageNumber').innerHTML = pageCount
+      prepPdfViewer()
+      }
+  }
+
 
 
 
@@ -410,17 +446,21 @@
           Report PDF
         </p>
         <div class="pdf-toggle">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#A1A1A1" class="bi bi-caret-left-fill" viewBox="0 0 16 16">
-            <path d="m3.86 8.753 5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1 1 0 0 0-1.659-.753l-5.48 4.796a1 1 0 0 0 0 1.506z"/>
-          </svg>
-          <div class="page-box">
-            10
+          <button onclick="decreasePgCount()" style="margin-bottom:10px;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#A1A1A1" class="bi bi-caret-left-fill" viewBox="0 0 16 16">
+              <path d="m3.86 8.753 5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1 1 0 0 0-1.659-.753l-5.48 4.796a1 1 0 0 0 0 1.506z"/>
+            </svg>
+          </button>
+          <div id = 'currPageNumber' class="page-box">
+            1
           </div>
           <p class="page-wordings">of</p>
           <p class="page-wordings">12</p>
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#A1A1A1" class="bi bi-caret-right-fill" viewBox="0 0 16 16">
-            <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/>
-          </svg>
+          <button onclick="increasePgCount()" >
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#A1A1A1" class="bi bi-caret-right-fill" viewBox="0 0 16 16">
+              <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/>
+            </svg>
+          </button>
         </div>
       </div>
       <div
@@ -610,20 +650,22 @@
         </div>
       </div>
     </div>
-    <iframe
-      id = 'pdfViewer'
-      name="iFrame"
-      style="
-        height: 577.308837890625px;
-        width: 1015.1979370117188px;
-        left: 329.859375px;
-        top: 638.140625px;
-        border-radius: 0px;
-        margin-top: 30px;
-        overflow-x: scroll;
-        overflow-y: hidden;
-      "
-    ></iframe>
+    <object class="pdfViewerObj" id='pdfViewerObj' type="application/pdf">
+      <iframe 
+        id = 'pdfViewer'
+        name="iFrame"
+        style="
+          height: 577.308837890625px;
+          width: 1015.1979370117188px;
+          left: 329.859375px;
+          top: 638.140625px;
+          border-radius: 0px;
+          margin-top: 30px;
+          overflow-x: scroll;
+          overflow-y: hidden;
+        "
+      ></iframe>
+  </object>
   </div>
 </div>
 {% endblock %}
