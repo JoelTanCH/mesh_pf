@@ -281,6 +281,7 @@
   function prepPdfViewer() {
     document.getElementById('pdfViewerObj').data = '{{pdf_path}}#page=' + pageCount.toString()
     document.getElementById('pdfViewer').src = 'https://docs.google.com/viewer?url={{pdf_path}}&embedded=true'
+    document.getElementById('pdfViewer').allow = 'autoplay'
   }
 
   function popFields() {
