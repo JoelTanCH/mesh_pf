@@ -9,6 +9,7 @@ djangorestframework = "*"
 pymongo = "*"
 pypdf2 = "*"
 requests = "*"
+pillow = "*"
 
 [dev-packages]
 

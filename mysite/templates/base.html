@@ -42,7 +42,6 @@
               left: 236.2236328125px;
               top: 140.373046875px;
               border-radius: 10px;
-      
             }
       
             .topbar {
@@ -63,7 +62,6 @@
               left: 236.603515625px;
               top: 22.69921875px;
               border-radius: 10px;
-      
             }
       
             .topbar a {
@@ -91,6 +89,7 @@
         <link rel="stylesheet" href="{% static 'css/setting.css' %}">    
         <link rel="stylesheet" href="{% static 'css/base.css' %}">
         <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">  
+        <link href="https://pagecdn.io/lib/easyfonts/fonts.css" rel="stylesheet" />
         <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <script src="{% static 'js/bootstrap.min.js' %}"></script>
@@ -156,9 +155,10 @@
                 },10000) //every 10 seconds 
                 document.getElementById("current_date").innerHTML = getDate();                    
             </script>
-            <a href="/profile" style="position:absolute; right: 100px;">Profile</a>
+            <a href="/profile">Profile</a>
         </div>
-        <div id="content" class="content">
+        <div class="content">
+          
             {% block content %}
             {% endblock %}
         </div>
