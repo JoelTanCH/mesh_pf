@@ -10,6 +10,7 @@ pymongo = "*"
 pypdf2 = "*"
 requests = "*"
 pillow = "*"
+"django.rest-framework" = "*"
 
 [dev-packages]
 
