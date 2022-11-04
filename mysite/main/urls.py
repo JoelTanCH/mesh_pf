@@ -16,7 +16,7 @@ urlpatterns = [
     path('healthReportInfo/draftGenerationFailed/', views.draftGenerationFailed, name='draft generation failed'),
     path('healthReportInfo/invalidGeneration/', views.invalidGeneration, name='invalid generation'),
     path('summaryReport/update_nbatches', views.update_nbatches, name='update_nbatches'),
-    path('summaryReport/sendReportSelection', views.send_selection, name='send-selection'),Ï
+    path('summaryReport/sendReportSelection', views.send_selection, name='send-selection'),
     path('setting/', views.recTemplateInfo, name='settings page'),
     path('ok/', views.ok, name='ok')
 ] 

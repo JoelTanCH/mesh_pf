@@ -17,7 +17,7 @@ import os
 
 from .forms import RecommendationsForm, UploadFileForm
 
-summary_ref_filepath = "C:/Users/Daniel/Desktop/mesh_pf/mysite/main/executiveSummaryReference.json"
+summary_ref_filepath = "/Users/jiaxuan/Desktop/BT4103/pfe/mysite/main/executiveSummaryReference.json"
 
 # Create your views here.
 
