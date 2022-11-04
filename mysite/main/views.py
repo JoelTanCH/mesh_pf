@@ -17,7 +17,7 @@ import os
 
 from .forms import RecommendationsForm, UploadFileForm
 
-summary_ref_filepath = "/home/joel/demo/frontend/mesh_pf/mysite/main/executiveSummaryReference.json"
+summary_ref_filepath = "./main/executiveSummaryReference.json"
 
 # Create your views here.
 
@@ -297,7 +297,7 @@ def recTemplateInfo(response):
         "Lipids": "totalCholesterol"
     }
 
-    template_info = [[k, " ".join(data[v]["recommendations"])] for k, v in key_mapping.items()]
+    template_info = [[k, "".join(data[v]["recommendations"])] for k, v in key_mapping.items()]
     return render(response,"setting.html",{
         "template_info":template_info
     })
