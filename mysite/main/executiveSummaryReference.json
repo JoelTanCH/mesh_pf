@@ -24,11 +24,7 @@
     },
     "highDensityLipidCholesterol": {
         "condition": "have low level of \\textbf{high-density lipid cholesterol} ($\\leq$ 39 mg/dL)\\newline \\newline",
-        "recommendations": [
-            "Promote nutritional and fitness health talks to make healthier",
-            "lifestyle choices. Highlight health risks and increase awareness",
-            "for better control of cholesterol levels."
-        ],
+        "recommendations": "Promote nutritional and fitness health talks to make healthier lifestyle choices. Highlight health risks and increase awareness for better control of cholesterol levels.",
         "categories": [
             "1.Low (<1.0)"
         ],
@@ -37,11 +33,7 @@
     },
     "lowDensityLipidCholesterol": {
         "condition": "have elevated level of \\textbf{low-density lipid cholesterol} ($\\geq$ 160 mg/dL)\\newline \\newline",
-        "recommendations": [
-            "Promote nutritional and fitness health talks to make healthier",
-            "lifestyle choices. Highlight health risks and increase awareness",
-            "for better control of cholesterol levels."
-        ],
+        "recommendations": "Promote nutritional and fitness health talks to make healthier lifestyle choices. Highlight health risks and increase awareness for better control of cholesterol levels.",
         "categories": [
             "4.High (4.1-4.8)",
             "5.Very High (>=4.8)"
@@ -51,10 +43,7 @@
     },
     "systolicBloodPressure": {
         "condition": "have elevated \\textbf{systolic blood pressure} at or above 140 mmHg (pre-hypertensive and hypertensive levels)\\newline \\newline",
-        "recommendations": [
-            "Promote nutritional and fitness health talks to make wiser food",
-            "choices and increase awareness for better control of hypertension."
-        ],
+        "recommendations": "Promote nutritional and fitness health talks to make wiser food choices and increase awareness for better control of hypertension.",
         "categories": [
             "10.140.0",
             "11.150.0",
@@ -69,10 +58,7 @@
     },
     "diastolicBloodPressure": {
         "condition": "have elevated \\textbf{diastolic blood pressure} at or above 90 mmHg",
-        "recommendations": [
-            "Promote nutritional and fitness health talks to make wiser food",
-            "choices and increase awareness for better control of hypertension."
-        ],
+        "recommendations": "Promote nutritional and fitness health talks to make wiser food choices and increase awareness for better control of hypertension.",
         "categories": [
             "07.90.0",
             "08.100.0",
@@ -96,11 +82,7 @@
     },
     "habits-smoking": {
         "condition": "are \\textbf{smokers}",
-        "recommendations": [
-            "Designate smoke-free periods and/or fixed intervals for smoking",
-            "during office hours. Encourage self-imposed daily smoking limits.",
-            "Promote enrolment into Smoking Cessation programmes."
-        ],
+        "recommendations": "Designate smoke-free periods and/or fixed intervals for smoking during office hours. Encourage self-imposed daily smoking limits. Promote enrolment into Smoking Cessation programmes.",
         "categories": [
             "1.Yes"
         ],
@@ -109,11 +91,7 @@
     },
     "totalCholesterol": {
         "condition": "have high \\textbf{total cholesterol} ($\\geq$ 240 mg/dL)\\newline \\newline",
-        "recommendations": [
-            "Promote nutritional and fitness health talks to make healthier",
-            "lifestyle choices. Highlight health risks and increase awareness",
-            "for better control of cholesterol levels."
-        ],
+        "recommendations": "Promote nutritional and fitness health talks to make healthier lifestyle choices. Highlight health risks and increase awareness for better control of cholesterol levels.",
         "categories": [
             "3.High (>=6.1)"
         ],
@@ -122,11 +100,7 @@
     },
     "bodyMassIndex": {
         "condition": "are \\textbf{overweight} (BMI $\\geq$ 23.0 kg/m2)\\newline \\newline",
-        "recommendations": [
-            "Promote physical activity programmes at your workplace, e.g.,",
-            "dance-based workouts or high-intensity interval trainings during",
-            "lunch hours and/or after hours."
-        ],
+        "recommendations": "Promote physical activity programmes at your workplace, e.g., dance-based workouts or high-intensity interval trainings during lunch hours and/or after hours.",
         "categories": [
             "3.Overweight (23.0-27.4)",
             "4.Obese (>27.5)"
@@ -136,11 +110,7 @@
     },
     "bodyMassIndexObese": {
         "condition": "are \\textbf{obese} (BMI $\\geq$ 27.5 kg/m2)",
-        "recommendations": [
-            "Promote physical activity programmes at your workplace, e.g.,",
-            "dance-based workouts or high-intensity interval trainings during",
-            "lunch hours and/or after hours."
-        ],
+        "recommendations": "Promote physical activity programmes at your workplace, e.g., dance-based workouts or high-intensity interval trainings during lunch hours and/or after hours.",
         "categories": [
             "4.Obese (>27.5)"
         ],
@@ -149,10 +119,7 @@
     },
     "glucose": {
         "condition": "have elevated levels of \\textbf{blood glucose} (> 108 mg/dL)",
-        "recommendations": [
-            "Promote nutritional and fitness health talks to make wiser food",
-            "choices and increase awareness to prevent and manage diabetes."
-        ],
+        "recommendations": "Promote nutritional and fitness health talks to make wiser food choices and increase awareness to prevent and manage diabetes.",
         "categories": [
             "2.Impaired Fasting Glucose (5.6-7.0)",
             "3.Diabetic (>7.0)"
@@ -162,11 +129,7 @@
     },
     "triglycerides": {
         "condition": "have elevated level of \\textbf{triglycerides} ($\\geq$ 200 mg/dL)",
-        "recommendations": [
-            "Promote nutritional and fitness health talks to make healthier",
-            "lifestyle choices. Highlight health risks and increase awareness",
-            "for better control of cholesterol levels."
-        ],
+        "recommendations": "Promote nutritional and fitness health talks to make healthier lifestyle choices. Highlight health risks and increase awareness for better control of cholesterol levels.",
         "categories": [
             "3.High (2.3-4.4)",
             "4.Very High (>=4.4)"
@@ -217,11 +180,7 @@
     },
     "habits-alcoholIntake": {
         "condition": "drink \\textbf{$\\geq$ 15} units of alcohol per week",
-        "recommendations": [
-            "Promote alcohol-free beverages and fitness health talks to make",
-            "wiser beverages choices and increase awareness of the health",
-            "implications from high level of alcohol consumptions."
-        ],
+        "recommendations": "Promote alcohol-free beverages and fitness health talks to make wiser beverages choices and increase awareness of the health implications from high level of alcohol consumptions.",
         "categories": [
             "Heavy Drinker \n(more than 14 units / week)"
         ],
