@@ -12,5 +12,4 @@ urlpatterns = [
     path('healthReportInfo/invalidGeneration/', views.invalidGeneration, name='invalid generation'),
    path('summaryReport/update_nbatches', views.update_nbatches, name='update_nbatches'),
    path('summaryReport/sendReportSelection', views.send_selection, name='send-selection'),
-   path('summaryReport/get_nbatches', views.get_nbatches, name='get-nbatches'),
 ]

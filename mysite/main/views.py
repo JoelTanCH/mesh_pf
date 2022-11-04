@@ -9,6 +9,7 @@ from .helper import *
 from datetime import datetime
 import requests, PyPDF2
 from io import BytesIO
+import time
 
 
 # Create your views here.
@@ -112,27 +113,9 @@ def send_selection(response):
     response.session["clinic_personnel"] = clinic_personnel
     idx_selected = response.data.get('idx_selected', None)
     batches_to_include_obj_ids = response.data.get('batches_to_include_obj_ids', None)
-    arr_batchid = list(batches_to_include_obj_ids.split(','))
-    arr_objectbatchid = []
-    for batchid in arr_batchid:
-        objectid = ObjectId(batchid)
-        arr_objectbatchid.append(objectid)
-    response.session["batches"] = arr_objectbatchid
-    corporate_info = get_corporate_list('Parkway Health')
-    corporates = [[corp_dic['name'], corp_dic['_id']] for corp_dic in corporate_info]
-    corp_id = corporates[int(idx_selected)][1]
-    response.session["corp_id"] = corp_id
-    timestamp_gen = datetime.now()
-    response.session["timestamp_gen"] = timestamp_gen
-    print('finish send_')
+    response.session['batches_to_include_obj_ids'] = batches_to_include_obj_ids
+    response.session["idx_selected"] = idx_selected
     return render(response, 'healthReportInfo.html', {})
-
-def get_nbatches(response):
-    if response == 'GET':
-        return render(response, 'summaryReport.html', {
-            "nBatches" : n_batches
-        })
-    
 
 def setting(response):
     props = {}
@@ -141,6 +124,18 @@ def setting(response):
 @api_view(["GET", 'POST'])
 def healthReportInfo(response):
     print('healthReportInfo called')
+    timestamp_gen = datetime.now()
+    batches_to_include_obj_ids = response.session['batches_to_include_obj_ids']
+    arr_batchid = list(batches_to_include_obj_ids.split(','))
+    arr_objectbatchid = []
+    for batchid in arr_batchid:
+        objectid = ObjectId(batchid)
+        arr_objectbatchid.append(objectid)
+    print(type(objectid))
+    print(objectid)
+    corporate_info = get_corporate_list('Parkway Health')
+    corporates = [[corp_dic['name'], corp_dic['_id']] for corp_dic in corporate_info]
+    corp_id = corporates[int(response.session['idx_selected'])][1]
     url = "https://apps.who.int/iris/bitstream/handle/10665/349091/WHO-EURO-2021-2661-42417-58838-eng.pdf"
     req_response = requests.get(url)
     my_raw_data = req_response.content
@@ -149,17 +144,18 @@ def healthReportInfo(response):
         num_pages = read_pdf.getNumPages()
     dict_report = {
         'organization': 'Parkway health',
-        'corporateid': response.session['corp_id'], 
+        'corporateid': corp_id, 
         'name': response.session['corp_name'], 
-        'batches': response.session['batches'], 
-        'report_template': response.session['report_template'], 
-        'report_type': response.session['report_type'], 
-        'created_by': {'name': response.session['clinic_personnel'], 'created_time': response.session['timestamp_gen']} 
+        'batches': arr_objectbatchid, 
+        'report_template': response.session['corp_report_template'], 
+        'report_type': response.session['corp_report_type'], 
+        'created_by': {'name': response.session['clinic_personnel'], 'created_time': timestamp_gen} 
     }
     print('dict_report')
     print(dict_report)
     last_gen_name, last_gen_time, inserted_doc_id = generate_corp_report(dict_report)
-    print(inserted_doc_id)
+    print('inserted doc id type')
+    print(type(inserted_doc_id))
     audit_trail = retrieve_audit_trail(inserted_doc_id)
     log_info = []
     for dict in audit_trail:

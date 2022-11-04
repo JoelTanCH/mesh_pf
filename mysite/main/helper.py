@@ -92,6 +92,9 @@ def retrieve_audit_trail(reportid):
     client = MongoClient(temp_url)
     db = client["meshbio"]
     print('retrieve audit trail')
-    audit_trails = retrieve_document(db, 'audittrail',{reportid})
+    print(reportid)
+    print(type(reportid))
+    print(reportid)
+    audit_trails = retrieve_document(db, 'audittrail',{'reportid':reportid})
     return audit_trails
     
