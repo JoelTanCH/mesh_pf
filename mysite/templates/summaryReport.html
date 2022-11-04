@@ -7,15 +7,25 @@
     left: 200.17px;
     top: 190.96px;
   }
-  /*   .bodyHeader p {
-    font-family: 'Poppins';
-    font-style: normal;
+  .table-heading {
+    font-family: Poppins;
+    font-size: 16px;
     font-weight: 600;
-    font-size: 18px;
     line-height: 14px;
-    position: absolute;
-    color: #314c74;
-  } */
+    letter-spacing: 0em;
+    text-align: left;
+    color: #617594;
+  }
+  .settings-btn {
+    height: 30.381864547729492px;
+    width: 130.93368530273438px;
+    border-radius: 6px;
+    background-color: #aaaaaa;
+    border: 2px solid #11000003;
+    flex: right;
+    margin-right: -120px;
+    margin-top: -20px;
+  }
   .bodyHeader button {
     box-sizing: border-box;
     top: 26.84%;
@@ -40,34 +50,10 @@
     align-items: center;
   }
 
-  .modal-body-ctn {
-    display: flex;
-    justify-content: center;
-    align-items: middle;
-  }
-
-  .search-field__input {
-    height: 30.38px;
-    width: 609.33px;
-    font-size: 14px;
-    background-image: url(https://cdn2.hubspot.net/hubfs/4004166/bioticresearch_website_assets/images/search_icon.png);
-    background-repeat: no-repeat;
-    background-position: right center;
-    background-color: #f2f2f266;
-    border: 1px solid #61616133;
-    box-shadow: none;
-    -webkit-appearance: none;
-    border-radius: 6px;
-  }
-
-  .modal-btm {
-    margin-left: 322.14px;
-    margin-bottom: 39.04px;
-  }
 
   .form-label {
     text-align: left;
-    margin-left: 4px;
+    margin-left: -15px;
     color: #717171;
     font-size: 12px;
     font-weight: 700;
@@ -106,47 +92,9 @@
     letter-spacing: 0em;
     text-align: left;
     margin-top: 10px;
+    margin-left: 20bpx;
   }
 
-  .table-heading {
-    font-family: Poppins;
-  font-size: 16px;
-  font-weight: 600;
-  line-height: 14px;
-  letter-spacing: 0em;
-  text-align: left;
-  color: #617594;
-
-  }
-  .settings-btn {
-    height: 30.381864547729492px;
-    width: 130.93368530273438px;
-    border-radius: 6px;
-    background-color: #aaaaaa;
-    border: 2px solid #11000003;
-    flex: right;
-    margin-right: -120px;
-    margin-top: -20px;
-  }
-  .column-header {
-    height: 53.53135681152344px;
-    width: 1077.3070068359375px;
-    border-radius: 0px;
-    background-color: #7788a3;
-  }
-  .table-row {
-    height: 53.53135681152344px;
-    width: 1077.3070068359375px;
-    border-radius: 0px;
-    background-color: #f3f4f7;
-    color: #7d7e8c;
-  }
-  .indiv-column-header {
-    width: 50%;
-    color: #ffffff;
-    justify-content: center;
-    margin-top: 12px;
-  }
   .add-report-ctn {
     height: 32.094635009765625px;
     width: 285.3984375px;
@@ -180,231 +128,1469 @@
     text-align: left;
     color: #7d7e8c;
   }
-  .list-item {
+  .flex-horizontal {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .subheader {
+    color: #70829d;
+  }
+  .button3 {
+    color: white;
+    font-size: 12px;
+    font-weight: 600;
+    border-radius: 6px;
+    border: 0px;
+    position: absolute;
+    width: 155px;
+    height: 30px;
+    cursor: pointer;
+  }
+
+  .button3:disabled {
+    cursor: auto;
+    opacity: 0.2;
+  }
+
+  .tablerecords {
+    border-collapse: collapse;
+    width: 100%;
+    -webkit-box-shadow: 0px 4px 4px 0px #c4c4c4;
+    box-shadow: 0px 4px 4px 0px #c4c4c4;
+  }
+
+  .tablerecords thead {
+    background-color: #7788a3;
+    position: relative;
+    height: 52px;
+    font-family: var(--ff-sans-normal);
+    font-size: var(--fs-200);
+    font-weight: 600;
+    line-height: 14px;
+    letter-spacing: 0em;
+    text-align: left;
+    border-bottom: 3px #ffffff;
+  }
+
+  .tablerecords tbody {
+    background-color: #f3f4f7;
+    font-family: var(--ff-sans-normal);
+    font-size: var(--fs-150);
+    font-weight: 600;
+    line-height: 14px;
+    letter-spacing: 0em;
+    text-align: left;
+  }
+
+  .tablerecords tbody tr {
+    border-bottom: 3px #ffffff;
     color: #7d7e8c;
-    width: 50%;
-    justify-content: center;
-    margin-top: 12px;
+    height: 33px;
+  }
+
+  .tablerecords thead td {
+    /* color: #000; */
+    color: white;
+    border-bottom: 3px solid white;
+    height: 52px;
+  }
+
+  .tablerecords td {
+    height: 36px;
+    padding: 0px 8px;
+    border-bottom: 2px solid white;
+    text-align: left;
+  }
+
+  .tablerecords td a {
+    /* color: blue; */
+    color: #314c74;
+    text-decoration: underline;
+    cursor: pointer;
+  }
+
+  /* Checkbox */
+  .tablecheckbox {
+    display: block;
+    position: relative;
+    cursor: pointer;
+    font-size: 20px;
+    width: 5px;
+  }
+
+  .tablecheckboxdisabled {
+    display: block;
+    position: relative;
+    cursor: auto;
+    font-size: 20px;
+    width: 5px;
+    opacity: 0.3;
+  }
+
+  /* Hide the default checkbox */
+  input[type='checkbox'] {
+    visibility: hidden;
+  }
+
+  /* Creating a custom checkbox
+based on demand */
+  .tablecheckmark {
+    position: absolute;
+    top: 5px;
+    left: 6px;
+    height: 10px;
+    width: 10px;
+    background-color: #7788a3;
+    border-color: #ffffff;
+    border-width: 0.5px 0.5px 0.5px 0.5px;
+    border-style: solid;
+    border-radius: 3px;
+  }
+
+  .tablerowcheckmark {
+    position: absolute;
+    top: 5px;
+    left: 6px;
+    height: 10px;
+    width: 10px;
+    background-color: #ffffff;
+    border-color: #7d7e8c;
+    border-width: 0.5px 0.5px 0.5px 0.5px;
+    border-style: solid;
+    border-radius: 3px;
+  }
+
+  /* Specify the background color to be
+shown when hovering over checkbox */
+  .tablecheckbox:hover input ~ .tablecheckmark {
+    background-color: #7788a3;
+    border-color: #ffffff;
+    border-width: 0.5px 0.5px 0.5px 0.5px;
+    border-style: solid;
+    border-radius: 3px;
+  }
+
+  /* Specify the background color to be
+shown when checkbox is active */
+  .tablecheckbox input:active ~ .tablecheckmark {
+    background-color: #7788a3;
+    border-color: #ffffff;
+    border-width: 0.5px 0.5px 0.5px 0.5px;
+    border-style: solid;
+    border-radius: 3px;
+  }
+
+  /* Specify the background color to be
+shown when checkbox is checked */
+  .tablecheckbox input:checked ~ .tablecheckmark {
+    background-color: #7788a3;
+    border-color: #ffffff;
+    border-width: 0.5px 0.5px 0.5px 0.5px;
+    border-style: solid;
+    border-radius: 3px;
+  }
+
+  /* Checkmark to be shown in checkbox */
+  /* It is not be shown when not checked */
+  .tablecheckmark:after {
+    content: '';
+    position: absolute;
+    display: none;
+  }
+
+  .tablerowcheckmark:after {
+    content: '';
+    position: absolute;
+    display: none;
+  }
+
+  /* Display checkmark when checked */
+  .tablecheckbox input:checked ~ .tablecheckmark:after {
+    display: block;
+  }
+
+  .tablecheckbox input:checked ~ .tablerowcheckmark:after {
+    display: block;
+  }
+
+  /* Styling the checkmark using webkit */
+  /* Rotated the rectangle by 45 degree and
+        showing only two border to make it look
+        like a tickmark */
+  .tablecheckbox .tablecheckmark:after {
+    left: 4px;
+    bottom: 2px;
+    width: 6px;
+    height: 12px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+  }
+
+  .tablecheckbox .tablerowcheckmark:after {
+    left: 4px;
+    bottom: 2px;
+    width: 6px;
+    height: 12px;
+    border: solid #7d7e8c;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+  }
+
+  #dateinfo {
+    display: none;
+    /* position: relative; */
+    /* top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 40%; */
+    z-index: 9999;
+
+    overflow: hidden;
+    margin: auto;
+    /* max-height: 100%;
+    min-height: 10px;
+    min-width: fit-content; */
+
+    position: absolute;
+    /* top:-1px; */
+    transform: translateX(-25%) translateY(-120%);
+    /* transform: translate(-50%, -50%); */
+    vertical-align: 5px;
+    width: fit-content;
+    height: 30px;
+    background: #e5e9ef;
+    mix-blend-mode: normal;
+    border: 3px solid #e0e6ef;
+    box-sizing: border-box;
+    border-radius: 15px;
+    color: #465e82;
+    padding: 5px;
+  }
+
+  #infoicon {
+    font-size: var(--fs-450);
+    padding-left: 5px;
+    cursor: pointer;
+  }
+
+  .tableaddbtn {
+    font-size: 20px;
+    cursor: pointer;
+  }
+
+  .underline-indicators {
+    width: 100%;
+    text-align: left;
+    border: 0;
+    color: #7d7e8c;
+    text-decoration: underline;
+    background-color: transparent;
+    cursor: pointer;
+    padding: 0;
+  }
+
+  .underline-indicators > * {
+    cursor: pointer;
+    padding: var(--underline-gap, 1rem) 0;
+    border: 0;
+    border-bottom: 0.2rem solid hsl(var(--clr-white) / 0);
+  }
+
+  .underline-indicators > *:hover,
+  .underline-indicators > *:focus {
+    border-color: var(--clr-white) / 0.5;
+  }
+
+  .underline-indicators > .active,
+  .underline-indicators > [aria-selected='true'] {
+    color: hsl(var(--clrwhite) / 1);
+    border-color: hsl(var(--clr-white) / 1);
+  }
+
+  .dottedactionbutton {
+    color: #ababab;
+    border: 0px;
+    font-size: 30px;
+    background-color: #f3f4f7;
+    border: 0px;
+    cursor: pointer;
+  }
+
+  .actions {
+    z-index: 1;
+    position: absolute;
+    background: #ffffff;
+    border: 0.2px solid #c6c6c6;
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.25);
+    border-radius: 4px;
+  }
+
+  .actions button {
+    display: block;
+    min-width: max-content;
+    width: 100%;
+    border: 0.2px solid #c6c6c6;
+    background-color: transparent;
+    padding: 8px;
+    text-align: left;
+  }
+
+  .actions button:enabled {
+    cursor: pointer;
+    color: #575757;
+  }
+
+  #actionDropdown {
+    display: none;
+    z-index: 1;
+    position: absolute;
+  }
+
+  /* pagination for tables */
+  .pagination-container {
+    align-items: center;
+  }
+
+  .pagination-container2 {
+    justify-content: end;
+    align-items: center;
+  }
+
+  .pagination-label {
+    padding-top: 2px;
+    padding-right: 10px;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 14px;
+
+    display: flex;
+    align-items: center;
+
+    color: #7d7e8c;
+  }
+
+  .pagination-dropdown {
+    height: 30px;
+    width: 60px;
+    margin-right: 15px;
+    background: rgba(242, 242, 242, 0.4);
+    border: 1px solid rgba(97, 97, 97, 0.2);
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 14px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+
+    color: #313774;
+  }
+
+  .pagination-pagenumber {
+    width: 35px !important;
+    background: #e8ebf1 !important;
+    box-shadow: 0px 1px 3px rgba(230, 234, 238, 0.6);
+    border-radius: 6px;
+    font-weight: 600 !important;
+    font-size: 16px !important;
+    line-height: 14px;
+    align-items: center;
+    color: #313774;
+    text-align: center;
+    padding-right: 6px;
+  }
+
+  .pagination-button {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    font-size: 14px;
+    /* font-family: "Roboto", sans-serif; */
+    background: #e8ebf1;
+    padding: 0 16px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+    min-width: -webkit-fit-content;
+    min-width: -moz-fit-content;
+    min-width: fit-content;
+    height: 30px;
+    box-shadow: 0px 1px 3px rgba(230, 234, 238, 0.6);
+    border-radius: 6px;
+    color: #313774;
+    /* border: 2px solid black; */
+    /* color: black;
+  outline: none; */
+    border: 2px solid rgba(97, 97, 97, 0.2);
+    font-weight: 500;
+
+    margin: 5px;
+  }
+
+  .pagination-button:active,
+  .pagination-button:hover {
+    outline: none;
+    background-color: white;
+    /* color: black; */
+  }
+ 
+  .pagination-button:disabled {
+    background-color: white;
+    color: #a7a9c0;
+    cursor: auto;
+    border: 1px solid #a7a9c0;
+  }
+  /* end of pagination for tables */
+
+  .action-options{
+    font-family: Poppins;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 15px;
+    letter-spacing: 0em;
+    text-align: left;
+    }
+  .searchfilter {
+  background: white;
+  max-width: 100%;
+  margin-top: 15px;
+  margin-bottom: 110px;
+  padding: 10px;
+  padding-top: 30px;
+  font-size: 12px;
+  min-height: 150px;
+  border-radius: 0px 0px 15px 15px;
+  }
+
+  .searchfilterrows {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-bottom: 15px;
+    width:800px;
+  }
+
+  .searchfilterfields {
+    height: 50px;
+    width: 45%;
+  }
+
+  .searchfilterperiodstart {
+    width: 45%;
+    margin-right: 5px;
+  }
+
+  .searchfilterperiodend {
+    width: 45%;
+    margin-left: 5px;
+  }
+
+  .searchfilternames {
+
+    font-family: var(--ff-sans-normal);
+    font-size: var(--fs-150);
+    font-weight: 700;
+    line-height: 14px;
+    color: #717171;
+    letter-spacing: 0em;
+    text-align: left;
+    padding-bottom: 10px;
+
+  }
+
+  .relativeposition {
+    position: relative;
+  }
+
+  .searchbutton {
+    padding: 10px;
+  }
+
+  .searchbaricon {
+    right: 2px;
+    top: 5px;
+    position: absolute;
+    color: #A1A1A1;
+    font-size: 20px;
+  }
+
+  .add-batch-btn {
+  background-color: #AAAAAA;
+  color: white;
+  border-radius: 6px;
+  border:0px;
+  position: absolute;
+  width: 609.33px;
+  height: 30.38px;
+  font-family: Poppins;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 14px;
+  letter-spacing: 0em;
+  text-align: left;
+  margin-left:-306px;
+  }
+
+  .error-status-btn {
+    height: 20.851228713989258px;
+    width: 93.39344024658203px;
+    left: 1159.4296875px;
+    top: 361.0078125px;
+    border-radius: 6px;
+    background-color: #F4DCD9;
+    color: red;
+    border: 0px;
     font-family: Poppins;
     font-size: 12px;
     font-weight: 600;
     line-height: 14px;
     letter-spacing: 0em;
-    text-align: left;
+    text-align: center;
 
   }
+
+  .ready-status-btn {
+    height: 20.851228713989258px;
+    width: 93.39344024658203px;
+    left: 1159.4296875px;
+    top: 361.0078125px;
+    border-radius: 6px;
+    background-color: #BFD0C0;
+    color: #607168;
+    border: 0px;
+    font-family: Poppins;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 14px;
+    letter-spacing: 0em;
+    text-align: center;
+
+  }
+  .select-option-dropdown{
+    font-family: Poppins;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 14px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #B7B7B7;
+  }
+
+::-webkit-input-placeholder {
+  text-align: left;
+}
+
+:-moz-placeholder {
+  text-align: left;
+}
+.modal-body-ctn {
+    display: flex;
+    justify-content: center;
+    align-items: middle;
+  }
+
+  .modal-btm {
+    margin-left: 300.14px;
+    margin-bottom: 39.04px;
+  }
+
+
+  .modal-content {
+    width: 681.99px; 
+    height: 500.32px; 
+    border-radius: 20px;
+  }
+
+  .btn-btn-secondary-dropdown-toggle, .batch-selection {
+    width: 605.33px;
+    height: 30.38px;
+    float: right;
+    border-radius: 6px;
+    background-color: #f2f2f266;
+    border: 1px solid #61616133;
+    color: #717171;
+    font-family: Poppins;
+    font-weight: 500;
+    line-height: 14px;
+    letter-spacing: 0em;
+    font-size: 14px;
+    text-align: left;
+    padding: 5px;
+  }
+
+  #reportTitle {
+    height: 30.38px;
+    width: 605.33px;
+    border-radius: 6px;
+    float: right;
+    border: 1px solid #61616133;
+    background-color: #f2f2f266;
+    letter-spacing: 0em;
+    font-size: 14px;
+    font-family: Poppins;
+    font-weight: 500;
+    line-height: 14px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #717171;
+    padding:5px;
+  }
+
+
+
+  .dropdown-options {
+    text-align: left ;
+    color: black;
+  }
+  .search-field_input {
+    height: 30.38px;
+    width: 605.33px;
+    font-size: 12px;
+    background-color: #f2f2f266;
+    border: 1px solid #61616133;
+    box-shadow: none;
+    -webkit-appearance: none;
+    border-radius: 6px;
+  }
+
+  .new-batch-selector-added {
+    padding-top: 5px;
+    width: 600.33px;
+    padding-left: 5px;
+  }
+  
+
+
+  ul, li {
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 0;
+}
+
+
+  /*Dropdown button for corporate ID*/
+  .dropbtn {
+    height: 30.38px;
+    width: 605.33px;
+    font-size: 12px;
+    background-color: #f2f2f266;
+    border: 1px solid #61616133;
+    box-shadow: none;
+    -webkit-appearance: none;
+    border-radius: 6px;
+}
+
+/* The search field */
+#myInput {
+  box-sizing: border-box;
+  height: 30.38px;
+  width: 605.33px;
+  background-repeat: no-repeat;
+  padding: 14px 20px 12px 45px;
+  border: none;
+  border-bottom: 1px solid #ddd;
+  text-align: left;
+  font-family: Poppins;
+  font-weight: 500;
+  line-height: 14px;
+  letter-spacing: 0em;
+  font-size: 13px;
+}
+
+#selected-id-display {
+    font-family: Poppins;
+    font-weight: 500;
+    line-height: 14px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #717171;
+    border-radius: nullpx;
+    padding:5px;
+    font-size: 14px;
+  }
+  
+
+/* The search field when it gets focus/clicked on */
+#myInput:focus {outline: 3px solid #ddd;}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+  /* Dropdown Content (Hidden by Default) */
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f6f6f6;
+    min-width: 230px;
+    border: 1px solid #ddd;
+    z-index: 1;
+    text-align: left;
+  }
+  
+  /* Links inside the dropdown */
+  .dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+  
+  /* Change color of dropdown links on hover */
+  .dropdown-content a:hover {background-color: #f1f1f1}
+  
+  /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+  .show {display:block;}
+  
+  .corp-id-display {
+    font-family: Poppins;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 14px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #717171;
+  }
+  #corpIdDropdown {
+    height: 200px;
+    overflow:scroll;
+  }
+  
+  
+
+
+
 </style>
+
+
+<script>
+
+  $(document).ready(function() {
+    prep_modal();
+  })
+
+  //variables
+  var number_batches = '{{nBatches}}'
+  var corp_name = ""
+  var corp_id = ""
+  var report_title = ""
+  var report_type = ""
+  var report_template = ""
+  var batches_to_include = []
+  var corp_index_selected = 0
+
+  //global variables used for modal
+  //number of times user can click 'add new batch', max is the number of batches existing
+  var available_dropdowns_to_add = 0
+
+  function displayActionDropdown() {
+    let actionDropdown = document.getElementById("actionDropdown")
+    if (actionDropdown.style.display == "none") {
+      actionDropdown.style.display = "block";
+    } else {
+      actionDropdown.style.display = "none"
+    }
+  };
+
+
+  function addNewBatch() {
+    console.log('addNewBatch() called')
+    console.log(number_batches)
+    number_batches = parseInt(number_batches)
+    number_batches += 1;
+    console.log(number_batches)
+    var formData  = new FormData()
+    formData.append('number_batches', number_batches)
+    // axios.post('update_nbatches', formData, {headers: {'X-CSRFToken': 'csrftoken'}})
+    // .then(res => console.log(res))
+    let req = axios({
+		method: 'post',
+		url: 'update_nbatches',
+		xstfCookieName: 'csrftoken',
+		xsrfHeaderName: 'X-CSRFToken',
+		data: formData,
+		headers: {
+			'X-CSRFToken': 'csrftoken'
+		}
+    }).then((response) => {
+      this.msg = response.data;
+      console.log('response');
+    });
+
+    if (available_dropdowns_to_add > 0) {
+      let newSelector = document.getElementById("batch-selector").cloneNode(true)
+      newSelector.className = 'new-batch-selector-added'
+      let btn = document.createElement("button");
+      btn.setAttribute('style', 'border:0px; background-color:#FFFFFF; margin-left:3px; ')
+      var delete_icon = document.createElementNS("http://www.w3.org/2000/svg", "svg")
+      delete_icon.setAttribute('width', '16')
+      delete_icon.setAttribute('height', '16')
+      delete_icon.setAttribute('fill',' #D63636')
+
+      var path1 = document.createElementNS("http://www.w3.org/2000/svg", 'path')
+      var path2 = document.createElementNS("http://www.w3.org/2000/svg", 'path')
+
+      delete_icon.appendChild(path1)
+      delete_icon.appendChild(path2)
+
+      path1.setAttribute('d', "M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z")
+      path2.setAttribute('d', "M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z")
+      btn.appendChild(delete_icon)
+
+      btn.type = "button"
+      btn.onclick = function() {
+        return del_batch_selector(this)
+
+        //this.parentElement.parentElement.parentElement.removeChild(this.parentElement.parentElement)
+      }
+      newSelector.childNodes[1].appendChild(btn)
+      let element = document.getElementById("batch-ctn")
+      let height = document.querySelector("#batch-selector").offsetHeight
+      let modalHeight = document.querySelector('.modal-content').offsetHeight
+      document.getElementsByClassName("modal-content")[0].style.height = modalHeight + height + 5 +'px'
+      element.appendChild(newSelector)
+      available_dropdowns_to_add -= 1
+    }
+    return;
+  }  
+  function del_batch_selector(ele) {
+    ele.parentElement.parentElement.parentElement.removeChild(ele.parentElement.parentElement)
+    const height_of_selector = document.getElementById('batch-selector').offsetHeight
+    const modalHeight = document.querySelector('.modal-content').offsetHeight
+    document.getElementsByClassName("modal-content")[0].style.height = (modalHeight - height_of_selector - 5) + 'px'
+    event.stopPropagation()
+    available_dropdowns_to_add += 1
+    return false;
+  }
+
+  function check_modal_page_two_input() {
+    corp_template = document.getElementById('reportTemplateSelection')
+    flag = true
+    console.log(corp_template.value)
+    if (corp_template.value == "") {
+      document.getElementById('corp-template-check').style.display= 'block'
+      flag = false
+    }
+    else {
+      document.getElementById('corp-template-check').style.display= 'none'
+    }
+    return flag
+  }
+
+  function check_modal_page_one_input() {
+    corp_name_selected = document.getElementById('selected-id-display')
+    corp_title = document.getElementById('reportTitle')
+    corp_type = document.getElementById('reportTypeSelection')
+    console.log(corp_type.value)
+    flag = true
+    if (corp_name_selected.innerHTML == "") {
+      document.getElementById('corp-name-check').style.display= 'block'
+      flag = false
+    }
+    else {
+      document.getElementById('corp-name-check').style.display= 'none'
+    }
+    if (corp_title.value == "") {
+      document.getElementById('corp-title-check').style.display= 'block'
+      flag = false
+    }
+    else {
+      document.getElementById('corp-title-check').style.display= 'none'
+    }
+    if (corp_type.value == "") {
+      document.getElementById('corp-type-check').style.display= 'block'
+      flag = false
+    }
+    else {
+      document.getElementById('corp-type-check').style.display= 'none'
+    }
+    return flag
+  }
+  
+  function prep_modal()
+    {
+      $(".modal").each(function() {
+
+      var element = this;
+      var pages = $(this).find('.modal-split');
+
+      if (pages.length != 0)
+      {
+          pages.hide();
+          pages.eq(0).show();
+
+          var c_button = document.createElement("button");
+                    c_button.setAttribute("type","button");
+                    c_button.setAttribute("class","btn btn-light");
+                    c_button.setAttribute("style", "margin-right:10px;width: 155.93px; height: 30.38px; background-color: white;border-color: #8fa3c1;border-radius: 12px;color: #314c74; font: Poppins;font-weight: 600;font-size: 14px;line-height: 10.99px;align-items: center;");
+                    c_button.setAttribute("data-bs-dismiss" , "modal");
+                    c_button.setAttribute("onclick", "location.href=''");
+                    c_button.innerHTML = "Cancel";
+
+          var n_button = document.createElement("button");
+                    n_button.setAttribute('ID', 'next-btn')
+                    n_button.setAttribute("type","button");
+                    n_button.setAttribute("class","btn btn-light");
+                    n_button.setAttribute("style", " width: 155.93px;height: 30.38px; background-color: white;border-color: #8fa3c1;border-radius: 12px; color: #314c74; font: Poppins; font-weight: 600;font-size: 14px; line-height: 10.99px;align-items: center;");
+                    n_button.innerHTML = "Next";
+
+          var cfm_button = document.createElement("button");
+                    cfm_button.setAttribute('ID', 'cfm-btn')
+                    cfm_button.setAttribute("type","button");
+                    cfm_button.setAttribute("class","btn btn-light");
+                    cfm_button.setAttribute("style", " width: 155.93px;height: 30.38px; background-color: white;border-color: #8fa3c1;border-radius: 12px; color: #314c74; font: Poppins; font-weight: 600;font-size: 14px; line-height: 10.99px;align-items: center;");
+                    cfm_button.innerHTML = "confirm";
+                    cfm_button.style.marginLeft='180px'
+                    cfm_button.style.marginBottom="200px"
+                    cfm_button.style.display= "none"
+          
+          $(this).find('.modal-btm').append(c_button).append(n_button);
+
+
+          var page_track = 0;
+
+          $(n_button).click(function() {
+            
+            this.blur();
+
+            if(page_track == 0)
+            {
+              $(c_button).show();
+            }
+
+            if(page_track == pages.length-2)
+            {
+              can_progress = check_modal_page_one_input()
+              // n_button.style.display= "none"
+              // cfm_button.style.display = "block"
+              // c_button.style.marginTop='300px' 
+              // c_button.style.marginRight="200px"
+              // n_button.setAttribute('href', "{% url 'healthReportInfo'%}");
+            }
+            if (page_track == pages.length-1){
+                can_progress = check_modal_page_two_input()
+                if (can_progress) {
+                  var collated_batches = collate_batches_selected()
+                  var batches_to_include = collated_batches[0]
+                  var batches_to_include_idx = collated_batches[1]
+                  var corporate_batches_objIds = {{corporate_batches_ids|safe}}
+                  batch_object_ids = get_selected_batch_objIds(batches_to_include_idx, corporate_batches_objIds, corp_index_selected)
+                  var formData  = new FormData()
+                  formData.append('corp_name', corp_name)
+                  formData.append('report_title', report_title)
+                  formData.append('report_type', report_type)
+                  formData.append('report_template', report_template)
+                  formData.append('batches_to_include', batches_to_include)
+                  formData.append('clinic_personnel', "Linda Tan")
+                  formData.append('idx_selected', corp_index_selected)
+                  formData.append('batches_to_include_obj_ids', batch_object_ids)
+                  let req = axios({
+                  method: 'post',
+                  url: 'sendReportSelection',
+                  xstfCookieName: 'csrftoken',
+                  xsrfHeaderName: 'X-CSRFToken',
+                  data: formData,
+                  headers: {
+                    'X-CSRFToken': 'csrftoken'
+                  }
+                  }).then((response) => {
+                    window.location.href="healthReportInfo"
+                  });
+                }
+            }
+            if(page_track <= pages.length-2)
+            {
+              if (can_progress) {
+                report_title = document.getElementById('reportTitle').value
+                n_button.innerHTML = "Confirm"
+                page_track++;
+
+                pages.hide();
+                pages.eq(page_track).show();
+              }
+            }
+          });
+
+          $(c_button).click(function() {
+            if(page_track > 0)
+            {
+              page_track--;
+
+              pages.hide();
+              pages.eq(page_track).show();
+            }
+            
+          });
+
+          $(cfm_button).click(function() {
+            var formData  = new FormData()
+            formData.append('corp_name', corp_name)
+            formData.append('report_title', report_title)
+            formData.append('report_type', report_type)
+            formData.append('report_template', report_template)
+            formData.append('batches_to_include', batches_to_include)
+            formData.append('clinic_personnel', "Linda Tan")
+            formData.append('idx_selected', corp_index_selected)
+            let req = axios({
+            method: 'post',
+            url: 'sendReportSelection',
+            xstfCookieName: 'csrftoken',
+            xsrfHeaderName: 'X-CSRFToken',
+            data: formData,
+            headers: {
+              'X-CSRFToken': 'csrftoken'
+            }
+            }).then((response) => {
+              this.msg = response.data;
+              window.location.reload();
+              console.log('response');
+            });
+            return;
+            
+          });
+      }
+
+      });
+    }
+
+  function showIdDropdown() {
+    document.getElementById("corpIdDropdown").classList.toggle("show");
+  }
+
+  function filterFunction() {
+    var input, filter, ul, li, a, i;
+    input = document.getElementById("myInput");
+    filter = input.value.toUpperCase();
+    div = document.getElementById("corpIdDropdown");
+    a = div.getElementsByTagName("a");
+    for (i = 0; i < a.length; i++) {
+      txtValue = a[i].textContent || a[i].innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        a[i].style.display = "";
+      } else {
+        a[i].style.display = "none";
+      }
+    }
+  }
+
+  function selectID(idx) {
+    document.getElementById("corpIdDropdown").classList.toggle("show");
+    var corp_ids = '{{corporate_names}}'
+    console.log(corp_ids)
+    corp_ids = corp_ids.replace(new RegExp("&"+"#"+"x27;", "g"), "")
+    corp_ids = corp_ids.replace("[", "")
+    corp_ids = corp_ids.replace("]", "")
+    corp_ids = corp_ids.replace(" ", "")
+    var corp_ids_arr = corp_ids.split(',');
+    console.log(corp_ids_arr)
+    var id_selected = corp_ids_arr[idx-1]
+    corp_name = corp_ids_arr[idx-1]
+    corp_index_selected = idx-1
+    console.log('index selected:', idx-1)
+    console.log(id_selected)
+    document.getElementById("selected-id-display").innerHTML = id_selected;
+    var corp_batches = {{ corporate_batches|safe }}
+    corp_batches_arr = corp_batches[idx-1]
+    available_dropdowns_to_add = corp_batches_arr.length - 1
+    var select = document.getElementById("batchSelection");
+
+    const batch_selectors_added = document.getElementsByClassName("new-batch-selector-added");
+    if (batch_selectors_added.length > 0) {
+      const num_batch_selectors_added = batch_selectors_added.length
+      const height_of_selector = document.getElementById('batch-selector').offsetHeight
+      const height_to_remove = (height_of_selector + 5) * num_batch_selectors_added
+      const modalHeight = document.querySelector('.modal-content').offsetHeight
+      document.getElementsByClassName("modal-content")[0].style.height = (modalHeight - height_to_remove) + 'px'
+      removeElementsByClass(batch_selectors_added) 
+    }
+    removeOptions(select)
+    for (i = 0; i < corp_batches_arr.length; i++) {
+      var option = document.createElement("option");
+      option.text = corp_batches_arr[i];
+      option.value = corp_batches_arr[i];
+      select.appendChild(option);
+    }
+
+    // document.getElementById("selected-id-display").setAttribute("visibility", "visible") 
+
+    // $(".modal").each(function() {
+    // var element = this;
+    // option = document.createElement("option");
+    // option.setAttribute("style", "text-align: center;");
+    // option.innerHTML = 'testing'
+    // var pp = document.createElement("p");
+    // pp.innerHTML = 'WORDSSSS'
+    // $(this).find('.batch-container').find('batch-selection').append(option)
+    // })
+   };
+
+
+  // function selectBatches(ele) {
+  //   // if selector is from a 'add new batch' dropdown
+  //   if (ele.parentElement.parentElement.className == "new-batch-selector-added") {
+  //     var selectedValue = ele.value
+  //     selectedValue = selectedValue.replaceAll("'", '"')
+
+  //   }
+  //   else {
+  //     var selectBox = document.getElementById("batchSelection");
+  //     var selectedValue = selectBox.options[selectBox.selectedIndex].value;
+  //     selectedValue = selectedValue.replaceAll("'", '"')
+  //   }
+  //   console.log(selectedValue)
+  //   // var batchArr = JSON.parse(selectedValue)
+  //   // console.log(batchArr)
+  //   batches_to_include.push(selectedValue)
+  // };
+
+  function collate_batches_selected() {
+    batches_to_include = []
+    batches_to_include_idx = []
+    var permanent_select_box = document.getElementById("batchSelection");
+    var selectedValue = permanent_select_box.value;
+    selectedValue = selectedValue.replaceAll("'", '"')
+    batches_to_include.push(selectedValue)
+    batches_to_include_idx.push(permanent_select_box.selectedIndex)
+
+    var new_selector_dropdowns = document.getElementsByClassName("new-batch-selector-added")
+    for (i=0; i< new_selector_dropdowns.length; i++) {
+      var selectedValue = new_selector_dropdowns[i].childNodes[1].childNodes[1].value
+      var selectedIndex = new_selector_dropdowns[i].childNodes[1].childNodes[1].selectedIndex
+      batches_to_include.push(selectedValue)
+      batches_to_include_idx.push(selectedIndex)
+    }
+
+    //get unique values from each array in case user selects multiple 
+    batches_to_include = [... new Set(batches_to_include)]
+    batches_to_include_idx = [... new Set(batches_to_include_idx)]
+    return [batches_to_include, batches_to_include_idx]
+
+  }
+  // takes in the index of batches selected eg (0, 2, 4) 
+  // takes in stringified list of object ids 
+  // takes in index of corp name selected
+  // maps index of batch to its object id
+  function get_selected_batch_objIds(idx_arr, corp_batches_id_arr, corp_index) {
+    //get object ids specific to the selected corporate
+    corp_batches_ids = corp_batches_id_arr[corp_index]
+    object_ids = []
+    for (i=0; i<idx_arr.length; i++) {
+      object_ids.push(corp_batches_ids[idx_arr[i]])
+    }
+    return object_ids
+  } 
+
+
+  function selectReportType() {
+    var selectBox = document.getElementById("reportTypeSelection");
+    var selectedValue = selectBox.options[selectBox.selectedIndex].value;
+    report_type = selectedValue
+  };
+
+  function selectTemplate() {
+    var selectBox = document.getElementById("reportTemplateSelection");
+    var selectedValue = selectBox.options[selectBox.selectedIndex].value;
+    report_template = selectedValue
+  };
+
+
+  function removeElementsByClass(elements){
+    while(elements.length > 0){
+        elements[0].parentNode.removeChild(elements[0]);
+    }
+}
+
+  function removeOptions(select) {
+    if (select != null) {
+      for (a in select.options) { select.options.remove(0); }
+    }
+  }
+
+</script>
+
 <div class="main">
   <div class="bodyHeader">
     <p class="page-title">Corporate Health Report</p>
-    <div style="height: 31.45px;"></div>
-    <p class="table-heading">List of Corporate Health Reports</p>
-    <hr style="width:228.53px;">
     <button class="settings-btn">
-      <a href="http://127.0.0.1:8000/home/setting" style="color:white">Settings</a>
+      <a href="http://127.0.0.1:8000/home/setting" style="color: white;">
+        Settings
+      </a>
     </button>
   </div>
-  <div class="table">
-    <div class="column-header">
-      <div style="display: flex; width: 100%;">
-        <div class="indiv-column-header">
-          Corporate Health Report
-        </div>
-        <div class="indiv-column-header">
-          Last Generated
-        </div>
-        <div class="indiv-column-header">
-          Batches include in Corporate Report
-        </div>
-        <div class="indiv-column-header">
-          Action
+  <div
+    style="
+      margin-top: -180px;
+      margin-left: -240px;
+      height: 53.53135681152344px;
+      width: 1077.3070068359375px;
+      left: 299.3212890625px;
+      top: 263.90234375px;
+      border-radius: 0px;
+    "
+  >
+    <div>
+      <div class="flex-horizontal">
+        <p class="table-heading">List of Corporate Health Reports</p>
+      </div>
+      <br />
+      <table class="tablerecords">
+        <thead>
+          <td>
+            <label class="tablecheckbox">
+              <input type="checkbox" />
+              <span class="tablecheckmark"></span>
+            </label>
+          </td>
+          <td>Corporate Health Report</td>
+          <td>Batches included in Corporate Report</td>
+          <td>
+            <div
+              style="display: flex; align-items: center; justify-content: left;"
+            >
+              Last Generated
+          </td>
+          <td>
+            Report Status
+          </td>
+          <td>Action</td>
+        </thead>
+        <tr>
+          <td>
+            <span class="material-icons-outlined tableaddbtn">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
+                <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+              </svg>
+            </span>
+          </td>
+          <td colspan="7">
+            <button class="underline-indicators" data-bs-toggle="modal"
+            data-bs-target="#CorpRepPopUp">
+              New Corporate Health Report
+            </button>
+          </td>
+        </tr>
+            {% for info in report_info %}
+            <ol>
+              <li style="list-style:none">
+                <tr>
+                  <td>
+                    <label class="tablecheckbox">
+                      <input type="checkbox" />
+                      <span class="tablerowcheckmark"></span>
+                    </label>
+                    <td>{{info.0}}</td>
+                    <td>{{info.1}}</td>
+                    <td>{{info.2}}</td>
+                    <td>
+                      <div>
+                        {% if info.3 == 'Error found' %}
+                        <button class="error-status-btn">
+                          {{info.3}}
+                        </button>
+                        {% else %}
+                        <button class="ready-status-btn">
+                          {{info.3}}
+                        </button>
+                        {% endif %}
+                      </div>
+                    <td>
+                      <button
+                        class="dottedactionbutton material-icons-outlined"
+                        id="actionbtn"
+                        onclick="displayActionDropdown()"
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="16"
+                          height="16"
+                          fill="currentColor"
+                          class="bi bi-three-dots"
+                          viewBox="0 0 16 16"
+                        >
+                          <path
+                            d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"
+                          />
+                        </svg>
+                      </button>
+                      <div id="actionDropdown" class="actions" style="display: none;">
+                        <button class="action-options">Edit Info</button>
+                        <button class="action-options">Download CSV</button>
+                        <button class="action-options" style="color:red">Delete</button>
+                      </div>
+                  </td>
+                </tr>
+              </li>
+            </ol>
+            {% endfor %}       
+      </table>
+      <br />
+      <div class="flex-horizontal pagination-container">
+        <div style="width: 60px;"></div>
+        <div class="container4 bg-color0 flex-horizontal pagination-container2">
+          <label for="limit" class="pagination-label">Rows per page:</label>
+          <select name="limit" class="pagination-dropdown">
+            <option value="5">5</option>
+            <option value="10">10</option>
+            <option value="15">15</option>
+            <option value="All">All</option>
+          </select>
+          <button class="pagination-button" disabled>Prev</button>
+          <input
+            type="text"
+            class="input pagination-pagenumber"
+            value="1"
+            disabled
+          />
+          <form method="post", id="addBatch">
+            {% csrf_token %}
+            <button class="pagination-button">Next</button>
+          </form>
         </div>
       </div>
-      <div style="height: 15px;"></div>
-      <div class="add-report">
-        <div class="add-report-ctn">
-          <a
-            data-bs-toggle="modal"
-            data-bs-target="#CorpRepPopUp"
-            class="add-report-link"
-          >
-            Corporate Health Report
-          </a>
-        </div>
-      </div>
-      {% for info in report_info %}
-      <ol style="padding-top: 0;">
-        <li style="list-style: none; margin-left: -40px; display: inline-block;">
-          <div class="table-row">
-            <div style="display: flex; width: 100%; color: #7d7e8c; margin-left: 40px;">
-              <div class="list-item">
-                {{info.0}}
-              </div>
-              <div class="list-item">
-                {{info.1}}
-              </div>
-              <div class="list-item">
-                {{info.2}}
-              </div>
-              <div class="list-item">
-                {{info.3}}
-              </div>
-            </div>
-          </div>
-        </li>
-      </ol>
-      {% endfor %}
     </div>
   </div>
-  <div class="modal" tabindex="-1" role="dialog" id="CorpRepPopUp">
-    <div class="modal-dialog">
-      <div
-        class="modal-content"
-        style="width: 681.99px; height: 500.32px; border-radius: 20px;"
-      >
+  <div class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false" id="CorpRepPopUp" tabindex="-1" aria-hidden = "true" aria-labelledby="myModalLabel" style="overflow:scroll">
+    <div class="modal-dialog">  
+      <div class="modal-content" style="width: 681.99px; height: 500.32px; border-radius: 20px;">
         <div style="margin-right: 10px; margin-top: 10px;">
           <button
             type="button"
             class="btn-close"
             data-bs-dismiss="modal"
             aria-label="Close"
-            style="float: right; height: 13.12px;"
+            style="float: right; height: 13.12px; margin-top:10px;margin-right:25px"
+            onclick="location.href=''""
           ></button>
         </div>
         <div class="modal-body">
-          <div class="form-label-ctn">
-            <p class="form-label">Corporate Name (ID)</p>
-            <p style="text-align: left; margin-left: 4px; color: red;">*</p>
-          </div>
-          <div class="modal-body-ctn">
-            <div class="search-field__input"></div>
-          </div>
-          <br />
-          <div class="form-label-ctn">
-            <p class="form-label">Corporate Health Report Title</p>
-            <p style="text-align: left; margin-left: 4px; color: red;">*</p>
-          </div>
-          <div class="modal-body-ctn">
-            <form action="/your-name/" method="post">
-              <input
-                style="
-                  width: 609.33px;
-                  height: 30.38px;
-                  border: 1px solid #61616133;
-                  border-radius: 6px;
-                  background-color: #f2f2f266;
-                "
-                id="reportTitle"
-                type="text"
-                name="reportTitle"
-                value="{{ reportTitle }}"
-              />
-            </form>
-          </div>
-          <div class="form-label-ctn">
-            <p class="form-label">Report Type</p>
-            <p style="text-align: left; margin-left: 4px; color: red;">*</p>
-          </div>
-          <div class="modal-body-ctn">
-            <div class="dropdown">
-              <button
-                class="btn btn-secondary dropdown-toggle"
-                type="button"
-                id="dropdownMenuButton"
-                data-toggle="dropdown"
-                aria-haspopup="true"
-                aria-expanded="false"
-                style="
-                  width: 609.33px;
-                  height: 30.38px;
-                  float: right;
-                  border-radius: 6px;
-                  background-color: #f2f2f266;
-                  border: 1px solid #61616133;
-                  color: black;
-                  margin-right: 2px;
-                "
-              ></button>
-              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
-                <a class="dropdown-item" href="#">Something else here</a>
+          <div class="modal-split">
+            <div class="modal-body">
+              <div class="form-label-ctn">
+                <p class="form-label">Corporate Name (ID)</p>
+                <p style="text-align: left; margin-left: 4px; color: red;">*</p>
+                <p id="corp-name-check" style="text-align: left; margin-left: 4px; color: red; font-size: 8px; display: none">select a corporate</p>
               </div>
+              <div class="modal-body-ctn">
+                <div class="dropdown">
+                  <button onclick="showIdDropdown()" class="dropbtn">
+                   <p id="selected-id-display"></p>
+                    <i class="material-icons-outlined searchbaricon">
+                      <svg xmlns="http://www.w3.org/2000/svg" style="margin-right:10px; margin-bottom:12px;" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                        <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                      </svg>
+                    </i>
+                  </button>
+                  <div id="corpIdDropdown" class="dropdown-content">
+                    <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
+                    <div style="height:10px"></div>
+                    {% for corporate_info in corporate_infos %}
+                    <ol>
+                      <li style="list-style:none">
+                        <a class="corp-id-display" onclick="selectID('{{forloop.counter}}')" >{{corporate_info.0}}</a>
+                      </li>
+                    </ol>
+                    {% endfor %} 
+                </div>
+                <!-- <input class="search-field_input"></input>
+                  <div class="relativeposition">
+                    <i class="material-icons-outlined searchbaricon">
+                      <svg xmlns="http://www.w3.org/2000/svg" style="margin-right:10px; margin-bottom:12px;" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                        <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                      </svg>
+                    </i>
+                  </div> !-->
+              </div>
+              </div>
+
+              <br>
+              <div class="form-label-ctn">
+                <p class="form-label">Corporate Health Report Title</p>
+                <p style="text-align: left; margin-left: 4px; color: red;">*</p>
+                <p id="corp-title-check" style="text-align: left; margin-left: 4px; color: red; display: none; font-size: 8px">specify a title</p>     
+              </div>
+              <div class="modal-body-ctn">
+                <form action="/your-name/" method="post", autocomplete="off">
+                  <input
+                    id="reportTitle"
+                    type="text"
+                    name="reportTitle"
+                  />
+                </form>
+              </div>
+              <br>
+              <div class="form-label-ctn">
+                <p class="form-label">Report Type</p>
+                <p style="text-align: left; margin-left: 4px; color: red;">*</p>
+                <p id="corp-type-check" style="text-align: left; margin-left: 4px; color: red; display: none; font-size: 8px">specify a type</p>     
+              </div>
+              <div class="modal-body-ctn">
+                <select class="btn-btn-secondary-dropdown-toggle" 
+                id = 'reportTypeSelection'
+                onchange = 'selectReportType()'
+                aria-label="Default select example">
+                  <option id='reportType' selected style="text-align: center;"></option>
+                  <option class="dropdown-options" value="Report Type 1">Template 1</option>
+                  <option class="dropdown-options" value="Report Type 2">Template 2</option>
+                  <option class="dropdown-options" value="Report Type 3">Template 3</option>
+                </select>
+              </div>
+              <br>
+              <div class="form-label-ctn b">
+                <p class="form-label">Batches to include in Corporate Report</p>
+                <p style="text-align: left; margin-left: 4px; color: red;">*</p>
+              </div>
+                <div id="batch-ctn" text>
+                  <ul>
+                    <li id="batch-selector">
+                      <div class="modal-body-ctn">
+                        <select 
+                        id = 'batchSelection'
+                        class = 'batch-selection'
+                        aria-label="Default select example">
+                          <option selected style="text-align: center;"></option>
+                        </select>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+                <div style="height:8.42px"></div>
+                <button class="add-batch-btn" onClick="addNewBatch()">
+                  <svg xmlns="http://www.w3.org/2000/svg" style="margin-bottom:3px" width="12px" height="12px" fill="white" class="bi bi-plus-circle" viewBox="0 0 16 16">
+                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                    <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+                  </svg>
+                  Add new batch
+                </button>
             </div>
-          </div>
-          <br />
+            <div style="height: 20px;"></div>
+      </div>
+      <div class="modal-split">
+        <div class="modal-body">
           <div class="form-label-ctn">
-            <p class="form-label">Batches to include in Corporate Report</p>
+            <p class="form-label">Report Template</p>
             <p style="text-align: left; margin-left: 4px; color: red;">*</p>
+            <p id="corp-template-check" style="text-align: left; margin-left: 4px; color: red; display: none; font-size: 8px">specify a template</p>     
           </div>
           <div class="modal-body-ctn">
-            <div class="dropdown">
-              <button
-                class="btn btn-secondary dropdown-toggle"
-                type="button"
-                id="dropdownMenuButton"
-                data-toggle="dropdown"
-                aria-haspopup="true"
-                aria-expanded="false"
-                style="
-                  width: 609.33px;
-                  height: 30.38px;
-                  float: right;
-                  border-radius: 6px;
-                  background-color: #f2f2f266;
-                  border: 1px solid #61616133;
-                  color: black;
-                  margin-right: 2px;
-                "
-              ></button>
-              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
-                <a class="dropdown-item" href="#">Something else here</a>
-              </div>
-            </div>
+            <select class="btn-btn-secondary-dropdown-toggle" 
+            id="reportTemplateSelection"
+            onchange="selectTemplate()"
+            aria-label="Default select example"
+                  >
+              <option style="text-align: left;"></option>
+              <option class="dropdown-options"; value="Template 1">Template 1</option>
+            </select>
           </div>
         </div>
-        <div class="modal-btm">
-          <button
-            type="button"
-            class="btn btn-light"
-            data-bs-dismiss="modal"
-            style="
-              width: 155.93px;
-              height: 30.38px;
-              background-color: white;
-              border-color: #8fa3c1;
-              border-radius: 12px;
-              color: #314c74;
-              font: Poppins;
-              font-weight: 600;
-              font-size: 14px;
-              line-height: 10.99px;
-              align-items: center;
-            "
-          >
-            Cancel
-          </button>
-          <button
-            type="button"
-            class="btn btn-light"
-            style="
-              width: 155.93px;
-              height: 30.38px;
-              background-color: white;
-              border-color: #8fa3c1;
-              border-radius: 12px;
-              color: #314c74;
-              font: Poppins;
-              font-weight: 600;
-              font-size: 14px;
-              line-height: 10.99px;
-              align-items: center;
-            "
-          >
-            Next
-          </button>
+      </div>
+        </div>
+        <div style="height: 20px;"></div>
+        <div class="modal-btm" id="'modal-bottom">
         </div>
       </div>
     </div>

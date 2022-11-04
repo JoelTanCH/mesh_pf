@@ -5,6 +5,10 @@ name = "pypi"
 
 [packages]
 django = "*"
+djangorestframework = "*"
+pymongo = "*"
+pypdf2 = "*"
+requests = "*"
 pillow = "*"
 
 [dev-packages]

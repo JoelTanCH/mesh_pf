@@ -1,0 +1,386 @@
+{% extends 'base.html' %} {% block content %}
+<style>
+  .header {
+    font-family: Poppins;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 14px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #314c74;
+    margin-top: 7px;
+    margin-left: 10px;
+  }
+  .info-heading {
+    height: 32.094635009765625px;
+    width: 533.0104370117188px;
+    left: 299.7646484375px;
+    top: 217.8798828125px;
+    font-family: Poppins;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 14px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #617594;
+    text-align: left;
+    justify-content: left;
+  }
+  .top-ctn {
+    justify-content: left;
+    margin-top: -400px;
+    margin-left: -250px;
+  }
+  .chevron {
+    margin-left: 20px;
+  }
+  .company-report-name {
+    font-family: Poppins;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: 0em;
+    text-align: left;
+    height: 46px;
+    width: 427.2080078125px;
+    left: 642.7412109375px;
+    top: 169.65625px;
+    color: #314c74;
+    margin-top: 3px;
+    margin-left: 20px;
+  }
+  .info-block {
+    height: 171.09292602539062px;
+    width: 1077.1351318359375px;
+    left: 299.943359375px;
+    top: 263.57275390625px;
+    border-radius: 15px;
+    background-color: #dfe3ea;
+  }
+  .report-prop {
+    height: 22.0791015625px;
+    width: 197.63427734375px;
+    left: 334.97412109375px;
+    top: 297.52197265625px;
+    font-family: Poppins;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 15px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #717171;
+  }
+  .input-report-prop {
+    height: 28.689281463623047px;
+    width: 497.80096435546875px;
+    left: 334.97412109375px;
+    top: 382.7646484375px;
+    font-family: Poppins;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 15px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #717171;
+  }
+  .download-csv {
+    height: 30.381864547729492px;
+    width: 130.93368530273438px;
+    left: 1215.1025390625px;
+    top: 289.8447265625px;
+    border-radius: 6px;
+    background-color: #6f83a5;
+    border: 0px;
+    color: white;
+  }
+  .report-editor-tools {
+    height: 83.36266326904297px;
+    width: 1077px;
+    left: 299.76953125px;
+    top: 494.64306640625px;
+    background-color: #dfe3ea;
+    border-radius: 12px 12px 0px 0px;
+    margin-left: -250px;
+  }
+  .gen-draft {
+    height: 29.232547760009766px;
+    width: 130.93368530273438px;
+    left: 1215.1025390625px;
+    top: 522.40625px;
+    border-radius: 6px;
+    border: 0px;
+    font-family: Poppins;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 14px;
+    letter-spacing: 0em;
+    text-align: center;
+    background-color: #6f83a5;
+    color: white;
+  }
+  .report-view {
+    height: 643.8424682617188px;
+    width: 1077px;
+    left: 299.771484375px;
+    top: 578.02978515625px;
+    background: #e9ebef;
+    opacity: 0.6;
+    border-radius: 0px 0px 12px 12px;
+    margin-left: -250px;
+  }
+  .err-blk {
+    display: flex;
+    flex-direction: column;
+    justify-content: right;
+    margin-left: 800px;
+    margin-top: 10px;
+  }
+  .err-msg {
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    justify-content: center;
+    width: 236.91505432128906px;
+    font-family: Poppins;
+    font-size: 10px;
+    font-weight: 500;
+    line-height: 12px;
+    letter-spacing: 0em;
+    text-align: right;
+    color: #d63636;
+    margin-left: 55px;
+  }
+</style>
+<div style="display: flex; flex-direction: column;">
+  <div class="top-ctn">
+    <div>
+      <div class="breadcrumb" style="padding-top: 10rem;">
+        <span class="dashboard-icon material-symbols-outlined text-blue-01">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            fill="currentColor"
+            class="bi bi-folder-plus"
+            viewBox="0 0 16 16"
+            color="#314C74"
+          >
+            <path
+              d="m.5 3 .04.87a1.99 1.99 0 0 0-.342 1.311l.637 7A2 2 0 0 0 2.826 14H9v-1H2.826a1 1 0 0 1-.995-.91l-.637-7A1 1 0 0 1 2.19 4h11.62a1 1 0 0 1 .996 1.09L14.54 8h1.005l.256-2.819A2 2 0 0 0 13.81 3H9.828a2 2 0 0 1-1.414-.586l-.828-.828A2 2 0 0 0 6.172 1H2.5a2 2 0 0 0-2 2zm5.672-1a1 1 0 0 1 .707.293L7.586 3H2.19c-.24 0-.47.042-.683.12L1.5 2.98a1 1 0 0 1 1-.98h3.672z"
+            />
+            <path
+              d="M13.5 10a.5.5 0 0 1 .5.5V12h1.5a.5.5 0 1 1 0 1H14v1.5a.5.5 0 1 1-1 0V13h-1.5a.5.5 0 0 1 0-1H13v-1.5a.5.5 0 0 1 .5-.5z"
+            />
+          </svg>
+        </span>
+        <li class="header">
+          Corporate Health Screening Report
+          <a href="/"></a>
+        </li>
+        <p class="chevron">
+          <span class="material-symbols-outlined">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="currentColor"
+              class="bi bi-chevron-right"
+              viewBox="0 0 16 16"
+              color="#314C74"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"
+              />
+            </svg>
+          </span>
+        </p>
+        <div class="company-report-name">
+          SIA Corporate Health Report II (2021)
+        </div>
+      </div>
+    </div>
+    <p class="info-heading">
+      Corporate Health Report Info
+    </p>
+    <div
+      class="info-block"
+      style="display: flex; flex: 100%; flex-direction: row;"
+    >
+      <div
+        style="
+          width: 45%;
+          display: flex;
+          flex-direction: column;
+          margin-top: 33.95px;
+          margin-left: 33.05px;
+        "
+      >
+        <div style="height: 50%; display: flex; flex-direction: column;">
+          <p class="report-prop">Corporate Name (ID)</p>
+          <p class="input-report-prop">Singapore Airlines Ltd (SIA)</p>
+        </div>
+        <div style="height: 50%; display: flex; flex-direction: column;">
+          <p class="report-prop">Corporate Health Report Title</p>
+          <p class="input-report-prop">SIA Corporate Health Report Title</p>
+        </div>
+      </div>
+      <div
+        style="
+          width: 45%;
+          display: flex;
+          flex-direction: column;
+          margin-top: 33.95px;
+          margin-left: 33.05px;
+        "
+      >
+        <div style="height: 50%; display: flex; flex-direction: column;">
+          <p class="report-prop">Report Type</p>
+          <p class="input-report-prop">Corporate Basic</p>
+        </div>
+        <div style="height: 50%; display: flex; flex-direction: column;">
+          <p class="report-prop">Batches included in Corporate Report</p>
+          <p class="input-report-prop" style="text-decoration: underline;">
+            Batch C (2021,June), Batch D (2021,August)
+          </p>
+        </div>
+      </div>
+      <div style="width: 10%; margin-top: 25px; margin-left: -120px;">
+        <button class="download-csv">
+          <p
+            style="
+              font-family: Poppins;
+              font-size: 12px;
+              font-weight: 600;
+              line-height: 14px;
+              letter-spacing: 0em;
+              text-align: center;
+              justify-content: center;
+              margin-top: 6px;
+            "
+          >
+            Download CSV
+          </p>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div style="height: 59.98px;"></div>
+  <div class="report-editor-tools">
+    <div
+      style="
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        margin-top: 5px;
+      "
+    >
+      <div style="width: 55%; padding: 30px;">
+        <p
+          style="
+            font-family: Poppins;
+            font-size: 20px;
+            font-weight: 600;
+            line-height: 14px;
+            letter-spacing: 0em;
+            text-align: left;
+            color: #314c74;
+          "
+        >
+          Corporate Report Editor
+        </p>
+      </div>
+      <div
+        style="
+          width: 45%;
+          display: flex;
+          flex-direction: row;
+          margin-top: 20px;
+        "
+      >
+        <div>
+          <select
+            class="btn btn-secondary dropdown-toggle"
+            aria-label="Default select example"
+            style="
+              height: 30.381864547729492px;
+              width: 130.94744873046875px;
+              left: 942.1669921875px;
+              top: 521.82421875px;
+              border-radius: 6px;
+              border: 2px solid #6f83a5;
+              background: linear-gradient(0deg, #e8ebef, #e8ebef);
+              color: #60769c;
+              font-family: Poppins;
+              font-size: 12px;
+              font-weight: 600;
+              line-height: 14px;
+              letter-spacing: 0em;
+              text-align: left;
+            "
+          >
+            <option style="text-align: center;" value="1">Template I</option>
+            <option style="text-align: center;" value="2">Template II</option>
+            <option style="text-align: center;" value="3">Template III</option>
+            <option style="text-align: center;" value="3">Template IV</option>
+          </select>
+        </div>
+        <div style="margin-left: 5.51px;">
+          <button class="gen-draft" style="background: linear-gradient(0deg, rgba(17, 0, 0, 0.01), rgba(17, 0, 0, 0.01)), linear-gradient(0deg, #6F83A5, #6F83A5);">
+            Email Report
+          </button>
+        </div>
+        <div style="margin-left: 5.51px;">
+          <button class="gen-draft">
+            Generate PDF
+          </button>
+        </div>
+        <div style="margin-left: 20.51px; margin-top: 3px;">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            fill="currentColor"
+            class="bi bi-chevron-down"
+            viewBox="0 0 16 16"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"
+            />
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="report-view">
+    <div class="err-blk">
+      <div class="err-msg">
+        Draft generation failed. Contact
+        <a href="https://wa.me/6593360639" style="color: #d63636; margin-left: 2px;">MeshBio</a>
+      </div>
+      <div
+        style="
+          height: 20.21514892578125px;
+          width: 271.31256103515625px;
+          font-family: Poppins;
+          font-size: 10px;
+          font-weight: 400;
+          line-height: 12px;
+          letter-spacing: 0em;
+          text-align: right;
+          color: #d63636;
+          margin-left: -14px;
+        "
+      >
+        Invalid input(s) found.
+        <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" fill="red" class="bi bi-exclamation-circle" viewBox="0 0 16 16"
+        style="margin: 0 0 3px 3px;">
+          <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+          <path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995z"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
