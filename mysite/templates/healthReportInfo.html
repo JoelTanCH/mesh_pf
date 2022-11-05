@@ -279,9 +279,18 @@
   })
 
   function prepPdfViewer() {
-    document.getElementById('pdfViewerObj').data = '{{pdf_path}}#page=' + pageCount.toString()
-    document.getElementById('pdfViewer').src = 'https://docs.google.com/viewer?url={{pdf_path}}&embedded=true'
-    document.getElementById('pdfViewer').allow = 'autoplay'
+    console.log('{{pdf_path}}#page=' + pageCount.toString())
+    var temp = '{{pdf_path}}#page=' + pageCount.toString()
+    temp = temp.toString()
+    // document.getElementById('pdfViewerObj').data = temp
+    document.getElementById('pdfViewerObj').data = temp
+    // document.getElementById('pdfViewerObj').data = '{{pdf_path}}#page=' + pageCount.toString()
+    // document.getElementById('pdfViewer').src = 'https://docs.google.com/viewer?url=' + temp + '&output=embed'
+    iframe_url = '{{pdf_path}}' + temp + '&embed=true'
+    console.log('iframe_url')
+    console.log(iframe_url)
+    document.getElementById('pdfViewer').src = iframe_url
+    // document.getElementById('pdfViewer').contentDocument.location.reload(true);
   }
 
   function popFields() {

@@ -222,8 +222,8 @@ def healthReportInfo(response):
     corporate_info = get_corporate_list('Parkway Health')
     corporates = [[corp_dic['name'], corp_dic['_id']] for corp_dic in corporate_info]
     corp_id = corporates[int(response.session['idx_selected'])][1]
-    url = "https://apps.who.int/iris/bitstream/handle/10665/349091/WHO-EURO-2021-2661-42417-58838-eng.pdf"
-    # url = "https://docs.google.com/file/d/13IHnY7QsRz54qJ5fi61_c6Kfi7m2g_ul/preview"
+    # url = "https://apps.who.int/iris/bitstream/handle/10665/349091/WHO-EURO-2021-2661-42417-58838-eng.pdf"
+    url = 'https://res.cloudinary.com/dvyhz42sn/image/upload/v1667566862/bt4103Demo/DARA-Corporate-2022-11-04-12-23-8462a4ca_iesc7j.pdf'
     
     req_response = requests.get(url)
     my_raw_data = req_response.content

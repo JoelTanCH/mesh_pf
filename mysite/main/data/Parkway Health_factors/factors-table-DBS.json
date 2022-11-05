@@ -1,0 +1,640 @@
+{
+	"habits-alcoholIntake": {"name": "Alcohol Consumption", "unit": "Frequency","panel":"alcohol", "target":"", "action":"Reduce or eliminate", "referenceText":{"< 7 units / week":"< 7 units / week", "7 - 14 units / week":"7 - 14 units / week", "> 14 units / week":"> 14 units / week"}},
+	
+	"totalCholesterol":{"nameVendor":"CHOLESTEROL","name":"Total Cholesterol","unit":"mmol/L","upperLimit":6.2,"target":"< 5.2", "action":"HIGH","altUnit":"mg/dL","panel":"lipid", "referenceRange": {"1.Desirable":5.2,"2.Borderline High":6.2,"3.High":1000}},
+	"highDensityLipidCholesterol":{"nameVendor":"HDLChol","name":"HDL Cholesterol","unit":"mmol/L","upperLimit":1.0,"target":"> 1.0","action":"LOW","altUnit":"mg/dL","panel":"lipid","referenceRange":{"1.Low(eq)":1.0, "2.Desirable":1.5, "3.Optimal":1000}},
+	"lowDensityLipidCholesterol":{"nameVendor":"LDLChol","name":"LDL Cholesterol","unit":"mmol/L","lowerLimit":0.643,"altUnit":"mg/dL","target":"< 2.6", "action":"HIGH","panel":"lipid","referenceRange": {"1.Optimal\n":2.6,"2.Desirable\n": 3.4,"3.Borderline High\n": 4.1,"4.High\n": 4.9,"5.Very High\n": 1000.0}},
+	"triglycerides":{"nameVendor":"TRIG","name":"Trigly\\-cerides","unit":"mmol/L","upperLimit":2.3,"altUnit":"mg/dL", "target":"< 2.3","action":"HIGH","panel":"lipid","referenceRange":{"1.Optimal\n":1.70,"2.Desirable\n":2.3,"3.High\n":4.5,"4.Very High\n":1000.0}},
+	"totalCholHdlRatio":{"name": "TC/HDL Ratio", "nameVendor":"Chol/HDL Ratio", "unit":"Ratio", "altunit":"", "upperLimit":4.5,"target":"< 4.5","action":"HIGH","panel":"lipid", "referenceRange":{"1.Normal":4.5, "2.High":100}},
+	
+	"troponinT":{"name":"High Sensitive Troponin T", "nameVendor":"Troponin T hs", "unit":"pg/mL", "panel":"lipidCardiac", "upperLimit":14.0, "action":"HIGH","target":"< 14","referenceRange":{"1.Normal(eq)":14.0, "2.High":100}},
+	"crp": {"nameVendor":"CRP","name": "C-Reactive Protein", "unit": "mg/L","upperLimit":9.9, "action":"HIGH", "panel":"inflammation", "target":"< 9.9","referenceRange":{"1.Normal(eq)":9.9, "2.High":100}},
+    "creatinineKinase":{"nameVendor":"CK", "name": "Creatinine Kinase", "unit":"U/L", "lowerLimit":46, "upperLimit":171,"target":"46 - 171","action":"LOW/HIGH", "panel": "lipidCardiac", "referenceRange":{"1.Low":46, "2.Normal(eq)":171, "3.High":1000}}, 
+	"ntProBNP":{"name":"NT-proBNP", "nameVendor":"NT-proBNP", "unit":"pg/mL", "panel":"lipidCardiac", "upperLimit":125.0, "action":"HIGH","target":"< 125","referenceRange":{"1.Normal(eq)":125.0, "2.High":1000}},
+		
+    "glucose":{
+        "nameVendor":"GluF (mmol/L)",
+        "name":"Fasting Glucose",
+        "unit":"mmol/L",
+        "lowerLimit":3.6,
+        "upperLimit":6.0,
+        "altUnit":"mg/dL",
+        "target":"3.6 - 6.0",
+        "action":"INCREASE/REDUCE",
+        "panel":"diabetes",
+        "conditionalReferenceRange": {
+            "medicalHistory-diabetes": {
+                "non-diabetic": {
+                    "paramValue":[0],
+                    "action":"INCREASE/REDUCE", 
+                    "referenceRange": [
+                        {
+                            "unit":"mmol/L",
+                            "lowerLimit":3.6,
+                            "upperLimit":6.0,
+                            "target":"3.6 - 6.0",
+                            "action":"INCREASE/REDUCE",
+                            "referenceRange":{
+                                "1.Low\n":3.6,
+                                "2.Normal\n":6.0,
+                                "3.Borderline\n":7.0,
+                                "4.In Diabetic Range":1000.0
+                            }
+                        }
+                    ]
+                },
+                "diabetic":{
+                    "paramValue":[1],
+                    "action":"INCREASE/REDUCE",
+                    "referenceRange":[
+                        {
+                            "unit":"mmol/L",
+                            "lowerLimit":3.6,
+                            "upperLimit":6.999,
+                            "target":"3.9 - 6.9",
+                            "action":"INCREASE/REDUCE",
+                            "referenceRange":{
+                                "1.Over\nControl":3.6,
+                                "2.Optimal\nControl":7.0,
+                                "3.Poor\nControl":1000
+                            }
+                        }
+                    ]
+                }
+            }
+        }
+    },
+	"hba1c":{"name":"HbA1c","unit":"%","altUnit":"mmol/mol", "upperLimit":6.4,"target":"< 6.4","action":"REDUCE", "panel":"diabetes","referenceRange":{"1.Normal(eq)":6.4,"2.Pre-diabetic":7.0,"3.In Diabetic Range":500.0},"conditionalReferenceRange":{
+        "medicalHistory-diabetes":{
+            "non-diabetic":{
+                "paramValue":[0],
+                "upperLimit":6.4,
+                "target":"$\\leq$ 6.4",
+                "action":"REDUCE",	
+                "referenceRange":{"1.Normal(eq)":6.4,"2.Pre-diabetic":7.0,"3.In Diabetic Range":500.0}
+				},
+            "diabetic":{
+                "paramValue":[1],
+                "lowerLimit":4.5,
+                "upperLimit":7.0,
+                "target":"4.5 - 6.4",
+                "action":"INCREASE/REDUCE",
+                "referenceRange":{"1.Over\nControl\n":4.5,"2.Ideal\nControl\n":6.5,"3.Good\nControl(eq)\n":7.0, "4.Suboptimal\nControl(eq)\n":8.0, "5.Poor\nControl\n":1000}
+				}
+            }
+        }
+    },
+    
+    "randomGlucose":{
+        "nameVendor":"GLuR (mmol/L)",
+        "name":"Random Glucose",
+        "unit":"mmol/L",
+        "upperLimit":11.1,
+        "altUnit":"mg/dL",
+        "target":"< 11.1",
+        "action":"REDUCE",
+        "panel":"diabetes",
+        "referenceRange":[
+            {
+                "unit":"mmol/L",
+                "upperLimit":11.1,
+                "target":"< 11.1",
+                "action":"REDUCE",
+                "referenceRange":{
+                    "1.Normal":11.1,
+                    "2.Diabetic":1000
+                }
+            },
+            {
+                "unit":"mg/dL",
+                "upperLimit":200,
+                "target":"< 200",
+                "action":"REDUCE",
+                "referenceRange":{
+                    "1.Normal":200,
+                    "2.Diabetic":1000
+                }
+            }
+        ]
+    },		
+
+    "hsCRP":{"nameVendor":"CRP (mg/L)","name": "hs-CRP", "unit": "mg/L", "upperLimit":3.0,"target":"< 3.0","action":"HIGH", "panel": "lipidCardiac", "referenceRange": {"1.Low CVD Risk\n":1.0,"2.Average CVD Risk(eq)\n":3.0,"3.Increased CVD Risk(eq)\n":13.0,"4.Suggests infection/ inflammation\n":100},"rangeToText":["low-cvd-risk","average-cvd-risk"], "significantDigits":2},
+	
+	"totalProtein": {"nameVendor":"Total Protein","name": "Total Protein", "unit": "g/L", "lowerLimit":62.0,"upperLimit":82.0,"target":"62.0 - 82.0","action":"LOW/HIGH", "panel":"liverBiliary","referenceRange":{"1.Low":62,"2.Normal(eq)":82,"3.High":1000}},
+	"albumin": {"nameVendor":"ALB","name": "Serum Albumin", "unit": "g/L","lowerLimit":37.0,"upperLimit":51.0,"target":"37.0 - 51.0","action":"LOW/HIGH", "panel":"liverBiliary","referenceRange":{"1.Low":37,"2.Normal(eq)":51,"3.High":1000}},
+	"globulin": {"nameVendor":"GLOBULIN","name": "Globulin", "unit": "g/L","lowerLimit":19.0,"upperLimit":39.0,"target":"19.0 - 39.0","action":"LOW/HIGH", "panel":"liverBiliary","referenceRange":{"1.Low":19,"2.Normal(eq)":39,"3.High":1000}},
+	"agRatio": {"nameVendor":"Alb/Glo Ratio","name": "Albumin /Globulin Ratio", "unit": "Ratio", "lowerLimit":1.2,"upperLimit":2.5,"target":"1.2 - 2.5","action":"LOW/HIGH", "panel":"liverBiliary","referenceRange":{"1.Low":1.2,"2.Normal(eq)":2.5,"3.High":100}},
+	"totalBilirubin": {"nameVendor":"Total Bilirubin","name": "Total Bilirubin", "unit": "umol/L", "altUnit": "mg/dL","upperLimit":26.0,"target":"< 26.0","action":"HIGH", "panel":"liverBiliary","referenceRange":{"1.Normal(eq)":26.0,"2.High":100}},
+    "alkalinePhosphatase": {
+        "nameVendor": "Alk Phos",
+        "name": "Alkaline Phosphatase",
+        "unit": "U/L",
+        "lowerLimit": 35,
+        "upperLimit": 120,
+        "target": "35 - 120",
+        "action": "LOW/HIGH",
+        "panel": "liverBiliary",
+        "conditionalReferenceRange": {
+			"age": {
+				"age1": {
+					"paramFrom": 0.0,
+					"paramTo": 1000.0,
+					"lowerLimit": 35,
+                    "upperLimit": 120,
+                    "target": "35 - 120",
+                    "action": "LOW/HIGH",
+					"referenceRange": {
+                        "1.Low": 35,
+                        "2.Normal(eq)": 120,
+                        "3.High": 1000
+                    }
+				}
+			}
+		}
+    },
+    "sgptAlt": {"nameVendor":"ALT /SGPT","name": "SGPT/ALT", "unit": "U/L","lowerLimit":3.0, "upperLimit":40.0,"target":"3 - 40","action":"LOW/HIGH", "panel":"liverBiliary","referenceRange":{"1.Low":3.0, "2.Normal(eq)":40,"3.High":1000}},
+	"sgotAst": {"nameVendor":"AST /SGOT","name": "SGOT/AST", "unit": "U/L","upperLimit":40.0,"target":"< 40","action":"HIGH", "panel":"liverBiliary", "referenceRange":{"1.Normal(eq)":40,"2.High":1000}},
+	"ggt": {"nameVendor":"GGT","name": "Gamma GT", "unit": "U/L","upperLimit":50.0,"target":"< 50.0","action":"LOW/HIGH", "panel":"liverBiliary", "referenceRange":{"1.Normal(eq)":50,"2.High":1000}},
+	"ldh": {"nameVendor":"LDH","name": "Lactate Dehydrogenase", "unit": "U/L","lowerLimit":120, "upperLimit":246,"target":"120 - 246","action":"LOW/HIGH", "panel":"liverBiliary", "referenceRange":{"1.Low":120, "2.Normal(eq)":246,"3.High":1000}},
+
+	"sodium": {"nameVendor":"Sodium","name": "Sodium", "unit": "mmol/L", "lowerLimit":135.0,"upperLimit":150.0,"target":"135.0 - 150.0","action":"LOW/HIGH", "panel":"renal","referenceRange":{"1.Low":135.0,"2.Normal(eq)":150.0,"3.High":1000.0}},
+	"potassium": {"nameVendor":"Potassium","name": "Potassium", "unit": "mmol/L","lowerLimit":3.3,"upperLimit":5.0,"target":"3.3 - 5.0","action":"LOW/HIGH", "panel":"renal","referenceRange":{"1.Low":3.3,"2.Normal(eq)":5.0,"3.High":500.0}},
+	"chloride": {"nameVendor":"Chloride","name": "Chloride", "unit": "mmol/L","lowerLimit":96.0,"upperLimit":108,"target":"96 - 108","action":"LOW/HIGH", "panel":"renal","referenceRange":{"1.Low":96.0,"2.Normal(eq)":108.0,"3.High":1000}},
+	"bicarbonate": {"name": "Serum Bicarbonate", "unit": "mmol/L", "lowerLimit":21.0,"upperLimit":32.0,"target":"21.0 - 32.0","action":"LOW/HIGH", "panel":"renal","referenceRange":{"1.Low":21.0,"2.Normal(eq)":32.0,"3.High":1000.0}},
+	"urea": {"nameVendor":"UREA","name": "Urea", "unit": "mmol/L", "altUnit": "mg/dL", "lowerLimit":2.8,"upperLimit":7.7,"target":"2.8 - 7.7","action":"LOW/HIGH", "panel":"renal","referenceRange":{"1.Low":2.8,"2.Normal(eq)":7.7,"3.High":100},"significantDigits":2},
+    "creatinine": {"nameVendor":"CREAT","name": "Serum Creatinine", "unit": "umol/L", "altUnit": "mg/dL","lowerLimit":53,"upperLimit":115,"target":"< 115","action":"LOW/HIGH", "panel":"renal","referenceRange":{"1.Low":53, "2.Normal(eq)":115,"3.High":1000}},
+    "urineCreatinine": {"nameVendor":"uCRT (mmol/L)","name": "Urine Creatine Random", "unit": "mmol/L", "target":"","action":"", "panel":"renal", "altunit": "mg/dL"},
+    "urineMicroAlbumin": {"name": "Urine Microalbumin Random","nameVendor": "uALB (mg/L)", "unit": "mg/L", "target":"","action":"", "panel":"renal"},
+	"egfr": {"name": "Estimated GFR", "nameVendor":"EGFR", "unit": "ml/min/1.73m2", "target":"","action":"", "panel":"renal","referenceRange":{"1.Low":60,"2.Normal":1000.0},"referenceText":{">60":"Your Estimated Glomerular Filtration rate is >60", ">=60":"Your Estimated Glomerular Filtration rate is >= 60"},"action":"INCREASE","target":"> 60"},
+	"albuminuria":{"nameVendor":"Ur Alb/Cre Random","name": "Urine Alb/ Crea Ratio", "altUnit": "mg/g", "unit": "mg/mmol", "target":"< 3.5","action":"REDUCE", "panel":"renal","referenceRange":{"1.Normal(eq)":3.5,"2.High":1000}},
+    
+    "calcium": {
+        "nameVendor": "CA (mmol/L)",
+        "name": "Calcium",
+        "unit": "mmol/L",
+        "lowerLimit": 2.10,
+        "upperLimit": 2.60,
+        "target": "2.1 - 2.6",
+        "action": "INCREASE/REDUCE",
+        "altUnit": "mg/dL",
+        "panel": "boneJoint",
+        "conditionalReferenceRange": {
+			"age": {
+				"age1": {
+					"paramFrom": 0.0,
+					"paramTo": 1000.0,
+					"lowerLimit": 2.10,
+                    "upperLimit": 2.60,
+                    "target": "2.1 - 2.6",
+                    "action": "INCREASE/REDUCE",
+					"referenceRange": {
+                        "1.Low": 2.10,
+                        "2.Normal(eq)": 2.60,
+                        "3.High": 1000
+                    }
+				}
+			}
+		},
+        "significantDigits": 2
+    },
+    "inorganicPhosphate": {
+        "nameVendor": "Phosphate",
+        "name": "Phosphate",
+        "unit": "mmol/L",
+        "lowerLimit": 0.87,
+        "upperLimit": 1.58,
+        "target": "0.87 - 1.58",
+        "action": "INCREASE/REDUCE",
+        "altUnit": "mg/dL",
+        "panel": "boneJoint",
+        "conditionalReferenceRange": {
+			"age": {
+				"age1": {
+					"paramFrom": 0.0,
+					"paramTo": 1000.0,
+					"lowerLimit": 0.87,
+                    "upperLimit": 1.58,
+                    "target": "0.87 - 1.58",
+                    "action": "INCREASE/REDUCE",
+					"referenceRange": {
+                        "1.Low": 0.87,
+                        "2.Normal(eq)": 1.58,
+                        "3.High": 1000
+                    }
+				}
+			}
+		},
+        "significantDigits": 2
+    },
+    "uricAcid": {"name": "Uric Acid","nameVendor":"Uric Acid", "unit": "umol/L","lowerLimit":212,"upperLimit":453,"target":"212 - 453", "action":"LOW/HIGH", "panel":"boneJoint","referenceRange":{"1.Low":212,"2.Normal(eq)":453,"3.High":1000}},
+    "rheumatoidFactor": {"nameVendor":"RA (IU/mL)","name": "Rheu\\-ma\\-toid Factor", "upperLimit":14,"target":"< 14","action":"HIGH","unit": "IU/mL", "panel":"boneJoint","referenceRange":{"1.Normal(eq)":14,"2.Borderline High":50,"3.High":1000},"referenceText":{"< 15":"15", "< 20":"19", "<20":"19", "< 14":"13","<14":"13"}},
+    
+    "t4": {
+        "nameVendor": "T4 Free",
+        "name": "Free T4",
+        "unit": "pmol/L",
+        "lowerLimit": 10,
+        "upperLimit": 23,
+        "target": "10.0 - 23.0",
+        "action": "LOW/HIGH",
+        "panel": "thyroid",
+        "conditionalReferenceRange": {
+			"age": {
+				"age1": {
+					"paramFrom": 0.0,
+					"paramTo": 1000.0,
+					"lowerLimit": 10,
+                    "upperLimit": 23,
+                    "target": "10.0 - 23.0",
+                    "action": "LOW/HIGH",
+					"referenceRange": {
+                        "1.Low": 10.0,
+                        "2.Normal(eq)": 23.0,
+                        "3.High": 1000
+                    }
+				}
+			}
+		}
+    },
+    "t3": {
+        "nameVendor": "FT3 (pMol/L)",
+        "name": "Free T3",
+        "unit": "pmol/L",
+        "lowerLimit": 3.5,
+        "upperLimit": 6.50,
+        "target": "3.5 - 6.5",
+        "action": "LOW/HIGH",
+        "panel": "thyroid",
+        "conditionalReferenceRange": {
+			"age": {
+				"age1": {
+					"paramFrom": 0.0,
+					"paramTo": 1000.0,
+					"lowerLimit": 3.5,
+                    "upperLimit": 6.50,
+                    "target": "3.5 - 6.5",
+                    "action": "LOW/HIGH",
+					"referenceRange": {
+                        "1.Low": 3.50,
+                        "2.Normal(eq)": 6.50,
+                        "3.High": 1000
+                    }
+				}
+			}
+		},
+        "significantDigits": 2
+    },
+    "tsh": {
+        "nameVendor": "TSH",
+        "name": "Thyroid Stimulating Hormone (TSH)",
+        "unit": "mIU/L",
+        "lowerLimit": 0.45,
+        "upperLimit": 4.5,
+        "target": "0.45 - 4.5",
+        "action": "LOW/HIGH",
+        "panel": "thyroid",
+        "conditionalReferenceRange": {
+			"age": {
+				"age1": {
+					"paramFrom": 0.0,
+					"paramTo": 1000.0,
+					"lowerLimit": 0.45,
+                    "upperLimit": 4.5,
+                    "target": "0.45 - 4.5",
+                    "action": "LOW/HIGH",
+					"referenceRange": {
+                        "1.Low": 0.45,
+                        "2.Normal(eq)": 4.5,
+                        "3.High": 1000
+                    }
+				}
+			}
+		},
+        "referenceText": {
+            "<0.01": "Abnormally low measure (<0.01)"
+        },
+        "significantDigits": 2
+    },
+    "vdScreen": {
+		"name": "VDRL (Sy\\-phi\\-lis)",
+		"nameVendor":"VD_SYPHILIS_AB",
+		"unit": "+ve/-ve",
+		"target":"",
+		"action":"",
+		"panel":"immunologyInfectiousDiseases",
+		"referenceText": {"non-reactive":"", "reactive":""},
+		"conditionalReferenceText": {
+			"tppa": {
+				"empty": {
+					"paramValue": ["None"],
+                    "conditionalReferenceText": {
+                        "tpha": {
+                            "empty": {
+                                "paramValue": ["None"],
+                                "referenceText": {
+                                    "non-reactive": "You do not have a Syphilis infection.",
+                                    "reactive": "You may have active or previous Syphilis infection."
+                                }
+                            }
+                        }
+                    }
+				}
+			}
+		},
+        "displayInputValueInKR": true
+	},
+    "tppa": {
+		"name": "TPPA (Syphilis)",
+		"unit": "+ve/-ve",
+		"target":"",
+		"action":"",
+		"panel":"immunologyInfectiousDiseases",
+		"referenceText": {"non-reactive":"", "reactive":""},
+		"conditionalReferenceText": {
+			"vdScreen": {
+				"non-reactive": {
+					"paramValue": ["Non-reactive"],
+					"referenceText": {
+						"non-reactive": "You do not have a Syphilis infection.",
+						"reactive": "Your Syphilis test results are inconclusive."
+					}
+				},
+				"reactive": {
+					"paramValue": ["Reactive","None"],
+					"referenceText": {
+						"non-reactive": "You do not have a Syphilis infection.",
+						"reactive": "You may have active or previous Syphilis infection."
+					}
+				}
+			}
+		},
+        "displayInputValueInKR": true
+	},
+    "tpha": {
+		"name": "TPHA (Syphilis)",
+		"unit": "+ve/-ve",
+		"target":"",
+		"action":"",
+		"panel":"immunologyInfectiousDiseases",
+		"referenceText": {"non-reactive":"", "reactive":""},
+		"conditionalReferenceText": {
+			"vdScreen": {
+				"non-reactive": {
+					"paramValue": ["Non-reactive"],
+					"referenceText": {
+						"non-reactive": "You do not have a Syphilis infection.",
+						"reactive": "Your Syphilis test results are inconclusive."
+					}
+				},
+				"reactive": {
+					"paramValue": ["Reactive","None"],
+					"referenceText": {
+						"non-reactive": "You do not have a Syphilis infection.",
+						"reactive": "You may have active or previous Syphilis infection."
+					}
+				}
+			}
+		},
+        "displayInputValueInKR": true
+	},
+    "hiv": {
+        "name": "HIV Antibodies",
+        "unit": "+ve/-ve",
+        "target": "",
+        "action": "",
+        "panel": "immunologyInfectiousDiseases",
+        "referenceText": {
+            "non-reactive": "Your HIV screening test is negative",
+            "reactive": "Your HIV screening is positive. Please consult your doctor.",
+            "pending": "Your HIV screening is pending. Please consult your doctor."
+        }
+    },
+    "hepatitisAAntibodies": {
+		"nameVendor": "HAVT",
+		"name": "He\\-pa\\-ti\\-tis A Antibodies",
+		"unit": "mIU/mL",
+		"target": "",
+		"action": "",
+		"panel": "immunologyInfectiousDiseases",
+		"referenceText": {"non-reactive":"", "reactive":""},
+		"conditionalReferenceText": {
+			"vaccination-hepatitisA": {
+				"vaccinated": {
+					"paramValue": ["Yes","Date",1],
+					"referenceText": {
+						"non-reactive": "You have no immunity against Hepatitis A.",
+						"reactive": "You have immunity against Hepatitis A."
+					}
+				},
+				"not-vaccinated": {
+					"paramValue": ["No","Unable to recall",0,"None","Never"],
+					"defaultValue": "None",
+					"referenceText": {
+						"non-reactive": "You have no immunity against Hepatitis A.",
+						"reactive": "You have immunity against Hepatitis A and do not require vaccination against it."
+					}
+				}
+			}
+		},
+		"displayInputValueInKR": true
+	},
+    "hepatitisBAntigen": {
+        "nameVendor":"HBSAG",
+        "name": "He\\-pa\\-ti\\-tis B Antigen", 
+        "unit": "", 
+        "target":"",
+        "action":"",
+        "panel":"immunologyInfectiousDiseases", 
+        "referenceText":{"non-reactive":"","weak reactive":"", "reactive":""},
+        "conditionalReferenceText":{
+            "medicalHistory-hepatitisBCarrier":{
+                "known-carrier":{
+                    "paramValue": ["Yes",1],
+                    "referenceText": {
+                        "non-reactive":"Your Hepatitis B antigen test is non-reactive.", 
+                        "weak reactive": "Your Hepatitis B antigen test is reactive. Known case of Hepatitis B carrier.",
+                        "reactive":"Your Hepatitis B antigen test is reactive. Known case of Hepatitis B carrier."
+					}
+                },
+                "unknown":{
+                    "paramValue": ["No",0,"None"],
+                    "defaultValue": "None",
+                    "referenceText": {
+                        "non-reactive":"Your Hepatitis B antigen test is non-reactive.", 
+                        "weak reactive": "Your Hepatitis B antigen test is reactive. This suggests presence of Hepatitis B virus infection.",
+                        "reactive":"Your Hepatitis B antigen test is reactive. This suggests presence of Hepatitis B virus infection."
+					}
+                }
+            }
+        },
+        "displayInputValueInKR": true
+    },
+	"hepatitisBAntibodies": {
+		"nameVendor":"HBSAB",
+		"name": "Hepatitis B Antibodies",
+		"unit": "",
+		"target": "",
+		"action": "",
+		"panel": "immunologyInfectiousDiseases",
+		"referenceText": {"non-reactive":"", "reactive":""},
+		"conditionalReferenceText": {
+			"hepatitisBAntigen": {
+				"non-reactive": {
+					"paramValue": ["Non-reactive"],
+					"conditionalReferenceText": {
+						"hepatitisBAntibodiesAmount": {
+							"low": {
+								"paramFrom": 0,
+								"paramTo": 50.001,
+								"referenceText": {
+                                    "non-reactive": "You do not have immunity against Hepatitis B.",
+                                    "reactive": "You have inadequate protection against Hepatitis B."
+								}            
+							},
+							"normal": {
+								"paramFrom": 50.001,
+								"paramTo": 10000,
+								"defaultValue": 50.001,
+								"referenceText": {
+                                    "non-reactive": "You do not have immunity against Hepatitis B.",
+                                    "reactive": "You are protected against Hepatitis B and do not require vaccination."
+								}            
+							}
+						}
+					}
+				},
+				"empty": {
+					"paramValue": ["None"],
+					"defaultValue": "None",
+                    "conditionalReferenceText": {
+                        "vaccination-hepatitisB": {
+                            "vaccinated":{
+                                "paramValue": ["Yes","Date",1],
+                                "referenceText": {
+                                    "non-reactive": "Your Hepatitis B antibody screening test was non-reactive, but the result of the antigen test was not provided. Please consult your doctor.",
+                                    "reactive": "You are protected against Hepatitis B and do not require vaccination."
+                                }
+                            },
+                            "not-vaccinated":{
+                                "paramValue": ["No","Unable to recall",0,"None","Never"],
+                                "defaultValue": "None",
+                                "referenceText": {
+                                    "non-reactive": "Your Hepatitis B antibody screening test was non-reactive, but the result of the antigen test was not provided. Please consult your doctor.",
+                                    "reactive": "Your Hepatitis B antibody screening test is reactive, but the result of the antigen test was not provided. Please consult your doctor."
+                                }
+                            }
+                        }
+                    }
+				}
+			}
+		},
+        "displayInputValueInKR": true
+	},
+    "hepatitisBAntibodiesAmount": {"nameVendor":"HBSAB","name": "Hepatitis B Antibodies Amount", "unit": "mIU/mL",  "target":"","action":"","panel":"immunologyInfectiousDiseases"},
+
+    "antiHCV": {"name": "Anti HCV","nameVendor":"HCV", "unit": "mIU/mL",  "target":"","action":"","panel":"immunologyInfectiousDiseases","referenceText":{"non-reactive":"You have no antibodies against Hepatitis C.  However, there is no immunization available currently", "reactive":"Your Hepatitis C antibody screening test is positive. Please contact your doctor","weakly reactive":"Your Hepatitis C antibody screening test is weakly reactive. Please contact your doctor.", "weak reactive":"Your Hepatitis C antibody screening test is weakly reactive. Please contact your doctor."},"displayInputValueInKR": true},
+    
+    "haemoglobin": {"nameVendor":"HGB","name": "Haemo\\-globin", "unit": "g/dL","lowerLimit":13.0,"upperLimit":16.9,"target":"13.0 - 16.9","action":"LOW/HIGH", "panel":"haematology","referenceRange":{"1.Low":13.0,"2.Normal":16.9,"3.High":1000}},
+    "whitebloodcell": {"nameVendor":"WBC","name": "Total White Blood Cell Count", "unit": "ths/uL", "lowerLimit":4.2,"upperLimit":11.0,"target":"4.2 - 11.0","action":"LOW/HIGH","panel":"haematology","referenceRange":{"1.Low":4.2,"2.Normal(eq)":11,"3.High":1000}},
+    "redbloodcell": {"nameVendor":"RBC","name": "Total Red Blood Cell Count", "unit": "mil/uL","lowerLimit":4.01,"upperLimit":5.36,"target":"4.01 - 5.36","action":"LOW/HIGH", "panel":"haematology","referenceRange":{"1.Low":4.01,"2.Normal":5.36,"3.High":1000.0}},
+    "platelets": {"nameVendor":"PLT","name": "Platelet Count", "unit": "ths/uL","lowerLimit":140.0,"upperLimit":460.0,"target":"140.0 - 460.0","action":"LOW/HIGH", "panel":"haematology","referenceRange":{"1.Low":140.0,"2.Normal(eq)":460.0,"3.High":1000.0}},
+    "neutrophilsPercent": {"nameVendor":"Neutrophils","name": "Neutro\\-phils", "unit": "%","lowerLimit":42.5,"upperLimit":74,"target":"42.5 - 74","action":"LOW/HIGH", "panel":"haematology","referenceRange":{"1.Low":42.5,"2.Normal(eq)":74,"3.High":100.0}},
+    "lymphocytesPercent": {"nameVendor":"Lymphocytes","name": "Lympho\\-cytes", "unit": "%","lowerLimit":21.1,"upperLimit":43.2,"target":"21.1 - 43.2","action":"LOW/HIGH", "panel":"haematology","referenceRange":{"1.Low":21.1,"2.Normal(eq)":43.2,"3.High":100.0}},
+    "monocytesPercent": {"nameVendor":"Monocytes","name": "Monocytes", "unit": "%","lowerLimit":4,"upperLimit":10,"target":"4 - 10","action":"LOW/HIGH", "panel":"haematology","referenceRange":{"1.Low":4,"2.Normal(eq)":10,"3.High":100.0}},
+    "eosinophilPercent": {"nameVendor":"Eosinophils","name": "Eosino\\-phil", "unit": "%","upperLimit":5.6,"target":"< 5.6","action":"LOW/HIGH", "panel":"haematology","referenceRange":{"1.Normal(eq)":5.6,"2.High":100.0}},
+    "basophilPercent": {"nameVendor":"Basophils","name": "Basophil", "unit": "%", "upperLimit":1.0,"target":"< 1.0","action":"HIGH","panel":"haematology","referenceRange":{"1.Normal(eq)":1.0,"2.High":100.0}},
+    
+    "haematocrit": {"nameVendor":"HCT","name": "Haemato\\-crit", "unit": "%", "lowerLimit":35.6,"upperLimit":50.6,"target":"35.6 - 50.6","action":"LOW/HIGH","panel":"haematology","referenceRange":{"1.Low":35.6,"2.Normal":50.6,"3.High":100.0}},
+    "mcv": {"nameVendor":"MCV (fL)","name": "MCV", "unit": "fL", "lowerLimit":79.1,"upperLimit":97.4,"target":"79.1 - 97.4","action":"LOW/HIGH","panel":"haematology","referenceRange":{"1.Low":79.1,"2.Normal(eq)":97.4,"3.High":1000.0}},
+    "mch": {"nameVendor":"MCH (pg)","name": "MCH", "unit": "pg/mL","lowerLimit":25.5,"upperLimit":33.1,"target":"25.5 - 33.1","action":"LOW/HIGH", "panel":"haematology","referenceRange":{"1.Low":25.5,"2.Normal(eq)":33.1,"3.High":1000.0}},
+    "mchc": {"nameVendor":"MCHC (g/dL)","name": "MCHC", "unit": "g/dL", "lowerLimit":30.9,"upperLimit":34.8,"target":"30.9 - 34.8","action":"LOW/HIGH","panel":"haematology","referenceRange":{"1.Low":30.9,"2.Normal(eq)":34.8,"3.High":1000.0}},
+    "rdw": {"nameVendor":"RDW (%)","name": "RDW", "unit":"%", "lowerLimit":12.2,"upperLimit":15.4,"target":"12.2 - 15.4","action":"LOW/HIGH", "panel":"haematology","referenceRange":{"1.Low":12.2, "2.Normal(eq)":15.4,"3.High":1000.0}},
+    "esr": {
+        "nameVendor": "ESR (mm/hr)",
+        "name": "E.S.R",
+        "unit": "mm/hr",
+        "lowerLimit": 19.0,
+        "target": "< 19.0",
+        "action": "HIGH",
+        "panel": "haematology",
+        "conditionalReferenceRange": {
+			"age": {
+				"age1": {
+					"paramFrom": 0.0,
+					"paramTo": 1000.0,
+					"lowerLimit": 19.0,
+                    "target": "< 19.0",
+                    "action": "HIGH",
+					"referenceRange": {
+                        "1.Normal": 19,
+                        "2.High": 1000.0
+                    }
+				}
+			}
+		}
+    },
+    "bloodGroup": {"name": "Blood Group", "unit": "", "panel":"","referenceText":{"a rh (d) positive":"A+", "b rh (d) positive":"B+", "o rh (d) positive":"O+", "ab rh (d) positive":"AB+", "a rh (d) negative":"A-", "b rh (d) negative":"B-", "o rh (d) negative":"O-", "ab rh (d) negative":"AB-","a":"A","b":"B","ab":"AB","o":"O"}},
+    "rhesus": {"name": "Rhesus", "unit": "", "panel":"","referenceText":{"rh (d) positive":"+", "rh (d) negative":"-"}},
+    
+    "peripheralBloodFilm": {"nameVendor":"PBF","name": "Pe\\-ri\\-phe\\-ral Blood Film", "unit": "", "panel":"haematology","referenceText": {"red cells appear normochromic and normocytic.":"Red cells appear normochromic and normocytic.", " red cells appear normochromic and norm":"Red cells appear normochromic and normocytic.", ": red cells appear normochromic and normocytic.":"Red cells appear normochromic and normocytic.", "majority of rbcs appear normochromic and normocytic. no blast cells seen.":"", "normal":"Normal.", "normal  peripheral blood film .no early cells seen":"Normal peripheral blood film. No early cells seen.", "normal peripheral blood film .no early cells seen.":"Normal peripheral blood film. No early cells seen.", "normal peripheral blood film.no early cells seen.":"NORMAL PERIPHERAL BLOOD FILM. NO EARLY CELLS SEEN.", "normochromic normocytic":"NORMOCHROMIC NORMOCYTIC.", "normochromic normocytic":"Normochromic normocytic.", "no abnormal white blood cells seen. red cells appear normochromic and normocytic.":"No abnormal white blood cells seen. Red cells appear normochromic and normocytic.", "no early white blood cells seen. red cells appear normochromic and normocytic.":"No early white blood cells seen. Red cells appear normochromic and normocytic.", "no early white blood cells seen. red cells appear normochromic and normocytic. the tests had been confirmed by repeat analysis.":"No early white blood cells seen. Red cells appear normochromic and normocytic. The tests had been confirmed by repeat analysis.", "no platelet clumps seen. red cells appear normochromic and normocytic.":"No platelet clumps seen. Red cells appear normochromic and normocytic.", "normal peripheral blood film. no early cells seen.":"Normal peripheral blood film. No early cells seen.", "normal.":"Normal.", "normochromic normocytic":"Normochromic normocytic.", "red cells appear normochromic and normocytic":"RED CELLS APPEAR NORMOCHROMIC AND NORMOCYTIC.", "red cells appear normochromic and normocytic":"Red cells appear normochromic and normocytic.", "red cells appear normochromic and normocytic. the tests had been confirmed by repeat analysis.":"Red cells appear normochromic and normocytic. The tests had been confirmed by repeat analysis.", "red cells are normochromic and normocytic.":"Red cells are normochromic and normocytic.", "normal":"Normal.", "red blood cells appear normochromic and normocytic":"red blood cells appear normochromic and normocytic."}},
+    
+    "vitB12": {"name": "Vitamin B12", "unit": "pmol/L", "lowerLimit":156.0,"upperLimit":672.0,"target":"156 - 672","action":"LOW/HIGH","panel":"anaemia","referenceRange":{"1.Low":156, "2.Normal(eq)":672, "3.High":1000}},
+    "folicAcid": {"name": "Folic Acid", "unit": "nmol/L", "lowerLimit":12.2,"target":"> 12.2","action":"LOW","panel":"anaemia","referenceRange":{"1.Deficient\n":7.6,"2.Indeterminate(eq)\n":12.2,"3.Normal\n":1000.0}},
+    
+    "iron":{"nameVendor":"Iron","name": "Iron", "unit": "umol/L", "lowerLimit":11,"upperLimit":29,"target":"11 - 29","action":"LOW/HIGH","panel":"ironStudies","referenceRange":{"1.Low":11,"2.Normal(eq)":29,"3.High":1000.0}},
+    "ironSaturation":{"nameVendor":"Iron Saturation","name": "Iron Saturation", "unit": "%", "lowerLimit":25.0,"upperLimit":56.0,"target":"25 - 56","action":"LOW/HIGH","panel":"ironStudies","referenceRange":{"1.Low":25.0,"2.Normal(eq)":56.0,"3.High":1000.0}},
+    "totalIronBindingCapacity":{"nameVendor":"Total Iron Binding Capacity","name": "TIBC", "unit": "umol/L", "lowerLimit":42.0,"upperLimit":71.0,"target":"42.0 - 71.0","action":"LOW/HIGH","panel":"ironStudies","referenceRange":{"1.Low":42.0,"2.Normal(eq)":71.0,"3.High":1000.0}},
+    "ferritin":{"nameVendor":"Ferritin","name": "Ferritin", "unit": "ug/L", "altUnit":"pmol/L", "lowerLimit":36.0, "upperLimit":313.0,"target":"36 - 313","action":"LOW/HIGH","panel":"ironStudies","referenceRange":{"1.Low":36.0,"2.Normal(eq)":313.0,"3.High":1000.0}},
+
+    "labsUrinalysisStatus": {"name": "", "unit": "", "target":"","action":"","panel":"urinalysis","referenceText":{"pending":"Your Urinalysis test is pending."}, "overriding":["urineBlood", "urobilinogen", "urineNitrite", "urineBilirubin", "urineKetones", "urineGlucose", "urineProtein", "urineLeukocyteEsterase", "urinePH", "urineSpecificGravity"], "overridingValues":["pending"]},
+    "urineBlood": {"nameVendor":"Ur Blood","name": "Urine Blood", "unit": "+ve/-ve", "target":"","action":"","panel":"urinalysis","referenceText":{"1+":"There was blood in your urine","2+":"There was blood in your urine","3+":"There was blood in your urine","4+":"There was blood in your urine","trace":"Traces of blood were detected in your urine","positive":"There was blood in your urine","+":"There was blood in your urine","++":"There was blood in your urine","+++":"There was blood in your urine","++++":"There was blood in your urine"}, "overridenBy":["labsUrinalysisStatus"]},
+    "urobilinogen": {"nameVendor":"Ur Urobilinogen","name": "Urine Urobilinogen", "unit": "+ve/-ve","target":"","action":"", "panel":"urinalysis","referenceText":{"1+":"There was urobilinogen in your urine","2+":"There was urobilinogen in your urine","3+":"There was urobilinogen in your urine","4+":"There was urobilinogen in your urine","trace":"Traces of urobilinogen were detected in your urine","positive":"There was urobilinogen in your urine","+":"There was urobilinogen in your urine","++":"There was urobilinogen in your urine","+++":"There was urobilinogen in your urine","++++":"There was urobilinogen in your urine"}, "overridenBy":["labsUrinalysisStatus"]},
+    "urineNitrite": {"nameVendor":"Ur Nitrite","name": "Urine Nitrite", "unit": "+ve/-ve","target":"","action":"", "panel":"urinalysis","referenceText":{"positive":"There was nitrite in your urine","trace":"Traces of nitrite were detected in your urine","1+":"There was nitrite in your urine","2+":"There was nitrite in your urine","3+":"There was nitrite in your urine","4+":"There was nitrite in your urine","+":"There was nitrite in your urine","++":"There was nitrite in your urine","+++":"There was nitrite in your urine","++++":"There was nitrite in your urine"}, "overridenBy":["labsUrinalysisStatus"]},
+    "urineBilirubin": {"nameVendor":"Ur Bilirubin","name": "Urine Bilirubin", "unit": "+ve/-ve", "target":"","action":"","panel":"urinalysis","referenceText":{"1+":"There was bilirubin in your urine","2+":"There was bilirubin in your urine","3+":"There was bilirubin in your urine","4+":"There was bilirubin in your urine","trace":"Traces of bilirubin were detected in your urine","positive":"There was bilirubin in your urine","+":"There was bilirubin in your urine","++":"There was bilirubin in your urine","+++":"There was bilirubin in your urine","++++":"There was bilirubin in your urine"}, "overridenBy":["labsUrinalysisStatus"]},
+    "urineKetones": {"nameVendor":"Ur Ketones","name": "Urine Ketones", "unit": "+ve/-ve","target":"","action":"", "panel":"urinalysis","referenceText":{"1+":"There were ketones in your urine","2+":"There were ketones in your urine","3+":"There were ketones in your urine","4+":"There were ketones in your urine","trace":"Traces of ketones were detected in your urine","positive":"There were ketones in your urine","+":"There were ketones in your urine","++":"There were ketones in your urine","+++":"There were ketones in your urine","++++":"There were ketones in your urine"}, "overridenBy":["labsUrinalysisStatus"]},
+    "urineGlucose": {"nameVendor":"Ur Glucose","name": "Urine Glucose", "unit": "+ve/-ve","target":"","action":"", "panel":"urinalysis","referenceText":{"1+":"There was glucose in your urine","2+":"There was glucose in your urine","3+":"There was glucose in your urine","4+":"There was glucose in your urine","trace":"Traces of glucose were detected in your urine","positive":"There was glucose in your urine","+":"There was glucose in your urine","++":"There was glucose in your urine","+++":"There was glucose in your urine","++++":"There was glucose in your urine"}, "overridenBy":["labsUrinalysisStatus"]},
+    "urineLeukocyteEsterase": {"nameVendor": "Ur Leucocytes", "name":"Urine Leukocyte Esterase", "unit": "+ve/-ve","target":"","action":"", "panel":"urinalysis","referenceText":{"trace":"Traces of leukocyte esterase were detected in your urine","1+":"Leukocyte esterase was detected in your urine","2+":"Leukocyte esterase was detected in your urine","3+":"Leukocyte esterase was detected in your urine","4+":"Leukocyte esterase was detected in your urine","positive":"Leukocyte esterase was detected in your urine","+":"Leukocyte esterase was detected in your urine","++":"Leukocyte esterase was detected in your urine","+++":"Leukocyte esterase was detected in your urine","++++":"Leukocyte esterase was detected in your urine"}, "overridenBy":["labsUrinalysisStatus"]},
+    "urineProtein": {"nameVendor":"Ur Protein","name": "Urine Protein", "unit": "+ve/-ve","target":"","action":"", "panel":"urinalysis","referenceText":{"1+":"There was protein in your urine","2+":"There was protein in your urine","3+":"There was protein in your urine","trace":"Traces of protein were detected in your urine","positive":"There was protein in your urine","+":"There was protein in your urine","++":"There was protein in your urine","+++":"There was protein in your urine","++++":"There was protein in your urine"}, "overridenBy":["labsUrinalysisStatus"]},
+    "urinePH": {"nameVendor":"Urine pH","name": "Urine pH", "unit": "pH","target":"","action":"", "panel":"urinalysis", "referenceRange":{"1.Low":5.0,"2.Normal(eq)":8.0,"3.High":100.0}, "overridenBy":["labsUrinalysisStatus"]},
+    "urineSpecificGravity": {"nameVendor":"Ur Specific Gravity","name": "Urine Specific Gravity", "unit": "", "target":"","action":"","panel":"urinalysis","referenceRange":{"1.Low":1.001,"2.Normal":1.030,"3.High":100.0},"significantDigits":3, "overridenBy":["labsUrinalysisStatus"]},
+    
+    "labsUromicroscopyStatus": {"name": "", "unit": "", "target":"","action":"","panel":"urineMicroscopy","referenceText":{"pending":"Your Urinalysis test is pending."}, "overriding":["urineMucusThreads", "urineRbc", "urineWbc", "urineEpithelial", "urineCasts", "urineCrystals"], "overridingValues":["pending"]},
+    "urineMucusThreads": {"nameVendor":"MUCOUS_THREAD","name": "Urine Mucus Threads", "unit": "+ve/-ve","target":"","action":"", "panel":"urineMicroscopy","referenceText":{"1+":"Your urine contained mucous threads", "* occasional":"Your urine contained mucous threads","occasional":"Your urine contained mucous threads"}, "overridenBy":["labsUromicroscopyStatus"]},
+    "urineRbc": {"nameVendor":"RC(/uL)","name": "Urine Red Blood Cells", "unit": "Cells/uL","target":"","action":"", "panel":"urineMicroscopy","referenceRange":{"1.":4,"2.High":1800.0},"referenceText":{">1800":">1800","100-105":"Red blood cells were detected in your urine"}, "overridenBy":["labsUromicroscopyStatus"]},
+    "urineWbc": {"nameVendor":"WC(/uL)","name": "Urine White Blood Cells", "unit": "Cells/uL","target":"","action":"", "panel":"urineMicroscopy","referenceRange":{"1.":7,"2.High":1000.0},"referenceText":{
+		"1-5":"White blood cells were detected in your urine","5-10":"White blood cells were detected in your urine","10-15":"White blood cells were detected in your urine","15-20":"White blood cells were detected in your urine","20-25":"White blood cells were detected in your urine","25-30":"White blood cells were detected in your urine","30-35":"White blood cells were detected in your urine","35-40":"White blood cells were detected in your urine","40-45":"White blood cells were detected in your urine","45-50":"White blood cells were detected in your urine","5-20":"White blood cells were detected in your urine","10-20":"White blood cells were detected in your urine","5-25":"White blood cells were detected in your urine","10-25":"White blood cells were detected in your urine","15-25":"White blood cells were detected in your urine","25-50":"White blood cells were detected in your urine","50-75":"White blood cells were detected in your urine","75-100":"White blood cells were detected in your urine","50-100":"White blood cells were detected in your urine"
+	}, "overridenBy":["labsUromicroscopyStatus"]},
+    "urineEpithelial": {"nameVendor":"EPI(/uL)","name": "Urine Epithelial Cells", "unit": "Cells/uL", "target":"","action":"","panel":"urineMicroscopy","referenceRange":{"1.":1,"2.Detected":100.0},"referenceText":{
+		"1-5":"Epithelial cells were detected in your urine","5-10":"Epithelial cells were detected in your urine","10-15":"Epithelial cells were detected in your urine","15-20":"Epithelial cells were detected in your urine","20-25":"Epithelial cells were detected in your urine","25-30":"Epithelial cells were detected in your urine","30-35":"Epithelial cells were detected in your urine","35-40":"Epithelial cells were detected in your urine","40-45":"Epithelial cells were detected in your urine","45-50":"Epithelial cells were detected in your urine","5-20":"Epithelial cells were detected in your urine","10-20":"Epithelial cells were detected in your urine","5-25":"Epithelial cells were detected in your urine","10-25":"Epithelial cells were detected in your urine","15-25":"Epithelial cells were detected in your urine","25-50":"Epithelial cells were detected in your urine","50-75":"Epithelial cells were detected in your urine","75-100":"Epithelial cells were detected in your urine","50-99":"Epithelial cells were detected in your urine","50-100":"Epithelial cells were detected in your urine"
+	}, "overridenBy":["labsUromicroscopyStatus"]},
+    "urineCasts": {"nameVendor":"CAST","name": "Urine Casts", "unit": "+ve/-ve","target":"","action":"", "panel":"urineMicroscopy","referenceText":{"hyaline cast occasional":"Casts detected"}, "overridenBy":["labsUromicroscopyStatus"]},
+    "urineCrystals": {"nameVendor":"CRYST","name": "Urine Crystals", "unit": "+ve/-ve","target":"","action":"", "panel":"urineMicroscopy","referenceText":{"amorphous phosphate ++":"Amorphous phosphate crystals detected","amorphous urate ++":"Amorphous urate crystals detected","amorphous urate +++":"Amorphous urate crystals detected","calcium oxalate +":"Calcium oxalate crystals detected","calcium oxalate occasional":"Occasional calcium oxalate crystals detected","uric acid occasional":"Occasional uric acid crystals detected","uric acid +":"Uric acid crystals detected"}, "overridenBy":["labsUromicroscopyStatus"]},
+    
+    "labsStoolStatus": {"name": "", "unit": "", "target":"","action":"","panel":"stool","referenceText":{"pending":"Your Stool test is pending."}, "overriding":["occultBlood"], "overridingValues":["pending"]},
+    "occultBlood": {"nameVendor":"OCC","name": "Occult Blood", "unit": "+ve/-ve","target":"","action":"", "panel":"stool","referenceText":{"negative":"Your Stool Analysis for Occult Blood was negative","positive":"Your Stool Analysis for Occult Blood was positive"}, "overridenBy":["labsStoolStatus"],"displayInputValueInKR": true},
+    
+     "vitaminD": {"name": "Serum Vitamin D", "unit": "ng/mL", "altunit":"nmol/L", "lowerLimit":30.0,"upperLimit":75.0,"target":"30 - 75","action":"INCREASE/REDUCE","panel":"otherTests","referenceRange":{"1.Deficient\n":10, "2.Insufficient\n":30, "3.Sufficient\n":75, "4.Possible Toxicity\n":10000}},
+     
+    "papSmearRemarks": {"nameVendor":"Pap Smear","name": "Pap Smear", "unit": "","panel":"investigation-cytology","referenceText":{"negative for malignancy. ascus seen. reactive atypia seen. parakeratotic cells seen.":"Negative for malignancy. ASCUS seen. Reactive atypia seen. Parakeratotic cells seen.","ascus seen. suggest follow up smear and quote this laboratory number.":"ASCUS seen. Suggest follow up smear and quote this Laboratory number."}},
+    "papSmearAdequacy": {"nameVendor":"Pap Smear Sample Adequacy","name": "Pap Smear", "unit": "", "panel":"investigation-cytology","action":"","referenceText":{"satisfactory":"","unsatisfactory":"Your pap smear test is inconclusive","normal":"Normal","borderline":"Borderline","abnormal":"Abnormal", "inconclusive":"Inconclusive"},"overridenBy":["papSmearInterpretation","laboratory-papsmear-negativeMalignancy","laboratory-papsmear-reactiveCellular","laboratory-papsmear-reactiveAtypia","laboratory-papsmear-reactiveAtypia","laboratory-papsmear-yeastCells","laboratory-papsmear-ascus","laboratory-papsmear-intraepithelialLesion","laboratory-papsmear-cin"],"overridingValues":["unsatisfactory","pending"]},
+    "papSmearInterpretation": {"nameVendor":"Pap Smear Interpretation","name": "Pap Smear Result", "unit": "", "panel":"investigation-cytology","referenceText":{"positive":"Your pap smear result is Positive","negative":"Your pap smear result is Negative"}},
+    "laboratory-papsmear-negativeMalignancy": {"nameVendor":"Pap Smear Negative","name": "Pap Smear Negative", "unit": "Y/N","panel":"investigation-cytology","referenceText":{"yes":"Negative for Malignancy"},"overriding":["papSmearAdequacy"],"overridenBy":["laboratory-papsmear-reactiveCellular","laboratory-papsmear-reactiveAtypia","laboratory-papsmear-reactiveAtypia","laboratory-papsmear-yeastCells","laboratory-papsmear-ascus","laboratory-papsmear-intraepithelialLesion","laboratory-papsmear-cin"]},
+    "laboratory-papsmear-reactiveCellular": {"nameVendor":"Pap Smear Reactive Cellular Changes","name": "Pap Smear Reactive Cellular Changes", "unit": "Y/N","panel":"investigation-cytology","referenceText":{"yes":"Reactive Cellular"},"overriding":["papSmearAdequacy","laboratory-papsmear-negativeMalignancy"]},
+    "laboratory-papsmear-reactiveAtypia": {"nameVendor":"Pap Smear Reactive Atypia","name": "Pap Smear Reactive Atypia", "unit": "Y/N","panel":"investigation-cytology","referenceText":{"yes":"Reactive Atypia"},"overriding":["papSmearAdequacy","laboratory-papsmear-negativeMalignancy"]},
+    "laboratory-papsmear-yeastCells": {"nameVendor":"Pap Smear Yeast Cells","name": "Pap Smear Yeast Cells", "unit": "Y/N","panel":"investigation-cytology","referenceText":{"yes":"Yeast Cells"},"overriding":["papSmearAdequacy","laboratory-papsmear-negativeMalignancy"]},
+    "laboratory-papsmear-ascus": {"nameVendor":"Pap Smear ASCUS","name": "Pap Smear ASCUS", "unit": "Y/N","target":"","action":"","panel":"investigation-cytology","referenceText":{"yes":"ASCUS"},"overriding":["papSmearAdequacy","laboratory-papsmear-negativeMalignancy"]},
+    "laboratory-papsmear-intraepithelialLesion": {"nameVendor":"Pap Smear Intraepithelial Lesion","name": "Pap Smear Intraepithelial Lesion", "unit": "Y/N","panel":"investigation-cytology","referenceText":{"yes":"Intraepithelial Lesion"},"overriding":["papSmearAdequacy","laboratory-papsmear-negativeMalignancy"]},
+    "laboratory-papsmear-cin": {"nameVendor":"Pap Smear Cervical Intraepithelial Neoplasia","name": "Pap Smear Cervical Intraepithelial Neoplasia", "unit": "Y/N","panel":"investigation-cytology","referenceText":{"yes":"CIN"},"overriding":["papSmearAdequacy","laboratory-papsmear-negativeMalignancy"]},
+    
+    "hpvdnaOverall": {"nameVendor":"Human Papilloma Virus Test","name": "HPV DNA Overall", "dependentName":"hpvdnaOverall", "unit": "", "target":"", "action":"", "panel":"investigation-cytology"},
+    "hpvdna16": {"nameVendor":"Human Papilloma Virus Test Strain 16","name": "HPV DNA", "dependentName":"hpvdnaOverall", "unit": "", "target":"", "action":"", "panel":"investigation-cytology","referenceText":{"negative":"Your HPV DNA test is normal.","positive":"Your HPV High Risk Type 16 is Positive."}},
+    "hpvdna18": {"nameVendor":"Human Papilloma Virus Test Strain 18","name": "HPV DNA", "dependentName":"hpvdnaOverall", "unit": "","target":"", "action":"", "panel":"investigation-cytology","referenceText":{"negative":"Your HPV DNA test is normal.","positive":"Your HPV High Risk Type 18 is Positive."}},
+    "hpvdnaRiskType": {"nameVendor":"Human Papilloma Virus Test Strain 16 and 18","name": "HPV DNA", "dependentName":"hpvdnaOverall", "unit": "","target":"", "action":"", "panel":"investigation-cytology","referenceText":{"negative":"Your HPV DNA test is normal.","positive":"Your HPV Other High Risk Type is Positive."}},
+    
+    "afp": {"nameVendor":"AFP (ug/L)","name": "Alpha Feto-protein (Liver)", "unit": "ug/L","target":"", "action":"ELEVATED", "panel":"tumour","referenceRange":{"1.Not Elevated(eq)":15,"2.Elevated":500.0},"rangeToText":["not\nelevated"],"referenceText":{"not\nelevated":"Your tumour marker (Alpha fetoprotein) for Liver Cancer was not elevated."}},
+    "ca125": {"nameVendor":"CA125 (U/mL)","name": "CA125 (Ovarian)", "unit":"U/mL", "target":"", "action":"ELEVATED", "panel":"tumour", "referenceRange": {"1.Not Elevated(eq)":35.0,"2.Elevated":500},"rangeToText":["not\nelevated"],"referenceText":{"not\nelevated":"Your tumour marker (CA125) for Ovarian Cancer was not elevated."}},
+    "cea": {"nameVendor":"CEA (ug/L)","name": "Carcino-Embryonic Antigen (Colon)", "unit": "ug/L", "target":"", "action":"ELEVATED", "panel":"tumour","referenceRange":{"1.Not Elevated(eq)":5.0,"2.Elevated":500.0},"rangeToText":["not\nelevated"],"referenceText":{"not\nelevated":"Your tumour marker (CEA) was not elevated."}},
+    "ca19": {"nameVendor":"CA199 (U/mL)","name": "CA 19-9 (Pancreatic)", "unit": "U/mL","target":"", "action":"",  "panel":"tumour","referenceRange":{"1.Not Elevated(eq)":37.0,"2.Elevated":500.0},"rangeToText":["not\nelevated"],"referenceText":{"not\nelevated":"Your tumour marker (CA19.9) for Pancreatic Cancer was not elevated."}},
+    "prostateAntigen": {"nameVendor":"PSA (ug/L)","name": "Prostate Specific Antigen (Prostate)", "unit":"ug/L","altUnit":"ng/mL","target":"", "action":"ELEVATED","panel":"tumour", "referenceRange": {"1.Not Elevated(eq)":4.0,"2.Elevated":500}, "rangeToText":["not\nelevated"],"referenceText":{"not\nelevated":"Your tumour marker (PSA) for Prostate Cancer was not elevated."}}
+     	           
+}

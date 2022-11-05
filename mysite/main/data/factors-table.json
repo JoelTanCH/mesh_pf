@@ -1,0 +1,175 @@
+{
+	"recordDate":{"name":"Admission Record","unit":""},
+	"age":{"name":"Age","unit":"Years"},
+	
+	"habits-smoking":{"name":"Smoking","unit":"Y/N"},
+	"habits-smokingCategory":{"name":"Smoking Frequency","unit":"Frequency"},
+	"habits-alcoholIntake":{"name": "Alcohol Consumption", "unit": "Frequency","action":"Reduce or eliminate", "referenceText":{"< 7 units / week":"< 7 units / week", "7 - 14 units / week":"7 - 14 units / week", "> 14 units / week":"> 14 units / week"}},
+	"ethnicity":{"name":"Ethnicity","unit":"Ethnicity"},
+
+	"family-parentalHypertension":{"name":"Parental Hypertension","unit":"Neither/One/Both"},
+	"family-diabetes":{"name":"Familial Diabetes","unit":"Y/N"},
+	"family-kidneyFamily": {"name":"Family History of Kidney Disease","unit":"Y/N"},
+	
+	"medicalHistory-diabetes":{"name":"Type 2 Diabetes Diagnosed","unit":"Y/N"},
+	"medicalHistory-heartAttack":{"name":"Heart Attack","unit":"Y/N"},
+	"medicalHistory-hypertension":{"name":"Hypertension","unit":"Y/N"},
+	"medicalHistory-hypertensionTreatment":{"name":"Treated Hypertension","unit":"Y/N"},
+    "medicalHistory-learningDisabilities":{"name": "Learning Disabilities","unit":"Y/N"},
+	"medicalHistory-depression":{"name":"Manic Depression Schizophrenia", "unit":"Y/N"},
+	"medicalHistory-polycysticOvarianSyndrome":{"name":"Polycystic Ovary Syndrome","unit":"Y/N","gender":"f"},
+	"medicalHistory-gestationalDiabetes":{"name":"Gestational Diabetes","unit":"Y/N","gender":"f"},
+	"medicalHistory-congestiveHeartFailure": {"name":"Congestive Cardiac Failure Diagnosed","unit":"Y/N"},
+	"medicalHistory-peripheralVascularDisease": {"name":"Peripheral Vascular Disease Diagnosed","unit":"Y/N"},
+	"medicalHistory-rheumatoidArthritis": {"name":"Rheu\\-matoid Arth\\-ritis Diagnosed","unit":"Y/N"},
+	"medicalHistory-kidneyStone":{"name":"Kidney Stones","unit":"Y/N"},
+	"medicalHistory-lupus":{"name":"Systemic Lupus Erythematosis","unit":"Y/N"},
+	"medicalHistory-diabetesType1": {"name":"Type 1 Diabetes Diagnosed","unit":"Y/N"},
+	
+	"medications-steroids":{"name": "Steroids","unit":"Y/N"},
+	"medications-statins":{"name":"Statins","unit":"Y/N"},
+	"medications-antipsychotics":{"name":"Atypical Antipsychotics","unit":"Y/N"},
+	"medications-nsaids": {"name":"NSAIDs Prescription","unit":"Y/N"},
+	
+	"weight":{"name":"Weight","unit":"kg","panel":"bodyMassIndex"},
+	"height":{"name":"Height","unit":"m","altUnit":"cm"},
+	"waist":{"name":"Waist Circumference", "unit":"cm", "tags":["clinicalExamination"]},
+	"visceralFat":{"name":"Vis\\-ce\\-ral Fat", "unit":"","panel":"bodyMassIndex","referenceRange":{"1.Normal(eq)":10.0,"2.High":15,"3.Very High":100},"tags":["clinicalExamination"]},
+	"bodyFat":{"name":"Body Fat", "unit":"%","panel":"bodyMassIndex","referenceRange":{"1.Low(eq)":20,"2.Normal":30,"3.High":35,"4.Very High":100}, "tags":["clinicalExamination"]},
+	"systolicBloodPressure":{"name":"Systolic BP","unit":"mmHg", "lowerLimit":90,"panel":"bloodPressure", "referenceRange":{"1.Normal":130, "2.Borderline":140, "3.High":500}, "tags":["clinicalExamination"]},
+	"diastolicBloodPressure":{"name":"Diastolic BP","unit":"mmHg","lowerLimit":60,"panel":"bloodPressure", "referenceRange":{"1.Normal":85, "2.Borderline":90, "3.High":450}, "tags":["clinicalExamination"]},
+	"bodyMassIndex":{"name":"Body Mass Index","unit":"kg/m2","lowerLimit":18.5,"upperLimit":24,"target":"18.5-24","action":"INCREASE/REDUCE","panel":"bodyMassIndex", "referenceRange":{"Asian":{"1.Underweight\n":18.5, "2.Normal\n":23, "3.Overweight\n":27.5, "4.Obese\n":1000},"Caucasian":{"1.Underweight\n":18.5, "2.Normal\n":25, "3.Overweight\n":30, "4.Obese\n":1000}}},
+	
+	"totalCholesterol":{"name":"TC","unit":"mg/dL","lowerLimit":120,"altUnit":"mMol/L","panel":"lipid", "referenceRange": {"1.Desirable":200,"2.High":1000}, "tags":["clinicalExamination"]},
+	"highDensityLipidCholesterol":{"name":"HDL-C","unit":"mg/dL","upperLimit":95.15,"altUnit":"mMol/L","panel":"lipid","referenceRange":{"1.Low":40,"2.Desirable":10000}},
+	"lowDensityLipidCholesterol":{"name":"LDL-C","unit":"mg/dL","lowerLimit":24.85,"altUnit":"mMol/L","panel":"lipid","referenceRange": {"1.Optimal":100,"2.Desirable":130,"3.High": 10000.0}},
+	"triglycerides":{"name":"Tri\\-gly\\-ce\\-ri\\-des","unit":"mg/dL","lowerLimit":0.0,"altUnit":"mMol/L","panel":"lipid","referenceRange":{"1.Optimal":150,"2.High":500.0}},
+	"totalCholHdlRatio":{"name": "TC/HDL Ratio", "unit":"", "lowerLimit":0,"panel":"lipid", "referenceRange":{"1.Normal":4.4, "2.High":100}},
+    "creatinineKinase":{"name": "Creatine Kinase", "unit": "U/ml", "panel":"cardiac","referenceRange":{"1.Low":38,"2.Normal":164, "3.High":1000}},
+		
+	"glucose":{"name":"Fasting Glucose","unit":"mg/dL","lowerLimit":70.2,"altUnit":"mMol/L", "panel":"diabetes","referenceRange":{"1.Low":70.2,"2.Normal":109.8,"3.Pre-Diabetic and Diabetic":5000.0}},
+	"hba1c":{"name":"HbA1c","unit":"mMol/Mol","altUnit":"%", "lowerLimit": 25, "panel":"diabetes","referenceRange":{"1.Normal":38.0,"2.Pre-Diabetes":45.0,"3.Diabetic":500.0}},
+	
+	"egfr": {"name": "Estimated GFR", "unit": "mL/min/1.73m2", "panel":"renal","referenceRange":{"1.Low":60,"2.Normal":1000.0}},
+	"albuminuria": {"name": "UACR", "unit": "mg/g", "altUnit": "mg/mmol", "panel":"renal","referenceRange": {"1.Normal":30.0,"2.Microalbuminuria":300.0,"3.Microalbuminuria":2000.0}},
+
+	"totalProtein": {"name": "Total Protein", "unit": "g/L", "panel":"liverBiliary","referenceRange":{"1.Low":62,"2.Normal":82,"3.High":1000}},
+	"albumin": {"name": "Albumin", "unit": "g/L", "panel":"liverBiliary","referenceRange":{"1.Low":37,"2.Normal":51,"3.High":1000}},
+	"globulin": {"name": "Globulin", "unit": "g/L", "panel":"liverBiliary","referenceRange":{"1.Low":20,"2.Normal":37,"3.High":1000}},
+	"agRatio": {"name": "Albumin /Globulin Ratio", "unit": "", "panel":"liverBiliary","referenceRange":{"1.Low":1.0,"2.Normal":2.0,"3.High":100}},
+	"totalBilirubin": {"name": "Total Bilirubin", "unit": "umol/L", "altUnit": "mg/dL", "panel":"liverBiliary","referenceRange":{"1.Low":4.96,"2.Normal":30.10,"3.High":100}},
+	"alkalinePhosphatase": {"name": "Alkaline Phosphatase", "unit": "U/L", "panel":"liverBiliary", "referenceRange":{"1.Low":36,"2.Normal":120,"3.High":1000}},
+	"sgptAlt": {"name": "SGPT/ALT", "unit": "U/L", "panel":"liverBiliary","referenceRange":{"1.Normal":35,"2.High":1000}},
+	"sgotAst": {"name": "SGOT/AST", "unit": "U/L", "panel":"liverBiliary", "referenceRange":{"1.Normal":28,"2.High":1000}},
+	"ggt": {"name": "GGT", "unit": "U/L", "panel":"liverBiliary", "referenceRange":{"1.Low":8,"2.Normal":40,"3.High":1000}},
+
+	"sodium": {"name": "Sodium", "unit": "mMol/L", "panel":"renal","referenceRange":{"1.Low":135.0,"2.Normal":145.0,"3.High":1000.0}},
+	"potassium": {"name": "Potassium", "unit": "mMol/L", "panel":"renal","referenceRange":{"1.Low":3.3,"2.Normal":5.1,"3.High":500.0}},
+	"chloride": {"name": "Chloride", "unit": "mMol/L", "panel":"renal","referenceRange":{"1.Low":96.0,"2.Normal":108.0,"3.High":1000}},
+	"bicarbonate": {"name": "Bicarbonate", "unit": "mMol/L", "panel":"renal","referenceRange":{"1.Low":19.0,"2.Normal":31.0,"3.High":1000.0}},
+	"urea": {"name": "Urea", "unit": "mMol/L", "altUnit": "mg/dL", "panel":"renal","referenceRange":{"1.Low":1.7,"2.Normal":7.6,"3.High":100}},
+    "creatinine": {"name": "Creatine", "unit": "uMol/L", "altUnit": "mg/dL", "panel":"renal","referenceRange":{"1.Normal":115,"2.High":1000}},
+    "urineCreatinine": {"name": "Urine Creatine", "unit": "mmol/L", "panel":"renal", "altunit": "mg/dL"},
+    "urineMicroAlbumin": {"name": "Urine Microalbumin Random", "unit": "mg/L", "panel":"renal"}, 
+
+    "calcium": {"name": "Calcium", "unit": "mmol/L", "altunit":"mg/dL", "panel":"boneJoint","referenceRange":{"1.Low":2.15,"2.Normal":2.50,"3.High":1000}},
+    "inorganicPhosphate": {"name": "Inorganic Phosphate", "unit": "mmol/L", "altunit":"mg/dL", "panel":"boneJoint","referenceRange":{"1.Low":0.74,"2.Normal":1.52,"3.High":1000}},
+    "uricAcid": {"name": "Uric Acid", "unit": "umol/L", "altunit":"mg/dL", "panel":"boneJoint","referenceRange":{"1.Low":143,"2.Normal":339,"3.High":1000}},
+    "rheumatoidFactor": {"name": "Rheu\\-mato\\-id Factor", "unit": "IU/mL", "panel":"boneJoint","referenceRange":{"1.Normal":30,"2.High":1000}},
+
+    "t4": {"name": "Free T4", "unit": "pmol/L", "panel":"thyroid","referenceRange":{"1.Low":9.0,"2.Normal":19.0,"3.High":1000}},
+    "tsh": {"name": "Thyroid Stimulating Hormone (TSH)", "unit": "mlU/L", "panel":"thyroid","referenceRange":{"1.Low":0.35,"2.Normal":4.94,"3.High":1000}},
+    "tpo": {"name": "Thyroid Peroxidase (TPO) Antibody", "unit": "IU/mL", "panel":"thyroid","referenceRange":{"1.Normal":35,"2.Elevated":500}},
+    "haemoglobin": {"name": "Haemo\\-globin", "unit": "g/dL", "panel":"haematology","referenceRange":{"1.Low":12.0,"2.Normal":16.0,"3.High":1000}},
+    "whitebloodcell": {"name": "Total WBC Count", "unit": "x 10^9/L", "panel":"haematology","referenceRange":{"1.Low":4,"2.Normal":10,"3.High":1000}},
+    "redbloodcell": {"name": "Total RBC Count", "unit": "x 10^12/L", "panel":"haematology","referenceRange":{"1.Low":4.2,"2.Normal":5.4,"3.High":1000.0}},
+    "haematocrit": {"name": "Hae\\-ma\\-to\\-crit", "unit": "", "panel":"haematology","referenceRange":{"1.Low":0.36,"2.Normal":0.46,"3.High":100.0}},
+    "mcv": {"name": "MCV", "unit": "fL", "panel":"haematology","referenceRange":{"1.Low":76.0,"2.Normal":96.0,"3.High":1000.0}},
+    "mch": {"name": "MCH", "unit": "pg", "panel":"haematology","referenceRange":{"1.Low":27.0,"2.Normal":32.0,"3.High":1000.0}},
+    "mchc": {"name": "MCHC", "unit": "g/dL", "panel":"haematology","referenceRange":{"1.Low":32.0,"2.Normal":36.0,"3.High":1000.0}},
+    "esr": {"name": "E.S.R", "unit": "mm/hr", "panel":"haematology","referenceRange":{"1.Normal":31,"2.High":1000.0}},
+    "bloodGroup": {"name": "Blood Grouping", "unit": "", "panel":"haematology", "tags":["clinicalExamination"]},
+    "peripheralBloodFilm": {"name": "Pe\\-ri\\-phe\\-ral Blood Film", "unit": "", "panel":"haematology",
+	"referenceText":{"rbcs are hypochromic and microcytic. few ovalocytes and teardrop cells seen. thalassemia and iron deficiency cannot be excluded. wbcs and platelets appear quantitatively adequate in the film. no early cells seen.":"RBCs are hypochromic and microcytic. Few ovalocytes and teardrop cells seen. Thalassemia and iron deficiency cannot be excluded. WBCs and platelets appear quantitatively adequate in the film. No early cells seen.","majority of the rbcs are normocytic but show mildly hypochromic. wbcs and platelets appear quantitatively adequate in the film. no early cells seen.":"Majority of the RBCs are normocytic but show mildly hypochromic. WBCs and platelets appear quantitatively adequate in the film. No early cells seen."}},
+
+    "urineBlood": {"name": "Blood (Urine)", "unit": "+ve/-ve", "panel":"urinalysis"},
+    "urobilinogen": {"name": "Urobilinogen", "unit": "+ve/-ve", "panel":"urinalysis"},
+    "urineNitrite": {"name": "Nitrite (Urine)", "unit": "+ve/-ve", "panel":"urinalysis"},
+    "urineBilirubin": {"name": "Bilirubin (Urine)", "unit": "+ve/-ve", "panel":"urinalysis"},
+    "urineKetones": {"name": "Ketones (Urine)", "unit": "+ve/-ve", "panel":"urinalysis",
+        "referenceText":{"trace":"There are trace amounts of Ketones in your urine."}
+    },
+    "urineGlucose": {"name": "Glucose (Urine)", "unit": "+ve/-ve", "panel":"urinalysis"},
+    "urineLeukocyteEsterase": {"name": "Leukocyte Estarase (Urine)", "unit": "+ve/-ve", "panel":"urinalysis",
+        "referenceText":{"OTHERS":"There is VAR:FULLRESULT Leukocyte Esterase in your urine.", "trace":"There are trace amounts of Leukocyte Esterase in your urine."}
+    },
+    "urineProtein": {"name": "Protein (Urine)", "unit": "+ve/-ve", "panel":"urinalysis"},
+    "urinePH": {"name": "pH (Urine)", "unit": "", "panel":"urinalysis", "referenceRange":{"1.Low":5.0,"2.Normal":8.0,"3.High":100.0}},
+    "urineSpecificGravity": {"name": "Specific Gravity (Urine)", "unit": "", "panel":"urinalysis","referenceRange":{"1.Low":1.001,"2.Normal":1.035,"3.High":100.0}},
+
+    "urineRbc": {"name": "Red Blood Cells (Urine)", "unit": "/HPF", "panel":"urineMicroscopy","referenceRange":{"1.Normal":5,"2.High":100.0}},
+    "urineWbc": {"name": "White Blood Cells (Urine)", "unit": "/HPF", "panel":"urineMicroscopy","referenceRange":{"1.Normal":5,"2.High":100.0}},
+    "urineEpithelial": {"name": "Epithelial Cells (Urine)", "unit": "/uL", "panel":"urineMicroscopy"},
+    "urineCasts": {"name": "Casts (Urine)", "unit": "+ve/-ve", "panel":"urineMicroscopy"},
+    "urineCrystals": {"name": "Crystals (Urine)", "unit": "+ve/-ve", "panel":"urineMicroscopy"},
+    "urineMicroOrganisms": {"name": "Micro-organisms (Urine)", "unit": "+ve/-ve", "panel":"urineMicroscopy"},
+    "urineOthers":{"name": "Others","nameVendor":"Others", "unit": "+ve/-ve", "panel":"urineMicroscopy",
+		"referenceText":{"1+":"Anomaly detected","2+":"Anomaly detected","3+":"Anomaly detected","mucus thread few":"Mucus threads detected in your urine","mucus threads detected in your urine":"Mucus threads were detected in your urine"}},
+
+    "occultBlood": {"name": "Occult Blood", "unit": "+ve/-ve", "panel":"stool", 
+        "referenceText": {"negative":"Your Stool Analysis for Occult Blood was negative.", "positive":"Your Stool Analysis for Occult Blood was positive."}
+    },
+
+    "vitaminD": {"name": " Vitamin D", "unit": "ng/mL", "panel":"otherTests","referenceRange":{"1.Deficient":10, "2.Insufficient":30, "3.Sufficient":100, "4.Possible Toxicity":1000}},
+    
+    "papSmearRemarks": {"nameVendor":"Pap Smear","name": "Pap Smear", "unit": "", "panel":"cytology","referenceText": {"negative for malignancy. ascus seen. reactive atypia seen. parakeratotic cells seen.":"Negative for malignancy. ASCUS seen. Reactive atypia seen. Parakeratotic cells seen."}},
+
+    "hsCRP": {"name": "High Sensitive C-Reactive Protein", "unit": "mg/dL", "panel": "cardiac", "referenceRange": {"1.Normal":1.0,"2.Medium":3.0,"3.High":10.0,"4.ExtremelyHigh":1000.0}},
+	"apoA1":{ "name":"Apolipoprotein A1", "nameVendor":"APOA1", "unit":"g/L", "panel":"lipidCardiac", 
+		"referenceRange":{"1.Low":0.94, "2.Normal(eq)":1.78, "3.High":100 } },
+	"apoB":{ "name":"Apolipoprotein B", "nameVendor":"APOB", "unit":"g/L", "panel":"lipidCardiac", 
+		"referenceRange":{"1.Low":0.62, "2.Normal(eq)":1.33, "3.High":100 } },
+	"apoBA1ratio":{ "name":"Apolipoprotein B/A1 ratio", "nameVendor":"APOBA1RATIO", "unit":"", "panel":"lipidCardiac", 
+		"referenceRange":{"1.Low":0.22, "2.Normal(eq)":0.80, "3.High":100 } },
+    
+    "vdScreen": {"name": "VDRL (Syphilis)", "unit": "+ve/-ve", "panel":"immunologyInfectiousDiseases", "referenceText":{
+        "non-reactive":"Your VDRL screening test for Syphilis is non-reactive.", "reactive":"Your VDRL screening test for Syphilis is reactive. Please consult your doctor."}
+    },
+    "tpha": {"name": "TPHA (Syphilis)", "unit": "+ve/-ve", "panel":"immunologyInfectiousDiseases","referenceText":{
+        "non-reactive":"Your TPHA Screening for Syphilis is negative", "reactive":"Your TPHA Screening is positive. Please consult your doctor."
+    }},
+    "hiv": {"name": "HIV Antibodies", "unit": "+ve/-ve", "panel":"immunologyInfectiousDiseases","referenceText":{
+        "non-reactive":"Your HIV screening test is negative", "reactive":"Your HIV screening is positive. Please consult your doctor."
+    }},
+    "hepatitisAAntibodies": {"name": "Hepatitis A Antibodies", "unit": "mIU/mL", "panel":"immunologyInfectiousDiseases", "referenceText":{
+"non-reactive":"Your Hepatitis A antibody screening test is non-reactive", "reactive":"Your Hepatitis A antibody test is reactive. Please contact your doctor if you have not  been vaccinated"
+    }},
+    "hepatitisBAntigen": {"name": "Hepatitis B Antigen", "unit": "mIU/mL", "panel":"immunologyInfectiousDiseases", "referenceText":{
+		"immunity":"You have immunity against Hepatitis B",
+		"consult-doctor":"Your Hepatitis B screening test is reactive. Please consult your doctor",
+		"no-evidence":"There is no evidence that you have immunity against Hepatitis B",
+		"weak reactive":"Your Hepatitis B antigen screening test is weak reactive. Please consult your doctor"
+    }},
+    "hepatitisBAntibodies": {"name": "Hepatitis B Antibodies", "unit": "mIU/mL", "panel":"immunologyInfectiousDiseases","referenceRange":{"1.Normal":10,"2.High":10000}},
+    "hepatitisCAntigen": {"name": "Hepatitis C Antigen", "unit":"", "panel":"immunologyInfectiousDiseases",
+        "non-reactive":"Your Hepatitis C screening test is non-reactive", "reactive":"Your Hepatitis C antibody test is reactive. Please contact your doctor if you have not  been vaccinated"
+    },
+    
+    "stomachUlcer": {"name": "Helicobacter Pylori (Stomach Ulcer)", "unit": "U/mL", "panel":"immunologyInfectiousDiseases","referenceRange":{"1.Negative":0.80,"2.Equivocal(eq)":0.90, "3.Positive":1000.0},"referenceText":{"negative":"Your Helicobactor pylori antibody test (Stomach Ulcer) is negative."},"rangeToText":["negative"]},
+    "helicobacter": {"name": "Helico\\-bacter Pylori (Stomach Ulcer)", "unit": "U/mL", "panel":"immunologyInfectiousDiseases","referenceRange":{"1.Negative":0.90,"2.Equivocal":1.10, "3.Positive":1000.0},
+		"referenceText":{"negative":"Your Helicobactor pylori antibody test (Stomach Ulcer) is negative."},
+		"rangeToText":["negative"]
+	},
+    "antiHCV": {"name": "Anti HCV", "unit": "mIU/mL", "panel":"immunologyInfectiousDiseases","referenceText":{
+        "non-reactive":"Your Hepatitis C Screening indicates no  infection.", "reactive":"Your Hepatitis C Screening is positive. Please consult your doctor."
+    }},
+    
+    "afp": {"name": "Alpha Feto-protein (Liver)", "unit": "ug/L", "panel":"tumour","referenceRange":{"1.Not-Elevated":15.0,"2.Elevated":500.0},"referenceText":{"not-elevated":"Your tumour marker (Alpha fetoprotein) for Liver Cancer was not elevated."},"rangeToText":["not-elevated"]},
+    "cea": {"name": "Carcino-Embryonic Antigen (Colon)", "unit": "ug/L", "panel":"tumour","referenceRange":{"1.Not-Elevated":4.70,"2.Elevated":500.0}, "referenceText":{"not-elevated":"Your tumour marker (Carcinoembryonic Antigen) for Colon Cancer was not elevated."}, "rangeToText":["not-elevated"]},
+    "ca19": {"name": "CA 19.9 (Pancreas)", "unit": "U/mL", "panel":"tumour","referenceRange":{"1.Not-Elevated":39.0,"2.Elevated":500.0},"referenceText":{"not-elevated":"Your tumour marker (CA19.9) for Pancreatic Cancer was not elevated."}, "rangeToText":["not-elevated"]},
+    "ebvEaIga": {"name": "EBV(Nose&Throat)", "unit": "EU/mL", "panel":"tumour","referenceRange":{"1.Negative":7.20,"2.Equivocal":8.80, "3.Positive":500.0},"referenceText":{"negative":"Your tumour marker (EBV) for Nose and Throat Cancer was not elevated."}, "rangeToText":["negative"]},
+    "prostateAntigen": {"name": "Prostate Specific Antigen (PSA) ", "unit":"ng/mL", "panel":"tumour", "referenceRange": {"1.Not-Elevated":4.0,"2.Elevated":500},"referenceText":{"not-elevated":"Your tumour marker (PSA) for Prostate Cancer was not elevated."}, "rangeToText":["not-elevated"]},
+    "ca125": {"name": "CA125 (Ovarian)", "unit":"U/mL", "panel":"tumour", "referenceRange": {"1.Not-Elevated":35.0,"2.Elevated":500},"referenceText":{"not-elevated":"Your tumour marker (CA125) for Ovarian Cancer was not elevated."}, "rangeToText":["not-elevated"]},
+    "ca153":{"name": "CA 15.3 (Breast)", "unit": "U/mL", "panel":"tumour","referenceRange":{"1.Not-Elevated":31.3,"2.Elevated":1000.0}, "referenceText":{"not-elevated":"Your tumour marker (CA15.3) for Breast Cancer was not elevated."}, "rangeToText":["not-elevated"]},
+    "betaHCG": {"name": "Beta HCG", "unit":"U/L", "panel":"tumour", "referenceRange": {"1.Not-Elevated":7.0,"2.Elevated":500}, "referenceText":{"not-elevated":"Your tumour marker (Beta-HCG) was not elevated."}, "rangeToText":["not-elevated"]}
+}

@@ -1,0 +1,106 @@
+{
+  "invalid_range":{
+    "cad-score":{
+      "age": {"range":{"years":[19.999,80.0]},"type":"float"}
+    },
+    "qrisk3-score":{
+      "age": {"range":{"years":[25.0,85.0]},"type":"float"},
+      "bodyMassIndex": {"range":[20,40], "type": "float"},
+      "systolicBloodPressure": {"range":[70,210], "type": "float"},
+      "medicalHistory-heartAttack":{"range":["Yes","yes","y",1],"type":"str"},
+	  "medicalHistory-stroke":{"range":["Yes","yes","y",1],"type":"str"},
+	  "medicalHistory-congestiveHeartFailure":{"range":["Yes","yes","y",1],"type":"str"}
+    },
+    "cardiovascular-score":{
+      "age": {"range":[30.0,74.0],"type":"float"},
+      "bodyMassIndex": {"range":[15,50], "type": "float"},
+      "systolicBloodPressure": {"range":[90,200], "type": "float"},
+      "highDensityLipidCholesterol": {"range": {"mg/dl":[10,100], "mmol/l":[0.2586,2.586]}, "type": "float"},
+      "totalCholesterol": {"range": {"mg/dl":[100,405], "mmol/l":[2.586,10.473]}, "type": "float"},
+      "cvdHistory": {"range": ["Yes","yes","y",1], "type": "str"},
+	  "medicalHistory-heartAttack":{"range":["Yes","yes"],"type":"str"},
+	  "medicalHistory-stroke":{"range":["Yes","yes"],"type":"str"},
+	  "medicalHistory-congestiveHeartFailure":{"range":["Yes","yes"],"type":"str"}
+    },
+    "diabetes-score":{
+      "age": {"range":[25.0,84.0],"type":"float"},
+      "bodyMassIndex": {"range":[20,40], "type": "float"},
+
+      "glucose": {"range": {"mmol/l":[2.0,6.99], "mg/dl":[36, 125.99]}, "type":"float", "symptom": {"mmol/l":"7.0","mg/dl":"126","combined":"bloodSugar", "order":["glucose","hba1c","randomGlucose"], "flatten":6.99}},
+      "hba1c": {"range": {"mmol/mol":[25, 47.99], "%":[4.4, 6.54]}, "type":"float", "symptom": {"mmol/mol":"48.0","%":"6.55","combined":"bloodSugar","order":["glucose","hba1c","randomGlucose"], "flatten":47.99}},
+      "randomGlucose": {"range": {"mmol/l":[3.0, 11.09], "mg/dl":[54, 199.99]}, "type":"float", "symptom": {"mmol/l":"11.1","mg/dl":"200","combined":"bloodSugar","order":["glucose","hba1c","randomGlucose"], "flatten":11.09}},
+
+      "medicalHistory-diabetes": {"range": ["Yes","yes","y",1], "type": "str"},
+      "medicalHistory-diabetesType1": {"range": ["Yes","yes","y",1], "type": "str"}
+    },
+    "hypertension-score":{
+      "age": {"range":[20.0,74.0],"type":"float"},
+      "bodyMassIndex": {"range":[15,40], "type": "float"},
+      "systolicBloodPressure": {"range":[50,139.99], "type": "float", "symptom": {"mmhg":"140","combined":"bloodPressure","order":["systolicBloodPressure", "diastolicBloodPressure"], "flatten": 139.99}},
+      "diastolicBloodPressure": {"range":[30,89.99], "type": "float", "symptom": {"mmhg":"90","combined":"bloodPressure","order":["systolicBloodPressure", "diastolicBloodPressure"], "flatten":89.99}},
+      "medicalHistory-hypertensionDiagnosed":  {"range": ["Yes","yes","y",1], "type": "str"}
+    },
+    "fattyLiver-score":{
+      "age": {"range":[30.0,70.0],"type":"float"},
+      "bodyMassIndex": {"range":[16,47], "type": "float"},
+      "alcohol": {"range":[0,14], "type": "float"},
+      "triglycerides":  {"range": {"mg/dl":[25,500],"mmol/l":[0.6465,13.0]}, "type": "float"},
+	  "medicalHistory-fattyLiver":{"range":["Yes","yes"],"type":"str"},
+	  "medicalHistory-nafld":{"range":["Yes","yes"],"type":"str"}
+    },
+    "kidneyFailure-score":{
+      "age": {"range":[35,80],"type":"float"},
+      "egfr": {"range":[0.1,90.0], "type": "float"},
+      "albuminuria": {"range":[1.6,113.1], "type": "float"},
+	  "medicalHistory-chronicKidneyDisease":{"range":["Yes","yes"],"type":"str"}
+    },
+    "chronicKidney-score":{
+      "age": {"range":[35.0,74.0],"type":"float"},
+      "systolicBloodPressure": {"range":[70,210], "type": "float"},
+      "bodyMassIndex": {"range":[20,40], "type": "float"},
+	  "medicalHistory-chronicKidneyDisease":{"range":["Yes","yes"],"type":"str"}
+    },
+    "alcoholicLiverDisease-score":{
+      "alcohol": {"range":[0,90],"type":"float"},
+      "durationDrink": {"range":[0,100], "type": "float"}
+    },
+    "corporate-report":{
+      "triglycerides": {"range": {"mg/dl":[25,500], "mmol/l":[0.6465,13.0]}, "type": "float"},
+      "lowDensityLipidCholesterol": {"range": {"mg/dl":[100,220], "mmol/l":[2.6,5.7]}, "type": "float"}
+    }
+  },
+  "input_errors":{
+    "polycysticOvaries":{"range": ["Yes","yes", "no", "y", "n"], "type":"str"},
+    "gestationalDiabetes":{"range": ["Yes","yes", "no", "y", "n"], "type":"str"},
+    "smoking":{"range": ["Yes","yes", "no", "y", "n"], "type":"str"},
+    "diabetesFamily":{"range": ["Yes","yes", "no", "y", "n"], "type":"str"},
+    "medicalHistory-hypertensionDiagnosed":{"range": ["Yes","yes", "no", "y", "n"], "type":"str"},
+    "cvdHistory":{"range": ["Yes","yes", "no", "y", "n"], "type":"str"},
+    "learningDisabilities":{"range": ["Yes","yes", "no", "y", "n"], "type":"str"},
+    "steroids":{"range": ["Yes","yes", "no", "y", "n"], "type":"str"},
+    "statins":{"range": ["Yes","yes", "no", "y", "n"], "type":"str"},
+    "atypicalAntipsychotics":{"range": ["Yes","yes", "no", "y", "n"], "type":"str"},
+    "manicDepressionSchizophrenia":{"range": ["Yes","yes", "no", "y", "n"], "type":"str"},
+    "gestationalDiabetes":{"range": ["Yes","yes", "no", "y", "n"], "type":"str"},
+    "parentalHypertension":  {"range": ["one","both","neither"], "type": "list"},
+    "smokingCategory": {"range": ["non-smoker","ex-smoker","<10 cig/day","10-19 cig/day","20+ cig/day"], "type":"list"},
+    "ethnicity": {"range": ["na","white","caucasian","indian","pakistani","bangladeshi","non-chinese asian","malay","black caribbean","black african","chinese","white african","other"], "type":"list"},
+    "medicalHistory-diabetes": {"range": ["Yes","yes","y","no","n"], "type": "list"},
+    "gender":  {"range": ["male","female","m","f"], "type": "str"},
+    "age": {"range":[20.0,84.0],"type":"float"},
+    "bodyMassIndex": {"range":[15,50], "type": "float"},
+    "systolicBloodPressure": {"range":[90,200], "type": "float"},
+    "highDensityLipidCholesterol": {"range": {"mg/dl":[10,100], "mmol/l":[0.2586,2.586]}, "type": "float"},
+    "diastolicBloodPressure": {"range":[30,89.99], "type": "float"},
+    "totalCholesterol": {"range": {"mg/dl":[100,405], "mmol/l":[2.586,10.473]}, "type": "float"},
+    "glucose": {"range": {"mmol/l":[2.0,6.99], "mg/dl":[36, 125.99]}, "type":"float"},
+    "hba1c": {"range": {"mmol/mol":[25, 47.99], "%":[4.4, 6.54]}, "type":"float"},
+    "triglycerides": {"range": {"mg/dl":[25,200], "mmol/l":[0.6465,13.0]}, "type": "float"},
+    "lowDensityLipidCholesterol": {"range": {"mg/dl":[100,220], "mmol/l":[2.6,5.7]}, "type": "float"},
+    "alcohol": {"range":[0,56], "type": "float"},
+    "egfr": {"range":[0.1,90.0], "type": "float"},
+    "albuminuria": {"range":[1.6,113.1], "type": "float"},
+    "durationDrink": {"range":[0,100], "type": "float"},
+    "hasDrank":{"range": ["Yes","yes","No", "no", "y", "n"], "type":"list"}
+  }
+}

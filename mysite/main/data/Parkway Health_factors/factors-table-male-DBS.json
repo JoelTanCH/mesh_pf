@@ -1,0 +1,44 @@
+{
+    "hsTroponin":{"nameVendor":"hsTroponinI", "name": "High Sensitive Troponin I", "unit":"pg/mL", "upperLimit":6,"target":"< 6","action":"HIGH", "panel":"lipidCardiac", "referenceRange":{"1.Low\nRisk":6, "2.Moderate\nRisk(eq)":12, "3.High\nRisk":1000}},
+    
+    "uricAcid": {"name": "Uric Acid","nameVendor":"Uric Acid", "unit": "umol/L","lowerLimit":212,"upperLimit":453,"target":"212 - 453", "action":"LOW/HIGH", "panel":"boneJoint","referenceRange":{"1.Low":212,"2.Normal(eq)":453,"3.High":1000}},
+	
+    "haemoglobin": {"nameVendor":"HGB","name": "Hae\\-mo\\-glo\\-bin","lowerLimit":13.0,"upperLimit":16.9,"target":"13.0 - 16.9","action":"LOW/HIGH", "unit": "g/dL", "panel":"haematology","referenceRange":{"1.Low":13.0,"2.Normal(eq)":16.9,"3.High":1000}},
+    "redbloodcell": {"nameVendor":"RBC","name": "Red Cell Count", "unit": "mil/uL", "lowerLimit":4.01,"upperLimit":5.36,"target":"4.01 - 5.36","action":"LOW/HIGH","panel":"haematology","referenceRange":{"1.Low":4.01,"2.Normal(eq)":5.36,"3.High":1000.0}},
+    "haematocrit": {"name": "Hae\\-ma\\-to\\-crit (PCV)", "unit": "%","altunit":"Ratio","lowerLimit":35.6,"upperLimit":50.6,"target":"35.6 - 50.6","action":"LOW/HIGH", "panel":"haematology","referenceRange":{"1.Low":35.6,"2.Normal(eq)":50.6,"3.High":100.0}},
+    
+    "iron":{"nameVendor":"Iron","name": "Iron", "unit": "umol/L", "lowerLimit":11,"upperLimit":29,"target":"11 - 29","action":"LOW/HIGH","panel":"ironStudies","referenceRange":{"1.Low":11,"2.Normal(eq)":29,"3.High":1000.0}},
+    "ironSaturation":{"nameVendor":"Iron Saturation","name": "Iron Saturation", "unit": "%", "lowerLimit":25.0,"upperLimit":56.0,"target":"25 - 56","action":"LOW/HIGH","panel":"ironStudies","referenceRange":{"1.Low":25.0,"2.Normal(eq)":56.0,"3.High":1000.0}},
+    "totalIronBindingCapacity":{"nameVendor":"Total Iron Binding Capacity","name": "TIBC", "unit": "umol/L", "lowerLimit":42.0,"upperLimit":71.0,"target":"42.0 - 71.0","action":"LOW/HIGH","panel":"ironStudies","referenceRange":{"1.Low":42.0,"2.Normal(eq)":71.0,"3.High":1000.0}},
+    "ferritin": {
+        "nameVendor": "Ferritin",
+        "name": "Ferritin",
+        "unit": "ug/L",
+        "altUnit": "pmol/L",
+        "lowerLimit": 36.0,
+        "upperLimit": 313.0,
+        "target": "36 - 313",
+        "action": "LOW/HIGH",
+        "panel": "ironStudies",
+        "conditionalReferenceRange": {
+            "age": {
+                "age1": {
+                    "paramFrom": 0.0,
+                    "paramTo": 1000.0,
+                    "lowerLimit": 36.0,
+                    "upperLimit": 313.0,
+                    "target": "36 - 313",
+                    "action": "LOW/HIGH",
+                    "referenceRange": {
+                        "1.Low": 36.0,
+                        "2.Normal(eq)": 313.0,
+                        "3.High": 1000.0
+                    }
+                }
+            }
+        }
+    },
+	"creatinine": {"nameVendor":"CREAT","name": "Serum Creatinine", "unit": "umol/L", "altUnit": "mg/dL", "lowerLimit":53,"upperLimit":115,"target":"53 - 115","action":"INCREASE/REDUCE", "panel":"renal","referenceRange":{"1.Low":53,"2.Normal(eq)":115,"3.High":1000}},
+	
+	"progesterone": {"name": "Progesterone", "unit": "nmol/L", "lowerLimit":0.16,"upperLimit":0.47,"target":"0.16-0.47","action":"INCREASE/REDUCE","panel":"hormone","referenceRange":{"1.Low":0.16, "2.Normal":0.47, "3.High":5000}}
+}

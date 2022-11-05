@@ -10,6 +10,7 @@ pymongo = "*"
 pypdf2 = "*"
 requests = "*"
 pillow = "*"
+pandas = "*"
 
 [dev-packages]
 

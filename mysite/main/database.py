@@ -1,7 +1,10 @@
 from pymongo import MongoClient
 
 # hide username and password in the future.
-mongo_url = "mongodb+srv://capstone:8vUr83VXefLJcyxkJJ55V1z1smQ0N10z@cluster0.succu.mongodb.net/test?authSource=admin&readPreference=primary&appname=MongoDB%20Compass&ssl=true"
+#mongo_url = "mongodb+srv://capstone:8vUr83VXefLJcyxkJJ55V1z1smQ0N10z@cluster0.succu.mongodb.net/test?authSource=admin&readPreference=primary&appname=MongoDB%20Compass&ssl=true"
+#mongo_url = 'mongodb://capstone:P5O22WPAKzDQF45v@13.212.225.13:27017/meshbio?authSource=admin&readPreference=primary&directConnection=true&ssl=false'
+mongo_url = 'mongodb://localhost:27017'
+
 
 # database is string of database
 def connect(database = "meshbio"):
@@ -23,6 +26,7 @@ def get_collection(collection, db):
 
 def retrieve_document(db, collection, query, columns={}):
     db_col = get_collection(collection, db)
+    #print("HELLO")
     if db_col is None:
         return None
 
@@ -31,6 +35,7 @@ def retrieve_document(db, collection, query, columns={}):
     try:
         documents = db_col.find(query, required_columns)
         documents = [x for x in documents]
+        #print(documents)
     except Exception as ex:
         error_msg = f"Error executing find '{query}' from {collection}: {ex}"
         # logger.error(error_msg)

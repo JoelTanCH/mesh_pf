@@ -1,0 +1,865 @@
+{
+  "startDate": "",
+  "endDate": "",
+  "corporateName": "OILTANKING GROUP OF COMPANIES",
+  "prefix": "./",
+  "analyses_package_base": "backend.CorpReport",
+  "factors_db": "backend/CorpReport/data/factors-table.json",
+  "data_dir": "backend/CorpReport",
+  "validate_data_reference": "backend/CorpReport/data/validateDataReference.json",
+  "input_template": "backend/CorpReport/data/empty.json",
+  "report_figures_dir": "backend/CorpReport/templates",
+  "cohort_data_targets_dir": "backend/HealthScreeningReport/Modeling/cohort_data_targets_Quest_mmol_L/",
+  "template_dir": "backend/CorpReport/templates",
+  "csvfile": "Modeling/testset-generated.csv",
+  "csvcheck": "backend/CorpReport/sample_input.csv",
+  "corporate_report_figures_dir": "Images",
+  "latex_path": "pdflatex",
+  "corporate_template": "corporate-template.tex",
+  "disease_pages": "disease-pages.tex",
+  "references_template": "references.tex",
+
+
+  "graph_and_table_parameters": ["bodyMassIndex", "bloodPressure","lipids","lipoproteins","hdlldl", "totalCholesterol", "highDensityLipidCholesterol", "lowDensityLipidCholesterol", "triglycerides", "glucose"],
+  "disease_barchart_version": 1,
+  "population_pyramid_version": 1,
+  "risk_analysis_header_on_every_n_graphs": 0,
+  "risk_contributors_table": "risk-contributors-table.tex",
+  "executive_summary_reference": "executiveSummaryReference.json",
+  "executive_summary_table_template": "exec-summary-table.tex",
+  "country": "sg",
+  "dateFormat": "%Y-%m-%d",
+  "analyses_order": [
+    "cardiovascular-score",
+    "diabetes-score",
+    "hypertension-score"
+  ],
+  "fontsize_graphs": 10,
+  "titlefontsize_graphs": 12,
+  "figsize_pie": [7, 3.5],
+  "font_path": [],
+  "font_name": "",
+  "analyses": {
+    "cardiovascular-score": "Cardiac Events",
+    "diabetes-score": "Type II Diabetes",
+    "hypertension-score": "Hypertension",
+    "chronicKidney-score": "CKD"
+  },
+  "essential_parameters": [
+    "birthDate",
+    "gender"
+  ],
+  "minimal_age": 16,
+  "key_findings_groups": {
+    "bodyMassIndex": ["bodyMassIndex"],
+    "habits-smoking": ["habits-smoking"],
+    "cholesterol": ["totalCholesterol", "highDensityLipidCholesterol"],
+    "glucose": ["glucose"],
+    "bloodPressure": ["systolicBloodPressure", "diastolicBloodPressure"]
+  },
+  "full_names": {
+    "highDensityLipidCholesterol": "High Density Lipid Cholesterol",
+    "lowDensityLipidCholesterol": "Low Density Lipid Cholesterol",
+    "totalCholesterol": "Total Cholesterol",
+    "triglycerides": "Triglycerides",
+    "glucose": "Fasting Glucose"
+  },
+  "short_names": {
+    "highDensityLipidCholesterol": "HDL",
+    "lowDensityLipidCholesterol": "LDL"
+  },
+  "organisation_preferred_units": {
+    "dateFormat": "%Y-%m-%d",
+    "birthDate": "",
+    "gender": "",
+    "recordDate": "",
+    "ethnicity": "Ethnicity",
+    "habits-smoking": "Y/N",
+    "habits-smokingCategory": "Frequency",
+    "habits-alcoholIntake": "Frequency",
+
+    "family-diabetes": "Y/N",
+    "family-parentalHypertension": "Neither/One/Both",
+    "family-kidneyFamily": "Y/N",
+
+    "medicalHistory-hypertension": "Y/N",
+    "medicalHistory-hypertensionTreatment": "Y/N",
+    "medicalHistory-diabetes": "Y/N",
+    "medicalHistory-heartAttack": "Y/N",
+    "medicalHistory-learningDisabilities": "Y/N",
+    "medicalHistory-depression": "Y/N",
+    "medicalHistory-polycysticOvarianSyndrome": "Y/N",
+    "medicalHistory-gestationalDiabetes": "Y/N",
+    "medicalHistory-congestiveHeartFailure": "Y/N",
+    "medicalHistory-peripheralVascularDisease": "Y/N",
+    "medicalHistory-rheumatoidArthritis": "Y/N",
+    "medicalHistory-kidneyStone": "Y/N",
+    "medicalHistory-lupus": "Y/N",
+    "medicalHistory-diabetesType1": "Y/N",
+
+    "medications-antipsychotics": "Y/N",
+    "medications-nsaids": "Y/N",
+    "medications-steroids": "Y/N",
+    "medications-statins": "Y/N",
+
+    "weight": "kg",
+    "height": "cm",
+    "bodyMassIndex": "kg/m2",
+    "systolicBloodPressure": "mmHg",
+    "diastolicBloodPressure": "mmHg",
+    "totalCholesterol": "mMol/L",
+    "highDensityLipidCholesterol": "mMol/L",
+    "lowDensityLipidCholesterol": "mMol/L",
+    "triglycerides": "mMol/L",
+    "glucose": "mMol/L",
+    "hba1c": "%",
+    "randomGlucose": "mMol/L",
+    "egfr": "mL/min/1.73m2",
+    "albuminuria": "mg/g"
+  },
+  "report_units": {
+    "totalCholesterol": "mMol/L",
+    "highDensityLipidCholesterol": "mMol/L",
+    "lowDensityLipidCholesterol": "mMol/L",
+    "triglycerides": "mMol/L",
+    "habits-smokingCategory": "Frequency",
+    "glucose": "mMol/L",
+    "hba1c": "%",
+    "bodyMassIndex": "kg/m2",
+    "habits-smoking": "Y/N",
+    "systolicBloodPressure": "mmHg",
+    "diastolicBloodPressure": "mmHg",
+    "egfr": "mL/min/1.73m2",
+    "albuminuria": "mg/g",
+    "habits-alcoholIntake": "Frequency"
+  },
+  "risk_contributor_representations": {
+    "bodyMassIndex": {
+      "type": "horizontal_barchart",
+      "show_percentage": true,
+      "legend_ncol": 1,
+      "legend_frameon": true,
+      "handle_height": null,
+      "handle_length": null,
+      "batch_colors": ["#004991", "#ffd000"],
+      "palette": [
+        "#FF5E5E",
+        "#FCA719",
+        "#33CCCC",
+        "#00D7FF",
+        "#377DFF",
+        "#A577C2",
+        "#802392",
+        "#EED4BE",
+        "#7D5A3C"
+      ]
+    },
+    "habits-smoking": {
+      "type": "piechart",
+      "legend_ncol": 2,
+      "legend_frameon": true,
+      "handle_height": null,
+      "handle_length": null,
+      "batch_colors": ["#004991", "#ffd000"],
+      "palette": [
+        "#FF5E5E",
+        "#FCA719",
+        "#33CCCC",
+        "#00D7FF",
+        "#377DFF",
+        "#A577C2",
+        "#802392",
+        "#EED4BE",
+        "#7D5A3C"
+      ]
+    },
+    "totalCholesterol": {
+      "type": "horizontal_barchart",
+      "show_percentage": true,
+      "legend_ncol": 2,
+      "legend_frameon": true,
+      "handle_height": null,
+      "handle_length": null,
+      "batch_colors": ["#004991", "#ffd000"],
+      "palette": [
+        "#FF5E5E",
+        "#FCA719",
+        "#33CCCC",
+        "#00D7FF",
+        "#377DFF",
+        "#A577C2",
+        "#802392",
+        "#EED4BE",
+        "#7D5A3C"
+      ]
+    },
+    "lowDensityLipidCholesterol": {
+      "type": "horizontal_barchart",
+      "show_percentage": true,
+      "legend_ncol": 2,
+      "legend_frameon": true,
+      "handle_height": null,
+      "handle_length": null,
+      "batch_colors": ["#004991", "#ffd000"],
+      "palette": [
+        "#FF5E5E",
+        "#FCA719",
+        "#33CCCC",
+        "#00D7FF",
+        "#377DFF",
+        "#A577C2",
+        "#802392",
+        "#EED4BE",
+        "#7D5A3C"
+      ]
+    },
+    "highDensityLipidCholesterol": {
+      "type": "horizontal_barchart",
+      "show_percentage": true,
+      "legend_ncol": 2,
+      "legend_frameon": true,
+      "handle_height": null,
+      "handle_length": null,
+      "batch_colors": ["#004991", "#ffd000"],
+      "palette": [
+        "#FF5E5E",
+        "#FCA719",
+        "#33CCCC",
+        "#00D7FF",
+        "#377DFF",
+        "#A577C2",
+        "#802392",
+        "#EED4BE",
+        "#7D5A3C"
+      ]
+    },
+    "systolicBloodPressure": {
+      "type": "bar_and_linechart",
+      "legend_ncol": 1,
+      "legend_frameon": true,
+      "handle_height": null,
+      "handle_length": null,
+      "batch_colors": ["#004991", "#ffd000"],
+      "palette": [
+        "#FF5E5E",
+        "#FCA719",
+        "#33CCCC",
+        "#00D7FF",
+        "#377DFF",
+        "#A577C2",
+        "#802392",
+        "#EED4BE",
+        "#7D5A3C"
+      ]
+    },
+    "diastolicBloodPressure": {
+      "type": "bar_and_linechart",
+      "legend_ncol": 1,
+      "legend_frameon": true,
+      "handle_height": null,
+      "handle_length": null,
+      "batch_colors": ["#004991", "#ffd000"],
+      "palette": [
+        "#FF5E5E",
+        "#FCA719",
+        "#33CCCC",
+        "#00D7FF",
+        "#377DFF",
+        "#A577C2",
+        "#802392",
+        "#EED4BE",
+        "#7D5A3C"
+      ]
+    },
+    "triglycerides": {
+      "type": "horizontal_barchart",
+      "show_percentage": true,
+      "legend_ncol": 2,
+      "legend_frameon": true,
+      "handle_height": null,
+      "handle_length": null,
+      "batch_colors": ["#004991", "#ffd000"],
+      "palette": [
+        "#FF5E5E",
+        "#FCA719",
+        "#33CCCC",
+        "#00D7FF",
+        "#377DFF",
+        "#A577C2",
+        "#802392",
+        "#EED4BE",
+        "#7D5A3C"
+      ]
+    },
+    "glucose": {
+      "type": "horizontal_barchart",
+      "show_percentage": true,
+      "legend_ncol": 1,
+      "legend_frameon": true,
+      "handle_height": null,
+      "handle_length": null,
+      "batch_colors": ["#004991", "#ffd000"],
+      "palette": [
+        "#FF5E5E",
+        "#FCA719",
+        "#33CCCC",
+        "#00D7FF",
+        "#377DFF",
+        "#A577C2",
+        "#802392",
+        "#EED4BE",
+        "#7D5A3C"
+      ]
+    },
+    "hba1c": {
+      "type": "horizontal_barchart",
+      "show_percentage": true,
+      "legend_ncol": 1,
+      "legend_frameon": true,
+      "handle_height": null,
+      "handle_length": null,
+      "batch_colors": ["#004991", "#ffd000"],
+      "palette": [
+        "#FF5E5E",
+        "#FCA719",
+        "#33CCCC",
+        "#00D7FF",
+        "#377DFF",
+        "#A577C2",
+        "#802392",
+        "#EED4BE",
+        "#7D5A3C"
+      ]
+    },
+    "habits-smokingCategory": {
+      "type": "horizontal_barchart",
+      "show_percentage": true,
+      "legend_ncol": 1,
+      "legend_frameon": true,
+      "handle_height": null,
+      "handle_length": null,
+      "batch_colors": ["#004991", "#ffd000"],
+      "palette": [
+        "#FF5E5E",
+        "#FCA719",
+        "#33CCCC",
+        "#00D7FF",
+        "#377DFF",
+        "#A577C2",
+        "#802392",
+        "#EED4BE",
+        "#7D5A3C"
+      ]
+    },
+    "egfr": {
+      "type": "horizontal_barchart",
+      "show_percentage": true,
+      "legend_ncol": 1,
+      "legend_frameon": true,
+      "handle_height": null,
+      "handle_length": null,
+      "batch_colors": ["#004991", "#ffd000"],
+      "palette": [
+        "#FF5E5E",
+        "#FCA719",
+        "#33CCCC",
+        "#00D7FF",
+        "#377DFF",
+        "#A577C2",
+        "#802392",
+        "#EED4BE",
+        "#7D5A3C"
+      ]
+    },
+    "albuminuria": {
+      "type": "horizontal_barchart",
+      "show_percentage": true,
+      "legend_ncol": 1,
+      "legend_frameon": true,
+      "handle_height": null,
+      "handle_length": null,
+      "batch_colors": ["#004991", "#ffd000"],
+      "palette": [
+        "#FF5E5E",
+        "#FCA719",
+        "#33CCCC",
+        "#00D7FF",
+        "#377DFF",
+        "#A577C2",
+        "#802392",
+        "#EED4BE",
+        "#7D5A3C"
+      ]
+    },
+    "hasDrank": {
+      "type": "piechart",
+      "legend_ncol": 2,
+      "legend_frameon": true,
+      "handle_height": null,
+      "handle_length": null,
+      "batch_colors": ["#004991", "#ffd000"],
+      "palette": [
+        "#FF5E5E",
+        "#FCA719",
+        "#33CCCC",
+        "#00D7FF",
+        "#377DFF",
+        "#A577C2",
+        "#802392",
+        "#EED4BE",
+        "#7D5A3C"
+      ]
+    }
+  },
+  "param_counts_representation": {
+    "default": {
+      "type": "pie",
+      "shape": "donut",
+      "bottomLegend": false,
+      "split_legend": false,
+      "setLabels": true
+    },
+    "bodyMassIndex": {
+      "type": "bargraph",
+      "title": ""
+    },
+    "habits-alcoholIntake": {
+      "title": ""
+    },
+    "totalCholesterol": {
+      "title": "",
+      "shape": "pizza",
+      "split_legend": false,
+      "figsize": [5, 3],
+      "split_lines": ":",
+      "handle_length": null,
+      "handle_height": null,
+      "legend_frameon": true
+    },
+    "lowDensityLipidCholesterol": { "title": "" },
+    "highDensityLipidCholesterol": { "title": "" },
+    "glucose": {
+      "title": "",
+      "split_legend": false,
+      "figsize": [7, 3.5],
+      "handle_length": null,
+      "handle_height": null,
+      "legend_frameon": true
+    },
+    "triglycerides": {
+      "title": "",
+      "shape": "pizza",
+      "split_legend": false,
+      "figsize": [5, 3],
+      "split_lines": ":",
+      "handle_length": null,
+      "handle_height": null,
+      "legend_frameon": true
+    },
+    "bloodPressure": {
+      "title": "",
+      "split_legend": false,
+      "figsize": [7, 3.5],
+      "handle_length": null,
+      "handle_height": null,
+      "legend_frameon": true
+    },
+    "hdlldl": {
+      "type": "combbar",
+      "figsize": [6, 2],
+      "bar_width": 0.5,
+      "title_fontsize": 12,
+      "fontsize": 6
+    },
+    "lipids": {
+      "type": "sumbar",
+      "figsize": [8, 3.5],
+      "bar_width": 0.5,
+      "title_fontsize": 12,
+      "fontsize": 10,
+      "make_legend": false,
+      "title": ""
+    },
+    "lipoproteins": {
+      "type": "sumbar",
+      "figsize": [8, 3.5],
+      "bar_width": 0.5,
+      "title_fontsize": 12,
+      "fontsize": 10,
+      "make_legend": false
+    }
+  },
+  "risk_contributor_order": {
+    "bodyMassIndex": 0,
+    "habits-smoking": 1,
+    "habits-smokingCategory": 2,
+    "totalCholesterol": 3,
+    "lowDensityLipidCholesterol": 4,
+    "highDensityLipidCholesterol": 5,
+    "triglycerides": 6,
+    "systolicBloodPressure": 7,
+    "diastolicBloodPressure": 8,
+    "glucose": 9,
+    "hba1c": 10,
+    "egfr": 11,
+    "albuminuria": 12,
+    "hasDrank": 13
+  },
+  "colors": {
+    "\nModerately High\nto High": "#faa617",
+    "Low to Average": "#a8cf8c"
+  },
+  "outside_healthy_range": {
+    "bodyMassIndex": {
+      "male": ["Overweight", "Obese"],
+      "female": ["Overweight", "Obese"]
+    },
+    "bloodPressure": [
+      "3.Mild Hypertension",
+      "4.Moderate Hypertension",
+      "5.Severe Hypertension"
+    ],
+    "totalCholesterol": ["Borderline", "High"],
+    "lowDensityLipidCholesterol": ["Borderline", "High", "Very High"],
+    "highDensityLipidCholesterol": ["Very Low"],
+    "triglycerides": ["High", "Very High"],
+    "glucose": ["Diabetic"]
+  },
+  "param_level_ranges": {
+    "bodyMassIndex": {
+      "1.Underweight (<18.5)": [0.0, 18.5],
+      "2.Normal (18.5-22.9)": [18.5, 23.0],
+      "3.Overweight (23.0-27.4)": [23.0, 27.5],
+      "4.Obese (>27.5)": [27.5, 1000.0]
+    },
+    "bloodPressure": {
+      "0.Low Blood Pressure": {
+        "systolicBloodPressure": [0.0, 90.0],
+        "diastolicBloodPressure": [0.0, 60.0],
+        "graphCategory":  "subsets", 
+        "color": "#313896",
+        "operator": "or"
+      },
+      "1.Normal Blood Pressure": {
+        "systolicBloodPressure": [90.0, 130.0],
+        "diastolicBloodPressure": [60.0, 85.0],
+        "graphCategory":  "subsets", 
+        "color": "#33CCCC",
+        "operator": "or"
+      },
+      "2.High Normal Blood Pressure": {
+        "systolicBloodPressure": [130.0, 140.0],
+        "diastolicBloodPressure": [85.0, 90.0],
+        "graphCategory":  "subsets", 
+        "color": "#FCA719",
+        "operator": "or"
+      },
+      "3.Mild Hypertension": {
+        "systolicBloodPressure": [140.0, 160.0],
+        "diastolicBloodPressure": [90.0, 100.0],
+        "graphCategory":  "subsets", 
+        "color": "#FF5E5E",
+        "operator": "or"
+      },
+      "4.Moderate Hypertension": {
+        "systolicBloodPressure": [160.0, 180.0],
+        "diastolicBloodPressure": [100.0, 110.0],
+        "graphCategory":  "subsets", 
+        "color": "#CC3333",
+        "operator": "or"
+      },
+      "5.Severe Hypertension": {
+        "systolicBloodPressure": [180.0, 1000.0],
+        "diastolicBloodPressure": [110.0, 1000.0],
+        "graphCategory":  "subsets", 
+        "color": "#802392",
+        "operator": "or"
+      }
+    },
+    "systolicBloodPressure": {
+      "01.50.0": [0.0, 60.0],
+      "02.60.0": [60.0, 70.0],
+      "03.70.0": [70.0, 80.0],
+      "04.80.0": [80.0, 90.0],
+      "05.90.0": [90.0, 100.0],
+      "06.100.0": [100.0, 110.0],
+      "07.110.0": [110.0, 120.0],
+      "08.120.0": [120.0, 130.0],
+      "09.130.0": [130.0, 140.0],
+      "10.140.0": [140.0, 150.0],
+      "11.150.0": [150.0, 160.0],
+      "12.160.0": [160.0, 170.0],
+      "13.170.0": [170.0, 180.0],
+      "14.180.0": [180.0, 190.0],
+      "15.190.0": [190.0, 1000.0]
+    },
+    "diastolicBloodPressure": {
+      "01.30.0": [0.0, 40.0],
+      "02.40.0": [40.0, 50.0],
+      "03.50.0": [50.0, 60.0],
+      "04.60.0": [60.0, 70.0],
+      "05.70.0": [70.0, 80.0],
+      "06.80.0": [80.0, 90.0],
+      "07.90.0": [90.0, 100.0],
+      "08.100.0": [100.0, 110.0],
+      "09.110.0": [110.0, 1000.0]
+    },
+    "totalCholesterol": {
+      "1.Desirable (<5.2)": [0.0, 5.2, "#33CCCC"],
+      "2.Borderline (5.2-6.1)": [5.2, 6.1, "#FCA719"],
+      "3.High (>=6.1)": [6.1, 1000.0, "#FF5E5E"]
+    },
+    "lipids": {
+      "out_of_range": {
+        "lowDensityLipidCholesterol": [3.4, 1000],
+        "highDensityLipidCholesterol": [0.0, 1.0],
+        "totalCholesterol": [5.2, 1000],
+        "triglycerides": [1.7, 1000],
+        "color": "#FF5E5E",
+        "operator": "or"
+      }
+    },
+    "lipoproteins": {
+      "out_of_range": {
+        "lowDensityLipidCholesterol": [3.4, 1000],
+        "highDensityLipidCholesterol": [0.0, 1.0],
+        "totalCholesterol": [5.2, 1000],
+        "triglycerides": [1.7, 1000],
+        "color": "#FF5E5E",
+        "operator": "or"
+      }
+    },
+    "hdlldl": {
+      "out_of_range": {
+        "lowDensityLipidCholesterol": [3.4, 1000],
+        "highDensityLipidCholesterol": [0.0, 1.0],
+        "color": "#FF5E5E",
+        "operator": "or"
+      }
+    },
+    "lowDensityLipidCholesterol": {
+      "1.Optimal (<2.6)": [0.0, 2.6, "#1C8C79"],
+      "2.Desirable (2.6-3.3)": [2.6, 3.3, "#33CCCC"],
+      "3.Borderline (3.4-4.0)": [3.3, 4.0, "#FCA719"],
+      "4.High (4.1-4.8)": [4.0, 4.8, "#FF5E5E"],
+      "5.Very High (>=4.8)": [4.8, 1000, "#FF5E5E"]
+    },
+    "highDensityLipidCholesterol": {
+      "1.Low (<1.0)": [0.0, 1.0, "#FCA719"],
+      "2.Desirable (1.0-1.5)": [1.0, 1.5, "#33CCCC"],
+      "3.Optimal (>=1.5)": [1.5, 1000, "#1C8C79"]
+    },
+    "triglycerides": {
+      "1.Optimal (<1.7)": [0.0, 1.7, "#1C8C79"],
+      "2.Desirable (1.7-2.2)": [1.7, 2.2, "#33CCCC"],
+      "3.High (2.3-4.4)": [2.2, 4.4, "#FF5E5E"],
+      "4.Very High (>=4.4)": [4.4, 1000.0, "#CC3333"]
+    },
+    "glucose": {
+      "1.Normal Glucose Tolerance (<5.6)": [0.0, 5.6, "#33CCCC"],
+      "2.Impaired Fasting Glucose (5.6-7.0)": [5.6, 7.0, "#FCA719"],
+      "3.Diabetic (>7.0)": [7.0, 1000.0, "#FF5E5E"]
+    },
+    "hba1c": {
+      "1.Normal (<5.6 %)": [0.0, 5.6],
+      "2.Pre-Diabetes (5.6-6.3)": [5.6, 6.3],
+      "3.Diabetic (>6.3)": [6.3, 1000.0]
+    },
+    "habits-smoking": {
+      "1.Yes": ["yes", "y"],
+      "2.No": ["no", "n"]
+    },
+    "habits-smokingCategory": {
+      "1.Non-smoker": ["non-smoker"],
+      "2.Ex-smoker": ["ex-smoker"],
+      "3.Occasional Smoker": ["< 10 cig / day"],
+      "4.Daily Smoker": ["10 - 19 cig / day", "20+ cig / day"]
+    },
+    "ageMale": {
+      "04.0-20": [0.0, 20.0],
+      "05.20-24": [20.0, 25.0],
+      "06.25-29": [25.0, 30.0],
+      "07.30-34": [30.0, 35.0],
+      "08.35-39": [35.0, 40.0],
+      "09.40-44": [40.0, 45.0],
+      "10.45-49": [45.0, 50.0],
+      "11.50-54": [50.0, 55.0],
+      "12.55-59": [55.0, 60.0],
+      "13.60-64": [60.0, 65.0],
+      "14.65-69": [65.0, 70.0],
+      "15.70+": [70.0, 1000.0]
+    },
+    "ageFemale": {
+      "04.0-20": [0.0, 20.0],
+      "05.20-24": [20.0, 25.0],
+      "06.25-29": [25.0, 30.0],
+      "07.30-34": [30.0, 35.0],
+      "08.35-39": [35.0, 40.0],
+      "09.40-44": [40.0, 45.0],
+      "10.45-49": [45.0, 50.0],
+      "11.50-54": [50.0, 55.0],
+      "12.55-59": [55.0, 60.0],
+      "13.60-64": [60.0, 65.0],
+      "14.65-69": [65.0, 70.0],
+      "15.70+": [70.0, 1000.0]
+    },
+    "egfr": {
+      "1.Normal or High (>90)": [90.0, 1000.0],
+      "2.Mildly Decreased (60-90)": [60.0, 90.0],
+      "3.Mildly to Moderately Decreased (45-59)": [45.0, 60.0],
+      "4.Moderately to Severely Decreased (30-44)": [30.0, 45.0],
+      "5.Severely Decreased (15-29)": [15.0, 30.0],
+      "6.Kidney Failure (<15)": [0.0, 15.0]
+    },
+    "albuminuria": {
+      "1.Normal to Mildly Increased (<30)": [0.0, 30.0],
+      "2.Moderately Increased (30-299)": [30.0, 300.0],
+      "3.Severely Increased (>300)": [300.0, 2000.0]
+    },
+    "hasDrank": {
+      "1.Yes": ["yes", "y"],
+      "2.No": ["no", "n"]
+    }
+  },
+  "population_dlevel_counts": {
+    "bodyMassIndex": {
+      "1.Underweight (<18.5)": 8.2,
+      "2.Normal (18.5-22.9)": 43.6,
+      "3.Overweight (23.0-27.4)": 26.8,
+      "4.Obese (>27.5)": 21.4
+    },
+    "bloodPressure": {},
+    "systolicBloodPressure": {},
+    "diastolicBloodPressure": {},
+    "totalCholesterol": {
+      "1.Desirable (<5.2)": 48.4,
+      "2.Borderline (5.2-6.1)": 34.1,
+      "3.High (>=6.1)": 17.4
+    },
+    "lowDensityLipidCholesterol": {
+      "1.Desirable (<3.4)": 54.6,
+      "2.Borderline (3.4-4.0)": 30.2,
+      "3.High (>4.0)": 15.2
+    },
+    "highDensityLipidCholesterol": {
+      "1.Low (<1.0)": 8.1,
+      "2.Desirable (>1.0)": 91.9
+    },
+    "triglycerides": {
+      "1.Optimal (<1.7)": 5,
+      "2.Desirable (1.7-2.2)": 3,
+      "3.High (2.3-4.4)": 2,
+      "4.Very High (>=4.4)": 0
+    },
+    "glucose": {
+      "1.Normal Glucose Tolerance (<5.6)": 74.3,
+      "2.Impaired Fasting Glucose (5.6-7.0)": 14.4,
+      "3.Diabetic (>7.0)": 11.3
+    },
+    "hba1c": {
+      "1.Normal (<5.6)": 74.3,
+      "2.Pre-Diabetes (5.6-6.3)": 14.4,
+      "3.Diabetic (>6.3)": 11.3
+    },
+    "habits-smoking": {
+      "1.Yes": 12.0,
+      "2.No": 88.0
+    },
+    "habits-smokingCategory": {
+      "1.Non-smoker": 76.0,
+      "2.Ex-smoker": 7.7,
+      "3.Occasional Smoker": 2.0,
+      "4.Daily Smoker": 14.3
+    },
+    "egfr": {
+      "1.Normal or High (>90)": 46.32,
+      "2.Mildly Decreased (60-90)": 46.36,
+      "3.Mildly to Moderately Decreased (45-59)": 5.96,
+      "4.Moderately to Severely Decreased (30-44)": 1.10908,
+      "5.Severely Decreased (15-29)": 0.1886,
+      "6.Kidney Failure (<15)": 0.06232
+    },
+    "albuminuria": {
+      "1.Normal to Mildly Increased (<30)": 94.9,
+      "2.Moderately Increased (30-299)": 4.6,
+      "3.Severely Increased (>300)": 0.5
+    },
+    "hasDrank": {
+      "1.Yes": 46.0,
+      "2.No": 54.0
+    }
+  },
+  "key_risk_contributors_summary": {
+    "default": {
+      "title": "",
+      "type": "pie",
+      "shape": "pizza",
+      "bottomLegend": true,
+      "split_legend": false,
+      "handle_height": null,
+      "handle_length": null,
+      "legend_frameon": true,
+      "legend_ncol": 1,
+      "setLabels": true,
+      "fontsize": 10,
+      "title_fontsize": 12,
+      "palette": [
+        "#FF5E5E",
+        "#FCA719",
+        "#A577C2",
+        "#802392",
+        "#EED4BE",
+        "#7D5A3C"
+      ]
+    },
+    "cardiovascular-score": {
+      "title": ""
+    },
+    "diabetes-score": {
+      "title": ""
+    },
+    "hypertension-score": {
+      "title": ""
+    }
+  },
+  "at_risk_population": {
+    "default": {
+      "title": "At Risk \nPopulation",
+      "type": "pie",
+      "shape": "pizza",
+      "bottomLegend": true,
+      "split_legend": false,
+      "handle_height": null,
+      "handle_length": null,
+      "legend_frameon": true,
+      "legend_ncol": 1,
+      "setLabels": true,
+      "fontsize": 10,
+      "title_fontsize": 12,
+      "palette": [
+        "#33CCCC",
+        "#fca719",
+        "#FF5E5E",
+        "#cc3333",
+        "#FF5E5E",
+        "#FCA719",
+        "#1c8c79",
+        "#00D7FF",
+        "#377DFF",
+        "#A577C2",
+        "#802392",
+        "#EED4BE",
+        "#7D5A3C"
+      ]
+    },
+    "cardiovascular-score": {
+      "title": ""
+    },
+    "diabetes-score": {
+      "title": ""
+    },
+    "hypertension-score": {
+      "title": ""
+    }
+  }
+}
