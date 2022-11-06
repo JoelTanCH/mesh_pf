@@ -148,6 +148,18 @@ def summaryReport(response):
       
     })
 
+@api_view(["GET"])
+def downloadcsv(request):
+    try:
+        myfile = open('./temp/validated_data_with_base_units.csv')
+        response = HttpResponse(myfile, content_type='text/csv')
+        response['Content-Disposition'] = 'attachment; filename=validated_data_with_base_units.csv'
+        return response
+    except:
+        response = HttpResponse()
+        response.status_code = 404
+        return response
+
 @api_view(["POST"])
 @csrf_exempt
 def update_nbatches(response):

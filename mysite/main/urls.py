@@ -18,5 +18,6 @@ urlpatterns = [
     path('summaryReport/sendReportSelection', views.send_selection, name='send-selection'),
     path('summaryReport/healthReportInfo/sendNewReportSelection', views.send_new_selection, name='send-new-selection'),
     path('setting/', views.recTemplateInfo, name='settings page'),
+    path('summaryReport/healthReportInfo/downloadcsv/', views.downloadcsv, name='downloadcsv'),
     path('ok/', views.ok, name='ok')
 ] 
