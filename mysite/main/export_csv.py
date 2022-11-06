@@ -2,9 +2,9 @@ from pymongo import MongoClient
 import pandas as pd
 import os
 import json
-from data_validation import validate_data
-from database import *
-from utility import *
+from .data_validation import validate_data
+from .database import *
+from .utility import *
 
 from bson.objectid import ObjectId
 
@@ -100,8 +100,8 @@ def retrieve_patient_from_batch(batchid):
     screen_record_id = retrieve_document(db, 'batchdata', query, columns)
     return screen_record_id
 
-test = retrieve_patient_from_batch([ObjectId('62d64e299dfed154fb4d9cbc'), ObjectId('62d64e309dfed154fb4d9cbd')])
-batchid = [ObjectId('62d64e299dfed154fb4d9cbc'), ObjectId('62d64e309dfed154fb4d9cbd')]
+# test = retrieve_patient_from_batch([ObjectId('62d64e299dfed154fb4d9cbc'), ObjectId('62d64e309dfed154fb4d9cbd')])
+# batchid = [ObjectId('62d64e299dfed154fb4d9cbc'), ObjectId('62d64e309dfed154fb4d9cbd')]
 
 indicators = [key for key in screen_record_projection.keys()]
 string_types = set(["Y/N", "Frequency", "Ethinicity", "+ve/-ve", "Neither/One/Both"])
@@ -110,7 +110,7 @@ def get_preferred_units(key, company = None, organization = None, gender = None,
     # Checking order company --> organization --> then gender.
 
     # Company factors-table
-    f = open("data/factors-table.json")
+    f = open("main/data/factors-table.json")
     factors_table = json.load(f)
 
     temp_altunit = None
@@ -308,7 +308,8 @@ def export_base_csv(batchid, company, organization):
     patient_records_df = pd.DataFrame.from_records(records)
     # mk temp dir
     folder_name = "temp"
-    os.makedirs(f"././{folder_name}")
+    # os.makedirs(f"././{folder_name}")
+    # comment out after making a directory
 
     # save into temp file
     patient_records_df.to_csv(f"./{folder_name}/validated_data_with_base_units.csv")
@@ -316,4 +317,4 @@ def export_base_csv(batchid, company, organization):
     return patient_records_df, indicators_no_units, error
 
 
-result_df, indicators_no_units = export_base_csv(batchid, 'Parkway Health', 'meshbio')
+# result_df, indicators_no_units, error = export_base_csv(batchid, 'Parkway Health', 'meshbio')

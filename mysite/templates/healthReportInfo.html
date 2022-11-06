@@ -115,7 +115,6 @@
     line-height: 14px;
     letter-spacing: 0em;
     text-align: center;
-    background-color: #6f83a5;
     color: white;
   }
   .report-view {
@@ -132,13 +131,7 @@
     margin-left: 35px;
     margin-top: 30px;
   }
-  .modal {
-    margin-top: 300px;
-    height: 500.32px;
-    width: 681.99px;
-    margin-left:300px;
-  }
-  .modal-title {
+  #auditLogLabel {
     height: 32.094635009765625px;
     width: 394.2548828125px;
     margin-top: 23.52px;
@@ -152,12 +145,13 @@
     text-align: left;
     color: #314c74;
   }
-  .modal-header {
+  #audit-modal-header {
     display: flex;
     flex-direction: column;
     margin-top: -10px;
+    
   }
-  .modal-body {
+  #audit-modal-body {
     margin-top: -20px;
     height: 220px;
   }
@@ -268,14 +262,89 @@
     border: 0px;
     background-color: #dfe3ea;
   }
+
+  #warningModal{
+    margin-top: 200px;
+    display: block;
+    width: 900px;
+    height: 500px;
+    margin-left: 200px;
+  }
+
+  #warning-modal-title {
+    color: #ffffff;
+    font-family: Poppins;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 10px;
+    letter-spacing: 0em;
+    text-align: left;
+    height: 117.37568664550781px;
+    width: 377.98834228515625px;
+    margin-top: 110px;
+  }
+  .warning-btn {
+    height: 30.382007598876953px;
+    width: 233.900390625px;
+    left: 153.533447265625px;
+    top: 328.25390625px;
+    border-radius: 12px;
+    border: 2px solid #de7777;
+    font-family: Poppins;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 11px;
+    letter-spacing: 0em;
+    text-align: center;
+    color: #B24141;
+    text-align: center;
+    background-color: #FFFFFF;
+    padding:8px;
+  }
+
+  .btm-btn {
+    display: flex;
+    flex-direction: row;
+    margin-left:160px
+  }
+
+  #err-blk {
+    display: none;
+    flex-direction: column;
+    justify-content: right;
+    margin-left: 800px;
+    margin-top: 10px;
+    position: absolute;
+  }
+  .err-msg {
+    height: 52px;
+    width: 259.344970703125px;
+    border-radius: 15px;
+    border: 3px solid #e2c6c6;
+    background-color: #efe2e2;
+    color: #d63636;
+    font-family: Poppins;
+    font-size: 8px;
+    font-weight: 600;
+    line-height: 11px;
+    letter-spacing: 0em;
+    padding: 10px;
+  }
 </style>
 
 <script>
 
   var pageCount = 1
   $(document).ready(function() {
+    console.log('pdf gen status')
+    console.log('{{pdf_gen_error}}')
+    console.log('{{pdf_gen_error}}' == 'True')
+    if ('{{pdf_gen_error}}' == 'True') {
+      $("warningModal").modal('show')
+    } else {
     prepPdfViewer();
     popFields();
+    }
   })
 
   function prepPdfViewer() {
@@ -316,6 +385,26 @@
       document.getElementById('currPageNumber').innerHTML = pageCount
       prepPdfViewer()
       }
+  }
+
+  function closeWarningModal() {
+    document.getElementById('warningModal').style.display = 'none';
+  }
+
+  function downloadCSVAbort() {
+    console.log('download csv and abort called')
+    window.location.href="invalidGeneration"
+
+
+  }
+
+  function downloadCSVProceed() {
+    console.log('download csv and proceed called')
+    document.getElementById('warningModal').style.display = 'none';
+    document.getElementById('err-blk').style.display = 'block';
+    prepPdfViewer();
+    popFields();
+
   }
 </script>
 
@@ -413,7 +502,7 @@
         </div>
       </div>
       <div style="width: 10%; margin-top: 25px; margin-left: -120px;">
-        <button class="download-csv">
+        <button class="download-csv" onclick="downloadCSV()">
           <p
             style="
               font-family: Poppins;
@@ -512,20 +601,13 @@
         <div style="margin-left: 5.51px;">
           <button
             class="gen-draft"
-            style="
-              background: linear-gradient(
-                  0deg,
-                  rgba(17, 0, 0, 0.01),
-                  rgba(17, 0, 0, 0.01)
-                ),
-                linear-gradient(0deg, #6f83a5, #6f83a5);
-            "
+            style="background-color: #6f83a5; opacity: 0.5;"
           >
             Email Report
           </button>
         </div>
         <div style="margin-left: 5.51px;">
-          <button class="gen-draft">
+          <button class="gen-draft" style="background-color: #6f83a5;">
             Generate PDF
           </button>
         </div>
@@ -548,6 +630,107 @@
     </div>
   </div>
   <div class="report-view">
+    <div id="err-blk">
+      <div
+        style="
+          height: 20.21514892578125px;
+          width: 271.31256103515625px;
+          left: 1055.45703125px;
+          top: 601.640625px;
+          font-family: Poppins;
+          font-size: 10px;
+          font-weight: 400;
+          line-height: 12px;
+          letter-spacing: 0em;
+          text-align: right;
+          color: #d63636;
+          margin-left: -14px;
+        "
+      >
+        Invalid input(s) found.
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="11"
+          height="11"
+          fill="red"
+          class="bi bi-exclamation-circle"
+          viewBox="0 0 16 16"
+          style="margin: 0 0 3px 3px;"
+        >
+          <path
+            d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"
+          />
+          <path
+            d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995z"
+          />
+        </svg>
+      </div>
+      <div class="err-msg">
+        This draft report is generated with invalid input(s). Please refer to
+        the CSV and correct data in the system
+      </div>
+    </div>
+    <div
+      class="modal"
+      id="warningModal"
+      tabindex="-1"
+      aria-labelledby="warningModalLabel"
+      aria-hidden="true"
+      >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header"
+          style="
+          height: 117.37568664550781px;
+          width: 681.9871826171875px;
+          background-color: #de7777;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="46.41" height="40" fill="white" class="bi bi-exclamation-triangle-fill" viewBox="0 0 16 16"
+            style="margin: 38.01px 74.66px 35.37px 69.41px;">
+              <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+            </svg>
+            <h5 class="modal-title" id="warning-modal-title">Error Warning</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              onclick="closeWarningModal()"
+              aria-label="Close"
+              style="margin-right: 10px; margin-top:-35px; height:13.12px; color: white; opacity: 1;"
+            ></button>
+          </div>
+          <div class="modal-body" style="height: 284.62px; width: 682px;border-radius: 0 0 15px 15px; background-color: #ffffff;">
+            <div class="modal-text" style="
+            color: #de7777;
+            height: 143.82505798339844px;
+            width: 470.2766723632812px;
+            left: 65.78125px;
+            top: 202.16015625px;
+            text-align: left;
+            margin-top: 50px;
+            margin-left: 100px;
+            font-family: Poppins;
+            font-size: 16px;
+            font-weight: 500;
+            line-height: 22px;
+            letter-spacing: 0em;
+            text-align: left;">
+              There are some fields with invalid and/or missing data. Please
+              check the CSV and make changes to the respective fields in the
+              system.
+            </div>
+            <div class="btm-btn">
+              <button type='button' class="warning-btn" onclick="downloadCSVAbort()">
+                Download CSV and Abort
+              </button>
+              <div style="width: 11.78px;"></div>
+              <button type='button' class="warning-btn" onclick="downloadCSVProceed()">
+                Download CSV and Proceed
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
     <div class="audit-log-link">
       <a
         data-bs-target="#auditLog"
@@ -571,10 +754,15 @@
         tabindex="-1"
         aria-labelledby="auditLogLabel"
         aria-hidden="true"
+        style="
+        margin-top: 300px;
+        height: 500.32px;
+        width: 681.99px;
+        margin-left:300px;"
       >
         <div class="modal-dialog">
           <div class="modal-content">
-            <div class="modal-header border-0">
+            <div class="modal-header border-0" id="audit-modal-header">
               <div style="display: flex; flex-direction: row;">
                 <p class="modal-title" id="auditLogLabel">
                   Report PDF
@@ -625,7 +813,7 @@
               margin-top: -15px;
               "></hr>
             </div>
-            <div class="modal-body">
+            <div class="modal-body" id="audit-modal-body">
               <div class="log-rec">
                 <div class="log-col-header">
                   Date & Time:

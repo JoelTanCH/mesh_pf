@@ -14,7 +14,7 @@ import re
 from PIL import Image
 import json
 import os
-
+from .export_csv import *
 from .forms import RecommendationsForm, UploadFileForm
 
 summary_ref_filepath = "/Users/jiaxuan/Desktop/BT4103/pfe/mysite/main/executiveSummaryReference.json"
@@ -209,6 +209,7 @@ def setting(response):
 
 @api_view(["GET", 'POST'])
 def healthReportInfo(response):
+    # information required to render healthReportInfo page
     print('healthReportInfo called')
     timestamp_gen = datetime.now()
     batches_to_include_obj_ids = response.session['batches_to_include_obj_ids']
@@ -251,6 +252,9 @@ def healthReportInfo(response):
         log_info.append(log)
     log_info = sorted(log_info, key= lambda x: x[0])
     print(log_info)
+
+    # info required to download csv
+    patient_records_df, indicators_no_units, error = export_base_csv(arr_objectbatchid,'DBS', 'Parkway Health' )
     
     return render(response, "healthReportInfo.html", 
     {
@@ -262,7 +266,8 @@ def healthReportInfo(response):
         'corp_name' : response.session["corp_name"],
         'corp_report_title' : response.session["corp_report_title"],
         'corp_report_type' : response.session["corp_report_type"],
-        'corp_report_batches': response.session["corp_report_batches"]
+        'corp_report_batches': response.session["corp_report_batches"],
+        'pdf_gen_error' : error
 
     })
 

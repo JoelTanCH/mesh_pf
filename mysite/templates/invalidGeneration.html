@@ -124,7 +124,6 @@
     left: 299.771484375px;
     top: 578.02978515625px;
     background: #e9ebef;
-    opacity: 0.6;
     border-radius: 0px 0px 12px 12px;
     margin-left: -250px;
   }
@@ -150,6 +149,13 @@
     padding: 10px;
   }
 </style>
+
+<script>
+  function generatePDF() {
+    window.location.href="../../healthReportInfo"
+  }
+</script>
+
 <div style="display: flex; flex-direction: column;">
   <div class="top-ctn">
     <div>
@@ -325,12 +331,12 @@
           </select>
         </div>
         <div style="margin-left: 5.51px;">
-          <button class="gen-draft" style="background: linear-gradient(0deg, rgba(17, 0, 0, 0.01), rgba(17, 0, 0, 0.01)), linear-gradient(0deg, #6F83A5, #6F83A5);">
+          <button class="gen-draft" style="opacity: 0.5;">
             Email Report
           </button>
         </div>
         <div style="margin-left: 5.51px;">
-          <button class="gen-draft">
+          <button class="gen-draft" onClick="generatePDF()">
             Generate PDF
           </button>
         </div>
