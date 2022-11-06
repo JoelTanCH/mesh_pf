@@ -201,6 +201,65 @@ def send_selection(response):
     batches_to_include_obj_ids = response.data.get('batches_to_include_obj_ids', None)
     response.session['batches_to_include_obj_ids'] = batches_to_include_obj_ids
     response.session["idx_selected"] = idx_selected
+    response.session['audit_log_id'] = 0
+    return render(response, 'healthReportInfo.html', {})
+
+@api_view(["POST"])
+@csrf_exempt
+def send_new_selection(response):
+    print('response data for send_new_selection')
+    corp_name = response.data.get('corp_name', None)
+    response.session["corp_name"] = corp_name
+    report_title = response.data.get('report_title', None)
+    response.session["corp_report_title"] = report_title
+    report_type = response.data.get('report_type', None)
+    response.session["corp_report_type"] = report_type
+    report_template = response.data.get('report_template', None)
+    response.session["corp_report_template"] = report_template
+    batches_to_include = response.data.get('batches_to_include', None)
+    response.session["corp_report_batches"] = batches_to_include
+    clinic_personnel = response.data.get('clinic_personnel', None)
+    response.session["clinic_personnel"] = clinic_personnel
+    idx_selected = response.data.get('idx_selected', None)
+    batches_to_include_obj_ids = response.data.get('batches_to_include_obj_ids', None)
+    response.session['batches_to_include_obj_ids'] = batches_to_include_obj_ids
+    response.session["idx_selected"] = idx_selected
+    audit_log_id = response.data.get('audit_log_id', None)
+    response.session['audit_log_id'] = audit_log_id
+    print('audit_log_id is:')
+    print(audit_log_id)
+    print('corp name is:')
+    print(corp_name)
+
+    # updating audit trail
+    timestamp_gen = datetime.now()
+    batches_to_include_obj_ids = response.session['batches_to_include_obj_ids']
+    arr_batchid = list(batches_to_include_obj_ids.split(','))
+    arr_objectbatchid = []
+    for batchid in arr_batchid:
+        print('BATCH ID')
+        print(batchid)
+        objectid = ObjectId(batchid)
+        arr_objectbatchid.append(objectid)
+    corporate_info = get_corporate_list('Parkway Health')
+    corporates = [[corp_dic['name'], corp_dic['_id']] for corp_dic in corporate_info]
+    corp_id = corporates[int(response.session['idx_selected'])][1]
+
+    dict_report = {
+        'organization': 'Parkway health',
+        'corporateid': corp_id, 
+        'name': response.session['corp_name'], 
+        'batches': arr_objectbatchid, 
+        'report_template': response.session['corp_report_template'], 
+        'report_type': response.session['corp_report_type'], 
+        'created_by': {'name': response.session['clinic_personnel'], 'created_time': timestamp_gen} 
+    }
+    print('dict_report')
+    print(dict_report)
+    last_gen_name, last_gen_time, inserted_doc_id = generate_corp_report(dict_report, ObjectId(audit_log_id))
+    print('inserted doc id after generating again at send new selection')
+    print(inserted_doc_id)
+    audit_trail = retrieve_audit_trail(inserted_doc_id)
     return render(response, 'healthReportInfo.html', {})
 
 def setting(response):
@@ -225,7 +284,6 @@ def healthReportInfo(response):
     corp_id = corporates[int(response.session['idx_selected'])][1]
     # url = "https://apps.who.int/iris/bitstream/handle/10665/349091/WHO-EURO-2021-2661-42417-58838-eng.pdf"
     url = 'https://res.cloudinary.com/dvyhz42sn/image/upload/v1667566862/bt4103Demo/DARA-Corporate-2022-11-04-12-23-8462a4ca_iesc7j.pdf'
-    
     req_response = requests.get(url)
     my_raw_data = req_response.content
     with BytesIO(my_raw_data) as data:
@@ -242,7 +300,15 @@ def healthReportInfo(response):
     }
     print('dict_report')
     print(dict_report)
-    last_gen_name, last_gen_time, inserted_doc_id = generate_corp_report(dict_report)
+    print('AUDIT LOG BEFORE IF ELSE STATEMNET')
+    print(response.session['audit_log_id'])
+    if response.session['audit_log_id'] == 0:
+        last_gen_name, last_gen_time, inserted_doc_id = generate_corp_report(dict_report)
+    else:
+        inserted_doc_id = ObjectId(response.session['audit_log_id'])
+        last_gen_name = response.session['clinic_personnel']
+        last_gen_time = timestamp_gen
+
     print('inserted doc id type')
     print(type(inserted_doc_id))
     audit_trail = retrieve_audit_trail(inserted_doc_id)
@@ -256,6 +322,31 @@ def healthReportInfo(response):
     # info required to download csv
     patient_records_df, indicators_no_units, error = export_base_csv(arr_objectbatchid,'DBS', 'Parkway Health' )
     
+    # info required to customised modal again
+    corporate_info = get_corporate_list('Parkway Health')
+    corporates = [[corp_dic['name'], corp_dic['_id']] for corp_dic in corporate_info]
+    corporate_names = [corp_dic['name'] for corp_dic in corporate_info]
+    print('no. of corporates', len(corporates))
+    print(corporates)
+    # all_corporate_batches = []
+    # for i in range(len(corporates)):
+    #     all_corporate_batches.append(get_batch_list('Parkway Health', corporates[i][1]))
+    print(corporates[2][1])
+    #get all batches under all corporates under this healthcare provider
+    all_batches = []
+    all_batch_ids = []
+    for corporate in corporates:
+        batchlist = get_batch_list("Parkway Health", corporate[1])
+        batch_names = [x['name'] for x in batchlist]
+        batch_ids = [str(x['_id']) for x in batchlist]
+        all_batches.append(batch_names)
+        all_batch_ids.append(batch_ids)
+
+    print('all_corporate_batches')
+    print(all_batches)
+    print(all_batch_ids)
+    #just putting in fake data
+    all_batches[1] = ['Batch E (2020,Dec)', 'Batch A (2020, Jan)', 'Batch D (2020, Oct)', 'Batch B (2020, Mar)', 'Batch C (2020, Jul)']
     return render(response, "healthReportInfo.html", 
     {
         "log_info" : log_info,
@@ -267,8 +358,12 @@ def healthReportInfo(response):
         'corp_report_title' : response.session["corp_report_title"],
         'corp_report_type' : response.session["corp_report_type"],
         'corp_report_batches': response.session["corp_report_batches"],
-        'pdf_gen_error' : error
-
+        'pdf_gen_error' : error,
+        "corporate_infos": corporates,
+        "corporate_names": corporate_names,
+        "corporate_batches": all_batches,
+        "corporate_batches_ids": all_batch_ids,
+        "audit_log_id": inserted_doc_id
     })
 
 def draftGeneratedPage(response):

@@ -54,7 +54,7 @@ def get_report(organization, corporate, batchid):
     return reports
 
 # report data is a dictionary. keys = [organization, corporateid, name, batches (array of batchid), report_template, report_type, created_by (dictionary)]
-def generate_corp_report(report_data):
+def generate_corp_report(report_data, _reportid = 0):
 
     temp_url = "mongodb://localhost:27017"
     client = MongoClient(temp_url)
@@ -71,11 +71,16 @@ def generate_corp_report(report_data):
     audit_dic['datetime'] = datetime.now()
     audit_dic['action'] = 'Report Generated'
     audit_dic['user'] = report_data["created_by"]["name"]
-    audit_dic['reportid'] = inserted_doc.inserted_id
+    if _reportid == 0:
+        audit_dic['reportid'] = inserted_doc.inserted_id
+        update_audit_trail(audit_dic)
+        return report_data["created_by"]["name"], report_data["last_generated_time"], inserted_doc.inserted_id
+    else:
+        audit_dic['reportid'] = _reportid
+        update_audit_trail(audit_dic)
+        return report_data["created_by"]["name"], report_data["last_generated_time"], _reportid
 
-    update_audit_trail(audit_dic)
-
-    return report_data["created_by"]["name"], report_data["last_generated_time"], inserted_doc.inserted_id
+    
 
 # audit_dic - keys (datetime, action, user, report_id)
 def update_audit_trail(audit_dic):
@@ -91,10 +96,10 @@ def retrieve_audit_trail(reportid):
     temp_url = "mongodb://localhost:27017"
     client = MongoClient(temp_url)
     db = client["meshbio"]
-    print('retrieve audit trail')
-    print(reportid)
-    print(type(reportid))
-    print(reportid)
+    # print('retrieve audit trail')
+    # print(reportid)
+    # print(type(reportid))
+    # print(reportid)
     audit_trails = retrieve_document(db, 'audittrail',{'reportid':reportid})
     return audit_trails
     

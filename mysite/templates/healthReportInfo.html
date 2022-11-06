@@ -366,9 +366,212 @@
     color: #718FBF;
     flex: 60%;
     text-decoration: underline;
-
-
   }
+
+
+.btn-btn-secondary-dropdown-toggle, .batch-selection {
+  width: 605.33px;
+  height: 30.38px;
+  float: right;
+  border-radius: 6px;
+  background-color: #f2f2f266;
+  border: 1px solid #61616133;
+  color: #717171;
+  font-family: Poppins;
+  font-weight: 500;
+  line-height: 14px;
+  letter-spacing: 0em;
+  font-size: 14px;
+  text-align: left;
+  padding: 5px;
+}
+
+#reportTitle {
+    height: 30.38px;
+    width: 605.33px;
+    border-radius: 6px;
+    float: right;
+    border: 1px solid #61616133;
+    background-color: #f2f2f266;
+    letter-spacing: 0em;
+    font-size: 14px;
+    font-family: Poppins;
+    font-weight: 500;
+    line-height: 14px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #717171;
+    padding:5px;
+  }
+
+
+
+  .dropdown-options {
+    text-align: left ;
+    color: black;
+  }
+  .search-field_input {
+    height: 30.38px;
+    width: 605.33px;
+    font-size: 12px;
+    background-color: #f2f2f266;
+    border: 1px solid #61616133;
+    box-shadow: none;
+    -webkit-appearance: none;
+    border-radius: 6px;
+  }
+
+  .new-batch-selector-added {
+    padding-top: 5px;
+    width: 600.33px;
+    padding-left: 5px;
+  }
+  
+
+
+  ul, li {
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 0;
+}
+
+
+  /*Dropdown button for corporate ID*/
+  .dropbtn {
+    height: 30.38px;
+    width: 605.33px;
+    font-size: 12px;
+    background-color: #f2f2f266;
+    border: 1px solid #61616133;
+    box-shadow: none;
+    -webkit-appearance: none;
+    border-radius: 6px;
+}
+
+/* The search field */
+#myInput {
+  box-sizing: border-box;
+  height: 30.38px;
+  width: 605.33px;
+  background-repeat: no-repeat;
+  padding: 14px 20px 12px 45px;
+  border: none;
+  border-bottom: 1px solid #ddd;
+  text-align: left;
+  font-family: Poppins;
+  font-weight: 500;
+  line-height: 14px;
+  letter-spacing: 0em;
+  font-size: 13px;
+}
+
+#selected-id-display {
+    font-family: Poppins;
+    font-weight: 500;
+    line-height: 14px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #717171;
+    border-radius: nullpx;
+    padding:5px;
+    font-size: 14px;
+  }
+  
+
+/* The search field when it gets focus/clicked on */
+#myInput:focus {outline: 3px solid #ddd;}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+  /* Dropdown Content (Hidden by Default) */
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f6f6f6;
+    min-width: 230px;
+    border: 1px solid #ddd;
+    z-index: 1;
+    text-align: left;
+  }
+  
+  /* Links inside the dropdown */
+  .dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+  
+  /* Change color of dropdown links on hover */
+  .dropdown-content a:hover {background-color: #f1f1f1}
+  
+  /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+  .show {display:block;}
+  
+  .corp-id-display {
+    font-family: Poppins;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 14px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #717171;
+  }
+  #corpIdDropdown {
+    height: 200px;
+    overflow:scroll;
+  }
+  
+  .form-label {
+    text-align: left;
+    margin-left: -15px;
+    color: #717171;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 13.55px;
+    font: Poppins;
+  }
+
+  .form-label-ctn {
+    display: flex;
+    align-items: center;
+    margin-left: 20px;
+    height: 32.09px;
+  }
+
+  .searchbutton {
+    padding: 10px;
+  }
+
+  .searchbaricon {
+    right: 2px;
+    top: 5px;
+    position: absolute;
+    color: #A1A1A1;
+    font-size: 20px;
+  }
+
+  .add-batch-btn {
+  background-color: #AAAAAA;
+  color: white;
+  border-radius: 6px;
+  border:0px;
+  position: absolute;
+  width: 609.33px;
+  height: 30.38px;
+  font-family: Poppins;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 14px;
+  letter-spacing: 0em;
+  text-align: left;
+  margin-left:-306px;
+  }
+
 </style>
 
 <script>
@@ -471,6 +674,413 @@
 
   function closeInfoModal() {
     document.getElementById('infoModal').style.display = 'none';
+  }
+
+  function openCustomReportModal() {
+    document.getElementById('infoModal').style.display = 'none';
+    prep_modal();
+    document.getElementById('customInfoModal').style.display = 'block';
+  }
+
+  function closeCustomReportModal() {
+    document.getElementById('customInfoModal').style.display = 'none';
+  }
+
+  // functions for the custom report modal
+  //variables
+  var number_batches = '{{nBatches}}'
+  var corp_name = ""
+  var corp_id = ""
+  var report_title = ""
+  var report_type = ""
+  var report_template = ""
+  var batches_to_include = []
+  var corp_index_selected = 0
+
+  //global variables used for modal
+  //number of times user can click 'add new batch', max is the number of batches existing
+  var available_dropdowns_to_add = 0
+
+  function displayActionDropdown() {
+    let actionDropdown = document.getElementById("actionDropdown")
+    if (actionDropdown.style.display == "none") {
+      actionDropdown.style.display = "block";
+    } else {
+      actionDropdown.style.display = "none"
+    }
+  };
+
+
+  function addNewBatch() {
+    console.log('addNewBatch() called')
+    console.log(number_batches)
+    number_batches = parseInt(number_batches)
+    number_batches += 1;
+    console.log(number_batches)
+    var formData  = new FormData()
+    formData.append('number_batches', number_batches)
+    // axios.post('update_nbatches', formData, {headers: {'X-CSRFToken': 'csrftoken'}})
+    // .then(res => console.log(res))
+    let req = axios({
+		method: 'post',
+		url: 'update_nbatches',
+		xstfCookieName: 'csrftoken',
+		xsrfHeaderName: 'X-CSRFToken',
+		data: formData,
+		headers: {
+			'X-CSRFToken': 'csrftoken'
+		}
+    }).then((response) => {
+      this.msg = response.data;
+      console.log('response');
+    });
+
+    if (available_dropdowns_to_add > 0) {
+      let newSelector = document.getElementById("batch-selector").cloneNode(true)
+      newSelector.className = 'new-batch-selector-added'
+      let btn = document.createElement("button");
+      btn.setAttribute('style', 'border:0px; background-color:#FFFFFF; margin-left:3px; ')
+      var delete_icon = document.createElementNS("http://www.w3.org/2000/svg", "svg")
+      delete_icon.setAttribute('width', '16')
+      delete_icon.setAttribute('height', '16')
+      delete_icon.setAttribute('fill',' #D63636')
+
+      var path1 = document.createElementNS("http://www.w3.org/2000/svg", 'path')
+      var path2 = document.createElementNS("http://www.w3.org/2000/svg", 'path')
+
+      delete_icon.appendChild(path1)
+      delete_icon.appendChild(path2)
+
+      path1.setAttribute('d', "M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z")
+      path2.setAttribute('d', "M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z")
+      btn.appendChild(delete_icon)
+
+      btn.type = "button"
+      btn.onclick = function() {
+        return del_batch_selector(this)
+
+        //this.parentElement.parentElement.parentElement.removeChild(this.parentElement.parentElement)
+      }
+      newSelector.childNodes[1].appendChild(btn)
+      let element = document.getElementById("batch-ctn")
+      let height = document.querySelector("#batch-selector").offsetHeight
+      let modalHeight = document.querySelector('.modal-content').offsetHeight
+      document.getElementsByClassName("modal-content")[0].style.height = modalHeight + height + 5 +'px'
+      element.appendChild(newSelector)
+      available_dropdowns_to_add -= 1
+    }
+    return;
+  }  
+  
+  function del_batch_selector(ele) {
+    ele.parentElement.parentElement.parentElement.removeChild(ele.parentElement.parentElement)
+    const height_of_selector = document.getElementById('batch-selector').offsetHeight
+    const modalHeight = document.querySelector('.modal-content').offsetHeight
+    document.getElementsByClassName("modal-content")[0].style.height = (modalHeight - height_of_selector - 5) + 'px'
+    event.stopPropagation()
+    available_dropdowns_to_add += 1
+    return false;
+  }
+
+  function check_modal_page_two_input() {
+    corp_template = document.getElementById('reportTemplateSelection')
+    flag = true
+    console.log(corp_template.value)
+    if (corp_template.value == "") {
+      document.getElementById('corp-template-check').style.display= 'block'
+      flag = false
+    }
+    else {
+      document.getElementById('corp-template-check').style.display= 'none'
+    }
+    return flag
+  }
+
+  function check_modal_page_one_input() {
+    corp_name_selected = document.getElementById('selected-id-display')
+    corp_title = document.getElementById('reportTitle')
+    corp_type = document.getElementById('reportTypeSelection')
+    console.log(corp_type.value)
+    flag = true
+    if (corp_name_selected.innerHTML == "") {
+      document.getElementById('corp-name-check').style.display= 'block'
+      flag = false
+    }
+    else {
+      document.getElementById('corp-name-check').style.display= 'none'
+    }
+    if (corp_title.value == "") {
+      document.getElementById('corp-title-check').style.display= 'block'
+      flag = false
+    }
+    else {
+      document.getElementById('corp-title-check').style.display= 'none'
+    }
+    if (corp_type.value == "") {
+      document.getElementById('corp-type-check').style.display= 'block'
+      flag = false
+    }
+    else {
+      document.getElementById('corp-type-check').style.display= 'none'
+    }
+    return flag
+  }
+  
+  function prep_modal() 
+    {
+      $(".modal").each(function() {
+
+      var element = this;
+      var pages = $(this).find('.modal-split');
+
+      if (pages.length != 0)
+      {
+          pages.hide();
+          pages.eq(0).show();
+
+          var c_button = document.createElement("button");
+                    c_button.setAttribute("type","button");
+                    c_button.setAttribute("class","btn btn-light");
+                    c_button.setAttribute("style", "margin-right:10px;width: 155.93px; height: 30.38px; background-color: white;border-color: #8fa3c1;border-radius: 12px;color: #314c74; font: Poppins;font-weight: 600;font-size: 14px;line-height: 10.99px;align-items: center;");
+                    c_button.setAttribute("data-bs-dismiss" , "modal");
+                    c_button.setAttribute("onclick", "location.href=''");
+                    c_button.innerHTML = "Cancel";
+
+          var n_button = document.createElement("button");
+                    n_button.setAttribute('ID', 'next-btn')
+                    n_button.setAttribute("type","button");
+                    n_button.setAttribute("class","btn btn-light");
+                    n_button.setAttribute("style", " width: 155.93px;height: 30.38px; background-color: white;border-color: #8fa3c1;border-radius: 12px; color: #314c74; font: Poppins; font-weight: 600;font-size: 14px; line-height: 10.99px;align-items: center;");
+                    n_button.innerHTML = "Next";
+
+          var cfm_button = document.createElement("button");
+                    cfm_button.setAttribute('ID', 'cfm-btn')
+                    cfm_button.setAttribute("type","button");
+                    cfm_button.setAttribute("class","btn btn-light");
+                    cfm_button.setAttribute("style", " width: 155.93px;height: 30.38px; background-color: white;border-color: #8fa3c1;border-radius: 12px; color: #314c74; font: Poppins; font-weight: 600;font-size: 14px; line-height: 10.99px;align-items: center;");
+                    cfm_button.innerHTML = "confirm";
+                    cfm_button.style.marginLeft='180px'
+                    cfm_button.style.marginBottom="200px"
+                    cfm_button.style.display= "none"
+          
+          $(this).find('.modal-btm').append(c_button).append(n_button);
+
+
+          var page_track = 0;
+
+          $(n_button).click(function() {
+            
+            this.blur();
+
+            if(page_track == 0)
+            {
+              $(c_button).show();
+            }
+
+            if(page_track == pages.length-2)
+            {
+              can_progress = check_modal_page_one_input()
+              // n_button.style.display= "none"
+              // cfm_button.style.display = "block"
+              // c_button.style.marginTop='300px' 
+              // c_button.style.marginRight="200px"
+              // n_button.setAttribute('href', "{% url 'healthReportInfo'%}");
+            }
+            if (page_track == pages.length-1){
+                can_progress = check_modal_page_two_input()
+                console.log('audit log id')
+                console.log('{{audit_log_id}}')
+                
+                console.log(logid)
+                if (can_progress) {
+                  var collated_batches = collate_batches_selected()
+                  var batches_to_include = collated_batches[0]
+                  var batches_to_include_idx = collated_batches[1]
+                  var corporate_batches_objIds = {{corporate_batches_ids|safe}}
+                  batch_object_ids = get_selected_batch_objIds(batches_to_include_idx, corporate_batches_objIds, corp_index_selected)
+                  var formData  = new FormData()
+                  formData.append('corp_name', corp_name)
+                  formData.append('report_title', report_title)
+                  formData.append('report_type', report_type)
+                  formData.append('report_template', report_template)
+                  formData.append('batches_to_include', batches_to_include)
+                  formData.append('clinic_personnel', "Linda Tay")
+                  formData.append('idx_selected', corp_index_selected)
+                  formData.append('batches_to_include_obj_ids', batch_object_ids)
+                  console.log('at first post')
+                  var logid = '{{audit_log_id}}'
+                  console.log("logid is")
+                  console.log(logid)
+                  console.log("log id type is")
+                  console.log(typeof(logid))
+                  formData.append('audit_log_id', logid)
+                  let req = axios({
+                  method: 'post',
+                  url: 'sendNewReportSelection',
+                  xstfCookieName: 'csrftoken',
+                  xsrfHeaderName: 'X-CSRFToken',
+                  data: formData,
+                  headers: {
+                    'X-CSRFToken': 'csrftoken'
+                  }
+                  }).then((response) => {
+                    console.log('response')
+                    window.location.href="../healthReportInfo"
+                  });
+                }
+            }
+            if(page_track <= pages.length-2)
+            {
+              if (can_progress) {
+                report_title = document.getElementById('reportTitle').value
+                n_button.innerHTML = "Confirm"
+                page_track++;
+
+                pages.hide();
+                pages.eq(page_track).show();
+              }
+            }
+          });
+
+          $(c_button).click(function() {
+            if(page_track > 0)
+            {
+              page_track--;
+
+              pages.hide();
+              pages.eq(page_track).show();
+            }
+            
+          });
+
+          $(cfm_button).click(function() {
+          });
+        };
+
+      });
+    }
+
+  function showIdDropdown() {
+    document.getElementById("corpIdDropdown").classList.toggle("show");
+  }
+
+  function filterFunction() {
+    var input, filter, ul, li, a, i;
+    input = document.getElementById("myInput");
+    filter = input.value.toUpperCase();
+    div = document.getElementById("corpIdDropdown");
+    a = div.getElementsByTagName("a");
+    for (i = 0; i < a.length; i++) {
+      txtValue = a[i].textContent || a[i].innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        a[i].style.display = "";
+      } else {
+        a[i].style.display = "none";
+      }
+    }
+  }
+  
+
+  function selectID(idx) {
+    document.getElementById("corpIdDropdown").classList.toggle("show");
+    var corp_ids = '{{corporate_names}}'
+    console.log(corp_ids)
+    corp_ids = corp_ids.replace(new RegExp("&"+"#"+"x27;", "g"), "")
+    corp_ids = corp_ids.replace("[", "")
+    corp_ids = corp_ids.replace("]", "")
+    corp_ids = corp_ids.replace(" ", "")
+    var corp_ids_arr = corp_ids.split(',');
+    console.log(corp_ids_arr)
+    var id_selected = corp_ids_arr[idx-1]
+    corp_name = corp_ids_arr[idx-1]
+    corp_index_selected = idx-1
+    console.log('index selected:', idx-1)
+    console.log(id_selected)
+    document.getElementById("selected-id-display").innerHTML = id_selected;
+    var corp_batches = {{ corporate_batches|safe }}
+    corp_batches_arr = corp_batches[idx-1]
+    available_dropdowns_to_add = corp_batches_arr.length - 1
+    var select = document.getElementById("batchSelection");
+
+    const batch_selectors_added = document.getElementsByClassName("new-batch-selector-added");
+    if (batch_selectors_added.length > 0) {
+      const num_batch_selectors_added = batch_selectors_added.length
+      const height_of_selector = document.getElementById('batch-selector').offsetHeight
+      const height_to_remove = (height_of_selector + 5) * num_batch_selectors_added
+      const modalHeight = document.querySelector('.modal-content').offsetHeight
+      document.getElementsByClassName("modal-content")[0].style.height = (modalHeight - height_to_remove) + 'px'
+      removeElementsByClass(batch_selectors_added) 
+    }
+    removeOptions(select)
+    for (i = 0; i < corp_batches_arr.length; i++) {
+      var option = document.createElement("option");
+      option.text = corp_batches_arr[i];
+      option.value = corp_batches_arr[i];
+      select.appendChild(option);
+    }
+  }
+
+  function collate_batches_selected() {
+    batches_to_include = []
+    batches_to_include_idx = []
+    var permanent_select_box = document.getElementById("batchSelection");
+    var selectedValue = permanent_select_box.value;
+    selectedValue = selectedValue.replaceAll("'", '"')
+    batches_to_include.push(selectedValue)
+    batches_to_include_idx.push(permanent_select_box.selectedIndex)
+
+    var new_selector_dropdowns = document.getElementsByClassName("new-batch-selector-added")
+    for (i=0; i< new_selector_dropdowns.length; i++) {
+      var selectedValue = new_selector_dropdowns[i].childNodes[1].childNodes[1].value
+      var selectedIndex = new_selector_dropdowns[i].childNodes[1].childNodes[1].selectedIndex
+      batches_to_include.push(selectedValue)
+      batches_to_include_idx.push(selectedIndex)
+    }
+
+    //get unique values from each array in case user selects multiple 
+    batches_to_include = [... new Set(batches_to_include)]
+    batches_to_include_idx = [... new Set(batches_to_include_idx)]
+    return [batches_to_include, batches_to_include_idx]
+
+  }
+  // takes in the index of batches selected eg (0, 2, 4) 
+  // takes in stringified list of object ids 
+  // takes in index of corp name selected
+  // maps index of batch to its object id
+  function get_selected_batch_objIds(idx_arr, corp_batches_id_arr, corp_index) {
+    //get object ids specific to the selected corporate
+    corp_batches_ids = corp_batches_id_arr[corp_index]
+    object_ids = []
+    for (i=0; i<idx_arr.length; i++) {
+      object_ids.push(corp_batches_ids[idx_arr[i]])
+    }
+    return object_ids
+  } 
+
+
+  function selectReportType() {
+    var selectBox = document.getElementById("reportTypeSelection");
+    var selectedValue = selectBox.options[selectBox.selectedIndex].value;
+    report_type = selectedValue
+  };
+
+  function selectTemplate() {
+    var selectBox = document.getElementById("reportTemplateSelection");
+    var selectedValue = selectBox.options[selectBox.selectedIndex].value;
+    report_template = selectedValue
+  };
+
+
+  function removeElementsByClass(elements){
+    while(elements.length > 0){
+        elements[0].parentNode.removeChild(elements[0]);
+    }
+}
+
+  function removeOptions(select) {
+    if (select != null) {
+      for (a in select.options) { select.options.remove(0); }
+    }
   }
 </script>
 
@@ -1040,6 +1650,151 @@
     </div>
     <object class="pdfViewerObj" id='pdfViewerObj' type="application/pdf">
     </object>
+  </div>
+
+  <!--MODAL TO EDIT CORPORATE INFO-->
+  <div class="modal" data-bs-backdrop="static" data-bs-keyboard="false" id="customInfoModal" tabindex="-1" aria-hidden = "true" aria-labelledby="myModalLabel" style="overflow:scroll">
+    <div class="modal-dialog">  
+      <div class="modal-content" style="width: 681.99px; height: 500.32px; border-radius: 20px;">
+        <div style="margin-right: 10px; margin-top: 10px;">
+          <button
+            type="button"
+            class="btn-close"
+            aria-label="Close"
+            style="float: right; height: 13.12px; margin-top:10px;margin-right:25px"
+            onclick="location.href=''""
+          ></button>
+        </div>
+        <div class="modal-body">
+          <div class="modal-split">
+            <div class="modal-body">
+              <div class="form-label-ctn">
+                <p class="form-label">Corporate Name (ID)</p>
+                <p style="text-align: left; margin-left: 4px; color: red;">*</p>
+                <p id="corp-name-check" style="text-align: left; margin-left: 4px; color: red; font-size: 8px; display: none">select a corporate</p>
+              </div>
+              <div class="modal-body-ctn">
+                <div class="dropdown">
+                  <button onclick="showIdDropdown()" class="dropbtn">
+                   <p id="selected-id-display"></p>
+                    <i class="material-icons-outlined searchbaricon">
+                      <svg xmlns="http://www.w3.org/2000/svg" style="margin-right:10px; margin-bottom:12px;" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                        <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                      </svg>
+                    </i>
+                  </button>
+                  <div id="corpIdDropdown" class="dropdown-content">
+                    <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
+                    <div style="height:10px"></div>
+                    {% for corporate_info in corporate_infos %}
+                    <ol>
+                      <li style="list-style:none">
+                        <a class="corp-id-display" onclick="selectID('{{forloop.counter}}')" >{{corporate_info.0}}</a>
+                      </li>
+                    </ol>
+                    {% endfor %} 
+                </div>
+                <!-- <input class="search-field_input"></input>
+                  <div class="relativeposition">
+                    <i class="material-icons-outlined searchbaricon">
+                      <svg xmlns="http://www.w3.org/2000/svg" style="margin-right:10px; margin-bottom:12px;" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                        <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                      </svg>
+                    </i>
+                  </div> !-->
+              </div>
+              </div>
+
+              <br>
+              <div class="form-label-ctn">
+                <p class="form-label">Corporate Health Report Title</p>
+                <p style="text-align: left; margin-left: 4px; color: red;">*</p>
+                <p id="corp-title-check" style="text-align: left; margin-left: 4px; color: red; display: none; font-size: 8px">specify a title</p>     
+              </div>
+              <div class="modal-body-ctn" style="display: flex; justify-content: center; align-items: middle;">
+                <form action="/your-name/" method="post", autocomplete="off">
+                  <input
+                    id="reportTitle"
+                    type="text"
+                    name="reportTitle"
+                  />
+                </form>
+              </div>
+              <br>
+              <div class="form-label-ctn">
+                <p class="form-label">Report Type</p>
+                <p style="text-align: left; margin-left: 4px; color: red;">*</p>
+                <p id="corp-type-check" style="text-align: left; margin-left: 4px; color: red; display: none; font-size: 8px">specify a type</p>     
+              </div>
+              <div class="modal-body-ctn">
+                <select class="btn-btn-secondary-dropdown-toggle" 
+                id = 'reportTypeSelection'
+                onchange = 'selectReportType()'
+                aria-label="Default select example">
+                  <option id='reportType' selected style="text-align: center;"></option>
+                  <option class="dropdown-options" value="Report Type 1">Type 1</option>
+                  <option class="dropdown-options" value="Report Type 2">Type 2</option>
+                  <option class="dropdown-options" value="Report Type 3">Type 3</option>
+                </select>
+              </div>
+              <br>
+              <div class="form-label-ctn b">
+                <p class="form-label">Batches to include in Corporate Report</p>
+                <p style="text-align: left; margin-left: 4px; color: red;">*</p>
+              </div>
+                <div id="batch-ctn" text>
+                  <ul>
+                    <li id="batch-selector">
+                      <div class="modal-body-ctn" style="display: flex;
+                      justify-content: center;
+                      align-items: middle;">
+                        <select 
+                        id = 'batchSelection'
+                        class = 'batch-selection'
+                        aria-label="Default select example">
+                          <option selected style="text-align: center;"></option>
+                        </select>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+                <div style="height:8.42px"></div>
+                <button class="add-batch-btn" onClick="addNewBatch()">
+                  <svg xmlns="http://www.w3.org/2000/svg" style="margin-bottom:3px" width="12px" height="12px" fill="white" class="bi bi-plus-circle" viewBox="0 0 16 16">
+                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                    <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+                  </svg>
+                  Add new batch
+                </button>
+            </div>
+            <div style="height: 20px;"></div>
+      </div>
+      <div class="modal-split">
+        <div class="modal-body">
+          <div class="form-label-ctn">
+            <p class="form-label">Report Template</p>
+            <p style="text-align: left; margin-left: 4px; color: red;">*</p>
+            <p id="corp-template-check" style="text-align: left; margin-left: 4px; color: red; display: none; font-size: 8px">specify a template</p>     
+          </div>
+          <div class="modal-body-ctn">
+            <select class="btn-btn-secondary-dropdown-toggle" 
+            id="reportTemplateSelection"
+            onchange="selectTemplate()"
+            aria-label="Default select example"
+                  >
+              <option style="text-align: left;"></option>
+              <option class="dropdown-options"; value="Template 1">Template 1</option>
+            </select>
+          </div>
+        </div>
+      </div>
+        </div>
+        <div style="height: 20px;"></div>
+        <div class="modal-btm" id="'modal-bottom" style="margin-left: 300.14px;
+        margin-bottom: 39.04px;">
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 {% endblock %}
