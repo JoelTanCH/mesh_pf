@@ -366,9 +366,18 @@
     color: #718FBF;
     flex: 60%;
     text-decoration: underline;
-
-
   }
+
+  .dropdown-options {
+    text-align: left ;
+    color: #60769c;
+    font-family: Poppins;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 14px;
+    letter-spacing: 0em;
+  }
+
 </style>
 
 <script>
@@ -642,7 +651,7 @@
         </div>
         <div style="height: 50%; display: flex; flex-direction: column;">
           <p class="report-prop">Batches included in Corporate Report</p>
-          <p class="input-report-prop" style="text-decoration: underline;" id="corp-report-batches">
+          <p class="input-report-prop" style="text-decoration: underline; color: #718FBF;" id="corp-report-batches">
           </p>
         </div>
       </div>
@@ -739,11 +748,11 @@
               text-align: left;
             "
           >
-            <option style="text-align: center;" value="1">Template I</option>
-            <option style="text-align: center;" value="2">Template II</option>
-            <option style="text-align: center;" value="3">Template III</option>
-            <option style="text-align: center;" value="4">Template IV</option>
-          </select>
+          <option class="dropdown-options"; value="Template I">Template I</option>
+          <option class="dropdown-options"; value="Template II">Template II</option>
+          <option class="dropdown-options"; value="Template III">Template III</option>
+          <option class="dropdown-options"; value="Template IV">Template IV</option>
+        </select>
         </div>
         <div style="margin-left: 5.51px;">
           <button
