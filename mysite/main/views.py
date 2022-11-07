@@ -331,10 +331,16 @@ def healthReportInfo(response):
     corporates = [[corp_dic['name'], corp_dic['_id']] for corp_dic in corporate_info]
     corp_id = corporates[int(response.session['idx_selected'])][1]
     # url = "https://apps.who.int/iris/bitstream/handle/10665/349091/WHO-EURO-2021-2661-42417-58838-eng.pdf"
-    url = 'https://res.cloudinary.com/dvyhz42sn/image/upload/v1667566862/bt4103Demo/DARA-Corporate-2022-11-04-12-23-8462a4ca_iesc7j.pdf'
-    req_response = requests.get(url)
-    my_raw_data = req_response.content
-    with BytesIO(my_raw_data) as data:
+    url = "https://res.cloudinary.com/dvyhz42sn/image/upload/v1667807654/bt4103Demo/DARA-Corporate-2022-11-04-12-23-8462a4ca_n8efmz.pdf"
+    # url = 'https://res.cloudinary.com/dvyhz42sn/image/upload/v1667807376/bt4103Demo/DARA-Corporate-2022-09-05-09-45-6aca3066_utj7qc.pdf'
+    # url = 'https://res.cloudinary.com/dvyhz42sn/image/upload/v1667807419/bt4103Demo/Project_Charter_zqpqui.pdf'
+    # url = 'https://apps.who.int/iris/bitstream/handle/10665/349091/WHO-EURO-2021-2661-42417-58838-eng.pdf'
+    #req_response = requests.get(url)
+    #req_response2 = requests.get(url)
+    #my_raw_data = req_response.content
+    #my_raw_data2 = req_response2.content
+    #my_raw_data = my_raw_data2
+    with BytesIO(requests.get(url).content) as data:
         read_pdf = PyPDF2.PdfFileReader(data)
         num_pages = read_pdf.getNumPages()
     dict_report = {
@@ -347,10 +353,6 @@ def healthReportInfo(response):
         'report_type': response.session['corp_report_type'], 
         'created_by': {'name': response.session['clinic_personnel'], 'created_time': timestamp_gen} 
     }
-    print('dict_report')
-    print(dict_report)
-    print('AUDIT LOG BEFORE IF ELSE STATEMNET')
-    print(response.session['audit_log_id'])
     if response.session['audit_log_id'] == 0:
         last_gen_name, last_gen_time, inserted_doc_id = generate_corp_report(dict_report)
     else:
@@ -358,8 +360,6 @@ def healthReportInfo(response):
         last_gen_name = response.session['clinic_personnel']
         last_gen_time = timestamp_gen
 
-    print('inserted doc id type')
-    print(type(inserted_doc_id))
     audit_trail = retrieve_audit_trail(inserted_doc_id)
     log_info = []
     for dict in audit_trail:
@@ -375,12 +375,7 @@ def healthReportInfo(response):
     corporate_info = get_corporate_list('Parkway Health')
     corporates = [[corp_dic['name'], corp_dic['_id']] for corp_dic in corporate_info]
     corporate_names = [corp_dic['name'] for corp_dic in corporate_info]
-    print('no. of corporates', len(corporates))
-    print(corporates)
-    # all_corporate_batches = []
-    # for i in range(len(corporates)):
-    #     all_corporate_batches.append(get_batch_list('Parkway Health', corporates[i][1]))
-    print(corporates[2][1])
+
     #get all batches under all corporates under this healthcare provider
     all_batches = []
     all_batch_ids = []
