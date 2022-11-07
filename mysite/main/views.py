@@ -119,13 +119,13 @@ def summaryReport(response):
     reportarrstr = []
     for dict in reportdata:
         arr = [0]*4
-        arr[0] = dict['name']
+        arr[0] = dict['report_title']
         arr[1] = dict['batches']
         arr[2] = dict['last_generated_time']
         arr[3] = dict['status']
         reportarr.append(arr)
         arrstr = [0]*4
-        arrstr[0] = dict['name']
+        arrstr[0] = dict['report_title']
         sl = str(dict['batches'])
         sl = sl.replace("]", "")
         sl = sl.replace("[", "")
@@ -173,6 +173,18 @@ def summaryReport(response):
 
 @api_view(["GET"])
 def downloadcsv(request):
+    try:
+        myfile = open('./temp/validated_data_with_base_units.csv')
+        response = HttpResponse(myfile, content_type='text/csv')
+        response['Content-Disposition'] = 'attachment; filename=validated_data_with_base_units.csv'
+        return response
+    except:
+        response = HttpResponse()
+        response.status_code = 404
+        return response
+
+@api_view(["GET"])
+def invaliddownloadcsv(request):
     try:
         myfile = open('./temp/validated_data_with_base_units.csv')
         response = HttpResponse(myfile, content_type='text/csv')
@@ -283,6 +295,7 @@ def send_new_selection(response):
     dict_report = {
         'organization': 'Parkway health',
         'corporateid': corp_id, 
+        'report_title': response.session['corp_report_title'],
         'name': response.session['corp_name'], 
         'batches': arr_objectbatchid, 
         'report_template': response.session['corp_report_template'], 
@@ -327,6 +340,7 @@ def healthReportInfo(response):
     dict_report = {
         'organization': 'Parkway health',
         'corporateid': corp_id, 
+        'report_title': response.session['corp_report_title'],
         'name': response.session['corp_name'], 
         'batches': arr_objectbatchid, 
         'report_template': response.session['corp_report_template'], 

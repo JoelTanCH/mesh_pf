@@ -110,7 +110,7 @@ def retrieve_corporate_report_data(organization):
     db = client["meshbio"]
 
     query = {'organization': organization}
-    columns = { 'name': 1, 'batches': 1, 'last_generated_time': 1, 'status': 1 }
+    columns = { 'report_title': 1, 'batches': 1, 'last_generated_time': 1, 'status': 1 }
 
     report_data = retrieve_document(db, 'corporatereportdata', query, columns)
 

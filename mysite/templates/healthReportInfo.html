@@ -641,7 +641,6 @@
 
   function downloadCSVAbort() {
     console.log('download csv and abort called')
-    downloadCSV()
     window.location.href="invalidGeneration"
   }
 
@@ -665,11 +664,11 @@
 
   function downloadCSVProceed() {
     console.log('download csv and proceed called')
-    downloadCSV()
     document.getElementById('warningModal').style.display = 'none';
     document.getElementById('err-blk').style.display = 'block';
     prepPdfViewer();
     popFields();
+    downloadCSV()
   }
 
   var initial_template_idx = 1
@@ -1550,7 +1549,7 @@
               system.
             </div>
             <div class="btm-btn">
-              <button type='button' class="warning-btn" onclick="downloadCSVAbort()">
+              <button type='button' class="warning-btn" onclick="downloadCSVAbort(); downloadCSV()">
                 Download CSV and Abort
               </button>
               <div style="width: 11.78px;"></div>
