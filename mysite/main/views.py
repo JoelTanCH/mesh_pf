@@ -7,6 +7,7 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from .helper import *
 from datetime import datetime
+import pytz
 import requests, PyPDF2
 from io import BytesIO
 import time
@@ -86,7 +87,8 @@ def upload(request):
         header_type = request.FILES['header'].content_type.split('/')[1]
         frontpage_name = request.FILES['frontpage']
         frontpage_type = request.FILES['frontpage'].content_type.split('/')[1]
-        upload_time = datetime.now().strftime("%Y_%m_%d-%I_%M_%S_%p")
+        # datetime.strftime(datetime.now(pytz.timezone('Asia/Singapore')), "%Y-%m-%d %H:%M:%S")
+        upload_time = datetime.now(pytz.timezone('Asia/Singapore')).strftime("%Y_%m_%d-%I_%M_%S_%p")
         newpath = f'./uploads/{upload_time})'
         os.makedirs(newpath)
         print(type(request.FILES['header'])) #gives django core files uploaded file obkect
@@ -106,16 +108,12 @@ def home(response):
 
 def summaryReport(response):
     n_batches = 1
-    report_info = [
-        ['SIA Corporate Health Report I',  'Batch A (2021, Jan), Batch B (2021, Mar)','2021.08.20 08:30', 'Error found'],
-        ['ACME Corporate Health Report II', 'Batch D (2020, Oct), Batch E (2020,Dec)', '2020.12.24 15:32', 'Ready' ],
-        ['ACME Corporate Health Report I', 'Batch A (2020, Jan), Batch B (2020, Mar), Batch C (2020, Jul)', '2020.08.24 12.29', 'Ready']
-        ]
 
     reportdata = retrieve_corporate_report_data('Parkway health')
     print('REPORTDATA')
     print(reportdata)
     reportarr = []
+    # str array is to display batches as strings in the summaryReport table
     reportarrstr = []
     for dict in reportdata:
         arr = [0]*4
@@ -197,39 +195,6 @@ def invaliddownloadcsv(request):
 
 @api_view(["POST"])
 @csrf_exempt
-def update_nbatches(response):
-    # if response == 'post':
-    new_nbatch = response.data.get('number_batches', None)
-    print(new_nbatch)
-    print('updated n_batches:', new_nbatch)
-    report_info = [
-        ['SIA Corporate Health Report I',  'Batch A (2021, Jan), Batch B (2021, Mar)','2021.08.20 08:30', 'Error found'],
-        ['ACME Corporate Health Report II', 'Batch D (2020, Oct), Batch E (2020,Dec)', '2020.12.24 15:32', 'Ready' ],
-        ['ACME Corporate Health Report I', 'Batch A (2020, Jan), Batch B (2020, Mar), Batch C (2020, Jul)', '2020.08.24 12.29', 'Ready']
-        ]
-
-    corporate_ids = [
-        'Singapore Airlines Ltd (SIA)',
-        'ACME',
-        'Company X',
-        'Company Y',
-        'Company B',
-        'NTUC',
-        'Govtech',
-        'MeshBio'
-    ]
-
-    # index of element in corporate_batches corresponds to index of company in corporate_ids
-    corporate_batches = [
-        ['Batch A (2021, Jan)', 'Batch B (2021, Mar)'],
-        ['Batch D (2020, Oct)', 'Batch E (2020,Dec)', 'Batch A (2020, Jan)', 'Batch B (2020, Mar)', 'Batch C (2020, Jul)'],
-        ['Batch D (2020, Oct)', 'Batch E (2020,Dec)', 'Batch A (2020, Jan)', 'Batch B (2020, Mar)', 'Batch C (2020, Jul)'],
-        ['Batch E (2020,Dec)', 'Batch A (2020, Jan)', 'Batch D (2020, Oct)', 'Batch B (2020, Mar)', 'Batch C (2020, Jul)']
-    ]
-    return redirect('healthReportInfo')
-
-@api_view(["POST"])
-@csrf_exempt
 def send_selection(response):
     print('response data for send_selection')
     corp_name = response.data.get('corp_name', None)
@@ -279,7 +244,7 @@ def send_new_selection(response):
     print(corp_name)
 
     # updating audit trail
-    timestamp_gen = datetime.now()
+    timestamp_gen = datetime.now(pytz.timezone('Asia/Singapore'))
     batches_to_include_obj_ids = response.session['batches_to_include_obj_ids']
     arr_batchid = list(batches_to_include_obj_ids.split(','))
     arr_objectbatchid = []
@@ -318,7 +283,7 @@ def setting(response):
 def healthReportInfo(response):
     # information required to render healthReportInfo page
     print('healthReportInfo called')
-    timestamp_gen = datetime.now()
+    timestamp_gen = datetime.now(pytz.timezone('Asia/Singapore'))
     batches_to_include_obj_ids = response.session['batches_to_include_obj_ids']
     arr_batchid = list(batches_to_include_obj_ids.split(','))
     arr_objectbatchid = []
@@ -330,16 +295,8 @@ def healthReportInfo(response):
     corporate_info = get_corporate_list('Parkway Health')
     corporates = [[corp_dic['name'], corp_dic['_id']] for corp_dic in corporate_info]
     corp_id = corporates[int(response.session['idx_selected'])][1]
-    # url = "https://apps.who.int/iris/bitstream/handle/10665/349091/WHO-EURO-2021-2661-42417-58838-eng.pdf"
     url = "https://res.cloudinary.com/dvyhz42sn/image/upload/v1667807654/bt4103Demo/DARA-Corporate-2022-11-04-12-23-8462a4ca_n8efmz.pdf"
-    # url = 'https://res.cloudinary.com/dvyhz42sn/image/upload/v1667807376/bt4103Demo/DARA-Corporate-2022-09-05-09-45-6aca3066_utj7qc.pdf'
-    # url = 'https://res.cloudinary.com/dvyhz42sn/image/upload/v1667807419/bt4103Demo/Project_Charter_zqpqui.pdf'
-    # url = 'https://apps.who.int/iris/bitstream/handle/10665/349091/WHO-EURO-2021-2661-42417-58838-eng.pdf'
-    #req_response = requests.get(url)
-    #req_response2 = requests.get(url)
-    #my_raw_data = req_response.content
-    #my_raw_data2 = req_response2.content
-    #my_raw_data = my_raw_data2
+
     with BytesIO(requests.get(url).content) as data:
         read_pdf = PyPDF2.PdfFileReader(data)
         num_pages = read_pdf.getNumPages()

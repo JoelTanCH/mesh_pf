@@ -2,6 +2,7 @@ from .database import *
 from pymongo import MongoClient
 #ObjectId
 from bson.objectid import ObjectId
+import pytz
 from datetime import datetime
 def get_corporate_list(organization):
 
@@ -62,13 +63,13 @@ def generate_corp_report(report_data, _reportid = 0):
     collection = db["corporatereportdata"]
 
     report_data["status"] = "Ready" # Hardcoded for now
-    report_data["last_generated_time"] = datetime.now()
+    report_data["last_generated_time"] = datetime.now(pytz.timezone('Asia/Singapore'))
 
     inserted_doc = collection.insert_one(report_data)
 
     audit_dic = {}
 
-    audit_dic['datetime'] = datetime.now()
+    audit_dic['datetime'] = datetime.now(pytz.timezone('Asia/Singapore'))
     audit_dic['action'] = 'Report Generated'
     audit_dic['user'] = report_data["created_by"]["name"]
     if _reportid == 0:
