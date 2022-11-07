@@ -103,3 +103,27 @@ def retrieve_audit_trail(reportid):
     audit_trails = retrieve_document(db, 'audittrail',{'reportid':reportid})
     return audit_trails
     
+def retrieve_corporate_report_data(organization):
+
+    temp_url = "mongodb://localhost:27017"
+    client = MongoClient(temp_url)
+    db = client["meshbio"]
+
+    query = {'organization': organization}
+    columns = { 'name': 1, 'batches': 1, 'last_generated_time': 1, 'status': 1 }
+
+    report_data = retrieve_document(db, 'corporatereportdata', query, columns)
+
+    for report in report_data:
+        batches = report['batches']
+        batch_names = []
+        for batch in batches:
+            query1 = { '_id': ObjectId(batch)}
+            columns1 = { 'name': 1 }
+            batch_name = retrieve_document(db, 'corporatebatch', query1, columns1)
+            print(batch_name)
+            batch_names.append(batch_name[0]['name'])
+        report['batches'] = batch_names
+
+
+    return report_data

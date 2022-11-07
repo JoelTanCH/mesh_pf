@@ -154,6 +154,24 @@
   function generatePDF() {
     window.location.href="../../healthReportInfo"
   }
+
+  function downloadCSV() {
+    let req = axios({
+                  method: 'get',
+                  url: 'downloadcsv',
+                  xstfCookieName: 'csrftoken',
+                  xsrfHeaderName: 'X-CSRFToken',
+                  headers: {
+                    'X-CSRFToken': 'csrftoken'
+                  }
+                  }).then((response) => {
+                    if (response.status_code ==404) {
+                      return
+                    } else {
+                      window.location.href='downloadcsv'
+                    }
+                  });
+  }
 </script>
 
 <div style="display: flex; flex-direction: column;">
@@ -251,7 +269,7 @@
         </div>
       </div>
       <div style="width: 10%; margin-top: 25px; margin-left: -120px;">
-        <button class="download-csv">
+        <button class="download-csv" onclick="downloadCSV()">
           <p
             style="
               font-family: Poppins;

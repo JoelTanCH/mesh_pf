@@ -641,6 +641,7 @@
 
   function downloadCSVAbort() {
     console.log('download csv and abort called')
+    downloadCSV()
     window.location.href="invalidGeneration"
   }
 
@@ -664,6 +665,7 @@
 
   function downloadCSVProceed() {
     console.log('download csv and proceed called')
+    downloadCSV()
     document.getElementById('warningModal').style.display = 'none';
     document.getElementById('err-blk').style.display = 'block';
     prepPdfViewer();

@@ -111,6 +111,28 @@ def summaryReport(response):
         ['ACME Corporate Health Report II', 'Batch D (2020, Oct), Batch E (2020,Dec)', '2020.12.24 15:32', 'Ready' ],
         ['ACME Corporate Health Report I', 'Batch A (2020, Jan), Batch B (2020, Mar), Batch C (2020, Jul)', '2020.08.24 12.29', 'Ready']
         ]
+
+    reportdata = retrieve_corporate_report_data('Parkway health')
+    print('REPORTDATA')
+    print(reportdata)
+    reportarr = []
+    reportarrstr = []
+    for dict in reportdata:
+        arr = [0]*4
+        arr[0] = dict['name']
+        arr[1] = dict['batches']
+        arr[2] = dict['last_generated_time']
+        arr[3] = dict['status']
+        reportarr.append(arr)
+        arrstr = [0]*4
+        arrstr[0] = dict['name']
+        sl = str(dict['batches'])
+        sl = sl.replace("]", "")
+        sl = sl.replace("[", "")
+        arrstr[1] = sl
+        arrstr[2] = dict['last_generated_time']
+        arrstr[3] = dict['status']
+        reportarrstr.append(arrstr)
     corporate_info = get_corporate_list('Parkway Health')
     corporates = [[corp_dic['name'], corp_dic['_id']] for corp_dic in corporate_info]
     corporate_names = [corp_dic['name'] for corp_dic in corporate_info]
@@ -139,7 +161,8 @@ def summaryReport(response):
 
     return render(response, "summaryReport.html", 
     {
-        "report_info": report_info,
+        "report_info": reportarr,
+        "report_info_str": reportarrstr,
         "corporate_infos": corporates,
         "corporate_names": corporate_names,
         "corporate_batches": all_batches,
